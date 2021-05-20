@@ -1,0 +1,1073 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>小项目总结 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              小项目总结
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    相机标定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    抖音哈哈镜
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    照片风格
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    抖音特效
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    美颜效果
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>小项目总结</h1>
+                
+                <h3 id="_1">相机标定<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><a href="https://blog.csdn.net/JennyBi/article/details/85764988">博客详解链接:张正友棋盘标定</a></p>
+<p><a href="https://blog.csdn.net/weixin_42578378/article/details/89300701?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6&amp;utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6">代码标定链接</a></p>
+<p><strong>为什么标定</strong></p>
+<ul>
+<li>相机拍摄是**三维空间(真实世界)到二维空间(RGB图片)**，本来这个过程不可逆，但是可以通过**标定**找到这个摄像机的数学模型:<code>二维图像+模型=逆推到三维图像</code></li>
+<li>每个相机在组装中可能会出现一些**畸变**，可以通过相机标定校正这种畸变。</li>
+</ul>
+<p><strong>相机标定后可以得到什么</strong></p>
+<ul>
+<li>相机的**内参矩阵A(dx,dy,r,u,v,f),外参矩阵[R] [T],畸变系数[k1,k2,k3,<code>~</code>,p1,p2,<code>~</code>]**<ul>
+<li>内参矩阵参数介绍<ul>
+<li>一个像素的物理尺寸<code>(dx,dy)</code></li>
+<li>焦距<code>f</code></li>
+<li>图像物理坐标的扭曲因子<code>r</code></li>
+<li>图像原点相对于光心成像点的的纵横偏移量<code>u</code>和<code>v</code>（像素为单位）</li>
+</ul>
+</li>
+<li>外参矩阵参数介绍<ul>
+<li>世界坐标系转换到相机坐标系的<code>旋转R矩阵</code></li>
+<li>世界坐标系转换到相机坐标系的<code>平移T矩阵</code></li>
+</ul>
+</li>
+<li>畸变系数参数介绍<ul>
+<li>相机的径向畸变系数<code>k1,k2,k3,~</code></li>
+<li>相机的切向畸变系数<code>p1,p2,~</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何得到？</strong></p>
+<ul>
+<li>使用棋盘(黑白方块间隔组成)标定板来采集样本，是真实世界映射到数组图像的对象，<strong>二维物体相对于三维物体会缺少一部分信息，于是我们会多次改变棋盘的方位来捕捉图像(不同位置/角度/姿态)，以求获得更丰富的坐标信息，最少3张，10~20张为宜。</strong></li>
+<li>使用<code>MatLab</code>的<code>Camera Calibrator</code>工具标定即可。</li>
+</ul>
+<h3 id="_2">抖音哈哈镜<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>哈哈镜效果是通过图像坐标变换来模拟真实的哈哈镜效果。具体算法过程如下：</p>
+<ul>
+<li>
+<p>输入图像<code>f(x,y)</code>，宽高分别为<code>Width和Height</code>，设置图像中心坐标<code>Center（cx,xy</code>）为缩放中心点，图像上任意一点到中心点的相对坐标<code>tx=x-cx,ty=y-cy</code>。</p>
+</li>
+<li>
+<p>哈哈镜效果分为**图像拉伸放大和图像缩小**。</p>
+<ul>
+<li>
+<p>对于图像拉伸放大，设置图像变换的半径为<code>radius</code>，哈哈镜变换后的图像为<code>p(x,y)</code>。</p>
+<ul>
+<li>
+<p><code>x=(tx/2)×(sqrt(tx×tx+ty×ty)/radius)+cx</code></p>
+</li>
+<li>
+<p><code>y=(ty/2)×(sqrt(tx×tx+ty×ty)/radius)+cy</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>对于图像缩小，设置图像变换的半径为<code>radius</code>，哈哈镜变换后的图像为<code>p(x,y)</code>。</p>
+<ul>
+<li><code>x=cos(atan2(ty,tx))×12×(sqrt(tx×tx+ty×ty)+cx</code></li>
+<li><code>y=sin(atan2(ty,tx))×12×(sqrt(tx×tx+ty×ty)+cy</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># 抖音哈哈镜，拉伸放大</span>
+<span class="k">def</span> <span class="nf">MaxFrame</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">radius</span><span class="o">=</span><span class="mi">400</span><span class="p">):</span>
+    <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">center_X</span><span class="p">,</span><span class="n">center_Y</span> <span class="o">=</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">newX</span><span class="p">,</span><span class="n">newY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+    <span class="n">real_radius</span> <span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">radius</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+            <span class="n">tX</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">center_X</span>
+            <span class="n">tY</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">center_Y</span>
+
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">tX</span> <span class="o">*</span> <span class="n">tX</span> <span class="o">+</span> <span class="n">tY</span> <span class="o">*</span> <span class="n">tY</span>
+            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">:</span>
+
+                <span class="n">newX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tX</span><span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+                <span class="n">newY</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tY</span><span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+
+                <span class="n">newX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">newX</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span> <span class="o">/</span> <span class="n">real_radius</span><span class="p">))</span>
+                <span class="n">newX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">newX</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span><span class="o">/</span> <span class="n">real_radius</span><span class="p">))</span>
+
+                <span class="n">newX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">newX</span> <span class="o">+</span> <span class="n">center_X</span><span class="p">)</span>
+                <span class="n">newY</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">newY</span> <span class="o">+</span> <span class="n">center_Y</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">newX</span><span class="o">&lt;</span><span class="n">width</span> <span class="ow">and</span> <span class="n">newY</span><span class="o">&lt;</span><span class="n">height</span><span class="p">:</span>
+                    <span class="n">new_data</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="n">newY</span><span class="p">,</span> <span class="n">newX</span><span class="p">,:]</span>
+
+    <span class="k">return</span> <span class="n">new_data</span>
+
+<span class="c1"># 抖音哈哈镜，挤压缩小</span>
+<span class="k">def</span> <span class="nf">MinFrame</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+    <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">center_X</span><span class="p">,</span><span class="n">center_Y</span> <span class="o">=</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">newX</span><span class="p">,</span><span class="n">newY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+            <span class="n">tX</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">center_X</span>
+            <span class="n">tY</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="n">center_Y</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">tY</span><span class="p">,</span> <span class="n">tX</span><span class="p">)</span>
+            <span class="n">radius</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">tX</span> <span class="o">*</span> <span class="n">tX</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">tY</span> <span class="o">*</span> <span class="n">tY</span><span class="p">))</span>
+
+            <span class="n">newR</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span> <span class="o">*</span><span class="mi">12</span>
+            <span class="n">newX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">center_X</span> <span class="o">+</span> <span class="p">(</span><span class="n">newR</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+            <span class="n">newY</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">center_Y</span> <span class="o">+</span> <span class="p">(</span><span class="n">newR</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+
+            <span class="k">if</span> <span class="n">newX</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="ow">or</span> <span class="n">newX</span> <span class="o">&gt;</span><span class="n">width</span><span class="p">:</span>
+                <span class="n">newX</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="n">newY</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">newY</span> <span class="o">&gt;</span><span class="n">height</span><span class="p">:</span>
+                <span class="n">newY</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="n">newX</span><span class="o">&lt;=</span><span class="n">width</span> <span class="ow">and</span> <span class="n">newY</span><span class="o">&lt;=</span><span class="n">height</span><span class="p">:</span>
+                <span class="n">new_data</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="n">newY</span><span class="p">,</span> <span class="n">newX</span><span class="p">,:]</span>
+
+    <span class="k">return</span> <span class="n">new_data</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter_fourcc</span><span class="p">(</span><span class="o">*</span><span class="s1">&#39;XVID&#39;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">(</span><span class="s1">&#39;output.avi&#39;</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="p">(</span><span class="mi">640</span><span class="p">,</span>  <span class="mi">480</span><span class="p">))</span>
+    <span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+        <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can&#39;t receive frame (stream end?). Exiting ...&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="c1"># 要加载的函数</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">MinFrame</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span>
+            <span class="k">break</span>
+    <span class="c1"># 完成工作后释放所有内容</span>
+    <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_3">照片风格<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>照片变老</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># RGB三通道公式变换，注意，变换后要约束在0~255之间,np.clip(result,0,255)</span>
+<span class="n">R</span><span class="o">=</span><span class="mf">0.393</span><span class="err">×</span><span class="n">r</span><span class="o">+</span><span class="mf">0.769</span><span class="err">×</span><span class="n">g</span><span class="o">+</span><span class="mf">0.189</span><span class="err">×</span><span class="n">b</span>
+<span class="n">G</span><span class="o">=</span><span class="mf">0.349</span><span class="err">×</span><span class="n">r</span><span class="o">+</span><span class="mf">0.686</span><span class="err">×</span><span class="n">g</span><span class="o">+</span><span class="mf">0.168</span><span class="err">×</span><span class="n">b</span>
+<span class="n">B</span><span class="o">=</span><span class="mf">0.272</span><span class="err">×</span><span class="n">r</span><span class="o">+</span><span class="mf">0.534</span><span class="err">×</span><span class="n">g</span><span class="o">+</span><span class="mf">0.131</span><span class="err">×</span><span class="n">b</span>
+</code></pre></div>
+<ul>
+<li>
+<p><strong>图片转素描</strong>(PS实现)</p>
+<ul>
+<li>灰度化，将彩色图片转换成灰度图像。</li>
+<li>复制灰度图层，并且反色，反色为Y(i,j)=255-X(i,j)。</li>
+<li>对灰度图像进行高斯模糊。</li>
+<li>模糊后的图像叠加模式选择颜色减淡效果公式:<code>C=MIN(A+（A×B）/（255-B）,255)</code><ul>
+<li>C为混合结果</li>
+<li>A为去灰度图</li>
+<li>B为高斯模糊后的像素点</li>
+<li>也可以直接叠加两张图片(cv2.addWeighted)。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>图片转油画</strong></p>
+<ul>
+<li>相邻三行的图像对其像素进行打乱</li>
+<li>增强图像的色彩空间(<code>PIL里面有个ImageEnhance</code>模块，专门用作图像增强处理)，例如调节色度。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.像素随机打乱，这里使用3行，如果更粗糙就用更多行</span>
+<span class="k">def</span> <span class="nf">oil_style</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">height</span><span class="p">,</span> <span class="n">width</span>  <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">height</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">height</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">output</span>
+<span class="c1"># 2.图像增强</span>
+<span class="k">def</span> <span class="nf">color_add</span><span class="p">():</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;oil_img.jpg&#39;</span><span class="p">)</span>
+    <span class="n">enh_col</span> <span class="o">=</span> <span class="n">ImageEnhance</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="mf">2.0</span>
+    <span class="n">image_colored</span> <span class="o">=</span> <span class="n">enh_col</span><span class="o">.</span><span class="n">enhance</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">image_colored</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>马赛克</strong></p>
+<ul>
+<li>讲图像分成大小一致的图像块，每个图像块都是正方形(该尺寸决定了马赛克块的大小)，所以马赛克对每个正方形的处理有下面几种方式:<ul>
+<li>模板中对应的所有图像的像素值都等于该模板的左上角第一个像素的像素值。</li>
+<li>对于方块里的像素进行随机打乱。</li>
+<li>随机用某一点代替领域类的所有像素</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">channel</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">half_patch</span> <span class="o">=</span><span class="mi">10</span> <span class="c1"># 马赛克大小</span>
+<span class="c1"># 类似滑窗一样，遍历整张图片，随机在图像的Patch领域里取一个像素来替换Patch里面的所有像素值</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">half_patch</span><span class="p">,</span> <span class="n">row</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">half_patch</span><span class="p">,</span> <span class="n">half_patch</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">half_patch</span><span class="p">,</span> <span class="n">col</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">half_patch</span><span class="p">,</span> <span class="n">half_patch</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span>
+    <span class="n">m</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">k1</span><span class="o">*</span><span class="p">(</span><span class="n">half_patch</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">n</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">k2</span><span class="o">*</span><span class="p">(</span><span class="n">half_patch</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">h</span><span class="o">=</span><span class="nb">int</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="n">m</span><span class="p">)</span> <span class="o">%</span> <span class="n">row</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">=</span><span class="nb">int</span><span class="p">((</span><span class="n">j</span><span class="o">+</span><span class="n">n</span><span class="p">)</span> <span class="o">%</span> <span class="n">col</span><span class="p">)</span>
+    <span class="n">img_out</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">half_patch</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">half_patch</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="n">half_patch</span><span class="p">:</span><span class="n">j</span><span class="o">+</span><span class="n">half_patch</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span>\
+            <span class="n">img</span><span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="p">:]</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>漫画风格</strong></p>
+<ul>
+<li>
+<p>灰度化+中值滤波(降低图片的准确度,增加绘画中的误差)</p>
+</li>
+<li>
+<p>图像阈值化(分离灰度图像中的目标区域和背景区域)</p>
+<p><code>dst = cv2.adaptiveThreshold(src, maxval, thresh_type, type, Block Size,C)</code></p>
+<ul>
+<li>src：输入图，只能输入单通道图像，通常来说为灰度图。</li>
+<li>maxval：当像素值超过了阈值（或者小于阈值，根据type来决定所赋予的值。）</li>
+<li>thresh_type：阈值的计算方法包含两种类型，即cv2.ADAPTIVE_THRESH_MEAN_C和cv2.ADAPTIVE_THRESH_GAUSSIAN_C。</li>
+<li>type：二值化操作的类型与固定阈值函数相同，包含5种类型，即cv2.THRESH_BINARY、cv2.THRESH_BINARY_INV、cv2.THRESH_TRUNC、cv2.THRESH_TOZERO和cv2.THRESH_TOZERO_INV。</li>
+<li>Block Size：图片中分块的大小。</li>
+<li>C：阈值计算方法中的常数项</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">img_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2GRAY</span><span class="p">)</span>
+ <span class="n">img_blur</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+ <span class="c1">#检测到边缘并且增强其效果</span>
+ <span class="n">img_edge</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">adaptiveThreshold</span><span class="p">(</span><span class="n">img_blur</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">ADAPTIVE_THRESH_MEAN_C</span><span class="p">,</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">,</span>
+          <span class="n">blockSize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+          <span class="n">C</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+ <span class="c1">#转换回彩色图像</span>
+ <span class="n">img_edge</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img_edge</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_GRAY2RGB</span><span class="p">)</span>
+ <span class="n">img_cartoon</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">img_color</span><span class="p">,</span> <span class="n">img_edge</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_4">抖音特效<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>抖音抖动特效</strong></p>
+<ul>
+<li>抖动效果的原理就是**对视频中的一些帧进行剪切和放大到原图**，出现视频中的人像放大颤动的效果。具体的步骤如下：读取待处理的视频，设置出现抖动效果的帧数，比如相邻5帧的图像按照图像中心进行裁剪，然后缩放到原来的尺寸。设置抖动中不变的帧数，比如以5帧为间隔来处理图像。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">img_shake</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">h1</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">h2</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="mf">0.9</span><span class="p">)</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">w2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">width</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+    <span class="n">img2</span><span class="o">=</span><span class="n">img</span><span class="p">[</span><span class="n">h1</span><span class="p">:</span><span class="n">h2</span><span class="p">,</span><span class="n">w1</span><span class="p">:</span><span class="n">w2</span><span class="p">]</span>
+    <span class="n">dst</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">dst</span>
+<span class="c1"># main 每隔5帧处理一下即可</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>抖音闪白效果</strong></p>
+<ul>
+<li>
+<p>类似抖动，每隔5帧进行<code>Gamma变换</code>(对图像灰度值进行非线性操作,公式下)，主要是调节图像的曝光程度。</p>
+<p><img alt="image-20200608074652909" src="../assets/image-20200608074652909.png" /></p>
+<ul>
+<li><code>Gamma变换</code>:让图像从曝光强度的线性响应变得更接近人眼感受的响应，即将相机曝光或曝光不足的图片进行矫正</li>
+<li><code>Gamma</code>值大于1时，对图像的灰度分布直方图具有拉伸作用，使灰度向高灰度值延展</li>
+<li>而当<code>Gamma</code>小于1时，对图像的灰度分布直方图具有收缩作用，使灰度向低灰度值方向靠拢。</li>
+<li>因此设置Gamma参数可以控制图像的曝光度，在0～1时会造成图像过度曝光</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gamma_trans</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">gamma</span><span class="p">):</span><span class="c1">#gamma函数处理</span>
+    <span class="n">gamma_table</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">255.0</span><span class="p">,</span><span class="n">gamma</span><span class="p">)</span><span class="o">*</span><span class="mf">255.0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">)]</span><span class="c1">#建立映射表</span>
+    <span class="n">gamma_table</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gamma_table</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="c1">#颜色值为整数</span>
+    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">LUT</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">gamma_table</span><span class="p">)</span><span class="c1">#图片颜色查表。另外可以根据光强（颜色）均匀化原则设计自适应算法。</span>
+</code></pre></div>
+<ul>
+<li><strong>抖音视频霓虹效果</strong><ul>
+<li>方法一：实时的光斑绘制(opencv上显得突兀，openGL上可以)，这种方法弃用。</li>
+<li>方法二：设计多幅素材图片，黑底上面有亮色的光斑，不同的图片中光斑的位置不同。</li>
+<li>加载视频，按照1帧为一个间隔，每个间隔中的图片在相同位置绘制彩色光斑，一共定义4种光斑位置，循环在视频中进行渲染，最后将处理完的视频保存并输出。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">neon</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">cnt</span><span class="p">):</span>
+  <span class="n">h</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">cnt</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;mask1.jpg&quot;</span><span class="p">)</span> <span class="c1"># 可以设计四张图片，cnt不同，加载不同</span>
+  <span class="o">......</span>
+  <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">mask</span><span class="p">,(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">),</span><span class="n">interpolation</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_CUBIC</span><span class="p">)</span>
+  <span class="n">dst</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">addWeighted</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="n">mask</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">dst</span>
+</code></pre></div>
+<ul>
+<li><strong>抖音时光倒流</strong><ul>
+<li>帧图片倒叙存储即可</li>
+</ul>
+</li>
+<li><strong>抖音视频慢动作</strong><ul>
+<li>读取视频，对视频计数，当计数到第20～40帧的时候，设置降低的fps_slow=10，也就是每秒10帧视频图像，并保存到另外一个视频中，因此原视频被分成了3个视频，即第0～20帧、第20～40帧、第40之后，将3个视频组合起来</li>
+</ul>
+</li>
+</ul>
+<h3 id="_5">美颜效果<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>人脸磨皮</strong><ul>
+<li>图像滤波<ul>
+<li>滤波是消除脸部的一些细纹和斑点，但是会变模糊，为了保留更多的边缘信息，使用双边滤波</li>
+</ul>
+</li>
+<li>图像融合<ul>
+<li>改善模糊现象，<code>0.3*src+0.7*blur</code>，即使用<code>cv2.addWeighted函数</code></li>
+</ul>
+</li>
+<li>图像锐化<ul>
+<li>增强细节感，使用<code>USM锐化</code>或<code>邻域锐化</code>和<code>Laplace锐化</code>，本节采用Python中PIL模块的ImageEnhance类中的ImageEnhance.Sharpness()等函数，通过输入的参数自动调节图像的锐度和对比度。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageEnhance</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;3.jpg&#39;</span><span class="p">)</span>
+<span class="n">blur</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">75</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">alpha</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">img_add</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">addWeighted</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">blur</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imwirte</span><span class="p">(</span><span class="s1">&#39;img_add.jpg&#39;</span><span class="p">,</span> <span class="n">img_add</span><span class="p">)</span>
+<span class="c1"># # 锐度增强</span>
+<span class="n">img_add</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;img_add.jpg&#39;</span><span class="p">)</span>
+<span class="n">img_add</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">enh_sha</span> <span class="o">=</span> <span class="n">ImageEnhance</span><span class="o">.</span><span class="n">Sharpness</span><span class="p">(</span><span class="n">img_add</span><span class="p">)</span>
+<span class="n">sharpness</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">image_sharped</span> <span class="o">=</span> <span class="n">enh_sha</span><span class="o">.</span><span class="n">enhance</span><span class="p">(</span><span class="n">sharpness</span><span class="p">)</span>
+<span class="n">image_sharped</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># # 对比度增强</span>
+<span class="n">enh_con</span> <span class="o">=</span> <span class="n">ImageEnhance</span><span class="o">.</span><span class="n">Contrast</span><span class="p">(</span><span class="n">image_sharped</span><span class="p">)</span>
+<span class="n">contrast</span> <span class="o">=</span> <span class="mf">1.15</span>
+<span class="n">image_contrasted</span> <span class="o">=</span> <span class="n">enh_con</span><span class="o">.</span><span class="n">enhance</span><span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
+<span class="n">image_contrasted</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li><strong>人脸美白</strong><ul>
+<li>最好的实现方式是简历一个颜色查找表，比如从245开始，图像的像素值为255，因此建立一个查找表，共包含256个元素，每一个元素对应一个0～255像素值调整后的像素，一般是对原本的像素值增加，通过查找表来改变图像的像素值即可。当然，具体的效果需要不断的测试，改变颜色查找表。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageEnhance</span>
+
+
+<span class="n">Color_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span>
+    <span class="mi">76</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span>
+    <span class="mi">106</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">126</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="mi">130</span><span class="p">,</span> <span class="mi">131</span><span class="p">,</span> <span class="mi">133</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">137</span><span class="p">,</span> <span class="mi">138</span><span class="p">,</span> <span class="mi">139</span><span class="p">,</span> <span class="mi">141</span><span class="p">,</span> <span class="mi">142</span><span class="p">,</span> <span class="mi">143</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">149</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span>
+    <span class="mi">151</span><span class="p">,</span> <span class="mi">153</span><span class="p">,</span> <span class="mi">154</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">158</span><span class="p">,</span> <span class="mi">159</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">161</span><span class="p">,</span> <span class="mi">162</span><span class="p">,</span> <span class="mi">164</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">166</span><span class="p">,</span> <span class="mi">167</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span>
+    <span class="mi">171</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="mi">173</span><span class="p">,</span> <span class="mi">174</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">176</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">179</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="mi">183</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">185</span><span class="p">,</span> <span class="mi">186</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span>
+    <span class="mi">188</span><span class="p">,</span> <span class="mi">189</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">191</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">194</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mi">203</span><span class="p">,</span>
+    <span class="mi">204</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">206</span><span class="p">,</span> <span class="mi">207</span><span class="p">,</span> <span class="mi">208</span><span class="p">,</span> <span class="mi">209</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="mi">211</span><span class="p">,</span> <span class="mi">212</span><span class="p">,</span> <span class="mi">213</span><span class="p">,</span> <span class="mi">214</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">216</span><span class="p">,</span>
+    <span class="mi">217</span><span class="p">,</span> <span class="mi">218</span><span class="p">,</span> <span class="mi">219</span><span class="p">,</span> <span class="mi">219</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">221</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">223</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">226</span><span class="p">,</span> <span class="mi">226</span><span class="p">,</span> <span class="mi">227</span><span class="p">,</span> <span class="mi">228</span><span class="p">,</span>
+    <span class="mi">228</span><span class="p">,</span> <span class="mi">229</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">231</span><span class="p">,</span> <span class="mi">232</span><span class="p">,</span> <span class="mi">232</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">236</span><span class="p">,</span> <span class="mi">236</span><span class="p">,</span> <span class="mi">237</span><span class="p">,</span> <span class="mi">237</span><span class="p">,</span>
+    <span class="mi">238</span><span class="p">,</span> <span class="mi">238</span><span class="p">,</span> <span class="mi">239</span><span class="p">,</span> <span class="mi">239</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">241</span><span class="p">,</span> <span class="mi">241</span><span class="p">,</span> <span class="mi">242</span><span class="p">,</span> <span class="mi">242</span><span class="p">,</span> <span class="mi">243</span><span class="p">,</span> <span class="mi">243</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span>
+    <span class="mi">245</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">247</span><span class="p">,</span> <span class="mi">247</span><span class="p">,</span> <span class="mi">248</span><span class="p">,</span> <span class="mi">248</span><span class="p">,</span> <span class="mi">248</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">249</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span>
+    <span class="mi">251</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="mi">251</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">253</span><span class="p">,</span> <span class="mi">253</span><span class="p">,</span> <span class="mi">253</span><span class="p">,</span> <span class="mi">253</span><span class="p">,</span> <span class="mi">253</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span>
+    <span class="mi">254</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">254</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;3.jpg&quot;</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+
+    <span class="n">height</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">img2</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># img2 = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+
+            <span class="n">B</span><span class="o">=</span><span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">G</span><span class="o">=</span><span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">R</span><span class="o">=</span><span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+
+            <span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Color_list</span><span class="p">[</span><span class="n">B</span><span class="p">]</span>
+            <span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Color_list</span><span class="p">[</span><span class="n">G</span><span class="p">]</span>
+            <span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Color_list</span><span class="p">[</span><span class="n">R</span><span class="p">]</span>
+            <span class="c1"># img2[i, j][1] += 2</span>
+
+
+    <span class="c1"># img2 = cv2.cvtColor(img2, cv2.COLOR_HSV2BGR)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;res.jpg&#39;</span><span class="p">,</span><span class="n">img2</span><span class="p">)</span>
+
+    <span class="c1"># 锐化，让结果更真实</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;res.jpg&#39;</span><span class="p">)</span>
+    <span class="n">enh_con</span> <span class="o">=</span> <span class="n">ImageEnhance</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">contrast</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="n">image_contrasted</span> <span class="o">=</span> <span class="n">enh_con</span><span class="o">.</span><span class="n">enhance</span><span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
+
+    <span class="n">enh_con</span> <span class="o">=</span> <span class="n">ImageEnhance</span><span class="o">.</span><span class="n">Contrast</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">sharpness</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="n">image_contrasted</span> <span class="o">=</span> <span class="n">enh_con</span><span class="o">.</span><span class="n">enhance</span><span class="p">(</span><span class="n">sharpness</span><span class="p">)</span>
+    <span class="n">image_contrasted</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

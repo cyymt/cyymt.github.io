@@ -1,0 +1,2266 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>java简明教程and安卓开发 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#java" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              java简明教程and安卓开发
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          java简明教程and安卓开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        java简明教程and安卓开发
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    java基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    面向对象编程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java_1" class="md-nav__link">
+    java核心类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    Android开发简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    活动详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    UI开发
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    java基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    面向对象编程
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java_1" class="md-nav__link">
+    java核心类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    Android开发简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    活动详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    UI开发
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>java简明教程and安卓开发</h1>
+                
+                <h3 id="java">java基础<a class="headerlink" href="#java" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1.第一个java程序</span>
+<span class="c1">// 类名:首字母大写，大小写敏感。public:公开的。static:静态的</span>
+<span class="kn">package</span> <span class="nn">yuyang</span><span class="p">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 1.1 包:package 类似c++的namespace，包可以有多层结构，用.隔开:yuyang.utils.xxx</span>
+<span class="c1">// 1.1.1 不同package下的目录结构</span>
+<span class="n">package_sample</span> <span class="c1">// 根目录</span>
+  <span class="o">-</span> <span class="n">src</span> <span class="c1">// 放置源码</span>
+    <span class="o">-</span> <span class="n">hong</span>
+      <span class="o">-</span> <span class="n">Person</span><span class="p">.</span><span class="na">java</span>
+    <span class="o">-</span> <span class="n">ming</span>
+      <span class="o">-</span> <span class="n">Person</span><span class="p">.</span><span class="na">java</span>
+    <span class="o">-</span> <span class="n">mt</span>
+      <span class="o">-</span> <span class="n">yang</span>
+        <span class="o">-</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">java</span>
+<span class="c1">// 1.1.2 同一个包下的类间访问无需import xxx,可以直接访问:例如Main类中访问Person类 new Person();</span>
+<span class="c1">// 1.1.3 访问其他包下面的类</span>
+<span class="kn">import</span> <span class="nn">mt.yang.Arrays</span> <span class="c1">// import mt.yang.* // 导入这个包下所有类</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Arrays</span> <span class="n">arrays</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Arrays</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 扩展:导入一个类中所有的静态字段和静态方法</span>
+<span class="kn">import static</span> <span class="nn">java.lang.System.*</span><span class="p">;</span> <span class="c1">// 导入System类的所有静态字段和静态方法:</span>
+
+<span class="c1">// 1.2 命令行参数: String[] args</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">arg</span> <span class="p">:</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 遍历输出</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 2.数据类型</span>
+<span class="c1">// 整数类型：byte，short，int，long。举例:int x = 100;</span>
+<span class="c1">// 浮点数类型：float，double。举例:float y = 1.34f;// f后缀是必须的</span>
+<span class="c1">// 字符类型：char。举例:char a = &#39;a&#39;/&#39;中&#39;; // 都占两个字节。单引号表示，双引号是字符串</span>
+<span class="c1">// 字符串类型：字符串拼接: +。内容不可变特性:变量类似指针。空值:null表示(null != &quot;&quot;)</span>
+    <span class="c1">//转义字符: \&quot;:&quot;,\&#39;:,\\:\,\n:换行,\r:回车,\t:tab符,\u####:表示一个Unicode编码的字符</span>
+    <span class="c1">//字符串类型：s1==s2:s1和s2必须指向同一对象(啥都一样)，s1.equals(s2):s1和s2只要类型+内容相同就行</span>
+    <span class="c1">//s1.equals(s2)时，如果变量s1为null，会报NullPointerException，所以:if (&quot;hello&quot;.equals(s))或  者if (s1 != null &amp;&amp; s1.equals(&quot;hello&quot;))</span>
+<span class="c1">// 布尔类型：boolean。举例:boolean b1 = true/false;</span>
+<span class="c1">// 常量(不可二次赋值)：final double PI = 3.14; // final修饰常量，常量名常大写。</span>
+<span class="c1">// var类型，var sb = new StringBuilder();//系统自动推断var为StringBuilder，主要是因为变量名太长,简写</span>
+<span class="c1">// 类型强转:</span>
+<span class="c1">// 2.1 大范围转小范围，强制转换:()  --&gt; int i=10;short a = (short)i; 超出范围可能得到错误结果。</span>
+<span class="c1">// 2.2 小范围转大范围，自动转换:short+int=int，short&lt;int&lt;float&lt;String(最高级别)</span>
+<span class="c1">// 2.3 数组</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span><span class="p">;</span><span class="c1">//访问:ns[0]。长度:ns.length。默认值:int=0,float=0.0,boolean=false;</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">68</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">62</span><span class="p">};</span><span class="c1">// 指定初始化元素，编译器自动推断大小</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">68</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">62</span><span class="p">};</span><span class="c1">// 进一步简写。</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;aa&quot;</span><span class="p">,</span><span class="s">&quot;bb&quot;</span><span class="p">,</span><span class="s">&quot;cc&quot;</span><span class="p">};</span>
+
+
+<span class="c1">// 3.运算，注意:如果计算结果超出了范围，就会产生溢出，而溢出不会出错，却会得到一个奇怪的结果</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">120</span><span class="o">/</span><span class="mi">11</span><span class="p">;</span><span class="c1">// 10:属于整除结果</span>
+<span class="n">n</span> <span class="o">+=</span> <span class="mi">100</span><span class="o">/</span><span class="n">n</span> <span class="o">-=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">n</span> <span class="o">++/</span><span class="n">n</span><span class="o">--</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span><span class="c1">// 移位操作: 倍增:&lt;&lt;，倍减:&gt;&gt;，符号位跟着右移运算:n&gt;&gt;&gt;1;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">0</span><span class="p">;</span><span class="c1">// 位运算:&amp; | ~ ^(异或)</span>
+<span class="c1">// 3.1 注意:浮点数运算存在着误差。例如0.1换算成二进制是一个无限循环的小数，只能近似存储。</span>
+<span class="c1">// 3.2 布尔运算</span>
+<span class="o">&amp;&amp;</span> <span class="o">||</span> <span class="o">!</span> <span class="o">&gt;</span> <span class="o">&gt;=</span> <span class="o">&lt;</span> <span class="o">&lt;=</span> <span class="o">==</span> <span class="o">!=</span>
+<span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="c1">// 结果总是false，属于短路运算，因为第一个false就已经确定了，第二个不会被计算</span>
+<span class="c1">// 3.3 三元运算符</span>
+<span class="n">b</span> <span class="o">?</span> <span class="n">x</span><span class="p">:</span><span class="n">y</span><span class="p">;</span> <span class="c1">// b表达式为true,return x,else return y;// x和y的类型必须相同</span>
+
+
+<span class="c1">// 4.流程控制</span>
+<span class="c1">// 4.0 输入操作</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span> <span class="c1">// 导入某个类</span>
+<span class="p">...</span>
+  <span class="c1">// System.out代表标准输出流，而System.in代表标准输入流</span>
+  <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="c1">//创建Scanner对象</span>
+  <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span> <span class="c1">// 读取一行输入并获取字符串</span>
+  <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span> <span class="c1">// 读取一行输入并获取整数,Scanner会自动转换数据类型,因此不必手动转换。</span>
+<span class="p">...</span>
+
+<span class="c1">// 4.1 格式化输出:%(占位符)</span>
+<span class="c1">// %d   格式化输出整数</span>
+<span class="c1">// %x   格式化输出十六进制整数</span>
+<span class="c1">// %f   格式化输出浮点数</span>
+<span class="c1">// %e   格式化输出科学计数法表示的浮点数</span>
+<span class="c1">// %s   格式化字符串</span>
+<span class="c1">// %% 表示一个%字符本身</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;xxx &quot;</span><span class="p">);</span> <span class="c1">// 不换行</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;a = %.2f,b = %08x&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="p">);</span><span class="c1">// a=2位小数,b=格式化成十六进制，并用0补足8位.</span>
+
+<span class="c1">// 4.2 if语句</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// 4.3 switch,必须保证有break</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="p">...</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="p">...</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="p">...</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="p">...</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 不带break的switch如何写？</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">fruit</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="s">&quot;apple&quot;</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Selected apple&quot;</span><span class="p">);</span>
+  <span class="k">case</span> <span class="s">&quot;pear&quot;</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Selected pear&quot;</span><span class="p">);</span>
+  <span class="c1">// case &quot;apple&quot;,&quot;pear&quot; -&gt; System.out.println(&quot;Selected apple or pear&quot;);</span>
+  <span class="k">case</span> <span class="s">&quot;mango&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="c1">// 新符号-&gt;,如果有多条语句，使用{}包裹</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Selected mango&quot;</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Good choice!&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">default</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;No fruit selected&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 4.4 while循环</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">条件表达式</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 循环语句</span>
+<span class="p">}</span>
+<span class="c1">// do-while循环</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">执行循环语句</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">条件表达式</span><span class="p">);</span>
+
+<span class="c1">// 4.5 for循环</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">初始条件</span><span class="p">;</span> <span class="n">循环检测条件</span><span class="p">;</span> <span class="n">循环后更新计数器</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 执行语句</span>
+<span class="p">}</span>
+<span class="c1">// 举例子</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 初始化可以在for内部int i=1;</span>
+    <span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 高级用法</span>
+<span class="c1">// 4.5.1 不设置结束条件:</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+<span class="c1">//4.5.2 不设置结束条件和更新语句:</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="p">;)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+<span class="c1">// 4.5.3 什么都不设置:</span>
+<span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+<span class="c1">// 4.6 for-each循环:常用来遍历数组,因为数组可迭代(Array,List,Map,...)</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span> <span class="p">};</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="p">:</span> <span class="n">ns</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// n直接表示元素</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 5 数组操作</span>
+<span class="c1">// 5.1 数组排序</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">36</span> <span class="p">};</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">ns</span><span class="p">));</span><span class="c1">// 排序前</span>
+<span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">ns</span><span class="p">);</span><span class="c1">// 开始排序</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">ns</span><span class="p">));</span><span class="c1">// 排序后</span>
+
+<span class="c1">// 5.2 多维数组</span>
+<span class="kt">int</span><span class="o">[][]</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span> <span class="p">}</span>
+<span class="p">};</span>
+<span class="n">ns</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span><span class="c1">// 访问</span>
+<span class="c1">// 循环访问</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="p">:</span> <span class="n">ns</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="p">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_1">面向对象编程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1 类</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span><span class="c1">// 私有属性，外部不可访问,如果没赋值,默认String=null,int=0,boolean=false;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="c1">// 构造方法:无返回值，名称是类名，参数无限制，调用是必须使用new,如果不自己定义默认会自动生成一个，一旦一定后就不会再默认生成了，所以常常直接定义两个,所以构造方法可以定义多个</span>
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(){</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 当然一个构造方法可以调用其他构造方法,调用方法，this()</span>
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span><span class="kt">int</span> <span class="n">age</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 下面是普通方法的使用</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span><span class="c1">// 公有方法,外部可以访问</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 对name进行检查</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">name</span><span class="p">.</span><span class="na">isBlank</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;invalid name&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// this变量:隐含的变量this，它始终指向当前实例。因此，通过this.field就可以访问当前实例的字段</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">.</span><span class="na">strip</span><span class="p">();</span> <span class="c1">// 去掉首尾空格</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 方法重载:方法同名，但参数不同(参数顺序、参数类型等)，一般而言返回值都是相同的。返回值类型不同不算</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// 1.1 修饰符</span>
+<span class="kd">private</span><span class="p">:</span><span class="n">外部代码无法访问</span><span class="err">，</span><span class="n">内部代码可以访问</span>
+
+<span class="c1">// 1.2 方法定义</span>
+<span class="n">修饰符</span> <span class="n">方法返回类型</span> <span class="nf">方法名</span><span class="p">(</span><span class="n">方法参数列表</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">若干方法语句</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">方法返回值</span><span class="p">;</span><span class="c1">// 如果无返回值，返回类型void</span>
+<span class="p">}</span>
+
+<span class="c1">// 1.3 方法传参，可变参数:可变参数用类型...定义，可变参数相当于数组类型,注意参数不能是null</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNames</span><span class="p">(</span><span class="n">String</span><span class="p">...</span> <span class="n">names</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="na">names</span> <span class="o">=</span> <span class="n">names</span><span class="p">};</span> <span class="c1">// 调用时传入的参数个数可以随意</span>
+<span class="c1">// 等价于</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNames</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">names</span><span class="p">){</span><span class="k">this</span><span class="p">.</span><span class="na">names</span> <span class="o">=</span> <span class="n">names</span><span class="p">}</span>
+<span class="c1">// 1.3.1 方法的引用传参:例如传入数组名，这样，外部的数组改变，方法中的数组也会改变，类似指针</span>
+
+
+<span class="c1">// 2 继承:extends，一个类只能继承自另一个类，不能从多个类继承，但可以实现多接口(见下文)</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span><span class="p">{</span>
+    <span class="c1">// 无需重复写Person类中的已有方法，因为继承后已经包含</span>
+    <span class="c1">// 增加新的方法就行</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="s">&quot;Hello&quot;</span> <span class="o">+</span> <span class="kd">super</span><span class="p">.</span><span class="na">name</span><span class="p">;</span><span class="c1">// super关键字表示父类(==父类this),注意这里可以直接访问父类私有</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 2.1 修饰符</span>
+<span class="kd">private</span><span class="p">:</span><span class="n">无法被其他类访问或子类无法访问父类的private字段或者private方法</span>
+<span class="kd">protected</span><span class="p">:</span><span class="n">用于继承</span><span class="o">-&gt;</span><span class="n">用protected修饰的字段可以被子类或子类的子类访问</span>
+<span class="kd">public</span><span class="p">:</span><span class="n">可以被其他类或所有子类访问</span>
+
+<span class="c1">// 2.2 继承后的构造函数</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">score</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">,</span> <span class="kt">int</span> <span class="n">score</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// super(); 如果只是想调用无参的构造函数，这句可以省略</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span> <span class="c1">// 调用父类的构造方法Person(String,int),这样就保证了父类执行有参的构造函数</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 2.3 向上转型(为多态铺路)</span>
+<span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">();</span> <span class="c1">// p instanceof Student  :   true</span>
+<span class="n">Object</span> <span class="n">o1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">();</span>
+<span class="c1">// instanceof实际上判断一个变量所指向的实例是否是指定类型，或者是否是这个类型的子类</span>
+<span class="n">p</span> <span class="k">instanceof</span> <span class="n">Person</span><span class="p">;</span> <span class="c1">// ture</span>
+<span class="n">s</span> <span class="k">instanceof</span> <span class="n">Person</span><span class="p">;</span><span class="c1">// true</span>
+<span class="kc">null</span> <span class="k">instanceof</span> <span class="n">xxx</span><span class="p">;</span><span class="c1">// false 如果一个引用变量为null，那么对任何instanceof的判断都为false</span>
+<span class="c1">// 扩展，向下转型，用于强转</span>
+<span class="n">Person</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">();</span> <span class="c1">// upcasting, ok</span>
+<span class="n">Student</span> <span class="n">s1</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="p">)</span> <span class="n">p1</span><span class="p">;</span> <span class="c1">// ok</span>
+<span class="n">Person</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+<span class="c1">// 不能把父类变为子类，因为子类功能比父类多，多的功能无法凭空变出来。</span>
+<span class="n">Student</span> <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="p">)</span> <span class="n">p2</span><span class="p">;</span> <span class="c1">// runtime error! ClassCastException!</span>
+
+<span class="c1">// 2.4 多态：Java的实例方法调用是基于运行时的实际类型的动态调用，而非变量的声明类型</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Person.run&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 扩展:final修饰的方法不能被Override</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="nf">hello</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="s">&quot;Father Hello&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="nd">@Override</span> <span class="c1">// 覆写:直接把父类方法覆盖，方法签名相同，并且返回值也相同</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Student.run&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 扩展，子类中想调用父类的被覆盖的方法</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printFatherRun</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">();</span>
+<span class="n">p</span><span class="p">.</span><span class="na">run</span><span class="p">();</span><span class="c1">// 实际调用的是谁？答案:Student</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">runTwice</span><span class="p">(</span><span class="n">Person</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">p</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+    <span class="n">p</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">runTwice</span><span class="p">(</span><span class="n">xxx</span><span class="p">);</span><span class="c1">// 传入的实例是谁就调用谁</span>
+
+<span class="c1">// 2.5 final</span>
+<span class="c1">// 2.5.1 final修饰的类不能被继承</span>
+<span class="kd">final</span> <span class="kd">class</span> <span class="nc">Person</span><span class="p">{...}</span>
+<span class="c1">// 2.5.2 final修饰的方法不能被Override</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="nf">Hello</span><span class="p">(){...}</span>
+<span class="c1">// 2.5.3 final修饰的属性不能被改写</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;xiaoming&quot;</span><span class="p">;</span>
+<span class="c1">// 2.5.4 final修饰的属性可以使用构造方法初始化，常用</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="c1">// 常用:，因为可以保证实例一旦创建，其final字段就不可修改</span>
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 3 抽象类</span>
+<span class="c1">// 3.1 抽象方法:如果父类的方法本身不需要实现任何功能，仅仅是为了定义方法签名，目的是让子类去覆写它，那么，可以把父类的方法声明为抽象方法,注意:有抽象方法的类必须是抽象类，否则无法编译</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span> <span class="c1">// </span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">();</span> <span class="c1">// 此时无法编译Person类，因为它包含抽象方法，所以Person类无法被实例化</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 4 接口:纯抽象类的省略定义，接口定义的所有方法默认都是public abstract的</span>
+<span class="kd">interface</span> <span class="nc">Person</span><span class="p">{</span>
+    <span class="kt">void</span> <span class="nf">run</span><span class="p">();</span><span class="c1">// 虽然没写，但是都是public abstract修饰的</span>
+    <span class="c1">// 扩展1:接口中可以定义default方法,注意:实现类可以不必覆写default方法。default方法的目的是，当我们需要给接口新增一个方法时，会涉及到修改全部子类。如果新增的是default方法，那么子类就不必全部修改，只需要在需要覆写的地方去覆写新增方法。</span>
+    <span class="k">default</span> <span class="kt">void</span> <span class="nf">hello</span><span class="p">(){</span><span class="n">xxx</span><span class="p">;}</span><span class="c1">// interface没有字段，default方法无法访问属性</span>
+<span class="p">}</span>
+<span class="c1">// 4.1 具体类实现interface接口时</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Person</span><span class="p">{</span>
+    <span class="nd">@override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">(){</span><span class="n">xxx</span><span class="p">;}</span>
+<span class="p">}</span>
+<span class="c1">//4.2  在Java中，一个类只能继承自另一个类，不能从多个类继承。但是，一个类可以实现多个interface</span>
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">implements</span> <span class="n">Person</span><span class="p">,</span> <span class="n">Hello</span> <span class="p">{</span> <span class="c1">// 实现了两个interface</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+<span class="c1">//4.3 接口继承:一个interface可以继承自另一个interface。interface继承自interface使用extends</span>
+<span class="kd">interface</span> <span class="nc">Hello</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="nf">hello</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">interface</span> <span class="nc">Person</span> <span class="kd">extends</span> <span class="n">Hello</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="nf">run</span><span class="p">();</span>
+    <span class="n">String</span> <span class="nf">getName</span><span class="p">();</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 5 静态属性和静态方法:只有一个共享“空间”，所有实例会共享该属性/方法</span>
+<span class="c1">// 注意:静态字段和静态方法都属于类，而不属于实例对象。因此，静态方法内部，无法访问this变量，也无法访问实例字段，它只能访问静态字段。</span>
+<span class="kd">class</span> <span class="nc">Person</span><span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">number</span><span class="p">;</span><span class="c1">// 静态字段</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">){</span><span class="c1">// 只能访问静态字段。</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">Person</span><span class="p">.</span><span class="na">number</span><span class="p">;</span><span class="c1">// 推荐这种方式访问，p.number(实例对象无静态字段)之所以能访问是因为编译器自动转换为:类名.静态字段</span>
+
+<span class="c1">// 5.1 接口的静态字段:因为interface是一个纯抽象类，所以它不能定义实例字段。但是，interface是可以有静态字段的，并且静态字段必须为final类型</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MALE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">FEMALE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 因为interface的字段只能是public static final类型，所以我们可以把这些修饰符都去掉，简写</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="c1">// 编译器会自动加上public statc final:</span>
+    <span class="kt">int</span> <span class="n">MALE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">FEMALE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 6 jar包：如果有很多.class文件，散落在各层目录中，肯定不便于管理。如果能把目录打一个包，变成一个文件，就方便多了。jar包就是用来干这个事的，它可以把package组织的目录层级，以及各个目录下的所有文件（包括.class文件和其他文件）都打成一个jar文件，这样一来，无论是备份，还是发给客户，就简单多了。jar包就是zip包</span>
+<span class="c1">// 6.1 打成jar包</span>
+<span class="n">package_sample</span>
+<span class="err">└─</span> <span class="n">bin</span> <span class="c1">// jar包的第一层目录不能是bin，应该是hong/ming/mr</span>
+   <span class="err">├─</span> <span class="n">hong</span> <span class="c1">// 例如，直接把hong这个目录的所有文件压缩为hong.zip,然后改为hong.jar</span>
+   <span class="err">│</span>  <span class="err">└─</span> <span class="n">Person</span><span class="p">.</span><span class="na">class</span>
+   <span class="err">│</span>  <span class="n">ming</span>
+   <span class="err">│</span>  <span class="err">└─</span> <span class="n">Person</span><span class="p">.</span><span class="na">class</span>
+   <span class="err">└─</span> <span class="n">mr</span>
+      <span class="err">└─</span> <span class="n">jun</span>
+         <span class="err">└─</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">class</span>
+<span class="c1">// 6.2 jar包打包工具Maven:https://www.liaoxuefeng.com/wiki/1252599548343744/1255945359327200</span>
+
+
+<span class="c1">// 7 模块化:打包的时候a.jar依赖第三方库太多，打成的jar包好几百兆？解决:https://www.liaoxuefeng.com/wiki/1252599548343744/1281795926523938</span>
+</code></pre></div>
+<h3 id="java_1">java核心类<a class="headerlink" href="#java_1" title="Permanent link">&para;</a></h3>
+<p><strong>引用类型比较，要使用<code>equals()</code>方法，不要使用<code>==</code>(它比较的是两个引用类型的变量是否是同一个对象)</strong></p>
+<p><strong>编码</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 全球统一码联盟发布了Unicode编码</span>
+<span class="c1">// 中文字符&#39;中&#39;有GB2312编码和Unicode编码</span>
+<span class="c1">// UTF-8编码(避免了Unicode编码浪费大量空间的简版)</span>
+<span class="c1">// 始终牢记：Java的String和char在内存中总是以Unicode编码表示,所以有时候需要编码和解码</span>
+
+<span class="c1">// 转换编码:注意,转换编码后，就不再是char类型，而是byte类型表示的数组</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">b1</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">();</span> <span class="c1">// 按系统默认编码转换，不推荐</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">b2</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;UTF-8&quot;</span><span class="p">);</span> <span class="c1">// 按UTF-8编码转换</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">b2</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="s">&quot;GBK&quot;</span><span class="p">);</span> <span class="c1">// 按GBK编码转换</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">b3</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">);</span> <span class="c1">// 按UTF-8编码转换</span>
+<span class="c1">// byte[] -&gt; String</span>
+<span class="kt">byte</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="p">...</span>
+<span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s">&quot;GBK&quot;</span><span class="p">);</span> <span class="c1">// 按GBK转换</span>
+<span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">);</span> <span class="c1">// 按UTF-8转换</span>
+</code></pre></div>
+<p><strong>String</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&quot;hello!&quot;</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">&quot;HELLO!&quot;</span><span class="p">;</span>
+<span class="n">s1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span><span class="c1">// 比较两个字符串内容是否相同，必须使用equals()方法而不能用==</span>
+<span class="n">s1</span><span class="p">.</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="n">s2</span><span class="p">);</span><span class="c1">// 忽略大小写比较</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;ll&quot;</span><span class="p">);</span> <span class="c1">// true，是否包含子串</span>
+
+<span class="c1">// 搜索子串</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="s">&quot;l&quot;</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">lastIndexOf</span><span class="p">(</span><span class="s">&quot;l&quot;</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;He&quot;</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;lo&quot;</span><span class="p">);</span> <span class="c1">// true</span>
+
+<span class="c1">// 提取子串</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// &quot;llo&quot;</span>
+<span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="s">&quot;ll&quot;</span>
+
+<span class="c1">// 判断字符串是否为空和空白字符串</span>
+<span class="s">&quot;&quot;</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">();</span> <span class="c1">// true，因为字符串长度为0</span>
+<span class="s">&quot;  &quot;</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">();</span> <span class="c1">// false，因为字符串长度不为0</span>
+<span class="s">&quot;  \n&quot;</span><span class="p">.</span><span class="na">isBlank</span><span class="p">();</span> <span class="c1">// true，因为只包含空白字符</span>
+<span class="s">&quot; Hello &quot;</span><span class="p">.</span><span class="na">isBlank</span><span class="p">();</span> <span class="c1">// false，因为包含非空白字符</span>
+
+<span class="c1">// 去除首尾空白字符</span>
+<span class="s">&quot;  \tHello\r\n &quot;</span><span class="p">.</span><span class="na">trim</span><span class="p">();</span> <span class="c1">// &quot;Hello&quot;:移除字符串首尾空白字符。空白字符包括空格，\t，\r，\n,返回新字符串</span>
+<span class="s">&quot;\u3000Hello\u3000&quot;</span><span class="p">.</span><span class="na">strip</span><span class="p">();</span> <span class="c1">// &quot;Hello&quot;，移除字符串首尾空白字符。它和trim()不同的是，类似中文的空格字符\u3000也会被移除</span>
+<span class="s">&quot; Hello &quot;</span><span class="p">.</span><span class="na">stripLeading</span><span class="p">();</span> <span class="c1">// &quot;Hello &quot;</span>
+<span class="s">&quot; Hello &quot;</span><span class="p">.</span><span class="na">stripTrailing</span><span class="p">();</span> <span class="c1">// &quot; Hello&quot;</span>
+
+<span class="c1">// 替换子串</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="p">;</span>
+<span class="n">s</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;w&#39;</span><span class="p">);</span> <span class="c1">// &quot;hewwo&quot;，所有字符&#39;l&#39;被替换为&#39;w&#39;</span>
+<span class="n">s</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="s">&quot;ll&quot;</span><span class="p">,</span> <span class="s">&quot;~~&quot;</span><span class="p">);</span> <span class="c1">// &quot;he~~o&quot;，所有子串&quot;ll&quot;被替换为&quot;~~&quot;</span>
+<span class="c1">// 正则表达式替换</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;A,,B;C ,D&quot;</span><span class="p">;</span>
+<span class="n">s</span><span class="p">.</span><span class="na">replaceAll</span><span class="p">(</span><span class="s">&quot;[\\,\\;\\s]+&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">);</span> <span class="c1">// &quot;A,B,C,D&quot;</span>
+
+<span class="c1">// 分割字符串，传入的也是正则</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;A,B,C,D&quot;</span><span class="p">;</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;\\,&quot;</span><span class="p">);</span> <span class="c1">// {&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;}</span>
+
+<span class="c1">// 拼接字符串String.join(split,arr):用指定的字符串连接字符串数组</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">};</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">join</span><span class="p">(</span><span class="s">&quot;***&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">);</span> <span class="c1">// &quot;A***B***C&quot;</span>
+
+<span class="c1">// 类型转换:把任意基本类型或引用类型转换为字符串 静态方法:valueOf</span>
+<span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mi">123</span><span class="p">);</span> <span class="c1">// &quot;123&quot;</span>
+<span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="mf">45.67</span><span class="p">);</span> <span class="c1">// &quot;45.67&quot;</span>
+<span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// &quot;true&quot;</span>
+<span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="k">new</span> <span class="n">Object</span><span class="p">());</span> <span class="c1">// 类似java.lang.Object@636be97c</span>
+<span class="c1">// 把字符串转为其他类型</span>
+<span class="kn">import</span> <span class="nn">java.lang.Boolean</span><span class="o">/</span><span class="n">Byte</span><span class="o">/</span><span class="n">Short</span><span class="o">/</span><span class="n">Integer</span><span class="o">/</span><span class="n">Long</span><span class="o">/</span><span class="n">Float</span><span class="o">/</span><span class="n">Double</span><span class="o">/</span><span class="n">Character</span>
+<span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="s">&quot;123&quot;</span><span class="p">);</span> <span class="c1">// 123</span>
+<span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="s">&quot;ff&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span> <span class="c1">// 按十六进制转换，255</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">getInteger</span><span class="p">(</span><span class="s">&quot;java.version&quot;</span><span class="p">);</span> <span class="c1">// 版本号，11，特例:把该字符串对应的系统变量转换为Integer</span>
+<span class="kt">boolean</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">.</span><span class="na">parseBoolean</span><span class="p">(</span><span class="s">&quot;true&quot;</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="kt">boolean</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">.</span><span class="na">parseBoolean</span><span class="p">(</span><span class="s">&quot;FALSE&quot;</span><span class="p">);</span> <span class="c1">// false</span>
+
+<span class="c1">// 转为char[]</span>
+<span class="kt">char</span><span class="o">[]</span> <span class="n">cs</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">();</span> <span class="c1">// String -&gt; char[]</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">cs</span><span class="p">);</span> <span class="c1">// char[] -&gt; String</span>
+</code></pre></div>
+<p><strong>StringBuilder:用来高效拼接字符串</strong></p>
+<p>如果在循环中使用<code>+</code>拼接<code>String</code>，每次循环都会创建新的字符串对象，然后扔掉旧的字符串。这样，绝大部分字符串都是临时对象，不但浪费内存，还会影响GC效率。Java标准库提供了<code>StringBuilder</code>，它是一个可变对象，可以预分配缓冲区，这样，往<code>StringBuilder</code>中新增字符时，不会创建新的临时对象：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// StringBuilder常常用于提高String多次用到+时的效率</span>
+<span class="c1">// 循环操作</span>
+<span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">);</span>
+    <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+
+<span class="c1">// 链式操作:因为定义的append()方法会返回this，这样，就可以不断调用自身的其他方法。</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;Mr &quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;!&quot;</span><span class="p">)</span>
+          <span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Hello, &quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// StringBuffer是StringBuilder的线程安全版本，现在很少使用，因为效率会降低。</span>
+</code></pre></div>
+<p><strong>Math</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Java标准库也提供了strictMath,和Math几乎一模一样的方法。StrictMath保证所有平台计算结果都是完全相同的，而Math会尽量针对平台优化计算速度，所以，绝大多数情况下，使用Math就足够了</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">value</span><span class="p">);</span> <span class="c1">// 绝对值</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span><span class="n">vla2</span><span class="p">);</span> <span class="c1">// 最大值</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span><span class="n">vla2</span><span class="p">);</span> <span class="c1">// 最小值</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span><span class="c1">// 2的10次方</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="c1">// 2</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="c1">// e的2次方</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="c1">// 以e为底</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">log10</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="c1">// 以10为底</span>
+<span class="c1">// 三角函数</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">sin</span><span class="p">(</span><span class="mf">3.14</span><span class="p">);</span> <span class="c1">// 0.00159...</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">cos</span><span class="p">(</span><span class="mf">3.14</span><span class="p">);</span> <span class="c1">// -0.9999...</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">tan</span><span class="p">(</span><span class="mf">3.14</span><span class="p">);</span> <span class="c1">// -0.0015...</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">asin</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span> <span class="c1">// 1.57079...</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">acos</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span> <span class="c1">// 0.0</span>
+<span class="c1">// 数学常量</span>
+<span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span> <span class="c1">// 3.14159...</span>
+<span class="kt">double</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">E</span><span class="p">;</span> <span class="c1">// 2.7182818...</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">sin</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span> <span class="o">/</span> <span class="mi">6</span><span class="p">);</span> <span class="c1">// sin(π/6) = 0.5</span>
+<span class="c1">// 生成随机数[0,1]，Math.random();实际上内部调用了Random类，所以它也是伪随机数，只是我们无法指定种子</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">();</span> <span class="c1">// 0.53907... 每次都不一样</span>
+<span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="n">max</span> <span class="o">-</span> <span class="n">min</span><span class="p">)</span> <span class="o">+</span> <span class="n">min</span><span class="p">;</span><span class="c1">// 随机数范围[min,max]</span>
+</code></pre></div>
+<p><strong>Random</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="p">;</span>
+
+<span class="c1">// Random用来创建伪随机数。所谓伪随机数，是指只要给定一个初始的种子，产生的随机数序列是完全一样的。</span>
+<span class="c1">// 1 不给定种子，就使用系统当前时间戳作为种子，因此每次运行时，种子不同，得到的伪随机数序列就不同。</span>
+<span class="n">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">();</span>
+<span class="n">r</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span> <span class="c1">// 2071575453,每次都不一样</span>
+<span class="n">r</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// 5,生成一个[0,10)之间的int</span>
+<span class="n">r</span><span class="p">.</span><span class="na">nextLong</span><span class="p">();</span> <span class="c1">// 8811649292570369305,每次都不一样</span>
+<span class="n">r</span><span class="p">.</span><span class="na">nextFloat</span><span class="p">();</span> <span class="c1">// 0.54335...生成一个[0,1)之间的float</span>
+<span class="n">r</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span> <span class="c1">// 0.3716...生成一个[0,1)之间的double</span>
+
+<span class="c1">// 2 给定种子</span>
+<span class="n">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">(</span><span class="mi">12345</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>SecureRandom</strong></p>
+<p>有伪随机数，就有真随机数。实际上真正的真随机数只能通过量子力学原理来获取，而我们想要的是一个不可预测的安全的随机数，<code>SecureRandom</code>就是用来创建安全的随机数的：<code>SecureRandom</code>无法指定种子，它使用RNG（random number generator）算法。</p>
+<p><code>SecureRandom</code>的安全性是通过操作系统提供的安全的随机种子来生成随机数。这个种子是通过CPU的热噪声、读写磁盘的字节、网络流量等各种随机事件产生的“熵”。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.security.SecureRandom</span><span class="p">;</span>
+<span class="c1">// 简单用法</span>
+<span class="n">SecureRandom</span> <span class="n">sr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecureRandom</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sr</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+
+<span class="c1">// 高级用法</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.security.SecureRandom</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SecureRandom</span> <span class="n">sr</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">sr</span> <span class="o">=</span> <span class="n">SecureRandom</span><span class="p">.</span><span class="na">getInstanceStrong</span><span class="p">();</span> <span class="c1">// 获取高强度安全随机数生成器</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">NoSuchAlgorithmException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecureRandom</span><span class="p">();</span> <span class="c1">// 获取普通的安全随机数生成器</span>
+        <span class="p">}</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">16</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">sr</span><span class="p">.</span><span class="na">nextBytes</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span> <span class="c1">// 用安全随机数填充buffer</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>包装类型</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1 基本类型</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span><span class="c1">// compile error</span>
+
+<span class="c1">// 2 基本类型转引用类型:十分有用</span>
+<span class="kn">import</span> <span class="nn">java.lang.Integer</span> <span class="c1">// 所有的包装类型都是不变类,不能使用==比较，必须使用equals()比较</span>
+
+<span class="c1">// 2.1 java编译器int和Interger自动转换</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">Integer</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">i</span><span class="p">);</span> <span class="c1">// 静态方法:尽可能地返回缓存的实例以节省内存</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="na">intValue</span><span class="p">();</span>
+
+<span class="c1">// 2.2 更简单方式:Auto Boxing and Auto Unboxing（自动封箱和自动拆箱）</span>
+<span class="n">Integer</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 编译器自动使用Integer.valueOf(int)</span>
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="c1">// 编译器自动使用Integer.intValue()</span>
+
+<span class="c1">// 2.3 Integer进制转换</span>
+<span class="kt">int</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">);</span> <span class="c1">// 100</span>
+<span class="kt">int</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span> <span class="c1">// 256,因为按16进制解析</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span> <span class="c1">// &quot;100&quot;,表示为10进制</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">36</span><span class="p">);</span> <span class="c1">// &quot;2s&quot;,表示为36进制</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// &quot;64&quot;,表示为16进制</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">toOctalString</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// &quot;144&quot;,表示为8进制</span>
+<span class="n">Integer</span><span class="p">.</span><span class="na">toBinaryString</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// &quot;1100100&quot;,表示为2进制</span>
+
+<span class="c1">// 2.4 包装类型的一些有用静态变量</span>
+<span class="c1">// boolean只有两个值true/false，其包装类型只需要引用Boolean提供的静态字段:</span>
+<span class="n">Boolean</span> <span class="n">t</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">.</span><span class="na">TRUE</span><span class="p">;</span>
+<span class="n">Boolean</span> <span class="n">f</span> <span class="o">=</span> <span class="n">Boolean</span><span class="p">.</span><span class="na">FALSE</span><span class="p">;</span>
+<span class="c1">// int可表示的最大/最小值:</span>
+<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span> <span class="c1">// 2147483647</span>
+<span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span> <span class="c1">// -2147483648</span>
+<span class="c1">// long类型占用的bit和byte数量:</span>
+<span class="kt">int</span> <span class="n">sizeOfLong</span> <span class="o">=</span> <span class="n">Long</span><span class="p">.</span><span class="na">SIZE</span><span class="p">;</span> <span class="c1">// 64 (bits)</span>
+<span class="kt">int</span> <span class="n">bytesOfLong</span> <span class="o">=</span> <span class="n">Long</span><span class="p">.</span><span class="na">BYTES</span><span class="p">;</span> <span class="c1">// 8 (bytes)</span>
+
+<span class="c1">// 2.5 所有的整数和浮点数的包装类型都继承自Number，因此，可以非常方便地直接通过包装类型获取各种基本类型</span>
+<span class="n">Number</span> <span class="n">num</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">999</span><span class="p">);</span> <span class="c1">// 向上转型为Number:</span>
+<span class="c1">// 获取byte, int, long, float, double:</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="n">num</span><span class="p">.</span><span class="na">byteValue</span><span class="p">();</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">num</span><span class="p">.</span><span class="na">intValue</span><span class="p">();</span>
+<span class="kt">long</span> <span class="n">ln</span> <span class="o">=</span> <span class="n">num</span><span class="p">.</span><span class="na">longValue</span><span class="p">();</span>
+<span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="n">num</span><span class="p">.</span><span class="na">floatValue</span><span class="p">();</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">num</span><span class="p">.</span><span class="na">doubleValue</span><span class="p">();</span>
+
+<span class="c1">// 2.6 无符号整数:java中没有该类型，但是可以借助Byte包装类型完成，byte范围(-128~+127),看成无符号整型，它的范围就是0~255</span>
+<span class="kt">byte</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Byte</span><span class="p">.</span><span class="na">toUnsignedInt</span><span class="p">(</span><span class="n">x</span><span class="p">));</span> <span class="c1">// 255</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Byte</span><span class="p">.</span><span class="na">toUnsignedInt</span><span class="p">(</span><span class="n">y</span><span class="p">));</span> <span class="c1">// 127</span>
+</code></pre></div>
+<p><strong>枚举类</strong></p>
+<p>虽然为引用类型，但是可以使用<code>==</code>做比较，因为<code>enum</code>类型的每个常量在JVM中只有一个唯一实例。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Weekday</span> <span class="n">day</span> <span class="o">=</span> <span class="n">Weekday</span><span class="p">.</span><span class="na">SUN</span><span class="p">;</span><span class="c1">// 调用，编辑器会自动检查类型是否属于(Weekday)</span>
+        <span class="c1">// int day = 1;</span>
+        <span class="c1">// if (day == Weekday.SUN) {xxx} // 编译错误，day类型和Weekday.SUN类型不一致</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">day</span> <span class="o">==</span> <span class="n">Weekday</span><span class="p">.</span><span class="na">SAT</span> <span class="o">||</span> <span class="n">day</span> <span class="o">==</span> <span class="n">Weekday</span><span class="p">.</span><span class="na">SUN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Work at home!&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Work at office!&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 枚举类，和普通类无任何区别，但是有四个特点</span>
+<span class="c1">// 定义的enum类型总是继承自java.lang.Enum，且无法被继承；</span>
+<span class="c1">// 只能定义出enum的实例，而无法通过new操作符创建enum的实例；</span>
+<span class="c1">// 定义的每个实例都是引用类型的唯一实例；</span>
+<span class="c1">// 可以将enum类型用于switch语句。</span>
+<span class="kd">enum</span> <span class="n">Weekday</span> <span class="p">{</span>
+    <span class="n">SUN</span><span class="p">,</span> <span class="n">MON</span><span class="p">,</span> <span class="n">TUE</span><span class="p">,</span> <span class="n">WED</span><span class="p">,</span> <span class="n">THU</span><span class="p">,</span> <span class="n">FRI</span><span class="p">,</span> <span class="n">SAT</span><span class="p">;</span><span class="c1">// 默认从0开始计数</span>
+<span class="p">}</span>
+
+<span class="c1">// 1 枚举类一些常用的方法</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Weekday</span><span class="p">.</span><span class="na">SUN</span><span class="p">.</span><span class="na">name</span><span class="p">();</span> <span class="c1">// &quot;SUN&quot; return 常量名</span>
+<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Weekday</span><span class="p">.</span><span class="na">MON</span><span class="p">.</span><span class="na">ordinal</span><span class="p">();</span> <span class="c1">// 1 return 定义的常量的顺序，从0开始计数</span>
+
+<span class="c1">// 2 枚举类有个弊端，就是新增一个变量必须写在后面，否则以前的顺序就会被改变，然后ordinal()就会改变</span>
+<span class="kd">enum</span> <span class="n">Weekday</span> <span class="p">{</span>
+    <span class="n">MON</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">TUE</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">WED</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">THU</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">FRI</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">SAT</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="n">SUN</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="c1">// 字段强烈建议声明为final</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">dayValue</span><span class="p">;</span>
+    <span class="c1">// enum的构造方法要声明为private</span>
+    <span class="kd">private</span> <span class="nf">Weekday</span><span class="p">(</span><span class="kt">int</span> <span class="n">dayValue</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 用构造方法解决</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">dayValue</span> <span class="o">=</span> <span class="n">dayValue</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 2.1 再高级一点，toString()可以被覆写，而name()则不行。我们可以给Weekday添加toString()方法：</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Weekday</span> <span class="n">day</span> <span class="o">=</span> <span class="n">Weekday</span><span class="p">.</span><span class="na">SUN</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">day</span><span class="p">.</span><span class="na">dayValue</span> <span class="o">==</span> <span class="mi">6</span> <span class="o">||</span> <span class="n">day</span><span class="p">.</span><span class="na">dayValue</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Today is &quot;</span> <span class="o">+</span> <span class="n">day</span> <span class="o">+</span> <span class="s">&quot;. Work at home!&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Today is &quot;</span> <span class="o">+</span> <span class="n">day</span> <span class="o">+</span> <span class="s">&quot;. Work at office!&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="n">Weekday</span> <span class="p">{</span>
+    <span class="n">MON</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;星期一&quot;</span><span class="p">),</span> <span class="n">TUE</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;星期二&quot;</span><span class="p">),</span> <span class="n">WED</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;星期三&quot;</span><span class="p">),</span> <span class="n">THU</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&quot;星期四&quot;</span><span class="p">),</span> <span class="n">FRI</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;星期五&quot;</span><span class="p">),</span> <span class="n">SAT</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">&quot;星期六&quot;</span><span class="p">),</span> <span class="n">SUN</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;星期日&quot;</span><span class="p">);</span>
+
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">dayValue</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">chinese</span><span class="p">;</span>
+
+    <span class="kd">private</span> <span class="nf">Weekday</span><span class="p">(</span><span class="kt">int</span> <span class="n">dayValue</span><span class="p">,</span> <span class="n">String</span> <span class="n">chinese</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">dayValue</span> <span class="o">=</span> <span class="n">dayValue</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">chinese</span> <span class="o">=</span> <span class="n">chinese</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 调用name()时候，会只输出chinese</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">chinese</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="android">Android开发简介<a class="headerlink" href="#android" title="Permanent link">&para;</a></h3>
+<p><strong>四大组件</strong></p>
+<ul>
+<li>活动(<code>Activity</code>):你在应用中看到的所有东西都是放在活动中的。</li>
+<li>服务(<code>Service</code>):通常运行在后台，即使退出应用，服务仍然是可以继续运行的。</li>
+<li>广播接收器(<code>Broadcast Receiver</code>):允许你的应用接收来自各处的广播消息(电话，短信等)，同样也可以向外发出广播消息。</li>
+<li>内容提供器(<code>Content Provider</code>):为应用程序之间共享数据提供可能，比如可以让你读取系统电话薄中的联系人。</li>
+</ul>
+<p><strong>丰富的系统控件(可以写出漂亮的界面)、SQLite数据库、强大的多媒体(音乐、视频、录音、拍照、闹铃)、地理位置定位(内置的GPS)</strong></p>
+<p><strong>安卓文件目录解析</strong></p>
+<div class="highlight"><pre><span></span><code>AndroProject
+<span class="p">|</span>---.gradle <span class="c1"># android自动生成，无需关心</span>
+<span class="p">|</span>---.idea <span class="c1"># android自动生成，无需关心</span>
+
+<span class="p">|</span>---app <span class="c1"># 项目中的主目录，代码都放在里面,主</span>
+  <span class="p">|</span>---build <span class="c1"># 编译时自动生成的文件</span>
+  <span class="p">|</span>---libs <span class="c1"># 项目中用到了第三方jar包，放在libs目录下，会被自动添加到构建路径中去</span>
+  <span class="p">|</span>---srcs
+    <span class="p">|</span>---androidTest <span class="c1">#用来编写Android Test测试用例的，可以对项目进行一些自动化测试</span>
+    <span class="p">|</span>---main
+      <span class="p">|</span>---java <span class="c1"># 放置java代码的地方</span>
+      <span class="p">|</span>---res <span class="c1">#项目中使用的图片、布局、字符串等需要放在该目录下，有多个开头的文件是为了兼容各种设备</span>
+        <span class="p">|</span>---drawable <span class="c1"># 放置图片</span>
+        <span class="p">|</span>---mipmap-xx <span class="c1"># 放置应用图标</span>
+        <span class="p">|</span>---menu <span class="c1"># 显示菜单且不占用屏幕空间</span>
+        <span class="p">|</span>---layout <span class="c1"># 放置布局</span>
+        <span class="p">|</span>---values <span class="c1"># 放置字符串、样式、颜色配置等</span>
+          <span class="p">|</span>---strings.xml <span class="c1"># 写字符串内容，按照其固定格式写</span>
+        <span class="p">|</span>---xxx
+      <span class="p">|</span>---AndroidManifest.xml <span class="c1"># 整个Android项目的配置文件，四大组件需在该文件注册，添加权限声明等</span>
+    <span class="p">|</span>---test <span class="c1"># 编写Unit Test测试用例的，是对项目进行自动化测试的另一种方式。</span>
+  <span class="p">|</span>---.gitignore <span class="c1"># 将app模块内指定的目录或文件排除在版本控制之外</span>
+  <span class="p">|</span>---build.gradle <span class="c1"># app模块的gradle构建脚本，这个文件会指定很多项目构建相关的配置</span>
+  <span class="p">|</span>---proguard-rules.pro <span class="c1"># 用于指定项目代码的混淆规则，会将代码进行混淆，防止被别人破解</span>
+
+<span class="p">|</span>---gradle <span class="c1"># 包含gradle wraper配置文件，默认没有启用</span>
+<span class="p">|</span>---.gitignore <span class="c1"># 将指定的目录或文件排除在版本控制之外的</span>
+<span class="p">|</span>---build.gradle <span class="c1"># 项目全局的gradle构建脚本，通常不需要修改</span>
+<span class="p">|</span>---gradle.properties <span class="c1"># 全局的gradle配置文件，在这里配置的属性将会影响到项目中所有的gradle编译脚本</span>
+<span class="p">|</span>---gradlew <span class="c1"># 加上下面这个文件，这两个文件用来在命令行界面中执行gradle命令，该文件在Linux和mac中使用</span>
+<span class="p">|</span>---gradlew.bat <span class="c1"># 该文件在windows中使用</span>
+<span class="p">|</span>---local.properties <span class="c1"># 用于指定本机的Android SDK路径，通常自动生成，无需修改，或者SDK路径发生变化修改</span>
+<span class="p">|</span>---settings.gradle <span class="c1"># 用于指定项目中所有引入的模块，一般自动完成，例如引入app模块</span>
+</code></pre></div>
+<p><strong>流程梳理</strong></p>
+<p><strong>1.AndroidManifest.xml中注册活动</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 这段代码是对MainActivity活动的注册</span>
+&lt;activity android:name<span class="o">=</span><span class="s2">&quot;.MainActivity&quot;</span>&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name<span class="o">=</span><span class="s2">&quot;android.intent.action.MAIN&quot;</span> /&gt; <span class="c1"># 这代表这个活动是主活动，点开app打开的就是这个活动界面</span>
+        &lt;category android:name<span class="o">=</span><span class="s2">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre></div>
+<p><strong>2.MainActivity.java里面实现活动功能</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 主活动继承AppCompatActivity，这个类是Activity的子类，为了兼容系统，最低兼容到Android2.1系统</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+    <span class="nd">@Override</span> <span class="c1">// onCreate这个方法是活动被创建必须执行的方法。</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="c1">// Android讲究逻辑和视图分离，不推荐在活动中直接编写界面，一般是在布局文件中写界面在活动中引入</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span><span class="c1">// 该方法是给当前活动引入某种布局</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>3.res内中资源的引用</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 例如res/values/strings.xml</span>
+&lt;resources&gt;
+    &lt;string <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;app_name&quot;</span>&gt;HelloWorld&lt;/string&gt;
+&lt;/resources&gt;
+
+<span class="c1"># 可以使用两种方法引用，app_name如果是一个xml文件代表一个资源，可以用xml名代替</span>
+<span class="c1"># 方法一：在代码中通过R.string.app_name 可以获得该字符串的引用，就是传入这个布局文件的id即可</span>
+<span class="c1"># 方法二：在xml中通过@string/app_name 可以获得该字符串的引用</span>
+
+<span class="c1"># 如果引用图片资源可以使用drawalbe代替string，同理，引用图标就使用mipmap代替string，布局就用layout</span>
+<span class="c1"># 举例:AndroidManifest.xml中的引用</span>
+&lt;application
+    android:allowBackup<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+    android:icon<span class="o">=</span><span class="s2">&quot;@mipmap/ic_launcher&quot;</span>
+    android:label<span class="o">=</span><span class="s2">&quot;@string/app_name&quot;</span>
+    android:roundIcon<span class="o">=</span><span class="s2">&quot;@mipmap/ic_launcher_round&quot;</span>
+    android:supportsRtl<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+    android:theme<span class="o">=</span><span class="s2">&quot;@style/Theme.HelloWorld&quot;</span>&gt;
+    ...
+&lt;/application&gt;
+</code></pre></div>
+<p><strong>4.build.gradle详解</strong></p>
+<p><code>Android Studio</code>是采用<code>Gradle</code>来构建项目的，比<code>xml</code>优秀，兵器了许多繁琐的配置，通常有两个文件(最外层一个+app目录下一个)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 最外层的build.gradle解析，一般是自动生成的</span>
+buildscript <span class="o">{</span>
+    repositories <span class="o">{</span>
+        google<span class="o">()</span>
+        jcenter<span class="o">()</span> <span class="c1"># Android代码托管仓库(git)，引用这个后可以在项目中轻松引用任何jcenter中的开源项目了</span>
+    <span class="o">}</span>
+    dependencies <span class="o">{</span>
+        <span class="c1"># 声明了一个Gradle插件是应用于android开发，因为Gradle插件可以用来java/c++等开发，需要指名版本</span>
+        classpath <span class="s2">&quot;com.android.tools.build:gradle:4.1.1&quot;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># src内的build.gradle</span>
+<span class="c1"># 要应用的插件，有两种值方式可选；①应用程序模块;②库模块:com.android.library:作为代码库依附别的应用程序模块运行</span>
+plugins <span class="o">{</span>
+    id <span class="s1">&#39;com.android.application&#39;</span> <span class="c1"># 应用程序模块，可以直接运行</span>
+<span class="o">}</span>
+<span class="c1"># android闭包，可以配置项目构建的各种属性</span>
+android <span class="o">{</span>
+    compileSdkVersion <span class="m">30</span> <span class="c1"># 指定项目的编译版本</span>
+    buildToolsVersion <span class="s2">&quot;30.0.3&quot;</span> <span class="c1"># 用于指定项目构建工具的版本</span>
+
+    defaultConfig <span class="o">{</span> <span class="c1"># 该闭包用于更细节的配置</span>
+        applicationId <span class="s2">&quot;com.example.helloworld&quot;</span> <span class="c1"># 项目的包名</span>
+        minSdkVersion <span class="m">16</span> <span class="c1"># 指定项目最低兼容的Android系统版本</span>
+        targetSdkVersion <span class="m">30</span> <span class="c1"># 表明你在该版本上做过充分测试，系统会为你的应用程序启用一些最新的功能和特性，如果运行到更高版本新功能则不会启动</span>
+        versionCode <span class="m">1</span> <span class="c1"># 项目的版本号</span>
+        versionName <span class="s2">&quot;1.0&quot;</span> <span class="c1"># 指定项目的版本名，这两个属性在生成安装文件的时候非常重要</span>
+        testInstrumentationRunner <span class="s2">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span>
+    <span class="o">}</span>
+
+    buildTypes <span class="o">{</span> <span class="c1"># 该闭包用于指定生成安装文件的相关配置</span>
+        <span class="c1"># 通常是debug：用于指定生成测试版安装文件的配置，可忽略不写；release:用于指定生成正式版本安装文件的配置</span>
+        release <span class="o">{</span>
+            minifyEnabled <span class="nb">false</span> <span class="c1"># 是否对项目的代码进行混淆</span>
+            <span class="c1"># 用于指定混淆时使用的规则文件，第一个文件:是在Android SDK目录下的，里面是所有项目通用的混淆规则。第二个文件：是在当前项目的根目录下的，里面可以编写当前项目特有的混淆规则。注意通过Android studio直接运行项目生成的都是测试版安装文件，后面会讲如何生成正式版安装文件</span>
+            proguardFiles getDefaultProguardFile<span class="o">(</span><span class="s1">&#39;proguard-android-optimize.txt&#39;</span><span class="o">)</span>, <span class="s1">&#39;proguard-rules.pro&#39;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    compileOptions <span class="o">{</span>
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1"># 这个闭包很强大，可以指定当前项目所有的依赖关系；通常有三种依赖：本地依赖(Jar包/目录添加依赖)、库依赖(项目中库模块添加依赖)、远程依赖(对jcenter库上的开源项目添加依赖)</span>
+dependencies <span class="o">{</span>
+    implementation <span class="s1">&#39;androidx.appcompat:appcompat:1.1.0&#39;</span>
+    implementation <span class="s1">&#39;com.google.android.material:material:1.1.0&#39;</span>
+    implementation <span class="s1">&#39;androidx.constraintlayout:constraintlayout:1.1.3&#39;</span>
+    testImplementation <span class="s1">&#39;junit:junit:4.+&#39;</span>
+    androidTestImplementation <span class="s1">&#39;androidx.test.ext:junit:1.1.1&#39;</span>
+    androidTestImplementation <span class="s1">&#39;androidx.test.espresso:espresso-core:3.2.0&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+<p><strong>Android的日志工具Log</strong></p>
+<p><img alt="image-20201221151119565" src="../assets/image-20201221151119565.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 快捷键，onCreate方法外面输入logt可以自动生成tag名，然后方法里面使用logv/d/i/w/e可快速生成</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+    <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+    <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;当前类名&quot;</span><span class="p">,</span><span class="s">&quot;想要打印的具体内容&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_2">活动详解<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>Toast</strong>:Android系统提供的一种提醒方式，在程序中可以使用它将一些短小信息提供给用户，并且会在一段时间后自动消失。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+    <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">first_layout</span><span class="p">);</span>
+    <span class="c1">// 该方法可以获取布局文件的元素，return View对象</span>
+    <span class="n">Button</span> <span class="n">button1</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_1</span><span class="p">);</span>
+    <span class="c1">// 为按钮注册一个监听器，这样点击按钮就会触发onClick方法</span>
+    <span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Toast.makeText创建一个Toast对象，然后调用show显示即可，三个参数</span>
+            <span class="c1">// 1.Context对象(Toast的上下文对象，活动本身是Context对象)</span>
+            <span class="c1">// 2.Toast显示的文本内容</span>
+            <span class="c1">// 3.Toast显示的时长，通常，Toast.LENGTH_SHORT，Toast.LENGTH_LONG</span>
+            <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="s">&quot;You clicked Button 1&quot;</span><span class="p">,</span>
+                           <span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>menu菜单</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># res/mean/main.xml</span>
+&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;menu xmlns:android<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;
+    &lt;item
+        android:id<span class="o">=</span><span class="s2">&quot;@+id/add_item&quot;</span> <span class="c1"># 唯一标识符</span>
+        android:title<span class="o">=</span><span class="s2">&quot;Add&quot;</span>/&gt;
+    &lt;item
+        android:id<span class="o">=</span><span class="s2">&quot;@+id/remove_item&quot;</span>
+        android:title<span class="o">=</span><span class="s2">&quot;Remove&quot;</span>/&gt;
+&lt;/menu&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span> <span class="c1">// 创建菜单</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onCreateOptionsMenu</span><span class="p">(</span><span class="n">Menu</span> <span class="n">menu</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// inflate方法给当前活动创建菜单，两个参数</span>
+    <span class="c1">// 1.指定我们通过哪一个资源文件来创建菜单，这里是R.mean.main文件</span>
+    <span class="c1">// 2.指定我们的菜单项将添加到哪一个Menu对象中</span>
+    <span class="c1">// return true; 表示允许创建的菜单显示出来</span>
+    <span class="n">getMenuInflater</span><span class="p">().</span><span class="na">inflate</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">menu</span><span class="p">.</span><span class="na">main</span><span class="p">,</span><span class="n">menu</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 使用菜单</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onOptionsItemSelected</span><span class="p">(</span><span class="nd">@NonNull</span> <span class="n">MenuItem</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="na">getItemId</span><span class="p">()){</span> <span class="c1">// 判断点击的是哪个菜单项</span>
+        <span class="k">case</span> <span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">add_item</span><span class="p">:</span>
+            <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s">&quot;yAdd&quot;</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">remove_item</span><span class="p">:</span>
+            <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s">&quot;yRemove&quot;</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="p">:</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>销毁一个活动</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Activity 类提供了一个finish()方法，或者手机界面上back也行</span>
+<span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">finish</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>Intent：活动间的穿梭</strong>:用于程序中各组件的交互(传递动作、数据等)，也可被用于启动活动、启动服务以及发送广播等。<strong>显示Intent和隐式Intent</strong></p>
+<ul>
+<li>显示Intent</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 主活动中FirstActivity,使用显示Intent调用，Intent(Context,class)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FirstActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">first_layout</span><span class="p">);</span>
+        <span class="n">Button</span> <span class="n">button1</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button1</span><span class="p">);</span>
+        <span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// 1.Context:要求提供一个启动活动的上下文</span>
+                <span class="c1">// 2.指定想要启动的目标活动</span>
+                <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="n">SecondActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+                <span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span><span class="c1">// Activity中提供了一个startActivity()方法，专门用于启动活动的，接收一个Intent对象参数，用于启动活动</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 其他活动SecondActivity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">second_layout</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>隐式<code>Intent</code>：并不明确指出我们想要启动哪一个活动，而是指定一系列更为抽象的<code>action</code>和<code>category</code>等信息，然后交由系统去分析这个<code>Intent</code>，并帮我们找出合适的活动去启动。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 通过在&lt;activity&gt;标签下配置&lt;intent-filter&gt;内容来指定当前活动能够响应的action和category</span>
+&lt;activity android:name<span class="o">=</span><span class="s2">&quot;.SecondActivity&quot;</span>&gt;
+    &lt;intent-filter&gt;
+        <span class="c1"># action中指名当前活动可以响应name这个action</span>
+        &lt;action android:name<span class="o">=</span><span class="s2">&quot;com.example.activitytest.ACTION_START&quot;</span> /&gt;
+        <span class="c1"># category中包含了一些附加信息，更精确的指名了当前的活动能够响应的Intent中还可能带有的category</span>
+        &lt;category android:name<span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> /&gt;
+        <span class="c1"># 只有这两个标签的内容同时匹配上Intent中指定的这两个标签才能相应该Intent</span>
+        <span class="c1"># 每个Intent中只能指定一个action，但却能指定多个category</span>
+        &lt;category android:name<span class="o">=</span><span class="s2">&quot;com.example.activitytest.MY_CATEGORY&quot;</span> /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// FirstActivity.java修改点击事件来匹配</span>
+<span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Intent传入参数进行匹配，只传入了action那category匹配上了吗？当然，DEFAULT是默认的。</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="s">&quot;com.example.activitytest.ACTION_START&quot;</span><span class="p">);</span>
+        <span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span> <span class="c1">//category如果默认，会在该方法调用时自动加到Intent中的</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 每个Intent中只能指定一个action，但却能指定多个category</span>
+<span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="s">&quot;com.example.activitytest.ACTION_START&quot;</span><span class="p">);</span>
+        <span class="c1">// 可以通过该方法添加category</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">addCategory</span><span class="p">(</span><span class="s">&quot;com.example.activitytest.MY_CATEGORY&quot;</span><span class="p">)</span>
+        <span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<ul>
+<li>隐式<code>Intent</code>扩展，重要：不仅可以启动自己程序内的应用，也可以启动其他开源的程序，比如展示网页</li>
+<li>展示网页</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Intent.ACTION_VIEW：android系统内置的动作，常量值是android.intent.action.VIEW</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_VIEW</span><span class="p">);</span> 
+        <span class="c1">// Uri.parse将一个string解析成Uri对象，intent.setData()将uri对象传递进去，主要用于指定当前Intent正在操作的数据</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">setData</span><span class="p">(</span><span class="n">Uri</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;http://www.baidu.com&quot;</span><span class="p">));</span>
+        <span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 详解url匹配和筛选,我们可以在&lt;intent-filter&gt;中配置一个&lt;data&gt;标签，用于更精确地指定当前活动能够响应什么类型数据</span>
+android:scheme <span class="c1"># 用于指定数据的协议部分，http</span>
+android:host <span class="c1"># 主机名部分，www.baidu.com</span>
+android:port <span class="c1"># 端口部分</span>
+android:path <span class="c1"># 资源路径</span>
+android:mimeType <span class="c1"># 指定可以处理的数据类型，润旭使用通配符的方式进行指定</span>
+
+<span class="c1"># 只有&lt;data&gt;标签中指定的内容和Intent中携带的Data完全一致时，活动才响应。当然，一般不会指定过多，通常只需要指定android:scheme就可以了</span>
+<span class="c1"># 举例子</span>
+&lt;activity android:name<span class="o">=</span><span class="s2">&quot;.ThirdActivity&quot;</span>&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name<span class="o">=</span><span class="s2">&quot;android.intent.action.VIEW&quot;</span> /&gt;
+        &lt;category android:name<span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> /&gt;
+        &lt;data android:scheme<span class="o">=</span><span class="s2">&quot;http&quot;</span>/&gt; <span class="c1"># 指定data中的scheme</span>
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre></div>
+<ul>
+<li>
+<ul>
+<li><code>geo</code>表示显示地理位置、<code>tel</code>表示拨打电话</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="s">&quot;baidu&quot;</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_DIAL</span><span class="p">);</span> <span class="c1">// 内置动作</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">setData</span><span class="p">(</span><span class="n">Uri</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;tel:10086&quot;</span><span class="p">));</span> 
+        <span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>活动间传递数据</strong>:<code>putExtra("键名",传递的data)</code>，键名:在待传递的活动中根据该键取值。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1.数据传递给下一个活动</span>
+<span class="c1">// FirstActivity.java</span>
+<span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="s">&quot;Hellow SecondActivity&quot;</span><span class="p">;</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="n">SecondActivity</span><span class="p">.</span><span class="na">classss</span><span class="p">);</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;extra_data&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+        <span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// SecondActivity.java</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+    <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">second_layout</span><span class="p">);</span>
+    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">getIntent</span><span class="p">();</span><span class="c1">// 获取用于启动SecondaActivity的Intent</span>
+    <span class="c1">// getStringExtra获取字符串，如果传入int型数据则用getIntExtra();getBooleanExtra()等</span>
+    <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="n">intent</span><span class="p">.</span><span class="na">getStringExtra</span><span class="p">(</span><span class="s">&quot;extra_data&quot;</span><span class="p">);</span>
+    <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;input_data&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 2.数据回传给上一个活动，startActivityForResult()：期望活动销毁的时候能够返回一个结果给上个活动，它也是启动活动的可以代替startActivity，两个参数:1.Intent,2.请求码(只要是唯一值就可以，1)</span>
+<span class="c1">// FirstActivity.java</span>
+<span class="n">button1</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="s">&quot;Hellow SecondActivity&quot;</span><span class="p">;</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="n">SecondActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;extra_data&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span>
+        <span class="n">startActivityForResult</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="c1">// Second活动销毁后会调用First活动的onActivityResult()方法来接收返回数据</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="c1">// SecondActivity.java</span>
+<span class="n">button2</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">();</span><span class="c1">// 仅仅为了传递数据</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;data_return&quot;</span><span class="p">,</span><span class="s">&quot;Hellow FirstActivity&quot;</span><span class="p">);</span>
+        <span class="c1">// 非常重要，专门用于向上一个活动返回数据的，两个参数:1.返回处理结果RESULT_OK/RESULT_CANCELED;2.把带有数据的Intent传递回去</span>
+        <span class="n">setResult</span><span class="p">(</span><span class="n">RESULT_OK</span><span class="p">,</span><span class="n">intent</span><span class="p">);</span>
+        <span class="n">finish</span><span class="p">();</span><span class="c1">// 销毁当前活动，会调用First活动的onActivityResult()方法来接收返回数据</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="c1">// FirstActivity接收数据，并打印数据</span>
+<span class="c1">// onActivityResult()三个参数:1.requestCode:启动活动时的请求码，2.resultCode返回数据时处理的结果；3.携带返回数据的Intent</span>
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s">&quot;FirstActivity&quot;</span><span class="p">;</span>
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onActivityResult</span><span class="p">(</span><span class="kt">int</span> <span class="n">requestCode</span><span class="p">,</span> <span class="kt">int</span> <span class="n">resultCode</span><span class="p">,</span> <span class="nd">@Nullable</span> <span class="n">Intent</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">requestCode</span><span class="p">){</span><span class="c1">//可以启动不同活动，活动返回都会调用该方法，返回不同的requestCode</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">resultCode</span> <span class="o">==</span> <span class="n">RESULT_OK</span><span class="p">){</span> <span class="c1">// 再根据resultCode来判断返回是否成功</span>
+                <span class="n">String</span> <span class="n">returnData</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="na">getStringExtra</span><span class="p">(</span><span class="s">&quot;data_return&quot;</span><span class="p">);</span>
+                <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="n">returnData</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">break</span>
+                <span class="k">default</span><span class="p">:</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 有个小问题，如果用户在SecondActivity中不是使用button，而是back返回，数据就接受不到了，所以需要在SecondActivity中重写onBackPressed方法来解决</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onBackPressed</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">();</span>
+    <span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;data_return&quot;</span><span class="p">,</span><span class="s">&quot;Hellow FirstActivity&quot;</span><span class="p">);</span>
+    <span class="n">setResult</span><span class="p">(</span><span class="n">RESULT_OK</span><span class="p">,</span><span class="n">intent</span><span class="p">);</span>
+    <span class="n">finish</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>活动的生命周期</strong></p>
+<ul>
+<li>
+<p><strong>返回栈</strong>:Android的活动是可以层叠的，每启动一个新活动会覆盖一个原活动，点击back后销毁新活动，原活动暴露。内部是用栈实现的。</p>
+</li>
+<li>
+<p><strong>活动的状态</strong></p>
+</li>
+<li>运行状态:位于栈顶的活动处于该状态，就是用户正在操作的活动，系统最不愿意回收的状态</li>
+<li>暂停状态:不再位于栈顶，但任然可见(因为有的活动不会占据整个屏幕，例如:操作对话框活动的时候页面上其他活动是可见的)。只有在内存极低的情况下系统才会考虑回收</li>
+<li>停止状态:不再位于栈顶，且不可见。系统虽然仍会保留，但其他需要内存时，会优先回收</li>
+<li>
+<p>销毁状态:从返回栈中移除的互动，系统最倾向于回收这种的状态的活动，从而保证手机的内存充足。</p>
+</li>
+<li>
+<p><code>Activity</code>类定义了<code>7</code>个回调方法，覆盖活动声明周期的每一个环节</p>
+</li>
+</ul>
+<p><img alt="image-20201222165550222" src="../assets/image-20201222165550222.png" /></p>
+<p><img alt="image-20201222171857723" src="../assets/image-20201222171857723.png" /></p>
+<ul>
+<li>代码演示生命周期时的新出现代码解释</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;activity android:name<span class="o">=</span><span class="s2">&quot;.DialogActivity&quot;</span>
+    android:theme<span class="o">=</span><span class="s2">&quot;@android:style/Theme.Dialog&quot;</span>&gt; <span class="c1"># 用于给当前活动指定主题，对话框主题</span>
+&lt;/activity&gt;
+</code></pre></div>
+<ul>
+<li><strong>活动被回收了怎么办</strong>：在活动A的基础上启动B，假设这时内存不足，回收了A，用户back后也是会返回A的，只不是此时A是重新被创建的。如果A是文本框，已经写好一段文字了，操作B，back后A重建，文字全没了，如何解决？<code>Activity</code>中提供了一个<code>onSaveInstanceState()</code>回调方法，保证在活动被回收之前一定会调用，可以用该方法来保存数据</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// onSaveInstanceState()会携带一个Bundle类型参数，Bundle会提供一系列的方法用于保存数据。putString(key,data)存放字符串，putInt(key,data)存放整型。</span>
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSaveInstanceState</span><span class="p">(</span><span class="nd">@NonNull</span> <span class="n">Bundle</span> <span class="n">outState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onSaveInstanceState</span><span class="p">(</span><span class="n">outState</span><span class="p">);</span>
+    <span class="n">String</span> <span class="n">tempData</span> <span class="o">=</span> <span class="s">&quot;something you just typed&quot;</span><span class="p">;</span>
+    <span class="n">outState</span><span class="p">.</span><span class="na">putString</span><span class="p">(</span><span class="s">&quot;data_key&quot;</span><span class="p">,</span><span class="n">tempData</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 数据保存下来后如何恢复？我们一直用的onCreate()方法里面也有一个Bundle类型的参数，可以用这个回复</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="nd">@Nullable</span> <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">,</span> <span class="nd">@Nullable</span> <span class="n">PersistableBundle</span> <span class="n">persistentState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">,</span> <span class="n">persistentState</span><span class="p">);</span>
+    <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;onCreate: &quot;</span><span class="p">);</span>
+    <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">savedInstanceState</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+        <span class="n">String</span> <span class="n">tempData</span> <span class="o">=</span> <span class="n">savedInstanceState</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;data_key&quot;</span><span class="p">);</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="n">tempData</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>活动的启动模式(四种)</strong>:可以在<code>AndroidManifest.xml</code>中通过给<code>&lt;activity&gt;</code>标签<code>android:launchMode</code>属性来选择启动模式.</p>
+<ul>
+<li><code>standard</code>(默认):每当启动一个新活动的时候，它就会在返回栈中入栈，并处于栈顶的位置。<strong>系统不会在意该活动是否在返回栈内，每次启动都会创建该活动的一个新的实例</strong>。</li>
+<li><code>singleTop</code>:<strong>启动活动时如果发现返回栈的栈顶已经是该活动，则可以直接使用它，如果未处于栈顶，还是会创建新的实例的</strong></li>
+<li><code>singleTask</code>：<strong>启动活动时如果该活动在栈内，会把该活动之上的所有活动统统出栈，如果没发现会创建一个实例</strong></li>
+<li><code>singleInstance</code>:<strong>用于共享活动实例</strong>,上面三种方法如果发现没有该活动时会创建新实例，但假如我有这样一个实例，需要共享，上面3种方式都创建新实例，无法实现。<strong>该模式会启用一个新的返回栈来管理这个活动，不管哪个应用程序来访问这个活动，都共用同一个返回栈。</strong></li>
+</ul>
+<p><strong>活动的使用技巧</strong></p>
+<ul>
+<li>知晓当前是在哪一个活动(进公司接收别人代码时常用)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 新建BaseActivity类继承AppCompatActivity类并重新onCreate方法，然后让你写的所有活动类继承BaseActivity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;BaseActivity&quot;</span><span class="p">,</span> <span class="n">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">());</span><span class="c1">// 用于打印当前实例名称</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>随时随地退出程序:如果你处于<code>thrid</code>活动，你想要退出需要按3次back，你按home键只是简单挂起</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1.只需要用一个专门的集合类对所有互动进行管理即可</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActivityCollector</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Activity</span><span class="o">&gt;</span> <span class="n">activities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addActivity</span><span class="p">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="p">){</span>
+        <span class="n">activities</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">activity</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">removeActivity</span><span class="p">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">activities</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">activity</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">finishAll</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// 将list中存储的活动全部销毁掉</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">Activity</span> <span class="n">activity</span><span class="p">:</span><span class="n">activities</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">activity</span><span class="p">.</span><span class="na">isFinishing</span><span class="p">()){</span>
+                <span class="n">activity</span><span class="p">.</span><span class="na">finish</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 2.接下来修改BaseActivity中的代码</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="s">&quot;BaseActivity&quot;</span><span class="p">,</span> <span class="n">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">());</span><span class="c1">// 用于打印当前实例名称</span>
+        <span class="n">ActivityCollector</span><span class="p">.</span><span class="na">addActivity</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onDestroy</span><span class="p">();</span>
+        <span class="n">ActivityCollector</span><span class="p">.</span><span class="na">removeActivity</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 3.从此以后，不管你想在什么地方退出程序，只需要调用 ActivityCollector.finishAll()即可</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThirdActivity</span> <span class="kd">extends</span> <span class="n">BaseActivity</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">Log</span><span class="p">.</span><span class="na">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s">&quot;Task id is: &quot;</span> <span class="o">+</span> <span class="n">getTaskId</span><span class="p">());</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">third_layout</span><span class="p">);</span>
+        <span class="n">Button</span> <span class="n">button3</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button_3</span><span class="p">);</span>
+        <span class="n">button3</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ActivityCollector</span><span class="p">.</span><span class="na">finishAll</span><span class="p">();</span><span class="c1">// 退出所有活动</span>
+                <span class="c1">// 杀掉当前进程，保证程序完全退出。</span>
+                <span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Process</span><span class="p">.</span><span class="na">killProcess</span><span class="p">(</span><span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Process</span><span class="p">.</span><span class="na">myPid</span><span class="p">());</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>启动活动的最佳写法</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1.second活动需要用到两个非常重要的字符串，在启动SecondActivity时必须传进来，下面的写法一点问题没有</span>
+<span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="n">SecondActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;param1&quot;</span><span class="p">,</span><span class="s">&quot;data1&quot;</span><span class="p">);</span> <span class="c1">// 虽然简单，但</span>
+<span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;param2&quot;</span><span class="p">,</span><span class="s">&quot;data2&quot;</span><span class="p">);</span>
+<span class="n">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+<span class="c1">//2.假设SecondActivity是你同事写的，他不清楚需要传递什么数据，如何在不阅读同事代码和不让同事询问你的情况下来完成</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondActivity</span> <span class="kd">extends</span> <span class="n">BaseActivity</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">actionStart</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span><span class="n">String</span> <span class="n">data1</span><span class="p">,</span><span class="n">String</span> <span class="n">data2</span><span class="p">){</span>
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="n">SecondActivity</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;param1&quot;</span><span class="p">,</span><span class="n">data1</span><span class="p">);</span>
+        <span class="n">intent</span><span class="p">.</span><span class="na">putExtra</span><span class="p">(</span><span class="s">&quot;param2&quot;</span><span class="p">,</span><span class="n">data2</span><span class="p">);</span>
+        <span class="n">context</span><span class="p">.</span><span class="na">startActivity</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//2.1启动</span>
+<span class="n">button3</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 简化了启动代码</span>
+        <span class="n">SecondActivity</span><span class="p">.</span><span class="na">actionStart</span><span class="p">(</span><span class="n">FirstActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="s">&quot;data1&quot;</span><span class="p">,</span><span class="s">&quot;data2&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="ui">UI开发<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<p><strong>控件</strong></p>
+<ul>
+<li><strong>TextView:显示文本信息</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;TextView
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/text_view1&quot;</span> <span class="c1"># 唯一标识符</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span> <span class="c1"># 同fill_parent，让当前控件布局和父布局大小一样</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span> <span class="c1"># 让当前空间大小刚好包含住里面的内容</span>
+    android:text<span class="o">=</span><span class="s2">&quot;text_view1&quot;</span> <span class="c1"># 指定TextView中显示的文本内容</span>
+    android:gravity<span class="o">=</span><span class="s2">&quot;center&quot;</span> <span class="c1"># 修改文字的对齐方式top/bottom/left/right/center也可以用|指定多个</span>
+    android:textSize<span class="o">=</span><span class="s2">&quot;24sp&quot;</span> <span class="c1"># 指定文字大小，安卓字体大小使用sp为单位</span>
+    android:textColor<span class="o">=</span><span class="s2">&quot;#00ff00&quot;</span> <span class="c1"># 指定文字的颜色</span>
+/&gt;
+</code></pre></div>
+<ul>
+<li><strong>Button:按钮</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;Button
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/button1&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:text<span class="o">=</span><span class="s2">&quot;Button1&quot;</span> <span class="c1"># 显示BUTTON1，系统默认会将英文字母转为大写</span>
+    android:textAllCaps<span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="c1"># 禁止英文字母转大写</span>
+/&gt;
+</code></pre></div>
+<ul>
+<li><strong>EditText:用于输入和编辑内容</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 应用场景非常普遍，发短信，发微博，发qq等</span>
+&lt;EditText
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/editTextTextPersonName&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:ems<span class="o">=</span><span class="s2">&quot;10&quot;</span>
+    android:inputType<span class="o">=</span><span class="s2">&quot;textPersonName&quot;</span>
+    android:text<span class="o">=</span><span class="s2">&quot;Name&quot;</span> 
+    android:hint<span class="o">=</span><span class="s2">&quot;Please input your name&quot;</span> <span class="c1">#提示性文字，当你输入内容时会消失</span>
+    android:maxLines<span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="c1"># 指定最大行数为2行，超过2行会向上滚动</span>
+/&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 点击按钮并显示内容</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="p">{</span>
+
+    <span class="kd">private</span> <span class="n">EditText</span> <span class="n">editText</span><span class="p">;</span> <span class="c1">// 声明变量</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+        <span class="n">editText</span> <span class="o">=</span> <span class="p">(</span><span class="n">EditText</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">editTextTextPersonName</span><span class="p">);</span>
+        <span class="n">Button</span> <span class="n">button</span> <span class="o">=</span> <span class="p">(</span><span class="n">Button</span><span class="p">)</span><span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">button1</span><span class="p">);</span>
+        <span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">String</span> <span class="n">inputText</span> <span class="o">=</span> <span class="n">editText</span><span class="p">.</span><span class="na">getText</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span> <span class="c1">// 获取内容</span>
+                <span class="n">Toast</span><span class="p">.</span><span class="na">makeText</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span><span class="n">inputText</span><span class="p">,</span><span class="n">Toast</span><span class="p">.</span><span class="na">LENGTH_SHORT</span><span class="p">).</span><span class="na">show</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>ImageView</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;ImageView
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/imageView&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:src<span class="o">=</span><span class="s2">&quot;@drawable/img1&quot;</span> <span class="c1"># 指定图片路径</span>
+/&gt;
+
+<span class="c1"># 代码中修改显示图片</span>
+private ImageView imageView<span class="p">;</span>
+<span class="nv">imageView</span> <span class="o">=</span> <span class="o">(</span>ImageView<span class="o">)</span>findViewById<span class="o">(</span>R.id.image_view<span class="o">)</span><span class="p">;</span>
+imageView.setImageResource<span class="o">(</span>R.drawable.img_2<span class="o">)</span> <span class="c1"># 修改为另一张图片</span>
+</code></pre></div>
+<ul>
+<li><strong>ProgressBar</strong>:显示一个进度条，表示程序正在加载一些数据。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 屏幕中有一个圆形进度条(默认)正在旋转</span>
+&lt;ProgressBar
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/progress_bar&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+
+    <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;?android:attr/progressBarStyleHorizontal&quot;</span> <span class="c1"># 指定为水平进度条</span>
+    android:max<span class="o">=</span><span class="s2">&quot;100&quot;</span> <span class="c1"># 给进度条设置一个最大值</span>
+/&gt;
+
+<span class="c1"># 数据加载完后进度条怎么消失？其实所有的Android控件都具有这个android:visibility这个属性指定</span>
+android:visibility<span class="o">=</span><span class="s2">&quot;visible(默认，可见)/invisible(不可见，但仍占原来的位置和大小)/gone(不可见，不占任何屏幕空间)&quot;</span>
+<span class="c1"># 代码中也可以判断</span>
+private ProgressBar progressBar<span class="p">;</span>
+<span class="nv">progressBar</span> <span class="o">=</span> <span class="o">(</span>ProgressBar<span class="o">)</span>findViewByID<span class="o">(</span>R.id.progress_bar<span class="o">)</span><span class="p">;</span>
+<span class="k">if</span><span class="o">(</span>progressBar.getVisibility<span class="o">()==</span>View.GONE<span class="o">){</span>progressBar.setVisibility<span class="o">(</span>View.VISIBLE<span class="o">)</span><span class="p">;</span><span class="o">}</span>
+<span class="k">else</span><span class="o">{</span>progressBar.setVisibility<span class="o">(</span>View.GONE<span class="o">)</span><span class="p">;</span><span class="o">}</span>
+
+<span class="c1"># 可以在代码中动态的更改进度条的进度</span>
+int <span class="nv">progress</span> <span class="o">=</span> progressBar.getProgress<span class="o">()</span><span class="p">;</span>
+<span class="nv">progress</span> <span class="o">=</span> progress + <span class="m">10</span><span class="p">;</span>
+progressBar.setProgress<span class="o">(</span>progress<span class="o">)</span>
+</code></pre></div>
+<ul>
+<li><strong>AletDialog</strong>：可以在当前的界面弹出一个对话框(一般是用于提示非常重要的内容或者警告信息，会置于所有界面元素之上)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 比如防止用户误删重要内容，在删除前弹出一个确认的对话框</span>
+<span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 创建一个AlertDialog.Builder实例，可以设置标题，内容，可否取消等属性</span>
+        <span class="n">AlertDialog</span><span class="p">.</span><span class="na">Builder</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AlertDialog</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">);</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;This is Dialog&quot;</span><span class="p">);</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="na">setMessage</span><span class="p">(</span><span class="s">&quot;Something important.&quot;</span><span class="p">);</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="na">setCancelable</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="c1">// 确定按钮点击事件</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="na">setPositiveButton</span><span class="p">(</span><span class="s">&quot;OK&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="p">,</span> <span class="kt">int</span> <span class="n">which</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="c1">// 取消按钮点击事件</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="na">setNegativeButton</span><span class="p">(</span><span class="s">&quot;Cancel&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">DialogInterface</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="p">,</span> <span class="kt">int</span> <span class="n">which</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+        <span class="c1">// 将对话框显示出来</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="na">show</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<ul>
+<li><strong>ProgressDialog</strong>:进度条对话框,和<code>Dialog</code>类似</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">button</span><span class="p">.</span><span class="na">setOnClickListener</span><span class="p">(</span><span class="k">new</span> <span class="n">View</span><span class="p">.</span><span class="na">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="n">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ProgressDialog</span> <span class="n">progressDialog</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProgressDialog</span><span class="p">(</span><span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">);</span>
+        <span class="n">progressDialog</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;This is ProgressDialog&quot;</span><span class="p">);</span>
+        <span class="n">progressDialog</span><span class="p">.</span><span class="na">setMessage</span><span class="p">(</span><span class="s">&quot;Loading...&quot;</span><span class="p">);</span>
+        <span class="n">progressDialog</span><span class="p">.</span><span class="na">setCancelable</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// 设置false就不能通过Back键来取消</span>
+        <span class="n">progressDialog</span><span class="p">.</span><span class="na">show</span><span class="p">();</span>
+        <span class="c1">// 当数据加载完后必须调用 progressDialog.dismiss()方法来关闭对话框，否则会一直存在</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><strong>4中布局详解</strong></p>
+<ul>
+<li><strong>LinearLayout</strong>:<strong>线性布局</strong>，会让所有控件在线性方向上依次排列，可以水平方向或者垂直方向排列</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;LinearLayout xmlns:android<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    xmlns:app<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    xmlns:tools<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/tools&quot;</span>
+    android:orientation<span class="o">=</span><span class="s2">&quot;vertical/horizontal&quot;</span> <span class="c1"># 垂直排列或者水平排列</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>/&gt;
+
+<span class="c1"># 1.上节中控件的android:layout_gravity=&quot;top/center_vertical/bottom&quot;可以控制控件位置</span>
+<span class="c1"># 2.android:layout_weight允许我们使用比例的方式来指定控件的大小。在手机屏幕适配的过程中发挥很大作用</span>
+&lt;控件
+  android:layout_width<span class="o">=</span><span class="s2">&quot;0dp&quot;</span> <span class="c1"># 因为要使用layout_weight来控制所以width要写0</span>
+  android:layout_weight<span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="c1"># 这个1是所占权重，如果有多个控件，那么会把weight值求和，然后按比例分配</span>
+/&gt;
+</code></pre></div>
+<ul>
+<li><strong>RelativeLayout:相对布局</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;RelativeLayout xmlns:android<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>/&gt;
+<span class="c1"># 1.相对于父布局进行定位</span>
+&lt;Button
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/button1&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:text<span class="o">=</span><span class="s2">&quot;Button1&quot;</span>
+
+    <span class="c1"># 相对于父元素的对齐方式</span>
+    android:layout_alignParentLeft<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+    android:layout_alignParentRight<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+    android:layout_alignParentTop<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+    android:layout_alignParentBottom<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+    android:layout_centerInParent<span class="o">=</span><span class="s2">&quot;true&quot;</span>
+/&gt;
+
+<span class="c1"># 2.相对于控件进行定位</span>
+&lt;Button
+    android:id<span class="o">=</span><span class="s2">&quot;@+id/button2&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;wrap_content&quot;</span>
+    android:text<span class="o">=</span><span class="s2">&quot;Button2&quot;</span>
+
+    <span class="c1"># 相对其他控件</span>
+    android:layout_above<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span> <span class="c1"># button1上方</span>
+    android:layout_below<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span>
+    android:layout_toLeftOf<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span>
+    android:layout_toRightOf<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span>
+    android:layout_alignLeft<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span> <span class="c1"># 该控件的左边缘对齐另一个控件的左边缘</span>
+    android:layout_alignRight<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span>
+    android:layout_alignTop<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span>
+    android:layout_alignBottom<span class="o">=</span><span class="s2">&quot;@id/button1&quot;</span>
+
+    <span class="c1"># 注意，当一个控件引用另一个控件的id时，该控件一定要定义在引用控件的后面，不然会找不到id</span>
+/&gt;
+</code></pre></div>
+<ul>
+<li><strong>FrameLayout：帧布局</strong>,所有空间都会默认摆放在布局的左上角，不常用</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&lt;FrameLayout xmlns:android<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>/&gt;
+<span class="c1"># 可以使用android:layout_gravity=“left/xx”来指定控件的对齐方式</span>
+</code></pre></div>
+<ul>
+<li><strong>百分比布局</strong>:不再使用<code>match_parent、wrap_content</code>，而是允许直接指定控件在布局中所占的百分比。由于<code>LinearLayout</code>已经支持按比例指定控件大小了，因此百分比布局只为<code>FrameLayout,RelativeLayout</code>提供扩展。提供了<code>PercentFrameLayout,PercentRelativeLayout</code>两个全新的布局。定义在<code>support</code>库中，需要在项目的<code>build.gradle</code>中添加百分比布局库的依赖。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/build.gradle文件，添加依赖</span>
+dependencies <span class="o">{</span>
+    implementation<span class="s1">&#39;com.android.support:percent:28.0.0&#39;</span> <span class="c1"># 继承了相应布局的所有</span>
+<span class="o">}</span>
+<span class="c1"># xml中，由于百分比布局并没有在SDK中，所以要写完整路径，同时还得定义一个app的命名空间。</span>
+&lt;android.support.percent.PercentFrameLayout xmlns:android<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    xmlns:app<span class="o">=</span><span class="s2">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    android:layout_width<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>
+    android:layout_height<span class="o">=</span><span class="s2">&quot;match_parent&quot;</span>&gt;
+
+    &lt;Button
+        android:id<span class="o">=</span><span class="s2">&quot;@+id/btn2&quot;</span>
+        android:layout_gravity<span class="o">=</span><span class="s2">&quot;right|top&quot;</span>
+        android:text<span class="o">=</span><span class="s2">&quot;btn2&quot;</span>
+        android:textAllCaps<span class="o">=</span><span class="s2">&quot;false&quot;</span>
+        app:layout_heightPercent<span class="o">=</span><span class="s2">&quot;50%&quot;</span>
+        app:layout_widthPercent<span class="o">=</span><span class="s2">&quot;50%&quot;</span> /&gt;
+
+&lt;/android.support.percent.PercentFrameLayout&gt;
+</code></pre></div>
+<p><strong>自定义控件</strong></p>
+<p><img alt="image-20201225144322860" src="../assets/image-20201225144322860.png" /></p>
+<ul>
+<li>自定义布局</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 自己新建一个布局title.xml，然后按照上面的规则写好，布局中想加入北京图片可以说使用android:background=&quot;&quot;</span>
+<span class="c1"># 如何在主布局中调用呢,在activity_main.xml中只需要写一行代码就可以了</span>
+&lt;include <span class="nv">layout</span><span class="o">=</span><span class="s2">&quot;@layout/title&quot;</span>&gt; <span class="c1"># 引入即可</span>
+</code></pre></div>
+<ul>
+<li>自定义控件</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 自定义一个标题栏控件,需要先写一个TitleLayout类</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TitleLayout</span> <span class="kd">extends</span> <span class="n">Linearlayout</span><span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">TitleLayout</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">,</span><span class="n">AttributeSet</span> <span class="n">attrs</span><span class="p">){</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="n">attrs</span><span class="p">);</span>
+        <span class="c1">// 重写了LinearLayout中带有两个参数的构造函数，LayoutInflater.from方法可以构建LayoutInflater对象，然后调用inflate方法就可以动态加载一个布局文件。</span>
+        <span class="c1">// inflate(布局文件的id，给加载好的布局再添加一个父布局:这里想指定为TitleLayout)</span>
+        <span class="n">LayoutInflater</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">inflate</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">title</span><span class="p">,</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 在布局文件中添加这个控件</span>
+<span class="o">&lt;</span><span class="n">com</span><span class="p">.</span><span class="na">example</span><span class="p">.</span><span class="na">xxx</span><span class="p">.</span><span class="na">TitleLayout</span> <span class="c1">// 需要指明完整类名</span>
+  <span class="n">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">&quot;xx&quot;</span>
+  <span class="n">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">&quot;xx&quot;</span><span class="o">/&gt;</span>
+</code></pre></div>
+<p><strong>ListView(菜单目录)：最常用，最难用</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1.xml中注册</span>
+<span class="o">&lt;</span><span class="n">ListView</span>
+  <span class="n">android</span><span class="p">:</span><span class="n">id</span><span class="o">=</span><span class="s">&quot;@+id/list_view&quot;</span>
+  <span class="n">android</span><span class="p">:</span><span class="n">layout_width</span><span class="o">=</span><span class="s">&quot;match_parent&quot;</span>
+  <span class="n">android</span><span class="p">:</span><span class="n">layout_height</span><span class="o">=</span><span class="s">&quot;match_parent&quot;</span>
+  <span class="n">tools</span><span class="p">:</span><span class="n">layout_editor_absoluteX</span><span class="o">=</span><span class="s">&quot;172dp&quot;</span>
+  <span class="n">tools</span><span class="p">:</span><span class="n">layout_editor_absoluteY</span><span class="o">=</span><span class="s">&quot;191dp&quot;</span> <span class="o">/&gt;</span>
+
+<span class="c1">// 2.代码中调用，注意ListView对象无法直接接受数据数据，需要通过适配器ArrayAdapter来传输，该适配器是泛型，有多个构造函数,ArrayAdapter(当前上下文，ListView子项布局的id,数组数据)</span>
+<span class="kd">private</span> <span class="n">String</span> <span class="n">data</span><span class="o">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;apple&quot;</span><span class="p">,</span><span class="s">&quot;pear&quot;</span><span class="p">,</span><span class="s">&quot;pineapple&quot;</span><span class="p">};</span>
+<span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+  <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">activity_main</span><span class="p">);</span>
+  <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayAdapter</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="n">MainActivity</span><span class="p">.</span><span class="na">this</span><span class="p">,</span> <span class="n">android</span><span class="p">.</span><span class="na">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">simple_list_item_1</span><span class="p">,</span><span class="n">data</span>
+  <span class="p">);</span>
+  <span class="n">ListView</span> <span class="n">listView</span> <span class="o">=</span> <span class="p">(</span><span class="n">ListView</span><span class="p">)</span> <span class="n">findViewById</span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="na">id</span><span class="p">.</span><span class="na">list_view</span><span class="p">);</span>
+  <span class="n">listView</span><span class="p">.</span><span class="na">setAdapter</span><span class="p">((</span><span class="n">adapter</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../python%E5%88%B7%E9%A2%98/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              python刷题
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

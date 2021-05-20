@@ -1,0 +1,1528 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>PaddlePaddle快速教程 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PaddlePaddle快速教程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PaddlePaddle快速教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PaddlePaddle快速教程
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基本简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基本使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    快速上手
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    自动混合训练
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    多卡、分布式训练
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    多进程处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自定义指标+召回函数(钩子函数)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模型存储与加载
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onnx" class="md-nav__link">
+    模型转ONNX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualdl" class="md-nav__link">
+    可视化工具VisualDL:笔记
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    推理部署:笔记
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基本简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    基本使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    快速上手
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    自动混合训练
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    多卡、分布式训练
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    多进程处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自定义指标+召回函数(钩子函数)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模型存储与加载
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onnx" class="md-nav__link">
+    模型转ONNX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualdl" class="md-nav__link">
+    可视化工具VisualDL:笔记
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    推理部署:笔记
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>PaddlePaddle快速教程</h1>
+                
+                <h3 id="_1">基本简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>现在<code>PaddlePaddle</code>主推<code>v2.0+</code>，主推动态图，当然动态图也能转为静态图，转换方式<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/04_dygraph_to_static/index_cn.html">笔记</a></p>
+<p><strong>动态图和静态图不同</strong></p>
+<ul>
+<li>动态图</li>
+<li>动态图有诸多优点，包括易用的接口，Python风格的编程体验，友好的debug交互机制等。在动态图模式下，代码是按照我们编写的顺序依次执行。这种机制更符合Python程序员的习 惯，可以很方便地将大脑中的想法快速地转化为实际代码，也更容易调试。</li>
+<li>但在性能方面， Python执行开销较大，与C++有一定差距。因此在工业界的许多部署场景中（如大型推荐系统、移动端）都倾向于直接使用C++来提速。</li>
+<li>静态图</li>
+<li>静态图在部署方面更具有性能的优势。静态图程序在编译执行时，先搭建模型 的神经网络结构，然后再对神经网络执行计算操作。预先搭建好的神经网络可以脱离Python依赖，在C++端被重新解析执行，而且拥有整体网络结构也能进行一些网络结构的优化。</li>
+<li><strong>动态图代码更易编写和debug，但在部署性能上，静态图更具优势。</strong></li>
+</ul>
+<h3 id="_2">基本使用<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+
+<span class="c1"># 1.创建tensor</span>
+<span class="c1"># return --&gt;Tensor(shape=[3], dtype=float64, place=CUDAPlace(0)/CPUPlace, stop_gradient=True,[2., 3., 4.]) # 上面这些属性可以直接获取，例如data.shape</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span> <span class="c1"># 默认创建float32类型</span>
+<span class="n">cpu_tensor</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">place</span><span class="o">=</span><span class="n">paddle</span><span class="o">.</span><span class="n">CPUPlace</span><span class="p">())</span> <span class="c1"># 数据放在cpu上</span>
+<span class="n">gpu_tensor</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">place</span><span class="o">=</span><span class="n">paddle</span><span class="o">.</span><span class="n">CUDAPlace</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># 数据放在gpu上</span>
+<span class="n">pin_memory_tensor</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">place</span><span class="o">=</span><span class="n">paddle</span><span class="o">.</span><span class="n">CUDAPinnedPlace</span><span class="p">())</span> <span class="c1"># 数据固定在内存上</span>
+
+<span class="c1"># 2.常用属性</span>
+<span class="n">data</span><span class="o">.</span><span class="n">name</span> <span class="c1"># 该tensor的唯一id，是独一无二的</span>
+<span class="c1"># &#39;bool&#39;，&#39;float16&#39;，&#39;float32&#39;，&#39;float64&#39;，&#39;uint8&#39;，&#39;int8&#39;，&#39;int16&#39;，&#39;int32&#39;，&#39;int64&#39;</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dtype</span> <span class="c1"># int64默认，float32默认，paddle.cast(data, dtype=&#39;float64&#39;) # 通过该函数可以改变数据类型</span>
+<span class="n">data</span><span class="o">.</span><span class="n">place</span> <span class="c1"># 查看tensor在cpu/gpu上</span>
+<span class="c1"># paddle.to_tensor([1.0, 2.0, 3.0], stop_gradient=False) # 将b设置为需要计算梯度的属性</span>
+<span class="n">data</span><span class="o">.</span><span class="n">stop_gradient</span> <span class="c1"># 查看一个Tensor是否计算并传播梯度,默认True:不计算梯度，False计算梯度</span>
+<span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># 描述了tensor的每个维度上元素的数量，列表</span>
+<span class="n">data</span><span class="o">.</span><span class="n">size</span> <span class="c1"># 指tensor中全部元素的个数</span>
+<span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="c1"># tensor的维度数量</span>
+<span class="c1"># axis或者dimension：指tensor某个特定的维度</span>
+<span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="o">...</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># 3.numpy和tensor互相转换</span>
+<span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="c1"># tensor-&gt;numpy,常用此来获取数值</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span> <span class="c1"># numpy-&gt;tensor</span>
+
+<span class="c1"># 4.常用函数</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span> <span class="c1"># 返回cp/gpu:0等字符串</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>             <span class="c1"># 创建数据全为0，shape为[m, n]的Tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>              <span class="c1"># 创建数据全为1，shape为[m, n]的Tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>          <span class="c1"># 创建数据全为10，shape为[m, n]的Tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>  <span class="c1"># 创建从[start,end]，步长为step的Tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="c1"># 创建从start到end，元素个数固定为num的Tensor,等距切分</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># 范围在[0, 1)的符合均匀分布的Tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># 标准正态分布（均值为0，标准差为1的正态随机分布）的随机Tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># [low, high)的随机均匀分布Tensor,如果high=None,范围是[0,low)</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># [0,n-1]随机排列的tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">descending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 默认升序，给定维度排序，返回排好序的tensor</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># 维度转换</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># 删除输入Tensor的Shape中尺寸为1的维度,默认全部删除</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">axes</span><span class="p">)</span> <span class="c1"># 向输入Tensor的Shape中一个或多个位置（axis）插入尺寸为1的维度</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># condition=True-&gt;x,else y</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># return (values,indexs)</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># x,y逐元素相乘，x/y维度相同</span>
+
+<span class="c1"># 5.索引与切片，同numpy，切片赋值操作也是相同的，且支持广播机制</span>
+
+<span class="c1"># 6.数学运算符，paddle.add(data1,data2) == data1.add(data2)，Paddle中Tensor的操作符均为非inplace操作，必须有返回值</span>
+<span class="n">data</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>        <span class="c1">#逐元素取绝对值</span>
+<span class="n">data</span><span class="o">.</span><span class="n">ceil</span><span class="p">()</span>       <span class="c1">#逐元素向上取整</span>
+<span class="n">data</span><span class="o">.</span><span class="n">floor</span><span class="p">()</span>      <span class="c1">#逐元素向下取整</span>
+<span class="n">data</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>      <span class="c1">#逐元素四舍五入</span>
+<span class="n">data</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span>        <span class="c1">#逐元素计算自然常数为底的指数</span>
+<span class="n">data</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>        <span class="c1">#逐元素计算x的自然对数</span>
+<span class="n">data</span><span class="o">.</span><span class="n">reciprocal</span><span class="p">()</span> <span class="c1">#逐元素求倒数</span>
+<span class="n">data</span><span class="o">.</span><span class="n">square</span><span class="p">()</span>     <span class="c1">#逐元素计算平方</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>       <span class="c1">#逐元素计算平方根</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span>        <span class="c1">#逐元素计算正弦</span>
+<span class="n">data</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>        <span class="c1">#逐元素计算余弦</span>
+<span class="n">data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>       <span class="c1">#逐元素相加</span>
+<span class="n">data</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1">#逐元素相减</span>
+<span class="n">data</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1">#逐元素相乘</span>
+<span class="n">data</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="c1">#逐元素相除</span>
+<span class="n">data</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>       <span class="c1">#逐元素相除并取余</span>
+<span class="n">data</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>       <span class="c1">#逐元素幂运算</span>
+<span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>        <span class="c1">#指定维度上元素最大值，默认为全部维度</span>
+<span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>        <span class="c1">#指定维度上元素最小值，默认为全部维度</span>
+<span class="n">data</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span>       <span class="c1">#指定维度上元素累乘，默认为全部维度</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>        <span class="c1">#指定维度上元素的和，默认为全部维度</span>
+<span class="c1"># 下面简化版本也等价</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>            <span class="c1">#逐元素相加</span>
+<span class="n">x</span> <span class="o">-</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>       <span class="c1">#逐元素相减</span>
+<span class="n">x</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>       <span class="c1">#逐元素相乘</span>
+<span class="n">x</span> <span class="o">/</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>         <span class="c1">#逐元素相除</span>
+<span class="n">x</span> <span class="o">%</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>            <span class="c1">#逐元素相除并取余</span>
+<span class="n">x</span> <span class="o">**</span> <span class="n">y</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>            <span class="c1">#逐元素幂运算</span>
+<span class="c1"># 6.1 下面是逻辑运算符</span>
+<span class="n">data</span><span class="o">.</span><span class="n">isfinite</span><span class="p">()</span>       <span class="c1">#判断tensor中元素是否是有限的数字，即不包括inf与nan</span>
+<span class="n">data</span><span class="o">.</span><span class="n">equal_all</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>     <span class="c1">#判断两个tensor的全部元素是否相等，并返回shape为[1]的bool Tensor</span>
+<span class="n">data</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>         <span class="c1">#判断两个tensor的每个元素是否相等，并返回shape相同的bool Tensor</span>
+<span class="n">data</span><span class="o">.</span><span class="n">not_equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>     <span class="c1">#判断两个tensor的每个元素是否不相等</span>
+<span class="n">data</span><span class="o">.</span><span class="n">less_than</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>     <span class="c1">#判断tensor x的元素是否小于tensor y的对应元素</span>
+<span class="n">data</span><span class="o">.</span><span class="n">less_equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="c1">#判断tensor x的元素是否小于或等于tensor y的对应元素</span>
+<span class="n">data</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1">#判断tensor x的元素是否大于tensor y的对应元素</span>
+<span class="n">data</span><span class="o">.</span><span class="n">greater_equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1">#判断tensor x的元素是否大于或等于tensor y的对应元素</span>
+<span class="n">data</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>      <span class="c1">#判断tensor x的全部元素是否与tensor y的全部元素接近，并返回shape为[1]的bool Tensor</span>
+<span class="c1"># 等价操作</span>
+<span class="n">x</span> <span class="o">==</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>         <span class="c1">#判断两个tensor的每个元素是否相等</span>
+<span class="n">x</span> <span class="o">!=</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">not_equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>     <span class="c1">#判断两个tensor的每个元素是否不相等</span>
+<span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>   <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">less_than</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>     <span class="c1">#判断tensor x的元素是否小于tensor y的对应元素</span>
+<span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">less_equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>    <span class="c1">#判断tensor x的元素是否小于或等于tensor y的对应元素</span>
+<span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>   <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">greater_than</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1">#判断tensor x的元素是否大于tensor y的对应元素</span>
+<span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span>  <span class="o">-&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">greater_equal</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1">#判断tensor x的元素是否大于或等于tensor y的对应元素</span>
+<span class="c1"># 6.2 下面操作仅针对bool型Tensor</span>
+<span class="n">x</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>              <span class="c1">#对两个bool型tensor逐元素进行逻辑与操作</span>
+<span class="n">x</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>               <span class="c1">#对两个bool型tensor逐元素进行逻辑或操作</span>
+<span class="n">x</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>              <span class="c1">#对两个bool型tensor逐元素进行逻辑亦或操作</span>
+<span class="n">x</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>              <span class="c1">#对两个bool型tensor逐元素进行逻辑非操作</span>
+<span class="c1"># 6.3 线性代数相关</span>
+<span class="n">x</span><span class="o">.</span><span class="n">cholesky</span><span class="p">()</span>                  <span class="c1">#矩阵的cholesky分解</span>
+<span class="n">x</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>                         <span class="c1">#矩阵转置</span>
+<span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>           <span class="c1">#交换axis 0 与axis 1的顺序</span>
+<span class="n">x</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="s1">&#39;fro&#39;</span><span class="p">)</span>                 <span class="c1">#矩阵的Frobenius 范数</span>
+<span class="n">x</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>                <span class="c1">#矩阵（x-y）的2范数</span>
+<span class="n">x</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>                   <span class="c1">#矩阵乘法</span>
+</code></pre></div>
+<p><strong>自动微分</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+
+<span class="c1"># 1.小例子</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="n">stop_gradient</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">([</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">],</span> <span class="n">stop_gradient</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">y</span>
+<span class="c1"># 默认会释放反向计算图。如果在backward()之后继续添加OP，需要将backward()中的retain_graph参数设置为True，此时之前的反向计算图会保留。</span>
+<span class="n">z</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># z.backward(retain_graph=True)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">grad</span> <span class="c1"># 2x-&gt;[2.,4.,6.]</span>
+<span class="n">y</span><span class="o">.</span><span class="n">grad</span> <span class="c1"># 4-&gt;[4.,4.,4.]</span>
+
+<span class="c1"># 2.backward()会累积梯度，可以使用clear_grad()函数来清除当前Tensor的梯度</span>
+<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># print(loss.gradient()) # [1.0]</span>
+<span class="n">loss</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span> <span class="c1"># print(loss.gradient()) # [0.0]</span>
+</code></pre></div>
+<h3 id="_3">快速上手<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>数据集的定义与加载</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="kn">from</span> <span class="nn">paddle.vision.transforms</span> <span class="kn">import</span> <span class="n">ToTensor</span>
+
+<span class="c1"># 1.自身携带数据</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;视觉相关数据集：&#39;</span><span class="p">,</span> <span class="n">paddle</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">__all__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;自然语言相关数据集：&#39;</span><span class="p">,</span> <span class="n">paddle</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">__all__</span><span class="p">)</span>
+<span class="c1">#视觉相关数据集： [&#39;DatasetFolder&#39;, &#39;ImageFolder&#39;, &#39;MNIST&#39;, &#39;FashionMNIST&#39;, &#39;Flowers&#39;, &#39;Cifar10&#39;, &#39;Cifar100&#39;, &#39;VOC2012&#39;]</span>
+<span class="c1">#自然语言相关数据集： [&#39;Conll05st&#39;, &#39;Imdb&#39;, &#39;Imikolov&#39;, &#39;Movielens&#39;, &#39;UCIHousing&#39;, &#39;WMT14&#39;, &#39;WMT16&#39;]</span>
+
+<span class="c1"># 举例说明，默认下载到 ~/.cache/paddle/dataset</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ToTensor</span><span class="p">())</span>
+<span class="n">val_dataset</span> <span class="o">=</span>  <span class="n">paddle</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ToTensor</span><span class="p">())</span>
+
+
+<span class="c1"># 2.自定义数据集 paddle.io.Dataset基类</span>
+<span class="kn">import</span> <span class="nn">paddle</span>
+<span class="kn">from</span> <span class="nn">paddle.io</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="k">class</span> <span class="nc">MyDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    步骤一：继承paddle.io.Dataset类</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        步骤二：实现构造函数，定义数据集大小</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyDataset</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">=</span> <span class="n">num_samples</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        步骤三：实现__getitem__方法，定义指定index时如何获取数据，并返回单条数据（训练数据，对应的标签）</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">CLASS_NUM</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        步骤四：实现__len__方法，返回数据集总数目</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span>
+<span class="n">custom_dataset</span> <span class="o">=</span> <span class="n">MyDataset</span><span class="p">(</span><span class="n">BATCH_SIZE</span> <span class="o">*</span> <span class="n">BATCH_NUM</span><span class="p">)</span> <span class="c1"># 测试定义的数据集</span>
+<span class="c1"># 数据加载,DataLoader 默认用异步加载数据的方式来读取数据，一方面可以提升数据加载的速度，另一方面也会占据更少的内存。如果你需要同时加载全部数据到内存中，请设置use_buffer_reader=False。</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">custom_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># 如果要加载内置数据集，将 custom_dataset 换为 train_dataset 即可</span>
+<span class="k">for</span> <span class="n">batch_id</span><span class="p">,</span> <span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x_data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">y_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>数据预处理</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="c1"># 数据处理方法： [&#39;BaseTransform&#39;, &#39;Compose&#39;, &#39;Resize&#39;, &#39;RandomResizedCrop&#39;, &#39;CenterCrop&#39;, &#39;RandomHorizontalFlip&#39;, &#39;RandomVerticalFlip&#39;, &#39;Transpose&#39;, &#39;Normalize&#39;, &#39;BrightnessTransform&#39;, &#39;SaturationTransform&#39;, &#39;ContrastTransform&#39;, &#39;HueTransform&#39;, &#39;ColorJitter&#39;, &#39;RandomCrop&#39;, &#39;Pad&#39;, &#39;RandomRotation&#39;, &#39;Grayscale&#39;, &#39;ToTensor&#39;, &#39;to_tensor&#39;, &#39;hflip&#39;, &#39;vflip&#39;, &#39;resize&#39;, &#39;pad&#39;, &#39;rotate&#39;, &#39;to_grayscale&#39;, &#39;crop&#39;, &#39;center_crop&#39;, &#39;adjust_brightness&#39;, &#39;adjust_contrast&#39;, &#39;adjust_hue&#39;, &#39;normalize&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;数据处理方法：&#39;</span><span class="p">,</span> <span class="n">paddle</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">__all__</span><span class="p">)</span>
+
+
+<span class="c1"># 1.使用内置的transform，当然，也可以在自定义数据集类中直接应用</span>
+<span class="kn">from</span> <span class="nn">paddle.vision.transforms</span> <span class="kn">import</span> <span class="n">Compose</span><span class="p">,</span> <span class="n">Resize</span><span class="p">,</span> <span class="n">ColorJitter</span>
+<span class="c1"># 定义想要使用的数据增强方式，这里包括随机调整亮度、对比度和饱和度，改变图片大小</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">Compose</span><span class="p">([</span>
+            <span class="n">ColorJitter</span><span class="p">(),</span> 
+            <span class="n">Resize</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">32</span><span class="p">),</span>
+            <span class="p">])</span>
+<span class="c1"># 通过transform参数传递定义好的数据增强方法即可完成对自带数据集的增强</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>网络构成</strong></p>
+<p><img alt="image-20210517195536983" src="../assets/image-20210517195536983.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+
+<span class="c1"># 1.Sequential 组网：针对顺序的线性网络结构</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+    <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span>
+    <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+    <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="c1"># 2.SubClass组网，针对一些比较复杂的网络结构，就可以使用Layer子类定义的方式来进行模型代码编写，在__init__构造函数中进行组网Layer的声明，在forward中使用声明的Layer变量进行前向计算。子类组网方式也可以实现sublayer的复用，针对相同的layer可以在构造函数中一次性定义，在forward中多次调用。</span>
+<span class="c1"># Layer类继承方式组网</span>
+<span class="k">class</span> <span class="nc">Mnist</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Mnist</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear_1</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear_2</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_2</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">y</span>
+<span class="n">mnist_2</span> <span class="o">=</span> <span class="n">Mnist</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="image-20210517170157539" src="../assets/image-20210517170157539.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 3.上图是框架内置模型</span>
+<span class="kn">import</span> <span class="nn">paddle</span>
+<span class="n">resnet</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">vision</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">()</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">resnet</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">))</span> <span class="c1"># 打印网络结构</span>
+</code></pre></div>
+<p><strong>训练与预测</strong>：两种训练方式</p>
+<ul>
+<li>一种是用<code>paddle.Model</code>对模型进行封装，通过高层API如<code>Model.fit()、Model.evaluate()、Model.predict()</code>等完成模型的训练与预测；</li>
+<li>另一种就是基于基础<code>API</code>常规的训练方式。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">net</span> <span class="o">=</span> <span class="n">xxx</span>
+<span class="n">train_dataset</span><span class="p">,</span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">xxx</span><span class="p">,</span><span class="n">xxx</span>
+
+<span class="c1"># 第一种方式</span>
+<span class="c1"># 1.1 使用paddle.Model对模型进行封装</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<span class="c1"># 1.2 通过Model.prepare 对模型进行配置，选择合适的优化器，loss，精度计算方法等</span>
+<span class="n">model</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">paddle</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="n">paddle</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">Accuracy</span><span class="p">())</span>
+<span class="c1"># 1.3 训练模型 Model.fit()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="c1"># 指定训练数据集</span>
+          <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="c1"># 设置训练轮次</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="c1"># ，设置每次数据集计算的批次大小</span>
+          <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 设置日志格式</span>
+<span class="c1"># 1.4 评估模型，Model.evaluate()</span>
+<span class="n">eval_result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 返回评估的字典，包含指标是按照prepare中定义的返回，{&#39;loss&#39;:xxx}/{&#39;loss&#39;:xxx,&#39;metric name1&#39;:xxx,&#39;metric name2&#39;:xxx}</span>
+<span class="c1"># 1.5 模型推理</span>
+<span class="n">test_result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span> <span class="c1"># 返回格式是一个list，元素数目对应模型的输出数目，如果是多输出，就是list包裹多个输出，单输出就是list包裹单个输出</span>
+
+
+<span class="c1"># 第二种方式</span>
+<span class="n">net</span><span class="o">.</span><span class="n">train</span><span class="p">()</span> <span class="c1"># 开启训练模式</span>
+<span class="n">optim</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> <span class="c1"># 设置优化器</span>
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span> <span class="c1"># 设置损失函数</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">batch_id</span><span class="p">,</span> <span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">()):</span>
+        <span class="n">predicts</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>    <span class="c1"># 预测结果</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">predicts</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span> <span class="c1"># 计算精度</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1"># 反向传播</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">batch_id</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;batch_id:</span><span class="si">{}</span><span class="s2"> loss:</span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s2"> acc:</span><span class="si">{</span><span class="n">acc</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">optim</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> <span class="c1"># 更新参数</span>
+        <span class="n">optim</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span>
+
+<span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="c1"># 开启验证模式</span>
+<span class="k">for</span> <span class="n">batch_id</span><span class="p">,</span> <span class="p">(</span><span class="n">x_data</span><span class="p">,</span><span class="n">y_data</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_loader</span><span class="p">()):</span>
+    <span class="n">predicts</span> <span class="o">=</span> <span class="n">mnist</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>    <span class="c1"># 预测结果</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">predicts</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span> <span class="c1"># 预测精度</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">acc</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="_4">自动混合训练<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><code>paddle.amp.auto_cast</code> 和 <code>paddle.amp.GradScaler</code> 能够实现自动混合精度训练</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xxx</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span><span class="n">parameters</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> 
+
+<span class="c1"># Step1：定义 GradScaler，用于缩放loss比例，避免浮点数溢出</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">GradScaler</span><span class="p">(</span><span class="n">init_loss_scaling</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)):</span>
+        <span class="c1"># Step2：创建AMP上下文环境，开启自动混合精度训练</span>
+        <span class="k">with</span> <span class="n">paddle</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">auto_cast</span><span class="p">():</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="c1"># Step3：使用 Step1中定义的 GradScaler 完成loss的缩放，用缩放后的loss进行反向传播</span>
+        <span class="n">scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        <span class="n">scaled</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># 训练模型</span>
+        <span class="n">scaler</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">scaled</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>进阶用法，梯度累加</strong>:多次循环后梯度不断累加，直至达到一定次数后，用累加的梯度更新参数，这样可以起到变相扩大 <code>batch_size</code> 的作用。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">xxx</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span><span class="n">parameters</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> 
+
+<span class="n">accumulate_batchs_num</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># 梯度累加中 batch 的数量</span>
+
+<span class="c1"># Step1：定义 GradScaler，用于缩放loss比例，避免浮点数溢出</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">GradScaler</span><span class="p">(</span><span class="n">init_loss_scaling</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)):</span>
+        <span class="c1"># Step2：创建AMP上下文环境，开启自动混合精度训练</span>
+        <span class="k">with</span> <span class="n">paddle</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">auto_cast</span><span class="p">():</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">mse</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="c1"># Step3：使用 Step1中定义的 GradScaler 完成loss的缩放，用缩放后的loss进行反向传播</span>
+        <span class="n">scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        <span class="n">scaled</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># 训练模型,每累加10个batch才进行更新，并清除梯度</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">accumulate_batchs_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">scaler</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">scaled</span><span class="p">)</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_5">多卡、分布式训练<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>单机多卡训练</strong></p>
+<p><strong>当使用方式一:<code>paddle.Model封装</code>来训练时</strong>，想要启动单机多卡训练非常简单，代码不需要做任何修改，只需要在启动时增加一下参数<code>-m paddle.distributed.launch</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 单机单卡启动，默认使用第0号卡</span>
+$ python train.py
+
+<span class="c1"># 单机多卡启动，默认使用当前可见的所有卡</span>
+$ python -m paddle.distributed.launch train.py
+
+<span class="c1"># 单机多卡启动，设置当前使用的第0号和第1号卡</span>
+$ python -m paddle.distributed.launch --gpus<span class="o">=</span><span class="s1">&#39;0,1&#39;</span> train.py
+
+<span class="c1"># 单机多卡启动，设置当前使用第0号和第1号卡</span>
+$ <span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1
+$ python -m paddle.distributed.launch train.py
+</code></pre></div>
+<p><strong>当使用方式二:基础API时，单机多卡代码如下</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="c1"># 第1处改动 导入分布式训练所需的包</span>
+<span class="kn">import</span> <span class="nn">paddle.distributed</span> <span class="k">as</span> <span class="nn">dist</span>
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">xxx</span>
+<span class="n">train_dataset</span><span class="p">,</span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">xxx</span><span class="p">,</span><span class="n">xxx</span>
+
+<span class="c1"># 第2处改动，初始化并行环境,注意：单卡训练不支持调用init_parallel_env</span>
+<span class="n">dist</span><span class="o">.</span><span class="n">init_parallel_env</span><span class="p">()</span>
+
+<span class="c1"># 第3处改动，增加paddle.DataParallel封装</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="o">....</span>
+
+<span class="c1"># 单机多卡启动，默认使用当前可见的所有卡</span>
+<span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">launch</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># 单机多卡启动，设置当前使用的第0号和第1号卡</span>
+<span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">launch</span> <span class="o">--</span><span class="n">gpus</span> <span class="s1">&#39;0,1&#39;</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span>
+
+<span class="c1"># 单机多卡启动，设置当前使用第0号和第1号卡</span>
+<span class="err">$</span> <span class="n">export</span> <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+<span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">launch</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
+<p><strong>分布式训练</strong></p>
+<blockquote>
+<p>推荐使用Fleet API进行分布式训练<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/06_distributed_training/index_cn.html">笔记</a></p>
+</blockquote>
+<h3 id="_6">多进程处理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="kn">import</span> <span class="nn">paddle.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">paddle.optimizer</span> <span class="k">as</span> <span class="nn">opt</span>
+<span class="kn">import</span> <span class="nn">paddle.distributed</span> <span class="k">as</span> <span class="nn">dist</span>
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">print_result</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># 上面的训练步骤，单卡或者多卡都行</span>
+    <span class="c1"># 举例如下：</span>
+    <span class="n">dist</span><span class="o">.</span><span class="n">init_parallel_env</span><span class="p">()</span> <span class="c1"># 1. 初始化并行训练环境</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">xx</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">xx</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+    <span class="n">adam</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">randn</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">],</span><span class="s1">&#39;float32&#39;</span><span class="p">),</span><span class="n">labels</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">print_result</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loss:&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">adam</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">adam</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span>
+
+<span class="c1"># 使用方式1：仅传入训练函数</span>
+<span class="c1"># 适用场景：训练函数不需要任何参数，并且需要使用所有当前可见的GPU设备并行训练</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">dist</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+<span class="c1"># 使用方式2：传入训练函数和参数</span>
+<span class="c1"># 适用场景：训练函数需要一些参数，并且需要使用所有当前可见的GPU设备并行训练</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">dist</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="kc">True</span><span class="p">,))</span>
+
+<span class="c1"># 使用方式3：传入训练函数、参数并指定并行进程数</span>
+<span class="c1"># 适用场景：训练函数需要一些参数，并且仅需要使用部分可见的GPU设备并行训练，例如：</span>
+<span class="c1"># 当前机器有8张GPU卡 {0,1,2,3,4,5,6,7}，此时会使用前两张卡 {0,1}；</span>
+<span class="c1"># 或者当前机器通过配置环境变量 CUDA_VISIBLE_DEVICES=4,5,6,7，仅使4张</span>
+<span class="c1"># GPU卡可见，此时会使用可见的前两张卡 {4,5}</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">dist</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="kc">True</span><span class="p">,),</span> <span class="n">nprocs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 使用方式4：传入训练函数、参数、指定进程数并指定当前使用的卡号</span>
+<span class="c1"># 使用场景：训练函数需要一些参数，并且仅需要使用部分可见的GPU设备并行训练，但是</span>
+<span class="c1"># 可能由于权限问题，无权配置当前机器的环境变量，例如：当前机器有8张GPU卡</span>
+<span class="c1"># {0,1,2,3,4,5,6,7}，但你无权配置CUDA_VISIBLE_DEVICES，此时可以通过</span>
+<span class="c1"># 指定参数 gpus 选择希望使用的卡，例如 gpus=&#39;4,5&#39;，</span>
+<span class="c1"># 可以指定使用第4号卡和第5号卡</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">dist</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">nprocs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gpus</span><span class="o">=</span><span class="s1">&#39;4,5&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_7">自定义指标+召回函数(钩子函数)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>自定义loss</strong>：继承<code>paddle.nn.Layer</code>但需要实现其<code>__init__、forward()</code>函数</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SoftmaxWithCrossEntropy</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="nb">super</span><span class="p">(</span><span class="n">SoftmaxWithCrossEntropy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+       <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax_with_cross_entropy</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span>
+                                           <span class="n">label</span><span class="p">,</span>
+                                           <span class="n">return_softmax</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                           <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+       <span class="k">return</span> <span class="n">paddle</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</code></pre></div>
+<p>**自定义Metric**评估方法|<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/07_customize_cn.html#metric">举例子code</a></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SelfDefineMetric</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">Metric</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1. 继承paddle.metric.Metric</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        2. 构造函数实现，自定义参数即可</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SelfDefineMetric</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        3. 实现name方法，返回定义的评估指标名字</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;自定义评价指标的名字&#39;</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        4. 本步骤可以省略，实现compute方法，这个方法主要用于`update`的加速，可以在这个方法中调用一些paddle实现好的Tensor计算API，编译到模型网络中一起使用低层C++ OP计算。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">自己想要返回的数据</span><span class="err">，</span><span class="n">会做为update的参数传入</span><span class="err">。</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        5. 实现update方法，用于单个batch训练时进行评估指标计算。</span>
+<span class="sd">        - 当`compute`类函数未实现时，会将模型的计算输出和标签数据的展平作为`update`的参数传入。</span>
+<span class="sd">        - 当`compute`类函数做了实现时，会将compute的返回结果作为`update`的参数传入。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">acc</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">accumulate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        6. 实现accumulate方法，返回历史batch训练积累后计算得到的评价指标值。</span>
+<span class="sd">        每次`update`调用时进行数据积累，`accumulate`计算时对积累的所有数据进行计算并返回。</span>
+<span class="sd">        结算结果会在`fit`接口的训练日志中呈现。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 利用update中积累的成员变量数据进行计算后返回</span>
+        <span class="k">return</span> <span class="n">accumulated</span> <span class="n">acc</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        7. 实现reset方法，每个Epoch结束后进行评估指标的重置，这样下个Epoch可以重新进行计算。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># do reset action</span>
+</code></pre></div>
+<p><strong>自定义callback</strong>：用来在每轮训练和每个<code>batch</code>训练前后进行调用，可以通过<code>callback</code>收集到训练过程中的一些数据和参数，或者实现一些自定义操作。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SelfDefineCallback</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    1. 继承paddle.callbacks.Callback</span>
+<span class="sd">    2. 按照自己的需求实现以下类成员方法：</span>
+<span class="sd">    def on_train_begin(self, logs=None)        训练开始前，`Model.fit`接口中调用</span>
+<span class="sd">    def on_train_end(self, logs=None)          训练结束后，`Model.fit`接口中调用</span>
+<span class="sd">    def on_eval_begin(self, logs=None)         评估开始前，`Model.evaluate`接口调用</span>
+<span class="sd">    def on_eval_end(self, logs=None)           评估结束后，`Model.evaluate`接口调用</span>
+<span class="sd">    def on_predict_begin(self, logs=None)      预测测试开始前，`Model.predict`接口中调用</span>
+<span class="sd">    def on_predict_end(self, logs=None)        预测测试结束后，`Model.predict`接口中调用</span>
+<span class="sd">    def on_epoch_begin(self, epoch, logs=None) 每轮训练开始前，`Model.fit`接口中调用</span>
+<span class="sd">    def on_epoch_end(self, epoch, logs=None)   每轮训练结束后，`Model.fit`接口中调用</span>
+<span class="sd">    # 单个Batch训练开始前，`Model.fit`和`Model.train_batch`接口中调用</span>
+<span class="sd">    def on_train_batch_begin(self, step, logs=None)</span>
+<span class="sd">    # 单个Batch训练结束后，`Model.fit`和`Model.train_batch`接口中调用</span>
+<span class="sd">    def on_train_batch_end(self, step, logs=None)</span>
+<span class="sd">    # 单个Batch评估开始前，`Model.evalute`和`Model.eval_batch`接口中调用</span>
+<span class="sd">    def on_eval_batch_begin(self, step, logs=None)</span>
+<span class="sd">    # 单个Batch评估结束后，`Model.evalute`和`Model.eval_batch`接口中调用</span>
+<span class="sd">    def on_eval_batch_end(self, step, logs=None)</span>
+<span class="sd">    # 单个Batch预测测试开始前，`Model.predict`和`Model.test_batch`接口中调用</span>
+<span class="sd">    def on_predict_batch_begin(self, step, logs=None)</span>
+<span class="sd">    # 单个Batch预测测试结束后，`Model.predict`和`Model.test_batch`接口中调用</span>
+<span class="sd">    def on_predict_batch_end(self, step, logs=None)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SelfDefineCallback</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="c1"># 按照需求定义自己的类成员方法</span>
+
+
+<span class="c1"># 举例子</span>
+<span class="k">class</span> <span class="nc">ModelCheckpoint</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">save_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_freq</span> <span class="o">=</span> <span class="n">save_freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">save_dir</span>
+
+    <span class="k">def</span> <span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">=</span> <span class="n">epoch</span>
+
+    <span class="k">def</span> <span class="nf">_is_save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span> <span class="ow">and</span> <span class="n">ParallelEnv</span><span class="p">()</span><span class="o">.</span><span class="n">local_rank</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_save</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;save checkpoint at </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_train_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_save</span><span class="p">():</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/final&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_dir</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;save checkpoint at </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_8">模型存储与加载<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/08_model_save_load_cn.html#sijiucunchugeshijianrongzairu">旧版本和新版本(v2.0+)兼容的模型加载</a></p>
+<p><img alt="image-20210517205255800" src="../assets/image-20210517205255800.png" /></p>
+<p><strong>只存储参数，用于训练调优</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.1 参数存储 save,将state_dict存储至磁盘</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s2">&quot;linear_net.pdparams&quot;</span><span class="p">)</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">adam</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s2">&quot;adam.pdopt&quot;</span><span class="p">)</span>
+<span class="c1"># 1.2 参数载入 load,由磁盘配置到目标对象中</span>
+<span class="n">layer_state_dict</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;linear_net.pdparams&quot;</span><span class="p">)</span>
+<span class="n">opt_state_dict</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;adam.pdopt&quot;</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">set_state_dict</span><span class="p">(</span><span class="n">layer_state_dict</span><span class="p">)</span>
+<span class="n">adam</span><span class="o">.</span><span class="n">set_state_dict</span><span class="p">(</span><span class="n">opt_state_dict</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>同时存储/载入模型结构和参数</strong>：可以使用 <code>paddle.jit.save/load</code> 实现</p>
+<ul>
+<li>动转静训练 + 模型&amp;参数存储：动转静训练相比直接使用动态图训练具有更好的执行性能</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.net的实现时，forward方法需要经由 paddle.jit.to_static 装饰，经过装时后，会先生成描述模型的Program，然后通过执行Program获取计算结果</span>
+<span class="k">class</span> <span class="nc">LinearNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">CLASS_NUM</span><span class="p">)</span>
+    <span class="c1"># 若最终需要生成的描述模型的Program支持动态输入，可以同时指明模型的 InputSepc</span>
+    <span class="c1">#  @paddle.jit.to_static(input_spec=[InputSpec(shape=[None, 784], dtype=&#39;float32&#39;)])</span>
+    <span class="nd">@paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">to_static</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 2. 确保Layer.forward方法中仅实现预测功能，避免将训练所需的loss计算逻辑写入forward方法,就是不要再forward里面计算loss，会增大Layer使用的复杂性，要保持简洁性</span>
+
+<span class="c1"># 3. 如果你需要存储多个方法，需要用 paddle.jit.to_static 装饰每一个需要被存储的方法，命名规则：forward的模型名字为：模型名+后缀，其他函数的模型名字为：模型名+函数名+后缀。每个函数有各自的pdmodel和pdiparams的文件，所有函数共用pdiparams.info。</span>
+<span class="k">class</span> <span class="nc">LinearNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">CLASS_NUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linear_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">CLASS_NUM</span><span class="p">)</span>
+
+    <span class="c1"># 命名规则:net.pdiparams,net.pdmodel</span>
+    <span class="nd">@paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">to_static</span><span class="p">(</span><span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">InputSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)])</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># 命名规则:net.another_forward.pdiparams,net.another_forward.pdmodel</span>
+    <span class="nd">@paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">to_static</span><span class="p">(</span><span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">InputSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)])</span>
+    <span class="k">def</span> <span class="nf">another_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linear_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 4.如何存储</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;example.model/linear&quot;</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>动态图训练 + 模型&amp;参数存储：动态图模式相比动转静模式更加便于调试，如果你仍需要使用动态图直接训练，也可以在动态图训练完成后调用 <code>paddle.jit.save</code> 直接存储模型和参数。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># save</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;example.dy_model/linear&quot;</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+    <span class="n">layer</span><span class="o">=</span><span class="n">net</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+    <span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">InputSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)])</span>
+
+<span class="c1"># 1.相比动转静训练，Layer对象的forward方法不需要额外装饰，保持原实现即可</span>
+<span class="c1"># 2.与动转静训练相同，请确保Layer.forward方法中仅实现预测功能，避免将训练所需的loss计算逻辑写入forward方法</span>
+<span class="c1"># 3.在最后使用 paddle.jit.save 时，需要指定Layer的 InputSpec ，Layer对象forward方法的每一个参数均需要对应的 InputSpec 进行描述，不能省略。这里的 input_spec 参数支持两种类型的输入</span>
+
+<span class="c1"># 4.InputSpec 列表:使用InputSpec描述forward输入参数的shape，dtype和name，name一般省略；</span>
+<span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">InputSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">)]</span>
+<span class="c1"># 也可以直接使用DataLoader得到的image作为输入</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+    <span class="n">layer</span><span class="o">=</span><span class="n">net</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span>
+    <span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">])</span>
+</code></pre></div>
+<ul>
+<li>模型参数和结构载入：使用 <code>paddle.jit.load</code> 载入即可，载入后得到的是一个Layer的派生类对象 <code>TranslatedLayer</code> ， <code>TranslatedLayer</code> 具有Layer具有的通用特征，支持切换 <code>train</code> 或者 <code>eval</code> 模式，可以进行模型调优或者预测。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;example.model/linear&quot;</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c1"># 1.执行推理</span>
+<span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">randn</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">],</span> <span class="s1">&#39;float32&#39;</span><span class="p">))</span>
+
+<span class="c1"># 2.执行训练 fine-tune</span>
+<span class="n">net</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="o">....</span> <span class="c1"># 正常训练步骤</span>
+<span class="c1"># save after fine-tuning</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="s2">&quot;fine-tune.model/linear&quot;</span><span class="p">,</span> <span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</code></pre></div>
+<ul>
+<li>只载入模型参数： <code>paddle.jit.save</code> 同时保存了模型和参数，如果你只需要从存储结果中载入模型的参数，可以使用 <code>paddle.load</code> 接口载入，返回所存储模型的state_dict</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.定义net结构</span>
+<span class="k">class</span> <span class="nc">LinearNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">CLASS_NUM</span><span class="p">)</span>
+
+    <span class="nd">@paddle</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">to_static</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># create network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">LinearNet</span><span class="p">()</span>
+
+<span class="c1"># load</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;example.model/linear&quot;</span>
+<span class="n">state_dict</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="c1"># inference</span>
+<span class="n">net</span><span class="o">.</span><span class="n">set_state_dict</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">use_structured_name</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">paddle</span><span class="o">.</span><span class="n">randn</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">],</span> <span class="s1">&#39;float32&#39;</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="onnx">模型转ONNX<a class="headerlink" href="#onnx" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 主要使用paddle2onnx库</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">paddle2onnx</span> <span class="n">onnx</span> <span class="n">onnxruntime</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirror</span><span class="o">.</span><span class="n">baidu</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span> <span class="c1"># 如果网速不好，可以使用其他源下载</span>
+</code></pre></div>
+<p><strong>动态图导出ONNX</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="kn">from</span> <span class="nn">paddle</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">paddle.static</span> <span class="kn">import</span> <span class="n">InputSpec</span>
+
+<span class="k">class</span> <span class="nc">LinearNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 1.export to ONNX</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">LinearNet</span><span class="p">()</span>
+<span class="n">save_path</span> <span class="o">=</span> <span class="s1">&#39;onnx.save/linear_net&#39;</span>
+<span class="n">x_spec</span> <span class="o">=</span> <span class="n">InputSpec</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">],</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">save_path</span><span class="p">,</span> <span class="n">input_spec</span><span class="o">=</span><span class="p">[</span><span class="n">x_spec</span><span class="p">])</span>
+
+<span class="c1"># 2.check by ONNX</span>
+<span class="kn">import</span> <span class="nn">onnx</span>
+<span class="n">onnx_file</span> <span class="o">=</span> <span class="n">save_path</span> <span class="o">+</span>  <span class="s1">&#39;.onnx&#39;</span>
+<span class="n">onnx_model</span> <span class="o">=</span> <span class="n">onnx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">onnx_file</span><span class="p">)</span>
+<span class="n">onnx</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">check_model</span><span class="p">(</span><span class="n">onnx_model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The model is checked!&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># 3.ONNXRuntime inference</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">onnxruntime</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">784</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="c1"># predict by ONNX Runtime</span>
+<span class="n">ort_sess</span> <span class="o">=</span> <span class="n">onnxruntime</span><span class="o">.</span><span class="n">InferenceSession</span><span class="p">(</span><span class="n">onnx_file</span><span class="p">)</span>
+<span class="n">ort_inputs</span> <span class="o">=</span> <span class="p">{</span><span class="n">ort_sess</span><span class="o">.</span><span class="n">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">x</span><span class="p">}</span>
+<span class="n">ort_outs</span> <span class="o">=</span> <span class="n">ort_sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">ort_inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exported model has been predicted by ONNXRuntime!&quot;</span><span class="p">)</span>
+<span class="c1"># predict by Paddle</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">paddle_outs</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># compare ONNX Runtime and Paddle results</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">ort_outs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">paddle_outs</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The difference of results between ONNXRuntime and Paddle looks good!&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="visualdl">可视化工具VisualDL:<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/03_VisualDL/index_cn.html">笔记</a><a class="headerlink" href="#visualdl" title="Permanent link">&para;</a></h3>
+<h3 id="_9">推理部署:<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/05_inference_deployment/index_cn.html">笔记</a><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://paddle-lite.readthedocs.io/zh/latest/index.html">Paddle-Lite的使用</a></li>
+<li><a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/05_inference_deployment/paddleslim/paddle_slim.html">模型压缩PaddleSlim:模型裁剪、定点量化(在线/离线)、知识蒸馏、参数/模型结构搜索</a></li>
+<li><a href="https://paddleslim.readthedocs.io/zh_CN/latest/">Paddleslim中文文档</a>|<a href="https://github.com/PaddlePaddle/PaddleSlim">PaddleSlim github</a></li>
+<li><a href="https://github.com/PaddlePaddle/PaddleSlim/blob/release/2.0.0/docs/zh_cn/quick_start/dygraph/dygraph_quant_aware_training_tutorial.md">在线量化使用示例</a></li>
+<li><a href="https://github.com/PaddlePaddle/PaddleSlim/blob/release/2.0.0/docs/zh_cn/quick_start/dygraph/dygraph_quant_post_tutorial.md">离线量化使用示例</a></li>
+</ul>
+<p><img alt="image-20210518122619324" src="../assets/image-20210518122619324.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              PyTorch快速教程
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Caffe快速教程
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

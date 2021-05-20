@@ -1,0 +1,1162 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>量化工具使用 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mmdetection" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              量化工具使用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          量化工具使用
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        量化工具使用
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mmdetection" class="md-nav__link">
+    mmdetection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detectron2" class="md-nav__link">
+    detectron2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycuda" class="md-nav__link">
+    pycuda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytorch_to_onnx" class="md-nav__link">
+    pytorch_to_onnx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorrt" class="md-nav__link">
+    TensorRT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onnx-tensorrt" class="md-nav__link">
+    onnx-tensorrt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytorch-onnx-trt" class="md-nav__link">
+    pytorch-&gt;onnx-&gt;trt使用案例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mmdetection" class="md-nav__link">
+    mmdetection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detectron2" class="md-nav__link">
+    detectron2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycuda" class="md-nav__link">
+    pycuda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytorch_to_onnx" class="md-nav__link">
+    pytorch_to_onnx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorrt" class="md-nav__link">
+    TensorRT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onnx-tensorrt" class="md-nav__link">
+    onnx-tensorrt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytorch-onnx-trt" class="md-nav__link">
+    pytorch-&gt;onnx-&gt;trt使用案例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>量化工具使用</h1>
+                
+                <h3 id="mmdetection">mmdetection<a class="headerlink" href="#mmdetection" title="Permanent link">&para;</a></h3>
+<p><strong><a href="https://github.com/open-mmlab/mmcv/blob/master/README_zh-CN.md">MMCV介绍和安装</a>|<a href="https://mmcv.readthedocs.io/en/latest/#">文档</a>|<a href="https://mmdetection.readthedocs.io/en/latest/index.html">MMDetection介绍</a></strong></p>
+<ul>
+<li><a href="https://github.com/open-mmlab/mmdetection/blob/master/tools/dataset_converters/pascal_voc.py">convert voc to coco</a></li>
+</ul>
+<p><strong>mmcv</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mmcv</span>
+
+<span class="c1"># 1.图片的读存，显示,后面调用的opencv的api</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;test.jpg&#39;</span><span class="p">)</span> <span class="c1"># bgr</span>
+<span class="n">rgb_img</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">bgr2rgb</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">gray_img</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">bgr2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">gray_img</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;test.jpg&#39;</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;grayscale&#39;</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;out.jpg&#39;</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">win_name</span><span class="o">=</span><span class="s1">&#39;test image&#39;</span><span class="p">,</span> <span class="n">wait_time</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span> <span class="c1"># mmcv.imshow(img,win_name=&#39;&#39;,wait_time=0)</span>
+
+<span class="c1"># 2. img resize,多了个参数 return_scale=False,如果True，返回(resized_img,(w_scale,h_scale))</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imresize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span> <span class="n">return_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># (w,h)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imresize_like</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dst_img</span><span class="p">,</span> <span class="n">return_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># the same size of dst_img</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imrescale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imrescale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span> <span class="c1"># resize so that the max edge no longer than 1000, short edge no longer than 800,without changing the aspect ratio,同等比例缩放</span>
+
+<span class="c1"># 3.旋转图片</span>
+<span class="n">img_</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">imrotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">30</span><span class="o">|-</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># 默认旋转，正顺时针，负逆时针，默认带超出边界的截断并且尺寸不变，空白部分用0填充，旋转中心默认图片中心</span>
+<span class="n">img_</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">imrotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span> <span class="c1"># 放大1.5倍的同时并旋转30度</span>
+<span class="n">img_</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">imrotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="c1"># 修改旋转中心为(100,100)</span>
+<span class="n">img_</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">imrotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">auto_bound</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 超出边界的保留其余补0像素，尺寸改变</span>
+
+<span class="c1"># 4.flip</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imflip</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># horizontally</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imflip</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span> <span class="c1"># vertically</span>
+
+<span class="c1"># 5.crop</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imcrop</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]))</span> <span class="c1"># (101,101,3) # 闭区间[xmin,xmax]</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imcrop</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">]]))</span> <span class="c1"># 同时切多张图</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imcrop</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span><span class="p">,</span> <span class="n">scale_ratio</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span> <span class="c1"># 切图后并放缩</span>
+
+<span class="c1"># 6.padding</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">impad</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">),</span> <span class="n">pad_val</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># (h,w)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">impad</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">),</span> <span class="n">pad_val</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span> <span class="c1"># bgr</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">impad</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">pad_val</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#left,right,top,bottom-&gt;0</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">impad</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">pad_val</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">impad_to_multiple</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span> <span class="c1"># 填充图像，使每个边缘都是某个值的倍数。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># video</span>
+<span class="c1"># 1.video信息</span>
+<span class="n">video</span> <span class="o">=</span> <span class="n">mmcv</span><span class="o">.</span><span class="n">VideoReader</span><span class="p">(</span><span class="s1">&#39;test.mp4&#39;</span><span class="p">)</span>
+<span class="c1"># 视频宽，视频高，视频分辨率(w,h),视频帧率(30),视频帧数</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">video</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">video</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">video</span><span class="o">.</span><span class="n">resolution</span><span class="p">,</span> <span class="n">video</span><span class="o">.</span><span class="n">fps</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">video</span><span class="p">))</span>
+
+<span class="c1"># 2.迭代视频</span>
+<span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">video</span><span class="p">]</span> <span class="c1"># 1.直接迭代</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">video</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># 2.read the next frame</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">video</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span> <span class="c1"># 3.按照索引取帧</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">video</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span> <span class="c1"># 取多帧</span>
+
+<span class="c1"># 3.video-&gt;images,images-&gt;video,other util</span>
+<span class="n">video</span><span class="o">.</span><span class="n">cvt2frames</span><span class="p">(</span><span class="s1">&#39;out_dir&#39;</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">frames2video</span><span class="p">(</span><span class="s1">&#39;out_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;test.avi&#39;</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">cut_video</span><span class="p">(</span><span class="s1">&#39;test.mp4&#39;</span><span class="p">,</span> <span class="s1">&#39;clip1.mp4&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vcodec</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">concat_video</span><span class="p">([</span><span class="s1">&#39;clip1.mp4&#39;</span><span class="p">,</span> <span class="s1">&#39;clip2.mp4&#39;</span><span class="p">],</span> <span class="s1">&#39;joined.mp4&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;quiet&#39;</span><span class="p">)</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">resize_video</span><span class="p">(</span><span class="s1">&#39;test.mp4&#39;</span><span class="p">,</span> <span class="s1">&#39;resized1.mp4&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="mi">240</span><span class="p">))</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">resize_video</span><span class="p">(</span><span class="s1">&#39;test.mp4&#39;</span><span class="p">,</span> <span class="s1">&#39;resized2.mp4&#39;</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 4.show image</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;a.jpg&#39;</span><span class="p">)</span> <span class="c1"># path</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="c1"># ndarray</span>
+<span class="c1"># bboxes = np.array([[0, 0, 50, 50], [20, 20, 60, 60]])</span>
+<span class="n">mmcv</span><span class="o">.</span><span class="n">imshow_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bboxes</span><span class="p">)</span> <span class="c1"># show image with bounding boxes</span>
+</code></pre></div>
+<h3 id="detectron2">detectron2<a class="headerlink" href="#detectron2" title="Permanent link">&para;</a></h3>
+<p><a href="https://detectron2.readthedocs.io/en/latest/">detectron2 documentation</a>|<code>pytorch&gt;=1.6</code></p>
+<h3 id="pycuda">pycuda<a class="headerlink" href="#pycuda" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.osgeo.cn/pycuda/">文档-zh</a>|<a href="https://documen.tician.de/pycuda/">文档-en</a></p>
+<p><strong>安装</strong></p>
+<p><a href="https://pypi.org/project/pycuda/">pyCuda下载源码</a>，并编译  </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.源码解压 tar -zxf pycuda-VERSION.tar.gz  </span>
+
+<span class="c1"># 2 TypeError:attrib() got an unexpected keyword argument &#39;convert&#39; </span>
+pip uninstall attrs 
+pip install <span class="nv">attrs</span><span class="o">==</span><span class="m">19</span>.1.0  
+
+<span class="c1"># 3.编译PyCUDA </span>
+<span class="nb">cd</span> pycuda-VERSION 
+python configure.py --cuda-root<span class="o">=</span>/usr/local/cuda 
+sudo make install <span class="c1"># or make install</span>
+
+<span class="c1"># 4.测试 </span>
+<span class="nb">cd</span> pycuda-VERSION/test
+python test_driver.py <span class="c1"># 输出OK即成功</span>
+</code></pre></div>
+<p><strong>常见用法</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在使用PycUDA之前，必须导入并初始化;可以 pycuda.autoinit自动初始化，也可以手动执行初始化、上下文创建和清理</span>
+
+<span class="c1"># 1.自动初始化</span>
+<span class="kn">import</span> <span class="nn">pycuda.autoinit</span> <span class="c1"># 这个是自动初始化上下文的方法，其实执行了如下操作</span>
+<span class="c1">#--------------------------</span>
+<span class="kn">import</span> <span class="nn">pycuda.driver</span> <span class="k">as</span> <span class="nn">cuda</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">init</span><span class="p">()</span><span class="c1"># Initialize CUDA</span>
+<span class="kn">from</span> <span class="nn">pycuda.tools</span> <span class="kn">import</span> <span class="n">make_default_context</span>
+<span class="c1"># context：如果环境变量 CUDA_DEVICE 设置时，其整数值用作设备编号。如果文件 .cuda-device 存在于用户的主目录中，其内容的整数值用作设备号。否则，所有可用的CUDA设备都将以循环方式进行尝试。</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">make_default_context</span><span class="p">()</span> <span class="c1"># 创建默认的上下文</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">get_device</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
+<span class="c1">#---------------------------</span>
+
+<span class="c1"># 2.手动初始化</span>
+<span class="kn">import</span> <span class="nn">pycuda.driver</span> <span class="k">as</span> <span class="nn">cuda</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 可以根据3输出一些想要的信息</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">make_context</span><span class="p">()</span> <span class="c1"># 手动创建上下文</span>
+<span class="o">.......</span><span class="c1"># 可以写一些使用代码</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span><span class="c1"># 手动清空上下文</span>
+<span class="k">del</span> <span class="n">ctx</span> <span class="c1"># 删除上下文</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pycuda.driver</span> <span class="k">as</span> <span class="nn">cuda</span>
+<span class="kn">import</span> <span class="nn">pycuda.autoinit</span>
+<span class="kn">from</span> <span class="nn">pycuda.compiler</span> <span class="kn">import</span> <span class="n">SourceModule</span>
+
+<span class="c1"># 1.数据传输</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># cpu上的数据</span>
+<span class="n">data_memory_gpu</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">mem_alloc</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">nbytes</span><span class="p">)</span> <span class="c1"># 在gpu上给data分配内存</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">memcpy_htod</span><span class="p">(</span><span class="n">data_memory_gpu</span><span class="p">,</span><span class="n">data</span><span class="p">)</span> <span class="c1"># 把data从cpu转移到gpu</span>
+
+<span class="c1"># 2.gpu中取回数据</span>
+<span class="n">data_doubled</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">memcpy_dtoh</span><span class="p">(</span><span class="n">data_doubled</span><span class="p">,</span> <span class="n">data_memory_gpu</span><span class="p">)</span> <span class="c1"># 从gpu内存中取数据</span>
+
+<span class="c1"># 3.常用的有用信息</span>
+<span class="kn">import</span> <span class="nn">pycuda.driver</span> <span class="k">as</span> <span class="nn">cuda</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">Device</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="c1"># 返回设备gpus的总数量</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 设置要使用gpu的ID</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="c1"># 返回gpu型号</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">()</span> <span class="c1"># 获取属性</span>
+<span class="n">cuda</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span><span class="n">device_id</span><span class="p">)</span><span class="o">.</span><span class="n">total_memory</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e9</span> <span class="c1"># 获取该号gpu的总内存</span>
+<span class="n">available</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">mem_get_info</span><span class="p">()</span> <span class="c1"># 获得所有设备的可用内存和总内存</span>
+</code></pre></div>
+<p><strong>example</strong></p>
+<ul>
+<li>初始化PyCUDA模块。</li>
+<li>导入一个用于编译的类。</li>
+<li>定义一个存储着CUDA代码的字符串。</li>
+<li>构造一个类对象（编译CUDA代码，使之成为可以被执行的GPU程序）。</li>
+<li>从类对象中获得一个函数的执行入口。</li>
+<li>通过这个入口，执行GPU程序。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pycuda.autoinit</span> <span class="c1">#以自动的方式对pycuda进行初始</span>
+<span class="kn">from</span> <span class="nn">pycuda.compiler</span> <span class="kn">import</span> <span class="n">SourceModule</span> <span class="c1"># 编译kernel函数的类</span>
+<span class="kn">import</span> <span class="nn">pycuda.gpuarray</span> <span class="k">as</span> <span class="nn">gpuarray</span>
+<span class="c1"># 通过字符串定义kernel函数</span>
+<span class="n">kernel_code</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">void __global__ add(const float *x, const float *y, float *z)</span>
+<span class="s2">{</span>
+<span class="s2">    const int n = threadIdx.y*blockDim.x+threadIdx.x;</span>
+<span class="s2">    z[n] = x[n] + y[n];</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="c1"># 编译kernel函数</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">SourceModule</span><span class="p">(</span><span class="n">kernel_code</span><span class="p">)</span>
+<span class="c1"># 获取函数接口</span>
+<span class="n">add</span><span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">)</span>
+<span class="c1"># 定义三个二维数组并转换成pycuda中的gpuarray</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">A_GPU</span> <span class="o">=</span> <span class="n">gpuarray</span><span class="o">.</span><span class="n">to_gpu</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">B_GPU</span> <span class="o">=</span> <span class="n">gpuarray</span><span class="o">.</span><span class="n">to_gpu</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="n">C_GPU</span> <span class="o">=</span> <span class="n">gpuarray</span><span class="o">.</span><span class="n">to_gpu</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="c1"># 执行kernel函数，和cuda c++一样定义griddim和blockdim;</span>
+<span class="n">add</span><span class="p">(</span><span class="n">A_GPU</span><span class="p">,</span> <span class="n">B_GPU</span><span class="p">,</span> <span class="n">C_GPU</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">block</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">C_GPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="c1"># 编译kernel代码的时间比较耗时，编译一次之后后面就快了。</span>
+</code></pre></div>
+<h3 id="pytorch_to_onnx">pytorch_to_onnx<a class="headerlink" href="#pytorch_to_onnx" title="Permanent link">&para;</a></h3>
+<p><a href="https://blog.csdn.net/github_28260175/article/details/103436020">转换采坑1</a>|</p>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">export</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="c1"># net</span>
+    <span class="n">args</span><span class="p">,</span> <span class="c1"># inputs,torch.randn(1,3,h_size,w_size)</span>
+    <span class="n">f</span><span class="p">,</span> <span class="c1"># onnx_name,xxx.onnx</span>
+    <span class="n">export_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="c1"># 是否导入参数，默认True,如果只是想要网络结构，导出为False</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># 是否打印debug description of the trace.</span>
+    <span class="n">training</span><span class="o">=&lt;</span><span class="n">TrainingMode</span><span class="o">.</span><span class="n">EVAL</span><span class="p">:</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">,</span> <span class="c1"># TrainingMode.EVAL:导出推理模型，默认即可</span>
+    <span class="n">input_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># list of strings, default empty list--&gt;[&#39;input0&#39;]</span>
+    <span class="n">output_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># list of strings, default empty list--&gt;[&#39;output0&#39;]</span>
+    <span class="n">aten</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">export_raw_ir</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="c1"># 1.torch.onnx.OperatorExportTypes.ONNX 默认，用ONNX的op代替pytorch op</span>
+    <span class="c1"># 2.xx.ONNX_ATEN:所有op使用aten的op代替pytorch op</span>
+    <span class="c1"># 3.xx.ONNX_ATEN_FALLBACK:该方法阻止ONNX替换PyTorch的OP使用ATen的OP替换，PyTorch2ONNX能通，但ONNX2TRT却不能通，原因是ONNX phaser识别不到非ONNX的OP</span>
+    <span class="n">operator_export_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="c1"># 默认9，如果onnx2trt报upsample相关错，改为11,例如:RuntimeError: ONNX export failed: Couldn’t export operator aten::upsample_bilinear2d</span>
+    <span class="n">opset_version</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">_retain_param_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">do_constant_folding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">example_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">strip_doc_string</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dynamic_axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">keep_initializers_as_inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">custom_opsets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">enable_onnx_checker</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_external_data_format</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># example</span>
+<span class="kn">import</span> <span class="nn">onnx</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">h_size</span><span class="p">,</span><span class="n">w_size</span><span class="p">)</span>
+<span class="n">output_onnx</span> <span class="o">=</span> <span class="s2">&quot;xxx.onnx&quot;</span>
+<span class="n">input_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;input0&#39;</span><span class="p">]</span>
+<span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="s1">&#39;boxes&#39;</span><span class="p">,</span><span class="s1">&#39;landmark&#39;</span><span class="p">]</span>
+<span class="n">torch_out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">net</span><span class="p">,</span><span class="n">inputs</span><span class="p">,</span><span class="n">output_onnx</span><span class="p">,</span><span class="n">export_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">input_names</span><span class="o">=</span><span class="n">input_names</span><span class="p">,</span><span class="n">output_names</span><span class="o">=</span><span class="n">output_names</span><span class="p">,</span><span class="n">opset_version</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span><span class="n">operator_export_type</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">onnx</span><span class="o">.</span><span class="n">OperatorExportTypes</span><span class="o">.</span><span class="n">ONNX</span><span class="p">)</span>
+<span class="n">onnx</span><span class="o">.</span><span class="n">checker</span><span class="o">.</span><span class="n">check_model</span><span class="p">(</span><span class="n">onnx</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_onnx</span><span class="p">))</span> <span class="c1"># 检查一下生成的onnx模型</span>
+</code></pre></div>
+<h3 id="tensorrt">TensorRT<a class="headerlink" href="#tensorrt" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>TensorRT是推理框架，可以理解为把其他框架模型转为TensorRT模型，然后在tensorRT中可以针对NVIDIA自家GPU实施优化策略，并进行部署加速。</p>
+</blockquote>
+<p><a href="https://docs.nvidia.com/deeplearning/tensorrt/archives/index.html">Documentation Archives API</a>|<code>TensorRT7.0.0--&gt;pytorch 1.3.0 or older</code></p>
+<ul>
+<li><a href="https://developer.nvidia.com/nvidia-tensorrt-download">TensorRTGA for linux</a>，按照自己的<code>cuda &amp; cudnn</code>版本即可</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cat /usr/local/cuda/version.txt
+cat /usr/local/cuda/include/cudnn.h <span class="p">|</span> grep CUDNN_MAJOR -A <span class="m">2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>tar -zxvf TensorRT-xxx.tar.gz
+<span class="nb">cd</span> TensorRT-xxx
+<span class="nb">cd</span> python <span class="o">&amp;&amp;</span>　pip install tensorrt-xx.whl <span class="c1"># 安装TensorRT-python</span>
+<span class="nb">cd</span> uff <span class="o">&amp;&amp;</span> pip install uff-xxx.whl <span class="c1"># 安装UFF</span>
+<span class="nb">cd</span> graphsurgeon <span class="o">&amp;&amp;</span> pip install graphsurgeon-xx.whl <span class="c1"># 安装graphsurgeon</span>
+<span class="c1"># cd onnx_graphsurgeon &amp;&amp; pip install onnx_graphsurgeon-xx.whl</span>
+
+<span class="c1"># 建立c++环境，会在TensorRT目录的bin文件夹下生产对应的可执行文件</span>
+<span class="nb">cd</span> sample
+vi Makefile.config <span class="c1"># 修改CUDA路径</span>
+make
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 环境配置</span>
+~sudo vim ~/.bashrc
+<span class="c1"># 添加下面三行</span>
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/home/chenyuyang/TensorRT-6.0.1.5/lib
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div>
+<p><strong>tensorrt使用</strong></p>
+<p>①创建<code>LOG</code>管理器，用于记录<code>tensorrt</code>的<code>errors, warnings, and informational messages</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorrt</span> <span class="k">as</span> <span class="nn">trt</span>
+<span class="n">TRT_LOGGER</span> <span class="o">=</span> <span class="n">trt</span><span class="o">.</span><span class="n">Logger</span><span class="p">(</span><span class="n">trt</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</code></pre></div>
+<p>②直接使用<code>TensorRT</code>的<code>python api</code>构建网络，然后把<code>pytorch</code>或者其他框架的模型参数填充进去，进行推理(<strong>得一步一步构建层，麻烦</strong>)，实际案例:<code>TensorRT-version/samples/python/network_api_pytorch_mnist/</code></p>
+<ul>
+<li><code>Create the builder and network</code>，目的是创建一个推理引擎和网络(pytorch参数填充)</li>
+<li><code>create execution context</code>，创建可执行的上下文用于模型推理，然后执行推理即可</li>
+</ul>
+<p>③使用解析器解析不同框架模型进行推理:<code>samples/python/introductory_parser_samples</code></p>
+<div class="highlight"><pre><span></span><code><span class="m">1</span>.Create the TensorRTbuilder and network. <span class="c1"># 构建推理引擎和网络</span>
+<span class="m">2</span>.Create the TensorRT parser <span class="k">for</span> the specific format.# 根据使用框架构建对应解析器
+<span class="m">3</span>.Use the parser to parse the imported model and populate the network.# 解析模型导入tensorrt的network，这里可以选择把引擎序列化<span class="o">(</span>引擎保留了网络定义和网络参数<span class="o">)</span>
+<span class="m">4</span>.构建上下文执行推理<span class="o">(</span>创建一些空间来存储中间激活值<span class="o">)</span>，引擎知识网络和参数，前向需要额外空间
+</code></pre></div>
+<ul>
+<li><strong>caffe</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 详情例子请看:samples/python/introductory_parser_samples/caffe_resnet50.py</span>
+<span class="kn">import</span> <span class="nn">tensorrt</span> <span class="k">as</span> <span class="nn">trt</span>
+<span class="n">TRT_LOGGER</span> <span class="o">=</span> <span class="n">trt</span><span class="o">.</span><span class="n">Logger</span><span class="p">(</span><span class="n">trt</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="n">datatype</span> <span class="o">=</span> <span class="n">trt</span><span class="o">.</span><span class="n">float32</span> <span class="c1"># 使用float32</span>
+<span class="n">deploy_file</span> <span class="o">=</span> <span class="s1">&#39;data/mnist/mnist.prototxt&#39;</span>
+<span class="n">model_file</span> <span class="o">=</span> <span class="s1">&#39;data/mnist/mnist.caffemodel&#39;</span>
+
+<span class="k">with</span> <span class="n">trt</span><span class="o">.</span><span class="n">Builder</span><span class="p">(</span><span class="n">TRT_LOGGER</span><span class="p">)</span> <span class="k">as</span> <span class="n">builder</span><span class="p">,</span> <span class="n">builder</span><span class="o">.</span><span class="n">create_network</span><span class="p">()</span> <span class="k">as</span> <span class="n">network</span><span class="p">,</span> <span class="n">trt</span><span class="o">.</span><span class="n">CaffeParser</span><span class="p">()</span> <span class="k">as</span> <span class="n">parser</span><span class="p">:</span>
+    <span class="c1"># model_tensors: tensor --&gt;Itensor(trt object)</span>
+    <span class="n">model_tensors</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">deploy</span><span class="o">=</span><span class="n">deploy_file</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model_file</span><span class="p">,</span>
+                                 <span class="n">network</span><span class="o">=</span><span class="n">network</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">datatype</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># It allows users to export models trained using Caffe to TRT.</span>
+<span class="k">class</span> <span class="nc">tensorrt</span><span class="o">.</span><span class="n">CaffeParser</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">CaffeParser</span><span class="p">)</span> <span class="err">→</span> <span class="kc">None</span>
+<span class="c1"># 主要是parse方法</span>
+<span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">CaffeParser</span><span class="p">,</span> <span class="n">deploy</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">network</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">INetworkDefinition</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">DataType</span><span class="p">)</span> <span class="err">→</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">IBlobNameToTensor</span>
+
+<span class="c1"># 这个类被用作存储从CaffeParser解析出来的ITensor</span>
+<span class="k">class</span> <span class="nc">tensorrt</span><span class="o">.</span><span class="n">IBlobNameToTensor</span>
+<span class="c1"># 主要是find方法</span>
+<span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">IBlobNameToTensor</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="err">→</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">ITensor</span> <span class="c1"># Given a blob name, this function returns an ITensor object.</span>
+</code></pre></div>
+<ul>
+<li>
+<p><strong>Tensorflow  .pb-&gt;.uff文件 使用UffParser解析</strong></p>
+</li>
+<li>
+<p><strong>ONNX</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 详情例子请看:samples/python/introductory_parser_samples/onnx_resnet50.py</span>
+<span class="c1"># 或者 samples/python/yolov3_onnx</span>
+<span class="kn">import</span> <span class="nn">tensorrt</span> <span class="k">as</span> <span class="nn">trt</span>
+<span class="n">TRT_LOGGER</span> <span class="o">=</span> <span class="n">trt</span><span class="o">.</span><span class="n">Logger</span><span class="p">(</span><span class="n">trt</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;faceDetect.onnx&quot;</span>
+
+<span class="k">with</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">trt</span><span class="o">.</span><span class="n">Builder</span><span class="p">(</span><span class="n">TRT_LOGGER</span><span class="p">)</span> <span class="k">as</span> <span class="n">builder</span><span class="p">,</span> <span class="n">builder</span><span class="o">.</span><span class="n">create_network</span><span class="p">()</span> <span class="k">as</span> <span class="n">network</span><span class="p">,</span> <span class="n">trt</span><span class="o">.</span><span class="n">OnnxParser</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">TRT_LOGGER</span><span class="p">)</span> <span class="k">as</span> <span class="n">parser</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">tensorrt</span><span class="o">.</span><span class="n">OnnxParser</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">OnnxParser</span><span class="p">,</span> <span class="n">network</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">INetworkDefinition</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">ILogger</span><span class="p">)</span> <span class="err">→</span> <span class="kc">None</span>
+<span class="c1"># 主方法,Parse a serialized Onnx model into the TensorRT network. </span>
+<span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">tensorrt</span><span class="o">.</span><span class="n">tensorrt</span><span class="o">.</span><span class="n">OnnxParser</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="err">→</span> <span class="nb">bool</span>
+</code></pre></div>
+<p><strong>序列化模型</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 可选，序列化引擎不可跨平台或TensorRT版本移植，序列化模型后可以存成文件，方便下次加载和推理</span>
+<span class="n">serialized_engine</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">serialize</span><span class="p">()</span> <span class="c1"># 序列化模型</span>
+<span class="c1"># 1.直接用序列化模型进行推理，需要创建运行时对象</span>
+<span class="k">with</span> <span class="n">trt</span><span class="o">.</span><span class="n">Runtime</span><span class="p">(</span><span class="n">TRT_LOGGER</span><span class="p">)</span> <span class="k">as</span> <span class="n">runtime</span><span class="p">:</span> <span class="n">engine</span> <span class="o">=</span>
+    <span class="n">runtime</span><span class="o">.</span><span class="n">deserialize_cuda_engine</span><span class="p">(</span><span class="n">serialized_engine</span><span class="p">)</span>
+<span class="c1"># 2.存储序列化模型，下次直接加载就行，不用再进行序列化(序列化模型挺耗时的)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">engine</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">wb</span><span class="err">”</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="err">“</span><span class="n">sample</span><span class="o">.</span><span class="n">engine</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">rb</span><span class="err">”</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">,</span> <span class="n">trt</span><span class="o">.</span><span class="n">Runtime</span><span class="p">(</span><span class="n">TRT_LOGGER</span><span class="p">)</span> <span class="k">as</span> <span class="n">runtime</span><span class="p">:</span>
+        <span class="n">engine</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">deserialize_cuda_engine</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="onnx-tensorrt">onnx-tensorrt<a class="headerlink" href="#onnx-tensorrt" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/onnx/onnx-tensorrt"><code>onnx-tensorrt</code></a>|<a href="https://blog.csdn.net/sinat_38132146/article/details/104298628">非root用户安装更新cmake</a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 方案一：源码编译</span>
+
+<span class="c1"># 1. onnx-tensorrt-7.0:https://github.com/onnx/onnx-tensorrt,注意onnx==1.6,所以对应的版本是tensorrt7.0,否则会报不能找到Tensorrt lib的错</span>
+
+<span class="c1"># 1.1 checkout</span>
+git checkout <span class="m">7</span>.0 <span class="c1"># 选择合适的版本，否则会报版本错</span>
+
+<span class="c1"># 2.在再onnx-tensorrt的CMakeLists.txt中加入</span>
+link_directories<span class="o">(</span>/ssd/chenyuyang/softwares/TensorRT-7.0.0.11/lib<span class="o">)</span> include_directories<span class="o">(</span>/ssd/chenyuyang/softwares/cuda-10.2/include<span class="o">)</span> include_directories<span class="o">(</span>/ssd/chenyuyang/softwares/TensorRT-7.0.0.11/include<span class="o">)</span> 
+
+<span class="c1"># 2.add onnx使用源码直接下载安装也行，可以自己选择版本</span>
+
+<span class="c1"># 3.构建</span>
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake .. -DTENSORRT_ROOT<span class="o">=</span>/ssd/chenyuyang/softwares/TensorRT-7.0.0.11
+make -j8
+<span class="c1"># sudo make install</span>
+make <span class="nv">DESTDIR</span><span class="o">=</span>/install/directory install
+
+<span class="c1"># 编译出错</span>
+<span class="c1"># 1.考虑tensorrt版本是否正确，例如onnx==1.6 对应的是tensorrtv7.0</span>
+<span class="c1"># 2.考虑onnx-tensort版本是否正确，git clone的一般是master版本，需要git checkout xx</span>
+
+pip install <span class="nv">onnx</span><span class="o">==</span><span class="m">1</span>.6.0 <span class="c1"># 可以安装最新的，有时候不同版本会报一些奇怪的错</span>
+python3 setup.py install <span class="c1"># 安装onnx-tensorrt</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>onnx2trt my_model.onnx -o my_engine.trt <span class="c1"># onnx model --&gt; 序列化的tensorrt引擎</span>
+onnx2trt my_model.onnx -d <span class="m">16</span> -o my_engine.trt <span class="c1"># onnx model --&gt; 序列化的tensorrt Fp16的引擎</span>
+onnx2trt my_model.onnx -t my_model.onnx.txt <span class="c1"># onnx model--&gt;可读文本</span>
+onnx2trt my_model.onnx -O <span class="s2">&quot;pass_1;pass_2;pass_3&quot;</span> -m my_model_optimized.onnx <span class="c1"># onnx优化输出</span>
+</code></pre></div>
+<p><code>onnx2trt -h</code></p>
+<p><img alt="image-20210419202641696" src="../assets/image-20210419202641696.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 方案二 python代码</span>
+<span class="c1"># common.py代码：https://github.com/aditya-dl/RetinaFace-TensorRT-Python/blob/main/common.py，最好从自己安装的tensorrt的sample/python中获得</span>
+<span class="c1"># 完整示例:https://github.com/aditya-dl/RetinaFace-TensorRT-Python</span>
+<span class="c1"># 代码如下，示例代码可参考：sample/python/yolov3_onnx</span>
+
+<span class="c1"># 最终参考代码：https://github.com/RizhaoCai/PyTorch_ONNX_TensorRT/blob/master/helpers/trt_helper.py</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 遇到的错误合集</span>
+
+<span class="c1"># 1. 含有F.Interpolate(上采样插值) 必须以显示的方式提供新的shape，尽量不要使用比例因子，这样结果图会动态计算输出形状，这样Tensorrt不兼容(path:interpolate-&gt;onnx:resize-&gt;trt:error)，2020.05</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">output</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 这样也不行，会发生 Assertion failed: ctx-&gt;tensors().count(inputName)，必须设置为常量</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">1024</span><span class="p">,</span><span class="mi">1024</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 设置为常量，但这也太麻烦了吧，每次都得改</span>
+
+<span class="c1"># 2. 上面会发生  Assertion failed: ctx-&gt;tensors().count(inputName)，如何解决？</span>
+<span class="c1"># 使用opset_version=11，导出的onnx模型interpolate转为Resize,但是会有一个单独的Constant层作为Resize输入，但问题是：Constant层并未连接任何输入，onnx-&gt;trt时并不能找到Constant层的输入，无法初始化，解决方案:tensorrt7.2.2.3 cuda10.2 cudnn8.05 onnx-tensorrt-7.2.2(master)</span>
+
+<span class="c1"># pytorch-&gt;onnx:经常会出现，expand, Gather, reshape不支持等,TensorRT对pytorch的维度变化特别不友好，模型转化过程中绝大多数bug都出在维度变化上</span>
+
+<span class="c1"># 4.tensorrt部署采坑记录:https://blog.csdn.net/u011605951/article/details/108441935</span>
+</code></pre></div>
+<ul>
+<li>附录</li>
+<li><a href="https://github.com/NVIDIA-AI-IOT/torch2trt">1.torch2trt(固定输入):挺有用的</a></li>
+<li><a href="https://github.com/grimoire/torch2trt_dynamic.git">2.torch2trt_dynamic(动态输入):更有用,基于1</a></li>
+<li><a href="https://github.com/grimoire/mmdetection-to-tensorrt.git">3.mmdetection-to-trt:基于2</a>|<a href="https://github.com/grimoire/mmdetection-to-tensorrt/blob/master/docs/getting_started.md">2,3 int8量化使用教程</a></li>
+<li><a href="https://github.com/zerollzeng/tiny-tensorrt">4.tiny-tensorrt:使tensorrt部署变的很容易</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># install 时候注意 CMakeList.txt 添加下面三行，因为是非root用户，并没有install到/usr,有些库会找不到报错，直接指定路径即可</span>
+<span class="c1"># include_directories(./plugin) 添加到该路径后面即可</span>
+link_directories<span class="o">(</span>/ssd/chenyuyang/softwares/TensorRT-7.0.0.11/lib<span class="o">)</span> include_directories<span class="o">(</span>/ssd/chenyuyang/softwares/cuda-10.2/include<span class="o">)</span> include_directories<span class="o">(</span>/ssd/chenyuyang/softwares/TensorRT-7.0.0.11/include<span class="o">)</span> 
+</code></pre></div>
+<h3 id="pytorch-onnx-trt">pytorch-&gt;onnx-&gt;trt使用案例<a class="headerlink" href="#pytorch-onnx-trt" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/RizhaoCai/PyTorch_ONNX_TensorRT">backbone include int8</a></li>
+<li><a href="https://github.com/jkjung-avt/tensorrt_demos">tensorrt_demos_python</a></li>
+<li><a href="https://github.com/Syencil/tensorRT">tensorrt_demos_c++</a></li>
+<li><a href="https://github.com/aditya-dl/RetinaFace-TensorRT-Python">RetinaFace-TensorRT-Python</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># trt推理时碰到错误</span>
+
+<span class="c1"># 1.[TensorRT] ERROR: ../rtSafe/cuda/cudaConvolutionRunner.cpp (303) - Cudnn Error in execute: 8 (CUDNN_STATUS_EXECUTION_FAILED)</span>
+<span class="c1"># solve:I install pytorch with cudatoolkit=10.1 (use conda install) but my tensorrt cuda version is 10.2 so I reinstall cudatoolkit by conda install cudatoolkit=10.2</span>
+
+<span class="c1"># 2.[TensorRT] ERROR: safeContext.cpp (184) - Cudnn Error in configure: 7 (CUDNN_STATUS_MAPPING_ERROR) [TensorRT] ERROR: FAILED_EXECUTION: std::exception，属于(trt+pytorch共用产生的错误，一般分开后错误会消失，但是由于预处理等操作必须结合)got CUDNN_STATUS_MAPPING_ERROR when using tensorrt and pytorch together，这种错误一般是gpu内存冲突导致</span>
+<span class="c1"># solve:I finally make this works. By adding cuda context push and pop on the two ends of doing inference 或者 torch2trt也可以解决</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              PD+PLT简洁笔记
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              实用工具教程
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

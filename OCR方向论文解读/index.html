@@ -1,0 +1,1257 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>OCR方向论文解读 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ctpn1609" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OCR方向论文解读
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          OCR方向论文解读
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        OCR方向论文解读
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ctpn1609" class="md-nav__link">
+    CTPN(16/09)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r2cnn1706" class="md-nav__link">
+    R2CNN(17/06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seglink1703" class="md-nav__link">
+    SegLink(17/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textboxes1611" class="md-nav__link">
+    Textboxes(16/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textboxes1801" class="md-nav__link">
+    TextBoxes++(18/01)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#east1704" class="md-nav__link">
+    East(17/04 像素级的回归)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-east" class="md-nav__link">
+    Advanced EAST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixellink1801" class="md-nav__link">
+    pixelLink(18/01)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spcnet1811" class="md-nav__link">
+    SPCNet(18/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psenet1903" class="md-nav__link">
+    PSENet(19/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pan1908" class="md-nav__link">
+    PAN(19/08)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db1911" class="md-nav__link">
+    DB(19/11)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ctpn1609" class="md-nav__link">
+    CTPN(16/09)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r2cnn1706" class="md-nav__link">
+    R2CNN(17/06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seglink1703" class="md-nav__link">
+    SegLink(17/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textboxes1611" class="md-nav__link">
+    Textboxes(16/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#textboxes1801" class="md-nav__link">
+    TextBoxes++(18/01)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#east1704" class="md-nav__link">
+    East(17/04 像素级的回归)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-east" class="md-nav__link">
+    Advanced EAST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixellink1801" class="md-nav__link">
+    pixelLink(18/01)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spcnet1811" class="md-nav__link">
+    SPCNet(18/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psenet1903" class="md-nav__link">
+    PSENet(19/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pan1908" class="md-nav__link">
+    PAN(19/08)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db1911" class="md-nav__link">
+    DB(19/11)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>OCR方向论文解读</h1>
+                
+                <p><strong>基于回归的文字检测</strong>：优点-&gt;对规则形状文字检测效果较好；缺点-&gt;无法准确检测不规则形状文本。</p>
+<h3 id="ctpn1609">CTPN(16/09)<a class="headerlink" href="#ctpn1609" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1609.03605v1">论文</a>|<a href="https://github.com/opconty/pytorch_ctpn">代码</a>|<a href="https://zhuanlan.zhihu.com/p/51383402">RNN, Seq2Seq, Attention解析</a>|<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">LSTM解析</a></p>
+<p><strong>网络结构</strong></p>
+<p><code>CTPN</code>**只检测横向排列**的文字，类似<code>Faster R-CNN</code>，但加入了<code>LSTM</code></p>
+<p><img alt="image-20210222154309840" src="../assets/image-20210222154309840.png" /></p>
+<ul>
+<li><code>Conv5</code>每点要结合周围<code>3x3</code>区域特征获得一个长度是<code>3x3xC</code>的特征向量，输出<code>N*9C*H*W</code></li>
+</ul>
+<p><img alt="image-20210222155838782" src="../assets/image-20210222155838782.png" /></p>
+<ul>
+<li><code>N*9C*H*W--&gt;reshape--&gt;(NH)*W*9C--&gt;</code>以<code>Batch=NH</code>且最大时间长度<code>T_max=W</code>的数据流输入到双向<code>LSTM</code>，学习每一行的序列特征，双向<code>LSTM</code>输出<code>(NH)*W*256--&gt;reshape--&gt;N*256*H*W</code></li>
+<li>
+<p>最后的输出特征，特征既包含**空间特征**(<code>CNN学习</code>)，也包含**序列特征(lstm学习)**，因为文字是连续的？</p>
+</li>
+<li>
+<p>特征图:<code>N*256*H*W</code>&rarr;<code>fc</code>&rarr;<code>N*512*H*W</code>&rarr;<code>类RPN</code>&rarr;<code>text proposal(建议框)</code></p>
+</li>
+</ul>
+<p><img alt="image-20210222161648826" src="../assets/image-20210222161648826.png" /></p>
+<p><strong>边界框回归方式</strong></p>
+<p><img alt="image-20210222161848476" src="../assets/image-20210222161848476.png" /></p>
+<p><strong>结果处理</strong>:使用<a href="https://zhuanlan.zhihu.com/p/34757009">文本线构造算法</a>来生成真正的检测框。</p>
+<p><img alt="image-20210222162430010" src="../assets/image-20210222162430010.png" /></p>
+<h3 id="r2cnn1706">R2CNN(17/06)<a class="headerlink" href="#r2cnn1706" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/ftp/arxiv/papers/1706/1706.09579.pdf">论文</a>|<a href="https://github.com/dafanghe/Tensorflow_SceneText_Oriented_Box_Predictor">code</a></p>
+<ul>
+<li>不直接回归框的旋转角度(<code>-90~90</code>相同矩形相似,<code>0~180</code>相似)，斜框回归用<code>(x1,y1,x2,y2,h)</code>表示：<strong>顺时针方向两个相邻点坐标和高来定义一个倾斜矩形框</strong>，回归这五个值就容易回归了。</li>
+</ul>
+<p><img alt="image-20200102104553202" src="../assets/image-20200102104553202.png" /></p>
+<p><strong>主要是为了解决旋转文本的检测，主要是在Faster RCNN的算法基础上做了一些修改</strong></p>
+<p><img alt="image-20210222194458261" src="../assets/image-20210222194458261.png" /></p>
+<ul>
+<li>
+<p>通过<code>RPN</code>网络，得到正框的Proposal。由于很多文字是很小的，因此将Faster RCNN中的anchor scale<code>(8,16,32)</code>改为<code>(4,8,16,32)</code>。实验证明增加了小的尺度后检测效果明显提升。</p>
+</li>
+<li>
+<p><code>ROI Pooling</code>时的尺寸除了<code>7*7</code>外，还有两种长宽不一致的尺寸：<code>3*11</code>和<code>11*3</code>，这种设置的用意也非常明显，就是为了解决水平和竖直长文本的检测。然后对于提取到的ROI特征做cancat操作进行融合作为后续预测支路的输入。</p>
+</li>
+<li>
+<p>预测输出有3个支路</p>
+</li>
+<li>
+<p>第一个支路是**有无文本的二分类**，这个和目标检测算法中的目标分类类似。</p>
+</li>
+<li>
+<p>第二个支路是**水平框（axis-aligned box）的预测**，这个和目标检测算法中的框预测一样。</p>
+</li>
+<li>
+<p>第三个支路时**倾斜框（inclined box）的预测**，这部分是这篇文章的亮点，而且该支路后面跟一个斜框NMS进行处理得到最后结果。<strong>虽然倾斜框支路也能预测水平框，但是作者认为第二个支路的存在对最后结果帮助较大。</strong></p>
+<p><img alt="image-20200529153120853" src="../assets/image-20200529153120853.png" /></p>
+</li>
+<li>
+<p><strong>采用倾斜框的NMS算法处理(a)中的预测框后得到的结果，可以看到结果比较好，基于倾斜框的NMS算法和传统的基于水平矩形框的NMS算法差别不大，只不过计算对象换成两个倾斜框</strong></p>
+</li>
+<li>
+<p><strong>损失函数(3部分)</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200102105020902" src="../assets/image-20200102105020902.png" /></p>
+<ul>
+<li>有无文本的二分类损失Lcls</li>
+<li>水平框的回归损失Lreg(vi,vi*)。</li>
+<li>倾斜框的回归损失Lreg(ui,ui*)。</li>
+<li>后面两部分都是采用目标检测中常用的smooth L1损失函数，所以损失函数方面没有太大的改动。</li>
+</ul>
+<h3 id="seglink1703">SegLink(17/03)<a class="headerlink" href="#seglink1703" title="Permanent link">&para;</a></h3>
+<p>|<a href="https://github.com/bgshih/seglink">code</a>|</p>
+<ul>
+<li><code>SSD</code>改进</li>
+<li>直接回归旋转边框旋转角度难回归，(<code>-90~90</code>相同矩形相似,<code>0~180</code>相似)</li>
+<li>不能检测很大的文本，这是因为<code>link</code>主要是用于连接相邻的<code>segments</code>，而不能用于检测相距较远的文本行</li>
+<li>不能检测形变或者曲线文本，这是因为<code>segments combining</code>算法在合并的时候采用的是直线拟合．这里可以通过修改合并算法，来检测变形或曲线文本</li>
+</ul>
+<p><strong>检测过程</strong></p>
+<p><img alt="image-20210222163220043" src="../assets/image-20210222163220043.png" /></p>
+<ul>
+<li>首先是检测生成一个一个的<code>segment</code>（切片），如上图黄色框，这些<code>segment</code>（切片）是文本行（或单词）的一部分，可能是一个字符，或者是一个单词，或者是几个字符</li>
+<li>通过link（链接）将属于同一个文本行（或者单词）的<code>segment</code>（切片）连接起来，如上图绿色线条。<code>link</code>（链接）是在两个有重叠<code>segment</code>的中心点进行相连</li>
+<li>通过合并算法，将这些<code>segment</code>（切片）、<code>link</code>（链接）合并成一个完整的文本行，得出完整文本行的**检测框位置和旋转角度**。</li>
+</ul>
+<p><strong>模型结构</strong></p>
+<p><code>6个</code>不同尺度的特征图上得到各自的<code>segment</code>和<code>link</code>，<strong>大feature检测小目标，小feature检测大目标</strong></p>
+<p><img alt="image-20210222163447472" src="../assets/image-20210222163447472.png" /></p>
+<ul>
+<li>
+<p>注意这里每个<code>feature map</code>的每个位置**只采用了一个aspect ratio=1的default box**(每个位置只产生一个<code>anchor</code>)，而SSD中是一系列(1, 2, 3, &frac12;, &#8531;)；关于<code>default box</code>的<code>scale size</code>，本文: <code>a_l = γ w_i/w_l , where γ = 1.5,输入图像宽w_i,当前feature宽w_l</code>，ssd中是人为设置的。</p>
+</li>
+<li>
+<p><strong>segment检测(增加了角度回归)</strong>：每个特征图的<code>segment</code>对应的输出通道是<code>7</code>:其中两个表示<code>segment</code>是否为文字的置信度值为<code>(0,1)</code>，剩下的五个为<code>segment</code>相对于对应位置的<code>default box</code>的五个偏移量<code>[center_x,center_y,w,h,框的旋转角度θ]</code>，预测<code>offsets</code>(偏移量):<code>[Δx, Δy, Δw, Δh,Δθ]</code></p>
+</li>
+</ul>
+<p><img alt="image-20210222170948636" src="../assets/image-20210222170948636.png" /></p>
+<ul>
+<li><strong>link检测</strong></li>
+</ul>
+<p><img alt="image-20210222171912436" src="../assets/image-20210222171912436.png" /></p>
+<ul>
+<li>
+<p>层内链接检测：表示同一特征层，每个位置只预测一个<code>segment</code>所以只需要考虑当前<code>segment</code>与<code>8邻域</code>内的<code>segment</code>的连接状况，每个<code>link</code>有两个分数：正分、负分</p>
+<ul>
+<li>正分表示二者属于同一个文本（应该连接）</li>
+<li>负分表示二者属于不同文本（应该断开连接）</li>
+<li>所以，每个<code>segment</code>的<code>link</code>应该是**2*8=16**维的向量</li>
+</ul>
+</li>
+<li>
+<p>跨层链接检测:主要是为了解决同一文本的<code>segment</code>在不同层被检测到，造成重复检测、冗余的问题；</p>
+<p>主要作用于连续两层输出特征图(<code>ocnv4_3</code>不与其他特征层连续，不做<code>cross-layer-links</code>)，对于<code>feature map</code>的每个位置需要预测**2*4=8**,这里<code>４</code>表示的是与上一层的<code>４</code>个邻域，就是对应前一层的感受野</p>
+</li>
+<li>
+<p>总结来说：<strong>对于conv4_3层，其link输出的维度为2x8=16；对于conv7, conv8_2, conv9_2, conv10_2, conv11其输出的link维度为2x8+2x4=24</strong></p>
+</li>
+<li>
+<p>特征图输出维度</p>
+<p><img alt="image-20210222172709624" src="../assets/image-20210222172709624.png" /></p>
+</li>
+</ul>
+<p><strong>合并算法</strong></p>
+<p><img alt="image-20210222184403282" src="../assets/image-20210222184403282.png" /></p>
+<ul>
+<li>首先通过人工设定的<code>α 和β</code>(这两个值是采用网格搜索找到最优，这里采用<code>0.1step</code>进行超参数穷举搜索)，对网络预测的<code>segments</code>和<code>links</code>进行滤除</li>
+<li>将每个<code>segment</code>看成<code>node</code>，<code>link</code>看成<code>edge</code>，建立图模型，再用<code>DFS</code>(<strong>深度优先搜索</strong>)找到连通分量，每个连通分量包含一系列<code>segments</code>(用B表示)，然后通过下面流程得到检测框和角度。</li>
+</ul>
+<p><img alt="image-20210222185206335" src="../assets/image-20210222185206335.png" /></p>
+<p><strong>训练</strong></p>
+<ul>
+<li>
+<p>如何生成<code>segments</code>和<code>links</code>的<code>ground truth</code>，即<code>default box</code>的<code>label</code>，偏移<code>(x, y, w, h, θ)</code>，<code>层内link</code>及<code>跨层link的label</code></p>
+</li>
+<li>
+<p>如何确定<code>default box</code>为正样本还是负样本呢？图像只有一个文本行满足下面条件就是正样本，当有多个文本行时正样本还需与<code>a_l/h</code>最小的文本行匹配。</p>
+<ul>
+<li><code>default box</code>的中心在当前文本行内；</li>
+<li><code>default box</code>的<code>size</code>与文本行的高度比必须满足：<code>max(a_l/h,h/a_l)&lt;=1.5</code></li>
+</ul>
+</li>
+<li>
+<p>如何确定正样本的<code>offset</code>偏置？</p>
+</li>
+</ul>
+<p><img alt="image-20210222191207639" src="../assets/image-20210222191207639.png" /></p>
+<ul>
+<li>
+<p>如何确定<code>within-layer link</code>和<code>cross-layer link</code>的<code>label</code>是<code>positive</code>还是<code>negative</code>?</p>
+</li>
+<li>
+<p>两个<code>default boxes connect it</code></p>
+</li>
+<li>两个<code>default box</code>必须属于统一文本行</li>
+</ul>
+<p><strong>目标函数</strong></p>
+<p><img alt="image-20210222191449078" src="../assets/image-20210222191449078.png" /></p>
+<h3 id="textboxes1611">Textboxes(16/11)<a class="headerlink" href="#textboxes1611" title="Permanent link">&para;</a></h3>
+<p><strong>TextBoxes只可以检测水平文本</strong></p>
+<p><a href="https://arxiv.org/pdf/1611.06779.pdf">论文</a>|<a href="https://github.com/MhLiao/TextBoxes">code</a>|ssd改进</p>
+<ul>
+<li>
+<p>多尺度输入(<code>300*300, 700*700, 300*700, 500*700, and 1600*1600</code>)，以防止过长文本的框超过了默认框的最大比例，从而导致检测不到的情况。</p>
+</li>
+<li>
+<p>论文中设计了**长宽比分别是1、2、3、5、7、10的default box**(即长条形的<code>default box</code>，适应长文本)，但垂直方向的文本就检测不出来了。作者为解决水平方向框排列密集和垂直方向框排列稀疏问题，把水平方向的框**全部向下平移半个区域的单位**，这样就有<code>12个anchor</code></p>
+</li>
+<li>
+<p>引入<code>text-box layers</code>层，其实就是对特征图再用<code>1x5</code>的卷积核进行卷积操作，代替<code>SSD</code>的<code>3x3</code>卷积，这就产生了矩形感受野，更适合用于文字检测。</p>
+</li>
+</ul>
+<p><img alt="image-20210222203113830" src="../assets/image-20210222203113830.png" /></p>
+<ul>
+<li>
+<p>输出维度，每个位置<code>12anchors</code>&rarr;<code>12*(2+4)</code>，<code>2:文本/非文本</code>，<code>4:(x,y,w,h)</code></p>
+</li>
+<li>
+<p>损失函数:</p>
+</li>
+</ul>
+<p><img alt="image-20210222203617548" src="../assets/image-20210222203617548.png" /></p>
+<h3 id="textboxes1801">TextBoxes++(18/01)<a class="headerlink" href="#textboxes1801" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1801.02765v3">论文</a>|<a href="https://github.com/MhLiao/TextBoxes_plusplus">code</a></p>
+<p><strong>TextBoxes++可以检测多角度的文本</strong>，主要讨论了文本框的两种表示方式，认为**四个坐标的表示**更优</p>
+<ul>
+<li>顺时针的四个点坐标表示:<code>（x1,y1,x2,y2,x3,y3,x4,y4）</code></li>
+<li><code>R2CNN</code>的框表示:顺时针相邻两个坐标点和高<code>(x1,y1,x2,y2,h)</code></li>
+</ul>
+<p><strong>网络结构(没啥变化)</strong></p>
+<p><img alt="image-20210222204626222" src="../assets/image-20210222204626222.png" /></p>
+<p><strong>TextBoxes改进点</strong></p>
+<ul>
+<li>
+<p>长宽比:<code>1、2、3、5、1/2、1/3、1/5</code>，这样就兼顾了垂直文本的检测。</p>
+</li>
+<li>
+<p>将<code>1*5</code>的卷积核改为<code>3*5</code>用来生成<code>text box layers</code>：对宽文本也友好。</p>
+</li>
+<li>
+<p>改进网络输出，用于适应于多角度文本。</p>
+</li>
+</ul>
+<p><img alt="image-20210222204711259" src="../assets/image-20210222204711259.png" /></p>
+<ul>
+<li>绿色虚线表示与<code>ground truth</code>匹配的<code>default box</code></li>
+<li>黄色框表示<code>ground truth</code></li>
+<li>红色箭头表示回归的方向</li>
+<li>黑色框表示未匹配到真值的<code>default box</code>，</li>
+<li>绿色实线框表示对应与<code>ground truth</code>的外接矩形框。</li>
+</ul>
+<p><img alt="image-20210223102433616" src="../assets/image-20210223102433616.png" /></p>
+<ul>
+<li>
+<p><code>offset</code>偏置输出</p>
+<ul>
+<li><strong>四点的偏置输出</strong></li>
+</ul>
+<p><img alt="image-20210223103642846" src="../assets/image-20210223103642846.png" /></p>
+<ul>
+<li><strong>相邻两点+高的偏置输出</strong></li>
+</ul>
+<p><img alt="image-20210223103837948" src="../assets/image-20210223103837948.png" /></p>
+</li>
+<li>
+<p>文本定位之后添加一个文字识别(用的CRNN网络)的过程，根据文本识别的效果，反馈给detection网络，帮助更好的detection。比如确定不是文字的部分，可以从结果中删除，<strong>用于辅助训练</strong>。</p>
+</li>
+</ul>
+<p><strong>损失函数</strong></p>
+<p><img alt="image-20210223104159596" src="../assets/image-20210223104159596.png" /></p>
+<h3 id="east1704">East(17/04 像素级的回归)<a class="headerlink" href="#east1704" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1704.03155.pdf">论文</a>|<a href="https://github.com/argman/EAST">tensorflow code</a>|<a href="https://github.com/SakuraRiven/EAST">pytorch code</a></p>
+<ul>
+<li>
+<p>经过<code>backbone</code>后抽取不同<code>level</code>的<code>feature map</code>(他们的尺寸分别是<code>input_image</code>的<code>1/32,1/16,1/8,1/4</code>)，这样<code>ealy stage</code>可用于预测小的文本行，<code>late-stage</code>可用于预测大的文本行．</p>
+</li>
+<li>
+<p>合并特征图并输出结果：</p>
+</li>
+</ul>
+<p><img alt="image-20210223143006332" src="../assets/image-20210223143006332.png" /></p>
+<ul>
+<li>
+<p>输出结果解释：</p>
+<ul>
+<li>框的得分，论文中用<code>score map</code>表示</li>
+<li><code>angle</code>几何图</li>
+<li>输出<code>RBOX</code>(四通道几何图)：<code>四个location图(四通道表示)(每个像素的top偏移，right偏移，bottom偏移，left偏移组成(d))</code></li>
+</ul>
+<p><img alt="image-20210223153851079" src="../assets/image-20210223153851079.png" /></p>
+<ul>
+<li><code>QUAD</code>:<code>8</code>个通道分别表示从矩形的四个顶点到像素位置的坐标偏移，由于每个距离偏移量都包含两个数字（Δxi;Δyi）</li>
+</ul>
+</li>
+</ul>
+<p><strong>Loss 函数</strong></p>
+<p><img alt="image-20210223162729445" src="../assets/image-20210223162729445.png" /></p>
+<ul>
+<li><code>Ls</code>(<code>score map</code>)的<code>loss</code>计算</li>
+</ul>
+<p><img alt="image-20210223162951251" src="../assets/image-20210223162951251.png" /></p>
+<ul>
+<li><code>RBOX</code>的几何图<code>loss</code>计算:包含四个<code>locatioin</code>图的损失(<code>L_AABB</code>)+<code>angle</code>图的损失<code>L_θ</code></li>
+</ul>
+<p><img alt="image-20210223165358991" src="../assets/image-20210223165358991.png" /></p>
+<ul>
+<li><code>QUAD</code>的<code>loss</code>计算:使用归一化的<code>smooth l1 loss</code></li>
+</ul>
+<p><img alt="image-20210223170028942" src="../assets/image-20210223170028942.png" /></p>
+<p><strong>使用 locality NMS</strong></p>
+<ul>
+<li>
+<p>遍历每个预测的框，然后按照交集大于某个<code>k</code>就合并相邻的两个框。小问题:为什么要合并框？</p>
+</li>
+<li>
+<p>每个像素都要预测四个距离(即一个框)，所以一个目标有几百上千个框都是重合的，所以要合并。</p>
+</li>
+<li>
+<p>如何合并？<strong>通过两个给定四边形的分数进行加权平均</strong>。</p>
+<p><img alt="image-20210223191516291" src="../assets/image-20210223191516291.png" /></p>
+</li>
+<li>
+<p>合并完后再按照正常<code>NMS</code>消除不合理的框就行了。</p>
+</li>
+</ul>
+<p><strong>缺点：EAST在长文本预测效果较差</strong></p>
+<p><img alt="image-20210223184400971" src="../assets/image-20210223184400971.png" /></p>
+<h3 id="advanced-east">Advanced EAST<a class="headerlink" href="#advanced-east" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/huoyijie/AdvancedEAST">code</a></p>
+<p>EAST算法的改进版，对EAST在**长文本检测地方的缺陷**进行了重大改进，使长文本预测更加准确。</p>
+<p><img alt="image-20210223184545501" src="../assets/image-20210223184545501.png" /></p>
+<p><img alt="image-20210223173421511" src="../assets/image-20210223173421511.png" /></p>
+<ul>
+<li><code>score map</code>：和<code>EAST</code>一样，点在文本内的置信度；</li>
+<li><code>vertex code</code>：第一通道表示是否是边界元素的置信度。第二通道表示是头/尾元素，0表示头部元素，1表示尾部元素；</li>
+<li><code>vertex geo</code>：4通分别代表左上(右上)X、左上(右上)Y、左下(右下)X、左下(右下)Y，这里不是真正的X\Y坐标，而是根据当前点坐标的X/Y偏移量(<strong>主要是为了解决East感受野问题</strong>)；**AdvancedEast不再用所有的点进行预测顶点了，而是用头部元素预测左上、左下点，尾部元素预测右上右下点。**且根据预测出的头/尾元素进行加权平均得到4个顶点。</li>
+</ul>
+<p><strong>预测过程</strong></p>
+<p>网络输出一个<code>feature map</code>有<code>7</code>个通道(<code>score map、vertex code、vertex geo</code>)</p>
+<ul>
+<li>
+<p>筛选出<code>score map</code>值高于<code>threshole</code>的点，得到<code>activation point</code>(激活元素)</p>
+</li>
+<li>
+<p>遍历上一步获得的所有<code>activation point</code>，将在<code>feature map</code>中左右相邻(X坐标相差<code>1</code>，Y坐标相同)的<code>activation point</code>进行合并，得到若干 <code>region list</code></p>
+</li>
+</ul>
+<p><img alt="image-20210223185439222" src="../assets/image-20210223185439222.png" /></p>
+<ul>
+<li>遍历上一步得到的<code>region list</code>，将<code>feature map</code>中上下相邻的<code>region list</code>进行合并成为<code>region group</code>，具体上下相邻规则是如果<code>region list1</code>中所有元素向下平移一个单位后，和其他的<code>region list</code>有重合点，则进行合并，否则不进行合并。</li>
+</ul>
+<p><img alt="image-20210223185713734" src="../assets/image-20210223185713734.png" /></p>
+<ul>
+<li>遍历每个<code>region group</code>中的点，根据<code>vertex code</code>输出的值找到其中的头/尾元素，头/尾需要满足的规则是<code>vertex code</code>中第一通道输出的是否是边界元素置信度的值高于阈值，且<code>vertex code</code>中的分类置信度满足阈值(默认情况下阈值为0-0.1表示头部元素,0.9-1表示尾部元素)</li>
+</ul>
+<p><img alt="image-20210223190045181" src="../assets/image-20210223190045181.png" /></p>
+<ul>
+<li>现在确定了每个<code>region group</code>中的头尾元素，如下图所示，根据头部(尾部)元素所预测的左上(右上)X、左上(右上)Y、左下(右下)X、左下(右下)Y偏移量进行加权平均，确定最终预测的4个顶点。具体的加权平均的方式如下,<code>n</code>表示当前文本域内边界元素数量。</li>
+</ul>
+<p><img alt="image-20210223190202942" src="../assets/image-20210223190202942.png" /></p>
+<p><strong>基于分割的文字检测</strong>：优点-&gt;对不同形状文本的检测效果都比较好；缺点-&gt;后处理耗时多，重叠文本效果差。</p>
+<h3 id="pixellink1801">pixelLink(18/01)<a class="headerlink" href="#pixellink1801" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1801.01315v1">论文</a>|<a href="https://github.com/mayank-git-hub/Text-Recognition">code</a></p>
+<p><strong>标注规则</strong></p>
+<p>在文本实例内部像素标为 <code>positive</code>，其余的标为<code>negative</code>。</p>
+<p><strong>网络结构</strong></p>
+<p><img alt="image-20210223192708606" src="../assets/image-20210223192708606.png" /></p>
+<p><img alt="image-20210223192726370" src="../assets/image-20210223192726370.png" /></p>
+<ul>
+<li>输出结果共有两部分:<code>text/no-test</code>和<code>link</code>预测。受<code>SegLink</code>启发，每个像素点有<code>8</code>个邻居。给定一个像素点以及它的一个邻居点，如果它们同属于一个文本实例，则它们之间的<code>link</code>为 <code>positive</code>。</li>
+<li>最后得到<code>pixels</code> 和<code>links</code>，然后根据<code>link positive</code>将<code>pixel positive</code> 进行连接，得到 <code>Cs(conected compoents)</code>集合，集合中的每个元素代表的就是文本实例。两个<code>pixel</code> 需要连接的前提条件：<code>two link</code>中至少有一个<code>link positive</code>．连接的规则采用的是<code>Disjoint set data structure</code> (并查集)的方法。</li>
+<li>基于上述<code>CCs</code> 集合，直接掉调用 <code>opencv</code> 的 <code>minAreaRect</code> 提取带方向信息的矩形框。在此之后，还要根据在训练集上统计的信息，进行过滤，去掉噪声。</li>
+</ul>
+<p><strong>Loss函数</strong></p>
+<p><img alt="image-20210223201409194" src="../assets/image-20210223201409194.png" /></p>
+<ul>
+<li><code>L_pixel</code>分类损失更重要<code>λ =2.0</code></li>
+</ul>
+<p><img alt="image-20210223201710691" src="../assets/image-20210223201710691.png" /></p>
+<ul>
+<li><code>W</code>表示预测的<code>pixel</code>分类的权值矩阵，<code>r</code>表示负正样本比例，论文中<code>r=3</code>，<code>S</code>表示每个文本实例的面积</li>
+<li>当文本实例的面积比较大，占的<code>loss</code>损失就会被相对拉小，文本实例的面积比较小，占的<code>loss</code>损失就会被相对拉大。这样做的好处就是使得小的文本实例不会被大的文本实例的<code>loss</code>掩盖掉，也可以有<code>loss</code>回传。</li>
+<li>
+<p>同时<code>pixel</code>分类任务还使用了<code>OHEM</code>策略，每次回传<code>S</code>（正样本实例像素和）+<code>r*S</code>（负样本像素和）的<code>loss</code>，更加有利于分类任务的学习。这点改进比<code>EAST</code>中所有像素的<code>loss</code>都回传可以得到更好的分类结果，而不是像<code>EAST</code>那样，一个实例中间的像素分类的好，边缘的像素分类的差的情况。</p>
+</li>
+<li>
+<p><code>L_link</code>分类损失</p>
+</li>
+</ul>
+<p><img alt="image-20210223202349845" src="../assets/image-20210223202349845.png" /></p>
+<h3 id="spcnet1811">SPCNet(18/11)<a class="headerlink" href="#spcnet1811" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1811.08605v1">论文</a>|<a href="https://github.com/AirBernard/Scene-Text-Detection-with-SPCNET">code</a></p>
+<p><strong>网络结构</strong></p>
+<p><img alt="image-20210224104315501" src="../assets/image-20210224104315501.png" /></p>
+<p><strong>TCM模块</strong></p>
+<p><code>FPN</code>得到的每一个<code>stage</code>的特征用蓝色表示，经过上面一支的三个卷积可以直接预测文字**分割**结果，而<code>1x1</code> 卷积之后的分割图可以作为<code>attention</code>乘回原图，去增强检测特征中的文字区域，并且中间产生的特征可以相加得到**绿色特征**(将检测的特征和分割的特征融合起来，得到更为丰富的特征表达)</p>
+<p><strong>RS模块</strong></p>
+<p>作用:对于倾斜文字或者弯曲文字<code>maskrcnn</code>检测框得分较低(大部分都是背景)，但在语义分割图上它们具有较高的响应；一些错误样本具有较高的检测得分，但是在语义分割图上的响应较低。<strong>作者考虑将实例分割和语义分割的结果相融合，通过重新计算合理的分数，从而降低错误样本检测。</strong></p>
+<p><img alt="image-20210224105613160" src="../assets/image-20210224105613160.png" /></p>
+<p><img alt="image-20210224124450959" src="../assets/image-20210224124450959.png" /></p>
+<p><strong>标签生成</strong></p>
+<p><img alt="image-20210224124626338" src="../assets/image-20210224124626338.png" /></p>
+<h3 id="psenet1903">PSENet(19/03)<a class="headerlink" href="#psenet1903" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1903.12473v2">论文</a>|<a href="https://github.com/whai362/PSENet">code</a></p>
+<p>传统文字检测对弯曲文字块表现不好，直接使用语义分割很难分离靠的很近的文本。<strong>本文提出先增大文字块之间的距离，然后通过渐进扩展算法来构建完整的文字块</strong></p>
+<p><img alt="image-20210224134443215" src="../assets/image-20210224134443215.png" /></p>
+<p><strong>n个二值图产生公式</strong></p>
+<p><img alt="image-20210224142203696" src="../assets/image-20210224142203696.png" /></p>
+<p><strong>核心算法:PSE(渐进尺度扩张算法:Progressive Scale Expansion)</strong></p>
+<p><code>PSE</code>算法的主要思想就是利用<code>BFS</code>（广度优先搜索）算法，逐渐扩展<code>kernel</code>（就是下图中的白色的部分，预测的文本行区域）的大小，最终扩增到原始文本行大小（如<code>S3</code>）</p>
+<p><img alt="image-20210224143704022" src="../assets/image-20210224143704022.png" /></p>
+<p><strong>损失函数</strong></p>
+<p><img alt="image-20210224144053890" src="../assets/image-20210224144053890.png" /></p>
+<p>通常文本实例可能只占自然场景很小的一部分，因此如果采用二进制交叉熵损失会造成预测结果更加偏向于非文本区域(即文字和非文字像素十分不平衡)。这里我们采用<code>dice coefficient</code>损失函数：</p>
+<p><img alt="image-20210224144423197" src="../assets/image-20210224144423197.png" /></p>
+<h3 id="pan1908">PAN(19/08)<a class="headerlink" href="#pan1908" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1908.05900v2">论文</a>|<a href="https://github.com/WenmuZhou/PAN.pytorch">code</a>|像素聚合网络:<code>PSENet</code>的改进版</p>
+<p><strong>网络结构</strong></p>
+<p><img alt="image-20210224152335976" src="../assets/image-20210224152335976.png" /></p>
+<p><strong>FPEM模块</strong></p>
+<p><img alt="image-20210224151855170" src="../assets/image-20210224151855170.png" /></p>
+<p><strong>FFM融合模块</strong></p>
+<p><img alt="image-20210224152104971" src="../assets/image-20210224152104971.png" /></p>
+<p><strong>像素聚合思路</strong></p>
+<p><img alt="image-20210226152824117" src="../assets/image-20210226152824117.png" /></p>
+<p><strong>损失函数</strong></p>
+<p><img alt="image-20210226155309334" src="../assets/image-20210226155309334.png" /></p>
+<h3 id="db1911">DB(19/11)<a class="headerlink" href="#db1911" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1911.08947.pdf">论文</a>|<a href="https://github.com/MhLiao/DB">code</a>|中文检测上<code>DB</code>优于<code>EAST</code></p>
+<p>在基于分割的文本检测网络中，最终的二值化map都是使用固定阈值来获取，并且阈值不同对性能影响较大。<strong>本文中，对每一个像素点进行自适应二值化，二值化阈值由网络学习得到，彻底将二值化这一步骤加入到网络里一起训练，这样最终的输出图对于阈值就会非常鲁棒。</strong></p>
+<p><strong>网络</strong></p>
+<p><img alt="image-20210226161501087" src="../assets/image-20210226161501087.png" /></p>
+<p><strong>标签生成</strong></p>
+<p><img alt="image-20210226165448557" src="../assets/image-20210226165448557.png" /></p>
+<ul>
+<li>
+<p><code>P图</code>:有文字的区域有值，无文字区域黑色，为<code>0</code>.</p>
+</li>
+<li>
+<p><code>T图</code>:只有文字边界线有值，其他地方为<code>0</code>.其实就是将文本框向内+向外收缩和扩招<code>d</code>个像素,然后计算收缩框和扩张框之间差集部分里每个像素点到原始图像边界的归一化距离。</p>
+</li>
+</ul>
+<p><img alt="image-20210227131001099" src="../assets/image-20210227131001099.png" /></p>
+<ul>
+<li><code>T</code>图非文字边界是灰色的，这是因为统一加了<code>0.3</code>，所有最小值是<code>0.3</code>，这是为了后面有用的.</li>
+</ul>
+<p><strong>可微分二值化</strong></p>
+<p>结合概率图<code>P_i,j</code>和阈值图<code>T_i,j</code>，就能得到二值图<code>B^_i,j</code></p>
+<p><img alt="image-20210226162220520" src="../assets/image-20210226162220520.png" /></p>
+<ul>
+<li><code>B</code>图的计算和<code>T</code>图<code>0.3</code>的用处是为了更好的区分(例如,非文字块区域:<code>x=p-T&lt;0</code>这样拉到负半轴更有利于区分)</li>
+</ul>
+<p><img alt="image-20210227131516479" src="../assets/image-20210227131516479.png" /></p>
+<p><strong>损失函数</strong></p>
+<p><img alt="image-20210226164522915" src="../assets/image-20210226164522915.png" /></p>
+<ul>
+<li><code>Ls,Lb</code>都是<code>binary cross-entropy (BCE)</code>,同时为了解决正负样本不均衡使用<code>hard negative mining</code>,使得正负样本<code>1:3</code></li>
+</ul>
+<p><img alt="image-20210226164841666" src="../assets/image-20210226164841666.png" /></p>
+<ul>
+<li><code>Lt</code>是预测结果和标签之间的<code>L1</code>距离，其中<code>Rd</code>是在膨胀<code>Gd</code>内像素的索引，<code>y*</code>是阈值<code>map</code>的标签。</li>
+</ul>
+<p><img alt="image-20210227133917063" src="../assets/image-20210227133917063.png" /></p>
+<p><strong>推理流程</strong> </p>
+<p>在推理时可以采用概率图或近似二值图来生成文本框，为了方便作者选择了概率图，具体步骤如下:  </p>
+<ul>
+<li>二值图确定: </li>
+<li>使用**近似二值图B**，直接使用即可</li>
+<li>
+<p>使用**概率图P**：使用固定阈值<code>0.2</code>将概率图做二值化得到二值化图，由二值化图得到收缩文字区域(作者推荐)  </p>
+</li>
+<li>
+<p>将收缩文字区域按<code>Vatti clipping</code>算法(<code>PSENet</code>)的偏移系数<code>D'</code>进行扩张得到最终文本框    <img alt="image-20210429173332996" src="../assets/image-20210429173332996.png" /></p>
+</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              目标检测论文解读
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              人脸方向论文解读
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

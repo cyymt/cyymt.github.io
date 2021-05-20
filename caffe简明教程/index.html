@@ -1,0 +1,2349 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>Caffe快速教程 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#caffe" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Caffe快速教程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Caffe快速教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Caffe快速教程
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#caffe" class="md-nav__link">
+    CAFFE编译文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    常见编译错误集锦
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lmdb" class="md-nav__link">
+    分类LMDB训练集制作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lmdb_1" class="md-nav__link">
+    检测LMDB训练集制作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    训练过程简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solverprototxt" class="md-nav__link">
+    solver.prototxt编写
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototxt" class="md-nav__link">
+    prototxt文件编写
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cafee" class="md-nav__link">
+    cafee的一些特殊层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployprototxt" class="md-nav__link">
+    deploy.prototxt文件改写
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logaccloss" class="md-nav__link">
+    根据log绘制acc+loss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pythonapi" class="md-nav__link">
+    常用PythonApi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    自定义C++层
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#caffe" class="md-nav__link">
+    CAFFE编译文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    常见编译错误集锦
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lmdb" class="md-nav__link">
+    分类LMDB训练集制作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lmdb_1" class="md-nav__link">
+    检测LMDB训练集制作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    训练过程简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solverprototxt" class="md-nav__link">
+    solver.prototxt编写
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototxt" class="md-nav__link">
+    prototxt文件编写
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cafee" class="md-nav__link">
+    cafee的一些特殊层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployprototxt" class="md-nav__link">
+    deploy.prototxt文件改写
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logaccloss" class="md-nav__link">
+    根据log绘制acc+loss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pythonapi" class="md-nav__link">
+    常用PythonApi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    自定义C++层
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Caffe快速教程</h1>
+                
+                <h3 id="caffe">CAFFE编译文件<a class="headerlink" href="#caffe" title="Permanent link">&para;</a></h3>
+<p><strong>ubuntu环境准备(快速安装)</strong></p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install git
+sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+sudo apt-get install --no-install-recommends libboost-all-dev
+sudo apt-get install libatlas-base-dev
+sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+</code></pre></div>
+<p><strong>ubuntu环境准备(源码安装,可选)</strong></p>
+<p><a href="http://pan.baidu.com/s/1sks4XFv">百度云:idi7</a></p>
+<ul>
+<li><strong>protobuf</strong></li>
+<li>ProtoBuffer是由Google开发的一种可以实现内存与非易失存储介质（如硬盘文件）交换的协议接口，用户只需要建立统一的参数描述文件（proto），然后利用protoc编译就能让协议细节等关键部分代码自动生成，节省了大量的开发、调试时间</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar -zxvf protobuf-2.5.0.tar.gz
+<span class="nb">cd</span> protobuf-2.5.0
+<span class="c1"># 我们并没有将Protobuf安装到系统默认目录/usr/或/usr/local/下，而是安装到本地目录/home/yourname/local_install/下，这样做的好处是便于迁移。在一台机器上安装好的Caffe及其依赖，能迅速迁移到另一台机器上而无须重复编译、安装。后面所有第三方依赖软件包都会安装到这个目录下。</span>
+./configure --prefix<span class="o">=</span>/home/yang/local_install/
+make
+make install
+
+<span class="c1"># 校验是否安装成功</span>
+ls ~/local_install/bin/ <span class="c1"># 显示 protoc即可</span>
+<span class="c1"># 加入到系统路径,vi .bashrc</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>~/local_install/bin/:<span class="nv">$PATH</span>
+<span class="c1"># 修改Makefile.config</span>
+<span class="nv">INCLUDE_DIRS</span> <span class="o">+=</span>  ~/local_install/include
+<span class="nv">LIBRARY_DIRS</span> <span class="o">+=</span>  ~/local_install/lib
+
+<span class="c1"># caffe生成caffe.pb.h</span>
+<span class="nb">cd</span> caffe/src/caffe/proto 
+protoc --cpp_out<span class="o">=</span>./ caffe.proto <span class="c1"># 生成caffe.pb.h</span>
+</code></pre></div>
+<ul>
+<li><strong>Boost</strong></li>
+<li>它是一个功能强大、构造精巧、跨平台、开源且免费的库，被称为“C++准标准库”，使用了很多现代编程技术，内容涵盖字符串处理、正则表达式、容器（不是Docker）和数据结构、并发编程、函数式编程、泛型编程、设计模式实现等许多领域，使得C++开发更加灵活、高效。</li>
+<li>在Caffe中主要使用了Boost中的智能指针，其自带引用计数功能，可避免共享指针时造成内存泄漏或多次释放。另外，pycaffe使用Boost Python实现C/C++和Python语言的连接，方便Python调用C/C++设计的模块。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar -zxvf boost_1_56_0.tar.bz2
+<span class="nb">cd</span> boost_1_56_0/
+sudo ./bootstrap.sh --with-libraries<span class="o">=</span>system,thread,python
+sudo ./b2
+<span class="c1"># sudo ./b2 install # 安装在系统目录下</span>
+<span class="c1"># sudo ldconfig</span>
+<span class="c1"># 需要手动复制到你的安装目录下</span>
+cp -r boost/ /home/yang/local_install/include/
+cp stage/lib/* /home/yang/local_install/lib/
+
+<span class="c1"># 彻底删除boost</span>
+<span class="nb">cd</span> /usr/local/include
+rm -rf boost
+<span class="nb">cd</span> /usr/local/lib
+rm -rf *boost*
+</code></pre></div>
+<ul>
+<li><strong>GFLAGS</strong></li>
+<li>GFLAGS在Caffe中主要起到命令行参数解析的作用，这与ProtoBuffer功能类似，只是参数输入源不同。GFLAGS的使用方法可参考Caffe源码中的tools/caffe.cpp。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>unzip gflags-2.1.1.zip
+<span class="nb">cd</span> gflags-2.1.1/
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake ..
+ccmake ..
+<span class="c1"># 接下来会弹出ccmake配置界面，修改两个位置</span>
+BUILD_SHARED_LIBS ON
+CMAKE_INSTALLPREFIX /home/yang/local_install
+<span class="c1"># 先按C键再按G键，生成Makefile</span>
+make
+make install
+</code></pre></div>
+<ul>
+<li><strong>GLOG</strong></li>
+<li>GLOG库是Google开发的用于记录应用程序日志的实用库，提供基于C++标准输入输出流形式的接口，记录时可选择不同的日志级别，方便将重要日志和普通日志分开。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar -zxvf glog-0.3.3.tar.gz
+<span class="nb">cd</span> glog-0.3.3/
+./configure --prefix<span class="o">=</span>/home/yang/local_install/
+make
+make install
+</code></pre></div>
+<ul>
+<li><strong>BLAS</strong></li>
+<li>卷积神经网络中用到的数学计算主要是矩阵、向量的计算，Caffe中调用了BLAS（Basic Linear Algebra Subprograms，基本线性代数子程序）中的相应方法。最常用的BLAS实现有Intel MKL、ATLAS、OpenBLAS等，Caffe可以选择其中任一种。</li>
+<li>OpenBLAS在Caffe中主要负责CPU端的数值计算（如矩阵乘法）。由于调用量相当大，该库的性能直接影响Caffe的运行性能。</li>
+<li>在GPU端的数值计算则由对应的cuBLAS完成，其API接口与OpenBLAS类似。</li>
+<li>参考小例子:Caffe源码include/caffe/util/math_functions.hpp中。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Makefile.config</span>
+BLAS :<span class="o">=</span> open <span class="c1"># atlas/mkl/open,常选用open</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>tar -zxvf OpenBLAS-0.2.14.tar.gz
+<span class="nb">cd</span> OpenBLAS-0.2.14/
+make -j
+make <span class="nv">PREFIX</span><span class="o">=</span>/home/yang/local_install/ install
+</code></pre></div>
+<ul>
+<li><strong>HDF5</strong></li>
+<li>一种能高效存储和分发科学数据的新型数据格式。它可以存储不同类型的图像和数码数据的文件，并且可以在不同类型的机器上传输，同时还有统一处理这种文件格式的函数库。Caffe训练模型可以选择保存为HDF5格式或（默认的）ProtoBuffer格式。</li>
+<li>HDF5的使用方法可参考Caffe源码中的hdf5.hpp和hdf5.cpp。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar -zxvf hdf5-1.8.9.tar.gz
+<span class="nb">cd</span> hdf5-1.8.9/
+./configure --prefix<span class="o">=</span>/home/yang/local_install/
+make -j
+make install
+</code></pre></div>
+<ul>
+<li><strong>opencv</strong></li>
+<li>OpenCV的使用方法可以参考Caffe源码中的io.hpp和io.cpp。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">unzip</span> <span class="n">opencv</span><span class="o">-</span><span class="mf">3.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">zip</span>
+<span class="n">cd</span> <span class="n">opencv</span><span class="o">-</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span>
+<span class="n">mkdir</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">build</span>
+<span class="n">cmake</span> <span class="o">..</span>
+<span class="n">ccmake</span> <span class="o">..</span>
+<span class="n">make</span> 
+<span class="n">make</span> <span class="n">install</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 如果make caffe的时候报错:undefined reference tocv::imread(cv::String const &amp;int)..</span>
+<span class="c1">#原因就是OpenCV 3.0把imread相关函数放到imgcodecs.lib中了，而非原来的imgproc.lib中。解决方法为修改Makefile文件（注意不是Makefile.config），在位置的最后添加opencv_imgcodecs即可。新版Caffe通过在Makefile.config中增加编译选项（OPENCV_VERSION := 3）修复了这一问题。</span>
+<span class="nv">LIBRARIES</span> <span class="o">+=</span> glog gflags protobuf leveldb snappy <span class="se">\</span>
+lmdb boost_system hdf5_h1 hdf5 m <span class="se">\</span>
+opencv_core opencv-highgui opencv_imgproc opencv_imgcodecs
+</code></pre></div>
+<ul>
+<li><strong>LMDB/LEVELDB</strong></li>
+<li>闪电般的内存映射型数据库管理器，在Caffe中的作用主要是提供数据管理，将形形色色的原始数据（JPEG图片、二进制数据）转换为统一的Key-Value存储，便于Caffe的DataLayer获取这些数据</li>
+<li>LEVELDB库是Caffe早期版本使用的数据存储方式，由Google开发。它是一种持续的键值对存储方式，键和值可以为任意字节数组。键的存储顺序可由用户定义的比较函数决定。目前大部分例程都已经使用</li>
+<li>LMDB和LEVELDB的使用方法可以参考Caffe源码中的db_lmdb.hpp、db_lmdb.cpp、db_leveldb.hpp和db_leveldb.cpp。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># lmdb下载成功后，无需配置，直接编译</span>
+<span class="n">make</span>
+<span class="c1"># 编译成功后</span>
+<span class="n">cp</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">h</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">yang</span><span class="o">/</span><span class="n">local_install</span><span class="o">/</span><span class="n">include</span><span class="o">/</span>
+<span class="n">cp</span> <span class="n">liblmdb</span><span class="o">.</span><span class="n">so</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">yang</span><span class="o">/</span><span class="n">local_install</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span>
+
+<span class="c1"># leveldb</span>
+<span class="n">make</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">include</span><span class="o">/</span><span class="n">leveldb</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">yang</span><span class="o">/</span><span class="n">local_install</span><span class="o">/</span><span class="n">include</span><span class="o">/</span>
+<span class="n">cp</span> <span class="n">libleveldb</span><span class="o">.</span><span class="n">so</span><span class="o">*</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">yang</span><span class="o">/</span><span class="n">local_install</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span>
+</code></pre></div>
+<ul>
+<li><strong>Snappy</strong></li>
+<li>Snappy是一个用来压缩和解压缩的C++库，旨在提供较高的压缩速度和合理的压缩率。Snappy比zlib更快，但文件相对要大20%～100%。</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar -zxvf snappy-1.1.1.tar.gz
+<span class="nb">cd</span> snappy-1.1.1/
+./configure --prefix<span class="o">=</span>/home/yang/local_install/
+make <span class="o">&amp;&amp;</span> make install
+</code></pre></div>
+<p><img alt="image-20200727160453703" src="../assets/image-20200727160453703.png" /></p>
+<ul>
+<li>修改<code>Makefile.config</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 额外头文件、库包含选项，我们需要添加今天的所有依赖安装路径</span>
+INCLUDE_DIRS:<span class="o">=</span> /home/yang/local_install/incude <span class="k">$(</span>PYTHON_INCLUDE<span class="k">)</span> /usr/local/include
+LIBRARY_DIRS:<span class="o">=</span> /home/yang/local_install/lib <span class="k">$(</span>PYTHON_LIB<span class="k">)</span> /usr/local/lib /usr/lib
+<span class="c1"># 注意将今天的依赖包路径放在系统路径前面，保证先引用的是编译包而不是系统包</span>
+</code></pre></div>
+<p><strong>下载caffe源码</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bvlc</span><span class="o">/</span><span class="n">caffe</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">twtygqyy</span><span class="o">/</span><span class="n">caffe</span><span class="o">-</span><span class="n">augmentation</span><span class="o">.</span><span class="n">git</span> <span class="c1"># 更常用，有数据增强部分</span>
+<span class="n">cd</span> <span class="n">caffe</span><span class="o">/</span>
+<span class="n">mv</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">example</span> <span class="n">Makefile</span><span class="o">.</span><span class="n">config</span>
+</code></pre></div>
+<p><strong>执行make</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 编写MakeFile.config（cp MakeFile.config.example MakeFile.config）</span>
+<span class="c1"># MakeFile的第二行指向的是要make的文件名称，这个可以更改(CONFIG_FILE:=Makefile.config)</span>
+make clean
+make all -j
+make pycaffe
+
+<span class="c1"># 使得caffe的python接口永久生效</span>
+vim /etc/profile
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>/root/<span class="nv">$CAFFE_ROOT</span>/python:<span class="nv">$PYTHONPATH</span>
+<span class="nb">source</span> /etc/profile
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># make all之前要修改MakeFile.config</span>
+<span class="c1">## Refer to http://caffe.berkeleyvision.org/installation.html</span>
+<span class="c1"># Contributions simplifying and improving our build system are welcome!</span>
+<span class="c1"># cuDNN acceleration switch (uncomment to build with cuDNN).</span>
+USE_CUDNN :<span class="o">=</span> <span class="m">1</span> <span class="c1"># 使用GPU，且安装了cudnn后开启</span>
+<span class="c1"># CPU-only switch (uncomment to build without GPU support).</span>
+<span class="c1"># CPU_ONLY := 1 # 只使用CPU编译</span>
+
+<span class="c1"># uncomment to disable IO dependencies and corresponding data layers</span>
+USE_OPENCV :<span class="o">=</span> <span class="m">1</span> <span class="c1"># 一般使用opencv，把这个开启就行</span>
+<span class="c1"># 下面这两个表示选择caffe的数据管理第三方库，两者都不打开默认用的是LMDB：lmdb的内存消耗是leveldb的1.1倍，但是lmdb的速度比leveldb快10%至15%，更重要的是lmdb允许多种训练模型同时读取同一组数据集，所以默认选lmdb</span>
+USE_LEVELDB :<span class="o">=</span> <span class="m">1</span>
+<span class="c1"># USE_LMDB := 0</span>
+
+<span class="c1"># uncomment to allow MDB_NOLOCK when reading LMDB files (only if necessary)</span>
+<span class="c1">#   You should not set this flag if you will be reading LMDBs with any</span>
+<span class="c1">#   possibility of simultaneous read and write</span>
+<span class="c1"># ALLOW_LMDB_NOLOCK := 1 # 打开这个注释是当需要读取LMDB文件时，默认不打开，所以不取消注释</span>
+
+<span class="c1"># Uncomment if you&#39;re using OpenCV 3</span>
+OPENCV_VERSION :<span class="o">=</span> <span class="m">3</span> <span class="c1"># 用`pkg-config --modversion opencv`命令查看opencv版本</span>
+
+<span class="c1"># To customize your choice of compiler, uncomment and set the following.</span>
+<span class="c1"># N.B. the default for Linux is g++ and the default for OSX is clang++</span>
+<span class="c1"># CUSTOM_CXX := g++ # linux系统一般用得都是g++编译器</span>
+
+<span class="c1"># CUDA directory contains bin/ and lib/ directories that we need.</span>
+CUDA_DIR :<span class="o">=</span> /usr/local/cuda <span class="c1"># 你可以修改你的cuda安装目录</span>
+<span class="c1"># On Ubuntu 14.04, if cuda tools are installed via</span>
+<span class="c1"># &quot;sudo apt-get install nvidia-cuda-toolkit&quot; then use this instead:</span>
+<span class="c1"># CUDA_DIR := /usr</span>
+
+<span class="c1"># CUDA architecture setting: going with all of them.</span>
+<span class="c1"># For CUDA &lt; 6.0, comment the *_50 through *_61 lines for compatibility.</span>
+<span class="c1"># For CUDA &lt; 8.0, comment the *_60 and *_61 lines for compatibility.</span>
+<span class="c1"># 这些都是指GPU算力，6.0以下的版本不支持×_50的计算能力:http://www.tuicool.com/articles/qUN322z</span>
+<span class="c1"># 现在用的cuda9.0/cuda10.0及以上一般都是从sm_30开始</span>
+CUDA_ARCH :<span class="o">=</span> -gencode <span class="nv">arch</span><span class="o">=</span>compute_20,code<span class="o">=</span>sm_20 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_20,code<span class="o">=</span>sm_21 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_30,code<span class="o">=</span>sm_30 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_35,code<span class="o">=</span>sm_35 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_50,code<span class="o">=</span>sm_50 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_52,code<span class="o">=</span>sm_52 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_60,code<span class="o">=</span>sm_60 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_61,code<span class="o">=</span>sm_61 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_61,code<span class="o">=</span>compute_61
+
+<span class="c1"># BLAS choice:</span>
+<span class="c1"># atlas for ATLAS (default)</span>
+<span class="c1"># mkl for MKL</span>
+<span class="c1"># open for OpenBlas</span>
+<span class="c1"># BLAS这个值如果用的是atlas计算库则赋值ATLAS，mkl计算库则用MKL赋值，OpenBlas则赋值open</span>
+BLAS :<span class="o">=</span> atlas 
+<span class="c1"># Custom (MKL/ATLAS/OpenBLAS) include and lib directories.</span>
+<span class="c1"># Leave commented to accept the defaults for your choice of BLAS</span>
+<span class="c1"># (which should work)!</span>
+<span class="c1"># BLAS_INCLUDE := /path/to/your/blas</span>
+<span class="c1"># BLAS_LIB := /path/to/your/blas</span>
+
+<span class="c1"># Homebrew puts openblas in a directory that is not on the standard search path</span>
+<span class="c1"># BLAS_INCLUDE := $(shell brew --prefix openblas)/include</span>
+<span class="c1"># BLAS_LIB := $(shell brew --prefix openblas)/lib</span>
+
+<span class="c1"># This is required only if you will compile the matlab interface.</span>
+<span class="c1"># MATLAB directory should contain the mex binary in /bin.</span>
+<span class="c1"># MATLAB_DIR := /usr/local</span>
+<span class="c1"># MATLAB_DIR := /Applications/MATLAB_R2012b.app</span>
+
+<span class="c1"># NOTE: this is required only if you will compile the python interface.</span>
+<span class="c1"># We need to be able to find Python.h and numpy/arrayobject.h.</span>
+<span class="c1">#PYTHON_INCLUDE := /usr/include/python2.7 \</span>
+<span class="c1">#       /usr/lib/python2.7/dist-packages/numpy/core/include</span>
+<span class="c1"># Anaconda Python distribution is quite popular. Include path:</span>
+<span class="c1"># Verify anaconda location, sometimes it&#39;s in root.</span>
+<span class="c1"># python安装位置</span>
+ANACONDA_HOME :<span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/anaconda3
+PYTHON_INCLUDE :<span class="o">=</span> <span class="k">$(</span>ANACONDA_HOME<span class="k">)</span>/include <span class="se">\</span>
+        <span class="k">$(</span>ANACONDA_HOME<span class="k">)</span>/include/python3.6m <span class="se">\</span>
+        <span class="k">$(</span>ANACONDA_HOME<span class="k">)</span>/lib/python3.6m/site-packages/numpy/core/include
+
+<span class="c1"># Uncomment to use Python 3 (default is Python 2)</span>
+<span class="c1"># PYTHON_LIBRARIES := boost_python3 python3.5m</span>
+<span class="c1"># PYTHON_INCLUDE := /usr/include/python3.5m \</span>
+<span class="c1">#                 /usr/lib/python3.5/dist-packages/numpy/core/include</span>
+
+<span class="c1"># We need to be able to find libpythonX.X.so or .dylib.</span>
+<span class="c1"># PYTHON_LIB := /usr/lib</span>
+PYTHON_LIB :<span class="o">=</span> <span class="k">$(</span>ANACONDA_HOME<span class="k">)</span>/lib <span class="c1"># python库位置</span>
+
+<span class="c1"># Homebrew installs numpy in a non standard path (keg only)</span>
+<span class="c1"># PYTHON_INCLUDE += $(dir $(shell python -c &#39;import numpy.core; print(numpy.core.__file__)&#39;))/include</span>
+<span class="c1"># PYTHON_LIB += $(shell brew --prefix numpy)/lib</span>
+
+<span class="c1"># Uncomment to support layers written in Python (will link against Python libs)</span>
+<span class="c1"># WITH_PYTHON_LAYER := 1</span>
+
+<span class="c1"># Whatever else you find you need goes here.</span>
+INCLUDE_DIRS :<span class="o">=</span> <span class="k">$(</span>PYTHON_INCLUDE<span class="k">)</span> /usr/local/include
+LIBRARY_DIRS :<span class="o">=</span> <span class="k">$(</span>PYTHON_LIB<span class="k">)</span> /usr/local/lib /usr/lib
+
+<span class="c1"># If Homebrew is installed at a non standard location (for example your home directory) and you use it for general dependencies</span>
+<span class="c1"># INCLUDE_DIRS += $(shell brew --prefix)/include</span>
+<span class="c1"># LIBRARY_DIRS += $(shell brew --prefix)/lib</span>
+
+<span class="c1"># NCCL acceleration switch (uncomment to build with NCCL)</span>
+<span class="c1"># https://github.com/NVIDIA/nccl (last tested version: v1.2.3-1+cuda8.0)</span>
+<span class="c1"># USE_NCCL := 1 # 开启多GPU训练，这个前提是系统要装有nccl</span>
+
+<span class="c1"># Uncomment to use `pkg-config` to specify OpenCV library paths.</span>
+<span class="c1"># (Usually not necessary -- OpenCV libraries are normally installed in one of the above $LIBRARY_DIRS.)</span>
+<span class="c1"># USE_PKG_CONFIG := 1</span>
+
+<span class="c1"># N.B. both build and distribute dirs are cleared on `make clean`</span>
+BUILD_DIR :<span class="o">=</span> build
+DISTRIBUTE_DIR :<span class="o">=</span> distribute
+
+<span class="c1"># Uncomment for debugging. Does not work on OSX due to https://github.com/BVLC/caffe/issues/171</span>
+<span class="c1"># DEBUG := 1</span>
+
+<span class="c1"># The ID of the GPU that &#39;make runtest&#39; will use to run unit tests.</span>
+TEST_GPUID :<span class="o">=</span> <span class="m">0</span> <span class="c1"># 所用的gpu的ID编号</span>
+
+<span class="c1"># enable pretty build (comment to see full commands)</span>
+Q ?<span class="o">=</span> @
+</code></pre></div>
+<h3 id="_1">常见编译错误集锦<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://blog.csdn.net/yeler082/article/details/83416981">caffe编译错误undefined reference toTIFFIsTiled@LIBTIFF_4.0'</a></li>
+</ul>
+<h3 id="lmdb">分类LMDB训练集制作<a class="headerlink" href="#lmdb" title="Permanent link">&para;</a></h3>
+<p><strong>扩展1<a href="https://blog.csdn.net/sushiqian/article/details/78771546">分类多标签LMDB制作</a></strong></p>
+<p><strong>扩展2:<a href="http://www.caffecn.cn/?/question/1269">单通道灰度图片怎么fine-tune 3通道模型</a></strong>:其实就是把第一层卷积名称更改即可，该层会被随机初始化。</p>
+<p><strong>扩展3</strong>:<a href="https://blog.csdn.net/qiu931110/article/details/86684241?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromBaidu-1.control">caffe labelSmooth实现</a></p>
+<p><strong>图片目录格式<a href="https://www.cnblogs.com/dengshunge/p/10841108.html">博客</a></strong></p>
+<p><img alt="image-20200723152644243" src="../assets/image-20200723152644243.png" /></p>
+<p><strong>重命名:防止中文干扰</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c1">#为每个文件改名</span>
+<span class="n">ToRename_train</span> <span class="o">=</span> <span class="s1">&#39;/home/usr/dataset/train_data&#39;</span>
+<span class="n">ToRename_test</span> <span class="o">=</span> <span class="s1">&#39;/home/usr/dataset/test_data&#39;</span>
+<span class="c1"># subDict为子目录的文件夹名，需要手动填写</span>
+<span class="n">subDict</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ao_plate&#39;</span><span class="p">,</span><span class="s1">&#39;black_plate&#39;</span><span class="p">,</span><span class="s1">&#39;blue_plate&#39;</span><span class="p">,</span><span class="s1">&#39;doubleYellow_plate&#39;</span><span class="p">,</span><span class="s1">&#39;gang_plate&#39;</span><span class="p">,</span><span class="s1">&#39;gua_plate&#39;</span><span class="p">,</span><span class="s1">&#39;jiaolian_plate&#39;</span><span class="p">,</span><span class="s1">&#39;jing_plate&#39;</span><span class="p">,</span><span class="s1">&#39;lingshiguan_plate&#39;</span><span class="p">,</span><span class="s1">&#39;newEnergy_plate&#39;</span><span class="p">,</span><span class="s1">&#39;nongyong_plate&#39;</span><span class="p">,</span><span class="s1">&#39;yellow_plate&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subDict</span><span class="p">)):</span>
+    <span class="n">ToRename_train1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ToRename_train</span><span class="p">,</span><span class="n">subDict</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ToRename_test1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ToRename_test</span><span class="p">,</span><span class="n">subDict</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ToRename_train1</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ToRename_test1</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
+    <span class="n">files_train</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">ToRename_train1</span><span class="p">))</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">files_train</span><span class="p">)</span>
+    <span class="n">files_test</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">ToRename_test1</span><span class="p">))</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">files_test</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">files_train</span><span class="p">)):</span>
+        <span class="n">oldname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ToRename_train1</span><span class="p">,</span><span class="n">files_train</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+        <span class="c1"># newname为新的文件名</span>
+        <span class="n">newname</span> <span class="o">=</span> <span class="n">ToRename_train1</span><span class="o">+</span><span class="s1">&#39;/newname_train_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">oldname</span><span class="p">,</span><span class="n">newname</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">files_test</span><span class="p">)):</span>
+        <span class="n">oldname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ToRename_test1</span><span class="p">,</span><span class="n">files_test</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+        <span class="c1"># newname为新的文件名</span>
+        <span class="n">newname</span> <span class="o">=</span> <span class="n">ToRename_test1</span><span class="o">+</span><span class="s1">&#39;/newname_test_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">oldname</span><span class="p">,</span><span class="n">newname</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>生成train.txt和test.txt</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="c1"># 形成train和test.txt文件</span>
+<span class="c1"># 需要更换train_path，test_path和restoreFile</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;/home/usr/dataset/train_data&#39;</span>
+<span class="n">test_path</span> <span class="o">=</span> <span class="s1">&#39;/home/usr/dataset/test_data&#39;</span>
+<span class="c1"># 文件夹下的子目录名称</span>
+<span class="n">subPath</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ao_plate&#39;</span><span class="p">,</span><span class="s1">&#39;black_plate&#39;</span><span class="p">,</span><span class="s1">&#39;blue_plate&#39;</span><span class="p">,</span><span class="s1">&#39;doubleYellow_plate&#39;</span><span class="p">,</span><span class="s1">&#39;gang_plate&#39;</span><span class="p">,</span><span class="s1">&#39;gua_plate&#39;</span><span class="p">,</span><span class="s1">&#39;jiaolian_plate&#39;</span><span class="p">,</span><span class="s1">&#39;jing_plate&#39;</span><span class="p">,</span><span class="s1">&#39;lingshiguan_plate&#39;</span><span class="p">,</span><span class="s1">&#39;newEnergy_plate&#39;</span><span class="p">,</span><span class="s1">&#39;nongyong_plate&#39;</span><span class="p">,</span><span class="s1">&#39;yellow_plate&#39;</span><span class="p">]</span>
+<span class="c1"># 生成的train.txt或者test.txt存放的位置</span>
+<span class="n">restoreFile</span> <span class="o">=</span> <span class="s1">&#39;/home/usr/dataset/&#39;</span>
+<span class="c1"># 生成train.txt</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subPath</span><span class="p">)):</span>
+    <span class="n">train_path1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span><span class="n">subPath</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">train_path1</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
+    <span class="n">restoreFile_train</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">restoreFile</span><span class="p">,</span><span class="s1">&#39;train.txt&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">restoreFile_train</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">train_path1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subPath</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># 存储格式class_name/x.jpg</span>
+<span class="c1"># 生成test.txt</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subPath</span><span class="p">)):</span>
+    <span class="n">test_path1</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span><span class="n">subPath</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">test_path1</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
+    <span class="n">restoreFile_test</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">restoreFile</span><span class="p">,</span><span class="s1">&#39;test.txt&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">restoreFile_test</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">test_path1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subPath</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>生成LMDB</strong></p>
+<p><img alt="image-20200723153501140" src="../assets/image-20200723153501140.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># caffe/examples/imagenet/create_imagenet.sh 拿出该文件并修改运行即可</span>
+<span class="c1"># 上面四个文件存储文件存放位置:/home/dengshunge/Desktop/convertLMDB</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env sh</span>
+<span class="c1"># Create the imagenet lmdb inputs</span>
+<span class="c1"># N.B. set the path to the imagenet train + val data dirs</span>
+<span class="nb">set</span> -e
+<span class="c1"># 生成的LMDB文件存放的位置</span>
+<span class="nv">EXAMPLE</span><span class="o">=</span>/home/dengshunge/Desktop/convertLMDB
+<span class="c1"># train.txt和test.txt文件放置的位置</span>
+<span class="nv">DATA</span><span class="o">=</span>/home/dengshunge/Desktop/convertLMDB
+<span class="c1"># caffe/build/tools的位置</span>
+<span class="nv">TOOLS</span><span class="o">=</span>/home/dengshunge/caffe/build/tools
+
+<span class="c1"># 训练集和测试集的位置，记得，最后的 &#39;/&#39; 不要漏了</span>
+<span class="c1"># 注意这个后面直接拼接train.txt/val.txt里面的每行路径，注意路径问题</span>
+<span class="nv">TRAIN_DATA_ROOT</span><span class="o">=</span>/home/dengshunge/Desktop/convertLMDB/data/train_data/
+<span class="nv">VAL_DATA_ROOT</span><span class="o">=</span>/home/dengshunge/Desktop/convertLMDB/data/test_data/
+
+<span class="c1"># Set RESIZE=true to resize the images to 256x256. Leave as false if images have</span>
+<span class="c1"># already been resized using another tool.</span>
+<span class="c1"># 如果需要给该输入图片的大小，将RESIZE设置成true，并图片的高度和宽度</span>
+<span class="nv">RESIZE</span><span class="o">=</span><span class="nb">true</span>
+<span class="k">if</span> <span class="nv">$RESIZE</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nv">RESIZE_HEIGHT</span><span class="o">=</span><span class="m">30</span>
+  <span class="nv">RESIZE_WIDTH</span><span class="o">=</span><span class="m">120</span>
+<span class="k">else</span>
+  <span class="nv">RESIZE_HEIGHT</span><span class="o">=</span><span class="m">0</span>
+  <span class="nv">RESIZE_WIDTH</span><span class="o">=</span><span class="m">0</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;</span><span class="nv">$TRAIN_DATA_ROOT</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Error: TRAIN_DATA_ROOT is not a path to a directory: </span><span class="nv">$TRAIN_DATA_ROOT</span><span class="s2">&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Set the TRAIN_DATA_ROOT variable in create_imagenet.sh to the path&quot;</span> <span class="se">\</span>
+       <span class="s2">&quot;where the ImageNet training data is stored.&quot;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&quot;</span><span class="nv">$VAL_DATA_ROOT</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Error: VAL_DATA_ROOT is not a path to a directory: </span><span class="nv">$VAL_DATA_ROOT</span><span class="s2">&quot;</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Set the VAL_DATA_ROOT variable in create_imagenet.sh to the path&quot;</span> <span class="se">\</span>
+       <span class="s2">&quot;where the ImageNet validation data is stored.&quot;</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Creating train lmdb...&quot;</span>
+
+<span class="c1"># EXAMPLE/ilsvrc12_train_lmdb中的ilsvrc12_train_lmdb为LMDB的命名，可以按需更改</span>
+<span class="c1"># DATA/train.txt要与自己生成train.txt名字相对应，不然得更改</span>
+<span class="c1"># test lmdb同理</span>
+<span class="nv">GLOG_logtostderr</span><span class="o">=</span><span class="m">1</span> <span class="nv">$TOOLS</span>/convert_imageset <span class="se">\</span>
+    --resize_height<span class="o">=</span><span class="nv">$RESIZE_HEIGHT</span> <span class="se">\</span>
+    --resize_width<span class="o">=</span><span class="nv">$RESIZE_WIDTH</span> <span class="se">\</span>
+    --shuffle <span class="se">\</span>
+    <span class="nv">$TRAIN_DATA_ROOT</span> <span class="se">\</span>
+    <span class="nv">$DATA</span>/train.txt <span class="se">\</span>
+    <span class="nv">$EXAMPLE</span>/train_lmdb
+
+<span class="nb">echo</span> <span class="s2">&quot;Creating test lmdb...&quot;</span>
+
+<span class="nv">GLOG_logtostderr</span><span class="o">=</span><span class="m">1</span> <span class="nv">$TOOLS</span>/convert_imageset <span class="se">\</span>
+    --resize_height<span class="o">=</span><span class="nv">$RESIZE_HEIGHT</span> <span class="se">\</span>
+    --resize_width<span class="o">=</span><span class="nv">$RESIZE_WIDTH</span> <span class="se">\</span>
+    --shuffle <span class="se">\</span>
+    <span class="nv">$VAL_DATA_ROOT</span> <span class="se">\</span>
+    <span class="nv">$DATA</span>/test.txt <span class="se">\</span>
+    <span class="nv">$EXAMPLE</span>/test_lmdb
+
+<span class="nb">echo</span> <span class="s2">&quot;Done.&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 生成的LMDB大小如果只有十几KB的话，有可能是生成失败了。可以看到生成LMDB的时候，会自动打乱数据</span>
+<span class="o">./</span><span class="n">create_imagenet</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">shuffle</span><span class="o">=</span><span class="n">true</span> <span class="c1"># 注意，这有许多参数可选</span>
+<span class="c1"># 常用参数</span>
+
+<span class="o">-</span><span class="n">shuffle</span><span class="o">=</span><span class="n">true</span><span class="o">/</span><span class="n">false</span> <span class="c1"># default=false:打乱原有数据的顺序，生成一个乱序的数据</span>
+<span class="o">-</span><span class="n">gray</span><span class="o">=</span><span class="n">true</span><span class="o">/</span><span class="n">false</span> <span class="c1"># default=false：是否转换成灰度图</span>
+<span class="o">-</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;lmdb&quot;</span> <span class="c1"># default=&quot;lmdb&quot;转换格式 有leveldb，lmdb两种选择</span>
+<span class="o">-</span><span class="n">resize_height</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># default=0（type:int32）</span>
+<span class="o">-</span><span class="n">resize_width</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># default=0（type:int32）</span>
+<span class="o">-</span><span class="n">encoded</span><span class="o">=</span><span class="n">true</span><span class="o">/</span><span class="n">false</span> <span class="c1"># default=false，Ture:编码图片将会存储到datum</span>
+<span class="o">-</span><span class="n">encode_type</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="c1"># default=&quot;&quot;,我们用&lt;&#39;png&#39;,&#39;jpg&#39;,....&gt;来编码图片</span>
+</code></pre></div>
+<p><strong>制作均值文件</strong></p>
+<p>如果不制作均值文件，也可以在训练的时候的<code>transform_param</code>上设置<code>mean_value=xxx</code>来代替</p>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span><span class="s2">&quot;data&quot;</span>
+    <span class="nb">type</span><span class="p">:</span><span class="s2">&quot;Data&quot;</span>
+    <span class="n">top</span><span class="p">:</span><span class="s2">&quot;data&quot;</span>
+    <span class="n">top</span><span class="p">:</span><span class="s2">&quot;label&quot;</span>
+    <span class="n">include</span> <span class="p">{</span>
+        <span class="n">phase</span><span class="p">:</span><span class="n">TRAIN</span>
+    <span class="p">}</span>
+    <span class="n">transform_param</span><span class="p">{</span>
+        <span class="n">mirror</span><span class="p">:</span><span class="n">true</span>
+        <span class="n">mean_value</span><span class="p">:</span><span class="mf">127.5</span>
+        <span class="n">scale</span><span class="p">:</span><span class="mf">0.0078125</span>
+        <span class="n">force_gray</span><span class="p">:</span><span class="n">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>为什么需让图片减去均值呢？</p>
+<ul>
+<li>图像的稳定性(降低波动性)，可以提高分类精度</li>
+<li>减去均值一般会让亮度下降，但是亮度其实对图像分类来说，不那么重要</li>
+<li>另外一般会选择对数据进行标准化处理，但是计算图像方差是么有意义的，所以何不选择更加简单的均值规整的办法</li>
+<li>均值文件只是针对训练集的，不针对验证集</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># caffe/examples/imagenet/make_imagenet_mean.sh</span>
+
+<span class="c1">#!/usr/bin/env sh</span>
+<span class="c1"># Compute the mean image from the imagenet training lmdb</span>
+<span class="c1"># N.B. this is available in data/ilsvrc12</span>
+<span class="c1"># train_lmdb的LMDB文件存放的位置</span>
+<span class="n">EXAMPLE</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dengshunge</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">convertLMDB</span>
+<span class="c1"># DATA为最终要生成的均值文件存放路径</span>
+<span class="n">DATA</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dengshunge</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">convertLMDB</span>
+<span class="c1"># caffe/build/tools的位置</span>
+<span class="n">TOOLS</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">dengshunge</span><span class="o">/</span><span class="n">caffe</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">tools</span>
+
+<span class="err">$</span><span class="n">TOOLS</span><span class="o">/</span><span class="n">compute_image_mean</span> <span class="err">$</span><span class="n">EXAMPLE</span><span class="o">/</span><span class="n">train_lmdb</span> \
+  <span class="err">$</span><span class="n">DATA</span><span class="o">/</span><span class="n">your_data_mean</span><span class="o">.</span><span class="n">binaryproto</span>
+<span class="n">echo</span> <span class="s2">&quot;Done.&quot;</span>
+</code></pre></div>
+<p><strong>显示LMDB图片(key=img_name,value=img_data)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">caffe</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">lmdb</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">readlmdb</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">visualize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">lmdb</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">lock</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">txn</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+    <span class="n">datum</span> <span class="o">=</span> <span class="n">caffe</span><span class="o">.</span><span class="n">proto</span><span class="o">.</span><span class="n">caffe_pb2</span><span class="o">.</span><span class="n">Datum</span><span class="p">()</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="p">[],[]</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">txn</span><span class="o">.</span><span class="n">cursor</span><span class="p">():</span>
+        <span class="c1"># 转换为datum</span>
+        <span class="n">datum</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="c1"># 读取datum数据</span>
+        <span class="n">img_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">datum</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">datum</span><span class="o">.</span><span class="n">channels</span><span class="p">,</span> <span class="n">datum</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">datum</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">img_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (channel,height,width)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_data</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datum</span><span class="o">.</span><span class="n">label</span><span class="p">)</span> <span class="c1"># 类别标签，0/1/...</span>
+        <span class="k">if</span> <span class="n">visualize</span><span class="p">:</span>
+            <span class="n">img_data</span><span class="o">=</span><span class="n">img_data</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#(h,w,c)</span>
+            <span class="n">img_data</span> <span class="o">=</span> <span class="n">img_data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="c1"># BGR--&gt;RGB</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_data</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">datum</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="lmdb_1">检测LMDB训练集制作<a class="headerlink" href="#lmdb_1" title="Permanent link">&para;</a></h3>
+<p><strong>生成train.txt和test.txt</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 左边是图片的地址，右边是对应图片的xml地址，两者用空格相连,这个地址是一个相对地址，之后会与&quot;create_data.sh&quot;中的“data_root_dir”结合，生成绝对地址。</span>
+VOC2007/JPEGImages/00001.jpg VOC2007/Annotations/00001.xml
+VOC2007/JPEGImages/00002.jpg VOC2007/Annotations/00002.xml
+VOC2007/JPEGImages/00003.jpg VOC2007/Annotations/00003.xml
+</code></pre></div>
+<p><strong>生成labelmap.prototxt和test_name_size.txt</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># labelmap.prototxt:多个item组成的，label为0的item是背景，接下来就是你自己标注的label，label的编号最好连续，而且每个label对应的Name需要和xml里面的name一致。</span>
+item <span class="o">{</span>
+  name: <span class="s2">&quot;none_of_th_above&quot;</span>
+  label: <span class="m">0</span>
+  display_name: <span class="s2">&quot;background&quot;</span>
+<span class="o">}</span>
+item <span class="o">{</span>
+  name: <span class="s2">&quot;aeroplane&quot;</span>
+  label: <span class="m">1</span>
+  display_name: <span class="s2">&quot;aeroplane&quot;</span>
+<span class="o">}</span>
+item <span class="o">{</span>
+  name: <span class="s2">&quot;bicycle&quot;</span>
+  label: <span class="m">2</span>
+  display_name: <span class="s2">&quot;bicycle&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># test_name_size.txt:由3列组成，第一列是图片的名称，第二、三列分别是图片的高和宽。注意，这里图片的名称没有后缀名,不知道有什么用，下面函数调用中，并没有引入这个文件</span>
+<span class="m">00001</span> <span class="m">500</span> <span class="m">353</span>
+<span class="m">00002</span> <span class="m">500</span> <span class="m">353</span>
+<span class="m">00003</span> <span class="m">500</span> <span class="m">353</span>
+</code></pre></div>
+<p><strong>生成LMDB</strong></p>
+<p><a href="https://www.cnblogs.com/dengshunge/p/10841108.html">看博客吧</a></p>
+<div class="highlight"><pre><span></span><code><span class="nv">cur_dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span> <span class="k">$(</span> dirname <span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="si">}</span> <span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span> <span class="k">)</span>
+<span class="c1"># caffe的路径</span>
+<span class="nv">root_dir</span><span class="o">=</span><span class="s2">&quot;/home/dengshunge/Tiny-DSOD-master&quot;</span> <span class="c1"># 这里主要是用于调用这个路径下的scripts/create_annoset.py</span>
+
+<span class="nb">cd</span> <span class="nv">$root_dir</span>
+
+<span class="nv">redo</span><span class="o">=</span><span class="m">1</span>
+<span class="c1"># 数据的根目录，与txt的文件结合</span>
+<span class="nv">data_root_dir</span><span class="o">=</span><span class="s2">&quot;/home/dengshunge/Desktop/data&quot;</span>
+<span class="c1"># trainval.txt和test.txt的路径</span>
+<span class="nv">txtFileDir</span><span class="o">=</span><span class="s2">&quot;/home/dengshunge/Desktop/LMDB&quot;</span>
+<span class="c1"># LMDB存储位置</span>
+<span class="nv">lmdbFile</span><span class="o">=</span><span class="s2">&quot;/home/dengshunge/Desktop/LMDB/lmdb&quot;</span>
+<span class="c1"># LMDB存储位置的软连接</span>
+<span class="nv">lmdbLink</span><span class="o">=</span><span class="s2">&quot;/home/dengshunge/Desktop/LMDB/lmdbLink&quot;</span>
+<span class="c1"># mapfile位置</span>
+<span class="nv">mapfile</span><span class="o">=</span><span class="s2">&quot;/home/dengshunge/Desktop/LMDB/labelmap.prototxt&quot;</span>
+<span class="c1"># 任务类型</span>
+<span class="nv">anno_type</span><span class="o">=</span><span class="s2">&quot;detection&quot;</span>
+<span class="c1"># 格式</span>
+<span class="nv">db</span><span class="o">=</span><span class="s2">&quot;lmdb&quot;</span>
+<span class="c1"># 图片尺寸，若width,height=0,0，说明按原始图片输入尺寸，否则resize到(width,height)</span>
+<span class="nv">min_dim</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">max_dim</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">width</span><span class="o">=</span><span class="m">300</span>
+<span class="nv">height</span><span class="o">=</span><span class="m">300</span>
+
+<span class="nv">extra_cmd</span><span class="o">=</span><span class="s2">&quot;--encode-type=jpg --encoded&quot;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$redo</span> <span class="o">]</span>
+<span class="k">then</span>
+  <span class="nv">extra_cmd</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$extra_cmd</span><span class="s2"> --redo&quot;</span>
+<span class="k">fi</span>
+<span class="k">for</span> subset <span class="k">in</span> <span class="nb">test</span> trainval
+<span class="k">do</span>
+  python3 <span class="nv">$root_dir</span>/scripts/create_annoset.py --anno-type<span class="o">=</span><span class="nv">$anno_type</span> --label-map-file<span class="o">=</span><span class="nv">$mapfile</span> --min-dim<span class="o">=</span><span class="nv">$min_dim</span> --max-dim<span class="o">=</span><span class="nv">$max_dim</span> --resize-width<span class="o">=</span><span class="nv">$width</span> --resize-height<span class="o">=</span><span class="nv">$height</span> --check-label <span class="nv">$extra_cmd</span> <span class="nv">$data_root_dir</span> <span class="nv">$txtFileDir</span>/<span class="nv">$subset</span>.txt <span class="nv">$lmdbFile</span>/<span class="nv">$subset</span><span class="s2">&quot;_&quot;</span><span class="nv">$db</span> <span class="nv">$lmdbLink</span>
+<span class="k">done</span>
+</code></pre></div>
+<h3 id="_2">训练过程简介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>run_train.sh编写</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">CAFFE_HOME</span><span class="o">=</span>/home/usr/caffe <span class="c1"># caffe根目录</span>
+<span class="nv">SOLVER</span><span class="o">=</span>./solver.prototxt <span class="c1"># solver.prototxt文件路径</span>
+<span class="nv">WEIGHTS</span><span class="o">=</span>./weights/init.caffemodel <span class="c1"># 初始化模型路径</span>
+<span class="nv">LOG</span><span class="o">=</span>./logs/log-<span class="s1">&#39;train +%Y-%m-%d-%H-%S&#39;</span>.log
+<span class="nv">$CAFFE_HOME</span>/build/tools/caffe train <span class="se">\</span>
+  --solver<span class="o">=</span><span class="nv">$SOLVER</span> <span class="se">\ </span><span class="c1"># 必须参数</span>
+  --weights<span class="o">=</span><span class="nv">$WEIGHTS</span> <span class="se">\ </span><span class="c1"># 可选参数，此处加载进行finetune</span>
+  --gpu<span class="o">=</span><span class="m">0</span>,1,2,3 <span class="se">\</span>
+  <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$LOG</span>
+<span class="c1"># 1 表示stdout标准输出；2 表示stderr标准错误；2&gt;&amp;1:把标准错误重定向到标准输出,此时只是输出到窗口上而已；tee会把输出的内容写入到一个或多个文件夹中。</span>
+
+<span class="c1"># 断点继续训练</span>
+--snapshot<span class="o">=</span>xx.solverstate <span class="c1"># 模型保存有两个模型(.caffemodel+.solverstate)，用snapshot代替weights参数，就可以进行断点续训了</span>
+</code></pre></div>
+<p><strong>run_test.sh编写</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">CAFFE_HOME</span><span class="o">=</span>/home/usr/caffe <span class="c1"># caffe根目录</span>
+<span class="nv">MODEL</span><span class="o">=</span>./train_val.prototxt <span class="c1"># 你训练时的net文件</span>
+<span class="nv">WEIGHTS</span><span class="o">=</span>./weights/final.caffemodel <span class="c1"># 训练好的模型路径</span>
+<span class="nv">LOG</span><span class="o">=</span>./logs/log-<span class="s1">&#39;test +%Y-%m-%d-%H-%S&#39;</span>.log
+<span class="nv">$CAFFE_HOME</span>/build/tools/caffe <span class="nb">test</span> <span class="se">\</span>
+  --model<span class="o">=</span><span class="nv">$MODEL</span> <span class="se">\</span>
+  --weights<span class="o">=</span><span class="nv">$WEIGHTS</span> <span class="se">\ </span><span class="c1"># 可选参数，此处加载进行finetune</span>
+  --gpu<span class="o">=</span><span class="m">0</span> <span class="se">\</span>
+  <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee <span class="nv">$LOG</span>
+</code></pre></div>
+<p><strong>build/tools/caffe参数详解</strong></p>
+<div class="highlight"><pre><span></span><code>caffe &lt;command&gt; &lt;args&gt; <span class="c1"># caffe命令执行格式</span>
+
+<span class="c1"># command命令</span>
+<span class="m">1</span><span class="o">)</span>train：训练或finetune模型（model<span class="o">)</span>
+<span class="m">2</span><span class="o">)</span><span class="nb">test</span> ：测试模型
+<span class="m">3</span><span class="o">)</span>device_query：显示gpu信息
+<span class="m">4</span><span class="o">)</span>time：显示程序执行时间
+
+<span class="c1"># args</span>
+--solver<span class="o">=</span>xx_solver.protxt <span class="c1"># 必选solver配置文件</span>
+--gpu<span class="o">=</span><span class="m">0</span>,1 <span class="c1"># 可选参数，-gpu all：表示使用所有的GPU</span>
+--snapshot<span class="o">=</span>xx.solverstate <span class="c1"># 断点续训(恢复训练)，和--weights只能保留一个</span>
+--weights<span class="o">=</span>xx_init.caffemodel <span class="c1"># 预训练好的权重来fine-tuning模型，不能和snapshot同时使用</span>
+--iterations<span class="o">=</span><span class="m">50</span> <span class="c1"># 迭代次数，默认50</span>
+--model<span class="o">=</span>xx_train_test.prototxt <span class="c1"># 可选参数，可以在solver配置文件中指定</span>
+--sighup_effect<span class="o">=</span>snapshot<span class="o">(</span>默认<span class="o">)</span>/stop/none <span class="c1"># 设定当程序发生挂起事件时，执行的操作</span>
+--sigint_effect<span class="o">=</span>stop<span class="o">(</span>默认<span class="o">)</span>/snapshot/none <span class="c1"># 设定当程序发生键盘中止事件时（ctrl+c), 执行的操作</span>
+
+<span class="c1"># train操作看上面run_train.sh</span>
+
+<span class="c1"># test参数操作，用于最终结果输出，模型配置文件中可以设定需要输入的acc或者loss</span>
+<span class="c1"># 利用训练好了的权重（-weight)，输入到测试模型中(-model)，用编号为0的gpu(-gpu)测试100次(-iteration)</span>
+./build/tools/caffe <span class="nb">test</span> -model examples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -gpu <span class="m">0</span> -iterations <span class="m">100</span>
+
+<span class="c1"># time参数：在屏幕上显示程序运行时间</span>
+<span class="c1"># 在屏幕上显示lenet模型迭代10次所使用的时间。包括每次迭代的forward和backward所用的时间，也包括每层forward和backward所用的平均时间。</span>
+./build/tools/caffe <span class="nb">time</span> -model examples/mnist/lenet_train_test.prototxt -iterations <span class="m">10</span>
+
+<span class="c1"># device_query：用来诊断gpu信息</span>
+./build/tools/caffe device_query -gpu <span class="m">0</span> <span class="c1"># 打印该GPU的一些信息</span>
+</code></pre></div>
+<p><strong>tee简介</strong></p>
+<div class="highlight"><pre><span></span><code>tee <span class="o">[</span>option<span class="o">]</span>...<span class="o">[</span>file<span class="o">]</span>...
+<span class="c1"># 1.举个小例子</span>
+ping www.baidu.com <span class="c1"># 这个会显示连接信息</span>
+<span class="c1"># 2.使用tee把显示的连接信息写入到文件中,同时输出也会显示到控制台上，如果这个文件存在就会清空后写入</span>
+ping www.baidu.com <span class="p">|</span> tee ping_baidu.log
+<span class="c1"># 3.log文件存在，但不想清空，只想在后面追加</span>
+ping www.baidu.com <span class="p">|</span> tee -a ping_baidu.log <span class="c1"># 使用-a参数即可</span>
+<span class="c1"># 4.输出到多个文件中</span>
+ping www.baidu.com <span class="p">|</span> tee ping.log ping_baidu.log
+</code></pre></div>
+<h3 id="solverprototxt">solver.prototxt编写<a class="headerlink" href="#solverprototxt" title="Permanent link">&para;</a></h3>
+<p>solver的主要作用就是交替调用前向（forward)算法和后向（backward)算法来更新参数，从而最小化loss，实际上就是一种迭代的优化算法。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># solver.prototxt</span>
+net:<span class="s2">&quot;examples/myfile/train_val.prototxt&quot;</span> <span class="c1"># 指定训练的网络配置文件</span>
+<span class="c1"># 也可以单独指定测试模型文件和训练模型文件</span>
+<span class="c1">#train_net: &quot;examples/hdf5_classification/logreg_auto_train.prototxt&quot;</span>
+<span class="c1">#test_net: &quot;examples/hdf5_classification/logreg_auto_test.prototxt&quot;</span>
+test_iter:100 <span class="c1"># test_iter=val数据集总样本数/test_layer层的batchsize</span>
+test_interval:500 <span class="c1"># 每训练xx次进行一次val验证</span>
+
+<span class="c1"># 下面是学习率设置和学习率下降策略，不同的下降策略，参数不同，常用multistep</span>
+base_lr: <span class="m">0</span>.01 <span class="c1"># 通常设为0.01比较好</span>
+momentum: <span class="m">0</span>.9 <span class="c1"># 梯度下降法中的一种加速收敛的技术，阈值常选:[0.5~0.99]</span>
+weight_decay: <span class="m">0</span>.0005 <span class="c1"># L2正则项(对参数取值平方和的惩罚)，为了减弱过拟合</span>
+lr_policy: <span class="s2">&quot;multistep&quot;</span> <span class="c1"># 学习率调整策略</span>
+gamma: <span class="m">0</span>.9
+stepvalue: <span class="m">5000</span>
+stepvalue: <span class="m">7000</span>
+stepvalue: <span class="m">8000</span>
+stepvalue: <span class="m">9000</span>
+stepvalue: <span class="m">9500</span>
+<span class="c1"># type:&quot;SGD&quot; 默认使用SGD优化策略，如果使用该策略可以不写</span>
+
+display:200 <span class="c1"># 每训练xx次在屏幕上显示一次结果，0表示不显示</span>
+max_iter:50000 <span class="c1"># 最大迭代次数</span>
+snapshot:2000 <span class="c1"># snapshot用于设置训练多少次后进行保存，默认为0，不保存</span>
+snapshot_prefix:<span class="s2">&quot;examples/myfile&quot;</span> <span class="c1"># 设置保存路径</span>
+solver_mode:GPU <span class="c1"># CPU/GPU,默认使用GPU</span>
+<span class="c1">#devide_id: 0,1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># solver6中优化方法，直接在上面改变type和添加对应参数即可，不写默认使用SGD</span>
+<span class="c1"># 1.SGD</span>
+type:<span class="s2">&quot;SGD&quot;</span>
+<span class="c1"># 2.AdaDelta：鲁棒的学习率方法，基于梯度的优化方法，类似SGD</span>
+type: <span class="s2">&quot;AdaDelta&quot;</span>
+delta: 1e-6 <span class="c1"># 需要设置delta值</span>
+<span class="c1"># 3.AdaGrad:自适应梯度，基于梯度的优化方法，类似SGD</span>
+type: <span class="s2">&quot;AdaGrad&quot;</span>
+<span class="c1"># 4.Adam:基于梯度的优化方法，类似SGD</span>
+type: <span class="s2">&quot;Adam&quot;</span>
+<span class="c1"># 5.Nesterov 的加速梯度法作为凸优化中最理想的方法，其收敛速度非常快。</span>
+type: <span class="s2">&quot;Nesterov&quot;</span>
+<span class="c1"># 6.RMSProp:基于梯度的优化方法，类似SGD</span>
+type: <span class="s2">&quot;RMSProp&quot;</span>
+rms_decay: <span class="m">0</span>.98 <span class="c1"># 需要设置rms_decay</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 学习率改变策略,这些都需要几个必须参数，只要更改lr_policy和添加一些必要参数即可</span>
+<span class="n">base_lr</span><span class="p">:</span> <span class="mf">0.01</span>
+<span class="n">gamma</span><span class="p">:</span> <span class="mf">0.1</span>
+<span class="n">momentum</span><span class="p">:</span> <span class="mf">0.9</span>
+<span class="c1"># 1.fixed: 保持base_lr不变.</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;fixed&quot;</span>
+<span class="c1"># 2.exp:base_lr * gamma ^ iter， iter为当前迭代次数</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;exp&quot;</span>
+<span class="c1"># 3.inv:base_lr * (1 + gamma * iter) ^ (- power)</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;inv&quot;</span>
+<span class="n">power</span><span class="p">:</span> <span class="mf">0.75</span>
+<span class="c1"># 4.poly:学习率进行多项式误差, 返回 base_lr (1 - iter/max_iter) ^ (power)</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;poly&quot;</span>
+<span class="n">power</span><span class="p">:</span> <span class="mf">0.75</span>
+<span class="c1"># 4.sigmoid:学习率进行sigmod衰减，返回 base_lr ( 1/(1 + exp(-gamma * (iter - stepsize))))</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;sigmoid&quot;</span>
+<span class="n">stepsize</span><span class="p">:</span> <span class="mi">1000</span>
+<span class="c1"># 5.step:每隔stepsize次学习率*0.1，不常用，因为最终的lr可能会很小很小</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;step&quot;</span>
+<span class="n">stepsize</span><span class="p">:</span> <span class="mi">1000</span>
+<span class="c1"># 6.multistep:需要设置，stepvalue,multistep则是根据stepvalue值变化</span>
+<span class="n">lr_policy</span><span class="p">:</span> <span class="s2">&quot;multistep&quot;</span> <span class="c1"># 学习率调整策略</span>
+<span class="n">stepvalue</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="n">stepvalue</span><span class="p">:</span> <span class="mi">7000</span>
+<span class="n">stepvalue</span><span class="p">:</span> <span class="mi">8000</span>
+<span class="n">stepvalue</span><span class="p">:</span> <span class="mi">9000</span>
+</code></pre></div>
+<h3 id="prototxt">prototxt文件编写<a class="headerlink" href="#prototxt" title="Permanent link">&para;</a></h3>
+<p><strong>Prototxt包含元素</strong></p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>该net的名称</td>
+</tr>
+<tr>
+<td>layer</td>
+<td>层的规范</td>
+</tr>
+</tbody>
+</table>
+<p><strong>layer常用参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">元素</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">name</td>
+<td align="left">层的名称，可以随意取，但尽量和type类似，例如，input data层名称为“data”</td>
+</tr>
+<tr>
+<td align="center">type</td>
+<td align="left">层类型：<br />1.顶层输入层是:<strong>Data</strong>(常用:表数据来源于LMDB或LevelDB，layer的data参数为data_param{xxx};如果是HDF5数据,type:"<strong>HDF5Data</strong>",hdft_data_param{xxx})<br />2.视觉type:<strong>Convolution,Pooling,InnerProduct,BatchNorm+Scale</strong><br/>3.激活type:<strong>Sigmoid,ReLU,TanH,AbsVal(绝对值)，Power(幂运算)，BNLL（log(1 + exp(x))</strong>）<br/>4.损失type:<strong>Softmax/SoftmaxWithLoss</strong><br/>5.其他type:<strong>Accuracy,Reshape,Dropout</strong></td>
+</tr>
+<tr>
+<td align="center">top</td>
+<td align="left">是指该层的**输出的blob的名称**，通过它可以唯一确定一个blob。例如，在训练中，input data层的只有两个top分别为“data”和“label”，分别存放了数据和标签。</td>
+</tr>
+<tr>
+<td align="center">bottom</td>
+<td align="left">是指该层的**输入的blob的名称**，input data层是顶层，因此没有bottom blob。该层的输入的bottom一定是它的上一层的top。如果该层的bottom和top相同，则该层的输入和输出占用了一个blob。</td>
+</tr>
+<tr>
+<td align="center">include</td>
+<td align="left">phase:TRAIN/TEST,如果没有include参数，则表示该层既在训练模型中，又在测试模型中。</td>
+</tr>
+<tr>
+<td align="center">data_param</td>
+<td align="left">定义数据参数，数据来源等等</td>
+</tr>
+<tr>
+<td align="center">transform_param</td>
+<td align="left">对input数据进行预处理的参数。</td>
+</tr>
+<tr>
+<td align="center">param</td>
+<td align="left">定义weight或bias的学习速率和衰减因子参数。<br />lr_mult:weight或bias的学习速率<br />decay_mult:weight或bias的衰减因子</td>
+</tr>
+<tr>
+<td align="center">convolution_param</td>
+<td align="left">定义卷积层的参数。</td>
+</tr>
+<tr>
+<td align="center">lrn_param</td>
+<td align="left">定义归一化层的参数</td>
+</tr>
+<tr>
+<td align="center">pooling_param</td>
+<td align="left">定义pooling层的参数</td>
+</tr>
+<tr>
+<td align="center">inner_product_param</td>
+<td align="left">定义全连接层的参数</td>
+</tr>
+<tr>
+<td align="center">dropout_param</td>
+<td align="left">定义Dropout层的参数</td>
+</tr>
+<tr>
+<td align="center">accuracy_param</td>
+<td align="left">定义Accuracy层的参数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>train_val.prototxt</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">name</span><span class="p">:</span> <span class="s2">&quot;VGGNet&quot;</span> <span class="c1"># 该网络名称，layer:层规范</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 输入层:input_data层是顶层，只有两个输出top分别是&quot;data&quot;和“label”</span>
+<span class="c1"># 做训练时候的输入层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Data&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;label&quot;</span>
+  <span class="n">include</span> <span class="p">{</span>
+    <span class="n">phase</span><span class="p">:</span> <span class="n">TRAIN</span> <span class="c1"># TRAIN训练，TEST测试</span>
+  <span class="p">}</span>
+  <span class="c1"># 数据增强:https://github.com/twtygqyy/caffe-augmentation</span>
+  <span class="n">transform_param</span> <span class="p">{</span>
+    <span class="n">contrast_brightness_adjustment</span><span class="p">:</span> <span class="n">true</span> <span class="c1"># 开启对比度调节</span>
+    <span class="n">min_contrast</span><span class="p">:</span> <span class="mf">0.8</span> <span class="c1"># 最小对比度乘子</span>
+    <span class="n">max_contrast</span><span class="p">:</span> <span class="mf">1.2</span> <span class="c1"># 最大对比度乘子</span>
+    <span class="n">smooth_filtering</span><span class="p">:</span> <span class="n">true</span> <span class="c1"># 平滑filter</span>
+    <span class="n">max_smooth</span><span class="p">:</span> <span class="mi">6</span>
+    <span class="c1"># min_sid_min/max:不需要再设置new_height/width,图片随机resize到这个区间</span>
+    <span class="n">min_side_min</span><span class="p">:</span> <span class="mi">256</span> 
+    <span class="n">min_side_max</span><span class="p">:</span> <span class="mi">480</span>
+    <span class="c1"># train时会对大于crop_size的图片进行随机裁剪，而在test时只是截取中间部分</span>
+    <span class="n">crop_size</span><span class="p">:</span> <span class="mi">224</span>
+    <span class="n">apply_probability</span><span class="p">:</span> <span class="mf">0.5</span> <span class="c1"># 每个操作被执行的概率，默认为0.5</span>
+    <span class="n">max_color_shift</span><span class="p">:</span> <span class="mi">20</span> <span class="c1"># 在RGB轴上最大的色彩偏移 </span>
+    <span class="n">debug_params</span><span class="p">:</span> <span class="n">false</span> <span class="c1"># 是否打印操作参数，默认false</span>
+    <span class="c1"># mean_file: &quot;imagenet_mean.binaryproto&quot; # 可以用下面的方式代替</span>
+    <span class="c1"># BGR顺序均值</span>
+    <span class="n">mean_value</span><span class="p">:</span> <span class="mi">104</span>
+    <span class="n">mean_value</span><span class="p">:</span> <span class="mi">117</span>
+    <span class="n">mean_value</span><span class="p">:</span> <span class="mi">123</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="mf">0.0078125</span> <span class="c1"># 1/128</span>
+    <span class="n">mirror</span><span class="p">:</span> <span class="n">true</span> <span class="c1"># 是否镜像翻转</span>
+  <span class="p">}</span>
+  <span class="n">data_param</span> <span class="p">{</span>
+    <span class="n">source</span><span class="p">:</span> <span class="s2">&quot;models/vggnet/vgg_train_lmdb&quot;</span> <span class="c1">#注意训练集文件的路径</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="mi">32</span>  <span class="c1">#训练批次大小根据自己的显卡显存而定，我开始设为64导致out of memory,于是改成32</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="n">LMDB</span>
+  <span class="p">}</span>
+  <span class="c1"># 如果使用过了上面github的数据增强，可以用image_data_param代替data_param</span>
+  <span class="n">image_data_param</span> <span class="p">{</span>
+    <span class="n">source</span><span class="p">:</span> <span class="s2">&quot;all-sample.txt&quot;</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="mi">128</span>
+    <span class="n">new_height</span><span class="p">:</span> <span class="mi">256</span>
+    <span class="n">new_width</span><span class="p">:</span> <span class="mi">256</span>
+    <span class="n">shuffle</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">root_folder</span><span class="p">:</span> <span class="s2">&quot;all-images/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># 做验证的时候的输入层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Data&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;label&quot;</span>
+  <span class="n">include</span> <span class="p">{</span>
+    <span class="n">phase</span><span class="p">:</span> <span class="n">TEST</span> <span class="c1"># 运行验证集做测试</span>
+  <span class="p">}</span>
+  <span class="n">transform_param</span> <span class="p">{</span>
+    <span class="n">crop_size</span><span class="p">:</span> <span class="mi">224</span>
+    <span class="n">mean_value</span><span class="p">:</span> <span class="mi">104</span>
+    <span class="n">mean_value</span><span class="p">:</span> <span class="mi">117</span>
+    <span class="n">mean_value</span><span class="p">:</span> <span class="mi">123</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="mf">0.0078125</span> <span class="c1"># 1/128</span>
+    <span class="n">mirror</span><span class="p">:</span> <span class="n">false</span>
+  <span class="p">}</span>
+  <span class="n">data_param</span> <span class="p">{</span>
+    <span class="n">source</span><span class="p">:</span> <span class="s2">&quot;models/vggnet/vgg_val_lmdb&quot;</span> <span class="c1">#注意验证集文件的路径</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="mi">32</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="n">LMDB</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 卷积层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;conv1_1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Convolution&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;conv1_1&quot;</span>
+  <span class="c1"># 定义weight或bias的学习速率和衰减因子参数</span>
+  <span class="n">param</span> <span class="p">{</span>
+    <span class="n">lr_mult</span><span class="p">:</span> <span class="mi">1</span> <span class="c1"># 学习率系数，最终学习率=base_lr*lr_mult,一般定义两个w+bias</span>
+  <span class="p">}</span>
+  <span class="n">param</span> <span class="p">{</span>
+    <span class="n">lr_mult</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="n">convolution_param</span> <span class="p">{</span>
+    <span class="n">num_output</span><span class="p">:</span> <span class="mi">64</span> <span class="c1"># 卷积核个数</span>
+    <span class="n">kernel_size</span><span class="p">:</span> <span class="mi">3</span> <span class="c1"># 卷积核大小，如果h/w不一样,则kernel_h,kernel_w分别设定</span>
+    <span class="n">pad</span><span class="p">:</span> <span class="mi">1</span> <span class="c1"># 默认0，扩充是左右、上下对称的。pad_h,pad_w分别指定</span>
+    <span class="n">stride</span><span class="p">:</span> <span class="mi">1</span> <span class="c1"># 步长,也可以stride_h/stride_w分别设置</span>
+    <span class="n">weight_filler</span> <span class="p">{</span> <span class="c1"># 权重初始化,默认&#39;constant&#39;(0)</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;xavier&quot;</span><span class="c1"># xavier常用，constant/gaussian/uniform</span>
+      <span class="c1"># std:1 # 标准差；如果是gaussian，则可选的设置它；默认值为1</span>
+      <span class="c1"># mean:0 # 均值；如果是gaussian，则可选的设置它；默认值为0；</span>
+      <span class="c1"># value:0 # 定值；如果是“constant”，则设置它；默认值为0；</span>
+    <span class="p">}</span>
+    <span class="n">bias_filler</span> <span class="p">{</span> <span class="c1"># 偏置项的初始化</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span> <span class="c1"># constant常用，xavier/gaussian/uniform</span>
+      <span class="c1"># std:1 # 标准差；如果是gaussian，则可选的设置它；默认值为1</span>
+      <span class="c1"># mean:0 # 均值；如果是gaussian，则可选的设置它；默认值为0；</span>
+      <span class="c1"># value:0 # 定值；如果是“constant”，则设置它；默认值为0；</span>
+    <span class="p">}</span>
+    <span class="n">bias_term</span><span class="p">:</span> <span class="n">true</span> <span class="c1"># 是否开启偏置项，默认为true</span>
+    <span class="n">group</span><span class="p">:</span> <span class="mi">1</span> <span class="c1"># 是否分组，默认1，可以按需写，分组卷积，深度可分离卷积等</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ReLU层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;relu1_1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;ReLU&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;conv1_1&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;conv1_1&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># pooling层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;pool1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Pooling&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;conv1_1&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;pool1&quot;</span>
+  <span class="n">pooling_param</span> <span class="p">{</span>
+    <span class="n">pool</span><span class="p">:</span> <span class="n">MAX</span> <span class="c1"># 默认MAX,还有，AVE, 或STOCHASTIC</span>
+    <span class="n">kernel_size</span><span class="p">:</span> <span class="mi">2</span> <span class="c1"># 必选，也可以用kernel_h和kernel_w分别设定</span>
+    <span class="n">stride</span><span class="p">:</span> <span class="mi">2</span> <span class="c1"># 默认1，一般设为2（即不重叠)。可以用stride_h和stride_w来设置</span>
+    <span class="n">pad</span><span class="p">:</span><span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 全连接层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;InnerProduct&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;pool1&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="n">param</span> <span class="p">{</span>
+    <span class="n">lr_mult</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="n">param</span> <span class="p">{</span>
+    <span class="n">lr_mult</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">}</span>
+  <span class="n">inner_product_param</span> <span class="p">{</span>
+    <span class="n">num_output</span><span class="p">:</span> <span class="mi">4096</span>
+    <span class="n">weight_filler</span> <span class="p">{</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;xavier&quot;</span>
+    <span class="p">}</span>
+    <span class="n">bias_filler</span> <span class="p">{</span>
+      <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;constant&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># 全连接后用ReLU</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;relu6&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;ReLU&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dropout层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;drop6&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Dropout&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="n">dropout_param</span> <span class="p">{</span>
+    <span class="n">dropout_ratio</span><span class="p">:</span> <span class="mf">0.5</span> <span class="c1"># 只需要设置一个dropout_ratio就可以了</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 输出分类的准确度，只有test阶段才有，需要加入include参数</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;accuracy&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Accuracy&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;label&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;accuracy&quot;</span>
+  <span class="n">include</span> <span class="p">{</span>
+    <span class="n">phase</span><span class="p">:</span> <span class="n">TEST</span>
+  <span class="p">}</span>
+  <span class="n">accuracy_param</span> <span class="p">{</span>
+      <span class="n">top_k</span><span class="p">:</span><span class="mi">5</span> <span class="c1"># 如果正确的标签在前k个预测的标签中，则该预测被认为是正确的</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 计算softmax_loss操作</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;loss&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;SoftmaxWithLoss&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;fc6&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;label&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;loss&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>其它常用层</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#BatchNorm层:x_norm = (x-u)/std,Scale层:y=alpha*x_norm + beta</span>
+<span class="c1"># BatchNorm层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;conv1&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;conv1&quot;</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;bn_conv1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;BatchNorm&quot;</span>
+  <span class="n">batch_norm_param</span> <span class="p">{</span>
+      <span class="c1"># use_global_stats：默认train:false，test:True</span>
+      <span class="c1"># train:false:代表需要批处理的均值方差要参考全局信息来更新</span>
+      <span class="c1"># test:true:代表不使用自己均值方差和全局的均值方差来得到批处理的均值和方差,而是使用全局均值方差,即训练好的均值方差</span>
+      <span class="n">use_global_stats</span><span class="p">:</span> <span class="n">false</span>
+      <span class="c1"># moving_average_fraction0.999 # 滑动平均的衰减系数，默认为0.999</span>
+      <span class="c1"># eps： 1e-5 # 分母附加值，防止除以方差时出现除0操作，默认为1e-5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Scale层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;conv1&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;conv1&quot;</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;scale_conv1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Scale&quot;</span>
+  <span class="n">scale_param</span> <span class="p">{</span>
+      <span class="c1">#filler{</span>
+      <span class="c1">#    value: 1</span>
+      <span class="c1">#}</span>
+      <span class="n">bias_term</span><span class="p">:</span> <span class="n">true</span> <span class="c1"># 是否使用偏置</span>
+      <span class="c1">#bias_filler{</span>
+      <span class="c1">#    value: 0</span>
+      <span class="c1">#}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># softmax层</span>
+<span class="n">layers</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;prob&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;cls3_fc&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;prob&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Softmax&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Reshape层 N*C*H*W--&gt;in:64*3*28*28--&gt;[0,0,14,-1]--&gt;out:64*3*14*56</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;reshape&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Reshape&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;input&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;output&quot;</span>
+  <span class="n">reshape_param</span> <span class="p">{</span>
+      <span class="n">shape</span> <span class="p">{</span>
+          <span class="n">dim</span><span class="p">:</span> <span class="mi">0</span> <span class="c1"># dim:0 表示维度不变，即输入和输出是相同的维度。</span>
+          <span class="n">dim</span><span class="p">:</span> <span class="mi">2</span> <span class="c1"># dim:2 或 dim:3 将原来的维度变成2或3</span>
+          <span class="n">dim</span><span class="p">:</span> <span class="mi">3</span>
+          <span class="n">dim</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># 表示由系统自动计算维度</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="cafee">cafee的一些特殊层<a class="headerlink" href="#cafee" title="Permanent link">&para;</a></h3>
+<ul>
+<li>slice：在某一个维度，按照给定的下标，blob拆分成几块。比如要拆分channel，总数50，下标为10,20,30,40，那就是分成5份，每份10个channel，输出5个layer。</li>
+<li>concat：在某个维度，将输入的layer组合起来，是slice的逆过程。</li>
+<li>split：将blob复制几份，分别给不同的layer，这些上层layer共享这个blob。</li>
+<li>tile：将blob的某个维度，扩大n倍。比如原来是1234，扩大两倍变成12341234。</li>
+<li>reduction：将某个维度缩减至1维，方法可以是sum、mean、asum、sumsq。</li>
+<li>reshape：这个很简单，就是matlab里的reshape。</li>
+<li>eltwise：将几个同样大小的layer，合并为1个，合并方法可以是相加、相乘、取最大。</li>
+<li>flatten：将中间某几维合并，其实可以用reshape代替。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 举例:Tile层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;tile1&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Tile&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;Features&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;tile1&quot;</span>
+  <span class="n">tile_param</span> <span class="p">{</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="mi">2</span> <span class="c1"># 要扩维的维度</span>
+    <span class="n">tiles</span><span class="p">:</span> <span class="mi">2</span> <span class="c1"># 要扩维的倍数</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># scale层,两个输入的时候是点积乘，这个会自动广播，elwise也可以完成但不会自动广播</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;inception_3a_prob_reshape&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Reshape&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;inception_3a_1x1_up&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;inception_3a_prob_reshape&quot;</span>
+  <span class="n">reshape_param</span> <span class="p">{</span>
+    <span class="n">shape</span> <span class="p">{</span>
+      <span class="n">dim</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">dim</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;inception_3a_scale&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Scale&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;inception_3a/concat&quot;</span>
+  <span class="n">bottom</span><span class="p">:</span> <span class="s2">&quot;inception_3a_prob_reshape&quot;</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;inception_3a/output&quot;</span>
+  <span class="n">scale_param</span> <span class="p">{</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="n">bias_term</span><span class="p">:</span> <span class="n">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="deployprototxt">deploy.prototxt文件改写<a class="headerlink" href="#deployprototxt" title="Permanent link">&para;</a></h3>
+<p><strong>1.改写输入数据层</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.去除train_val.prototxt的数据输入层</span>
+<span class="c1"># 2.添加test的数据输入层</span>
+<span class="n">layer</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;Input&quot;</span> <span class="c1"># 注意该type</span>
+  <span class="n">top</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span>
+  <span class="n">input_param</span> <span class="p">{</span> 
+      <span class="n">shape</span><span class="p">:</span> <span class="p">{</span> 
+        <span class="n">dim</span><span class="p">:</span> <span class="mi">1</span> 
+        <span class="n">dim</span><span class="p">:</span> <span class="mi">3</span> 
+        <span class="n">dim</span><span class="p">:</span> <span class="mi">224</span> 
+        <span class="n">dim</span><span class="p">:</span> <span class="mi">224</span>
+      <span class="p">}</span> 
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>2.中间的cv层无需改动</strong></p>
+<p><strong>3.改写尾部层</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.去除Accuracy和loss层(SoftmaxWithLoss层)，loss有几个删除并改写几个</span>
+<span class="c1"># 2.添加预测层</span>
+layer <span class="o">{</span>
+  name: <span class="s2">&quot;prob&quot;</span>
+  type: <span class="s2">&quot;Softmax&quot;</span>
+  bottom: <span class="s2">&quot;ip2&quot;</span>
+  top: <span class="s2">&quot;prob&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="logaccloss">根据log绘制acc+loss<a class="headerlink" href="#logaccloss" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sys</span> 
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1">#解析出训练和测试的log信息 </span>
+<span class="k">def</span> <span class="nf">get_loss_acc</span><span class="p">(</span><span class="n">log_path</span><span class="p">):</span>
+    <span class="n">train_iters</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">train_losses</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">test_iters</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">test_losses</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">test_accs</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">train_accs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">learn_rates</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">log</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+        <span class="c1">#train iter &amp; loss</span>
+        <span class="k">if</span> <span class="s2">&quot;Iteration&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="s2">&quot;loss&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>  
+            <span class="nb">iter</span><span class="o">=</span><span class="nb">int</span><span class="p">((</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="c1">#print (iter)</span>
+            <span class="n">train_loss</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">train_iters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">iter</span><span class="p">)</span>
+            <span class="c1">#print (train_loss)</span>
+            <span class="n">train_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_loss</span><span class="p">)</span>
+        <span class="c1">#test iter</span>
+        <span class="k">if</span> <span class="s2">&quot;Iteration&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="s2">&quot;Testing&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">test_iter</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">5</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">test_iters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_iter</span><span class="p">)</span>
+        <span class="c1">#test loss</span>
+        <span class="k">if</span> <span class="s2">&quot;Test net output #1&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">test_loss</span><span class="o">=</span><span class="nb">float</span><span class="p">((</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; = &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])[:</span><span class="o">-</span><span class="mi">6</span><span class="p">])</span>
+            <span class="n">test_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_loss</span><span class="p">)</span>
+        <span class="c1">#test acc</span>
+        <span class="k">if</span> <span class="s2">&quot;Test&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="s2">&quot;acc&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">acc</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">test_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+        <span class="c1"># train acc</span>
+        <span class="k">if</span> <span class="s2">&quot;Train&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="s2">&quot;acc&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">acc</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">train_accs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+        <span class="c1">#train lr</span>
+        <span class="k">if</span> <span class="s2">&quot;lr&quot;</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="s2">&quot;Iteration&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">lr</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">learn_rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lr</span><span class="p">)</span>     
+    <span class="c1">#有时学习率个数和train iter的个数不相等，这里使用最后几次的学习率补齐         </span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">learn_rates</span><span class="p">)</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">train_iters</span><span class="p">)):</span>     
+        <span class="n">learn_rates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">learn_rates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> 
+    <span class="k">return</span> <span class="n">train_iters</span><span class="p">,</span><span class="n">train_losses</span><span class="p">,</span><span class="n">test_iters</span><span class="p">,</span><span class="n">test_losses</span><span class="p">,</span><span class="n">test_accs</span><span class="p">,</span><span class="n">learn_rates</span><span class="p">,</span><span class="n">train_accs</span>
+
+<span class="c1">#画多个曲线，一张图上画acc,train loss,test loss，lr   </span>
+<span class="k">def</span> <span class="nf">plot_muilti_figs</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span><span class="n">log_file</span><span class="p">,</span><span class="n">log_fig</span><span class="p">):</span>      
+        <span class="n">train_iters</span><span class="p">,</span><span class="n">train_losses</span><span class="p">,</span><span class="n">test_iters</span><span class="p">,</span><span class="n">test_losses</span><span class="p">,</span><span class="n">test_accs</span><span class="p">,</span><span class="n">learn_rates</span><span class="p">,</span><span class="n">train_accs</span><span class="o">=</span><span class="n">get_loss_acc</span><span class="p">(</span><span class="n">log_path</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">log_file</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;train iters: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_iters</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;train losses: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_losses</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;test iters: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_iters</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;test losses: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_losses</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;train accs: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_accs</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;test accs: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_accs</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;learn_rates: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">learn_rates</span><span class="p">))</span>
+
+    <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span> <span class="c1">#画布大小为1200*900，默认是800*600，也就是figsize=(8,6)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_iters</span><span class="p">,</span> <span class="n">train_losses</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;train loss&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_iters</span><span class="p">,</span> <span class="n">test_losses</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;test loss&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># ajust ncol to fit the space</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_iters</span><span class="p">,</span> <span class="n">train_accs</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;train_acc&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_iters</span><span class="p">,</span> <span class="n">test_accs</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;val_acc&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+    <span class="c1">#plt.legend(loc = 5, ncol = 1) # ajust ncol to fit the space</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_iters</span><span class="p">,</span> <span class="n">learn_rates</span><span class="p">,</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;lr&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># ajust ncol to fit the space</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#置于所有画图程序最后，但在show函数前,使整个图更协调，文字不重叠,若数字太多，可适当增大画布尺寸  </span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">log_path</span><span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="o">+</span><span class="n">log_fig</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">log_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="c1">#与log文件放在一个文件夹下</span>
+    <span class="n">log_file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#训练log文件名</span>
+    <span class="n">log_fig</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1">#要保存的图片名称，不带后缀</span>
+    <span class="n">plot_muilti_figs</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span><span class="n">log_file</span><span class="p">,</span><span class="n">log_fig</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="pythonapi">常用PythonApi<a class="headerlink" href="#pythonapi" title="Permanent link">&para;</a></h3>
+<p><strong>推理python代码</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#caffe.set_cpu()</span>
+<span class="n">caffe</span><span class="o">.</span><span class="n">set_device</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">caffe</span><span class="o">.</span><span class="n">set_model_gpu</span><span class="p">()</span>
+<span class="n">deploy</span> <span class="o">=</span> <span class="s2">&quot;xxx.prototxt&quot;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;xxx.caffemodel&quot;</span>
+
+<span class="c1"># 数据预处理</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">caffe</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">Transformer</span><span class="p">({</span><span class="s1">&#39;data&#39;</span><span class="p">:</span><span class="n">net</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">})</span>
+<span class="n">transformer</span><span class="o">.</span><span class="n">set_transpose</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># h,w,c --&gt; c,h,w</span>
+<span class="c1">#mu = np.load(&quot;xxx_mean.npy&quot;) # mean文件</span>
+<span class="c1">#mu = mu.mean(1).mean(1) # 对所有像素值取平均以此获取BGR的均值像素值</span>
+<span class="c1">#transformer.set_mean(&#39;data&#39;,mu) # 对于每个通道，减去BGR的均值像素</span>
+<span class="n">transformer</span><span class="o">.</span><span class="n">set_mean</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">127.5</span><span class="p">]))</span>
+<span class="n">transformer</span><span class="o">.</span><span class="n">set_input_scale</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="mf">0.0078125</span><span class="p">)</span>
+<span class="n">transformer</span><span class="o">.</span><span class="n">set_raw_scale</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span> <span class="c1"># 将像素值从[0,255]--&gt;[0,1]之间</span>
+<span class="n">transformer</span><span class="o">.</span><span class="n">set_channel_swap</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># RGB-&gt;BGR</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">caffe</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;xxx.jpg&quot;</span><span class="p">)</span>
+<span class="c1"># plt.imshow(image);plt.show()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="n">image</span><span class="p">)</span>
+
+<span class="c1"># 前向传播</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">caffe</span><span class="o">.</span><span class="n">Net</span><span class="p">(</span><span class="n">deploy</span><span class="p">,</span><span class="n">model</span><span class="p">,</span><span class="n">caffe</span><span class="o">.</span><span class="n">TEST</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># data-&gt;(c,h,w)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
+
+<span class="c1"># 获取blob的各层名字以及shape:(n,c,h,w)</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span><span class="n">blob</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">blobs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span><span class="n">blob</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># 显示各层的参数信息：</span>
+<span class="c1"># layer_name:权重名</span>
+<span class="c1"># param[0]:weights-&gt;(output_channels, input_channels, filter_height, filter_width)</span>
+<span class="c1"># param[1]:bias--&gt;(output_channels,)</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span><span class="n">param</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">layer_name</span><span class="p">,</span><span class="n">param</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># 显示各层的type</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">_layer_names</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="c1"># 显示layer的name</span>
+
+
+<span class="c1"># 显示各层特征图</span>
+<span class="k">def</span> <span class="nf">show_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">padsize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padval</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">-=</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">/=</span> <span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="c1"># force the number of filters to be square</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">padsize</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">padsize</span><span class="p">))</span> <span class="o">+</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),)</span> <span class="o">*</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="p">(</span><span class="n">padval</span><span class="p">,</span> <span class="n">padval</span><span class="p">))</span>
+
+    <span class="c1"># tile the filters into an image</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="c1"># 调用</span>
+<span class="n">show_data</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="s1">&#39;conv2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">padval</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># 显示全部</span>
+<span class="n">show_data</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">blobs</span><span class="p">[</span><span class="s1">&#39;conv3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">],</span><span class="n">padval</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># 取前100个进行显示(数量太多看不清,可以先选择部分显示)</span>
+</code></pre></div>
+<p><strong>caffe.proto</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">caffe.proto</span> <span class="kn">import</span> <span class="n">caffe_pb2</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">text_format</span>
+<span class="kn">import</span> <span class="nn">google.protobuf</span> <span class="k">as</span> <span class="nn">pb</span>
+
+<span class="c1"># 1.加载处理deploy.prototxt</span>
+<span class="n">deploy</span> <span class="o">=</span> <span class="s2">&quot;xx.prototxt&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">deploy</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">train_str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># 一次读取所有内容</span>
+<span class="n">train_net</span> <span class="o">=</span> <span class="n">caffe_pb2</span><span class="o">.</span><span class="n">NetParameter</span><span class="p">()</span> <span class="c1"># 建立一个空的prototxt</span>
+<span class="n">text_format</span><span class="o">.</span><span class="n">Merge</span><span class="p">(</span><span class="n">train_str</span><span class="p">,</span> <span class="n">train_net</span><span class="p">)</span> <span class="c1"># 填充空的prototxt，方便使用python代码访问各层和各参数</span>
+<span class="c1">#等价于 text_format.Parse(train_str,train_net)</span>
+
+<span class="c1"># 清除该模型</span>
+<span class="n">train_net</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
+
+<span class="c1"># 遍历prototxt的所有层</span>
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">train_net</span><span class="o">.</span><span class="n">layer</span><span class="p">:</span>
+    <span class="c1"># layer.type-&gt;&#39;xxx&#39;,layer.top/bottom-&gt;[&#39;xxx&#39;]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="n">layer</span><span class="o">.</span><span class="n">type</span><span class="p">,</span><span class="n">layer</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span><span class="n">layer</span><span class="o">.</span><span class="n">top</span><span class="p">,</span><span class="n">layer</span><span class="o">.</span><span class="n">xx_param</span><span class="p">,</span><span class="o">....</span><span class="p">)</span><span class="c1"># 打印每层的参数</span>
+
+<span class="c1"># 移出某一层</span>
+<span class="n">train_net</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">train_net</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># 移出某层某参数</span>
+<span class="n">train_net</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">include</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">train_net</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">include</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># 修改某层某参数</span>
+<span class="n">train_net</span><span class="o">.</span><span class="n">layer</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">convolution_param</span><span class="o">.</span><span class="n">bias_term</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># 设置某层卷积的bias_term为False</span>
+<span class="c1"># 存储prototxt</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;save.prototxt&quot;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fs</span><span class="p">:</span>
+    <span class="n">fs</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">text_format</span><span class="o">.</span><span class="n">MessageToString</span><span class="p">(</span><span class="n">train_net</span><span class="p">))</span>
+
+<span class="c1"># 2.加载处理caffemodel</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;xxx.caffemodel&quot;</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">caffe_pb2</span><span class="o">.</span><span class="n">NetParameter</span><span class="p">()</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">train_net_str</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">net</span><span class="o">.</span><span class="n">ParseFromString</span><span class="p">(</span><span class="n">train_net_str</span><span class="p">)</span><span class="c1"># 此时net已经加载进来了</span>
+<span class="c1"># 存储caffemodel</span>
+<span class="n">net</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;save.caffemodel&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="c">自定义C++层<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<ul>
+<li>写<code>xxx.hpp</code>，放到<code>caffe/include/caffe/layers</code></li>
+<li>写<code>xxx.cpp</code>，放到<code>caffe/src/caffe/layers</code></li>
+<li>如果该层有参数需要修改<code>caffe/src/proto/caffe.proto</code></li>
+</ul>
+<p><strong>无参数层</strong></p>
+<p>我们定义了一个最精简的层，该层没有配置参数，data从bottom进来，又从top出去，没做任何其他操作。所以无需修改<code>proto</code>文件，把这两个文件放到对应位置后，编译即可使用</p>
+<div class="highlight"><pre><span></span><code>layer <span class="o">{</span>
+  name:<span class="s2">&quot;NewLayer&quot;</span>
+  type:<span class="s2">&quot;New&quot;</span> <span class="c1">#定义</span>
+  bottom: <span class="s2">&quot;data&quot;</span>
+  top:<span class="s2">&quot;data&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// xxx.hpp</span>
+<span class="cp">#ifndef CAFFE_NEW_LAYER_HPP_</span>
+<span class="cp">#define CAFFE_NEW_LAYER_HPP_</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;caffe/blob.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;caffe/layer.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;caffe/proto/caffe.pb.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">caffe</span> <span class="p">{</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Dtype</span><span class="o">&gt;</span>
+    <span class="k">class</span> <span class="nc">NewLayer</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Layer</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="k">explicit</span> <span class="n">NewLayer</span><span class="p">(</span><span class="k">const</span> <span class="n">LayerParameter</span><span class="o">&amp;</span> <span class="n">param</span><span class="p">)</span>
+            <span class="o">:</span> <span class="n">Layer</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="p">{}</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">LayerSetUp</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">){};</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Reshape</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">){};</span>
+
+    <span class="k">protected</span><span class="o">:</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Forward_cpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">);</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Backward_cpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">propagate_down</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">);</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Forward_gpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">){};</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Backward_gpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">propagate_down</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">){};</span>
+    <span class="p">};</span>
+
+<span class="p">}</span> 
+
+<span class="cp">#endif </span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// xxx.cpp</span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;caffe/layers/new_layer.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">caffe</span> <span class="p">{</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Dtype</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">NewLayer</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;::</span><span class="n">Forward_cpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">Dtype</span><span class="o">*</span> <span class="n">bottom_data</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">cpu_data</span><span class="p">();</span>
+    <span class="n">Dtype</span><span class="o">*</span> <span class="n">top_data</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">mutable_cpu_data</span><span class="p">();</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">top_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bottom_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Dtype</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">NewLayer</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;::</span><span class="n">Backward_cpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">propagate_down</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">propagate_down</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Dtype</span><span class="o">*</span> <span class="n">bottom_data</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">cpu_data</span><span class="p">();</span>
+        <span class="k">const</span> <span class="n">Dtype</span><span class="o">*</span> <span class="n">top_diff</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">cpu_diff</span><span class="p">();</span>
+        <span class="n">Dtype</span><span class="o">*</span> <span class="n">bottom_diff</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">mutable_cpu_diff</span><span class="p">();</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">bottom_diff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_diff</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef CPU_ONLY</span>
+    <span class="n">STUB_GPU</span><span class="p">(</span><span class="n">NewLayer</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="n">INSTANTIATE_CLASS</span><span class="p">(</span><span class="n">NewLayer</span><span class="p">);</span>  <span class="c1">//类名，注：这个类名与prototxt文件中的层名不需一致</span>
+<span class="n">REGISTER_LAYER_CLASS</span><span class="p">(</span><span class="n">New</span><span class="p">);</span> <span class="c1">// 对应层的类型</span>
+
+<span class="p">}</span>  <span class="c1">// namespace caffe</span>
+</code></pre></div>
+<p><strong>添加带参数的层</strong></p>
+<p><img alt="image-20200729184301770" src="../assets/image-20200729184301770.png" /></p>
+<div class="highlight"><pre><span></span><code>layer <span class="o">{</span>
+  name:<span class="s2">&quot;NewLayer&quot;</span>
+  type:<span class="s2">&quot;New&quot;</span>
+  bottom: <span class="s2">&quot;data&quot;</span>
+  top:<span class="s2">&quot;data&quot;</span>
+    new_param <span class="o">{</span>
+    coeff1: <span class="m">1</span>.0
+    coeff2: <span class="m">2</span>.0
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// xxx.hpp 和上面一样</span>
+<span class="c1">// xxx.cpp</span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;caffe/layers/new_layer.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">caffe</span> <span class="p">{</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Dtype</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">NewLayer</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;::</span><span class="n">Forward_cpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">Dtype</span><span class="o">*</span> <span class="n">bottom_data</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">cpu_data</span><span class="p">();</span>
+    <span class="n">Dtype</span><span class="o">*</span> <span class="n">top_data</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">mutable_cpu_data</span><span class="p">();</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span>
+
+    <span class="kt">float</span> <span class="n">coeff</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">layer_param_</span><span class="p">.</span><span class="n">new_param</span><span class="p">().</span><span class="n">coeff1</span><span class="p">();</span> <span class="c1">// 获取参数</span>
+    <span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;NewLayer, Forward_cpu:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">coeff</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">top_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bottom_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">Dtype</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">NewLayer</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;::</span><span class="n">Backward_cpu</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">top</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&amp;</span> <span class="n">propagate_down</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Blob</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;*&gt;&amp;</span> <span class="n">bottom</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kt">float</span> <span class="n">coeff</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">layer_param_</span><span class="p">.</span><span class="n">new_param</span><span class="p">().</span><span class="n">coeff2</span><span class="p">();</span>  <span class="c1">// 获取参数</span>
+    <span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;NewLayer, Backward_cpu:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">coeff</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">propagate_down</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Dtype</span><span class="o">*</span> <span class="n">bottom_data</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">cpu_data</span><span class="p">();</span>
+        <span class="k">const</span> <span class="n">Dtype</span><span class="o">*</span> <span class="n">top_diff</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">cpu_diff</span><span class="p">();</span>
+        <span class="n">Dtype</span><span class="o">*</span> <span class="n">bottom_diff</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">mutable_cpu_diff</span><span class="p">();</span>
+        <span class="k">const</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">bottom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">bottom_diff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">top_diff</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#ifdef CPU_ONLY</span>
+    <span class="n">STUB_GPU</span><span class="p">(</span><span class="n">NewLayer</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="n">INSTANTIATE_CLASS</span><span class="p">(</span><span class="n">NewLayer</span><span class="p">);</span>  <span class="c1">//类名，对应prototxt文件中的层名</span>
+<span class="n">REGISTER_LAYER_CLASS</span><span class="p">(</span><span class="n">New</span><span class="p">);</span> <span class="c1">// 对应层的类型type</span>
+
+<span class="p">}</span>  <span class="c1">// namespace caffe</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 修改caffe.proto，需要修改两处</span>
+<span class="c1">// 1.在message LayerParameter下添加</span>
+  <span class="n">optional</span> <span class="n">NewParameter</span> <span class="n">new_param</span> <span class="o">=</span> <span class="mi">151</span><span class="p">;</span><span class="c1">// 注意设定的ID值不能与其他已设置的有相同，而message LayerParameter上面注明了可以设定的、没有冲突的ID值。</span>
+<span class="c1">// 2.在其他位置添加一个NewLayer层的message函数：</span>
+<span class="n">message</span> <span class="n">NewParameter</span><span class="p">{</span>
+    <span class="n">optional</span> <span class="kt">float</span> <span class="n">coeff1</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="n">optional</span> <span class="kt">float</span> <span class="n">coeff2</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="mi">2</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              PaddlePaddle快速教程
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              ONNX简明教程
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

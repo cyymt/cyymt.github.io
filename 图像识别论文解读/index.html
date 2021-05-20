@@ -1,0 +1,1130 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>图像识别论文解读 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vgg" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              图像识别论文解读
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          图像识别论文解读
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        图像识别论文解读
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vgg" class="md-nav__link">
+    VGG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inception" class="md-nav__link">
+    Inception
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resnet" class="md-nav__link">
+    ResNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squeezenet" class="md-nav__link">
+    SqueezeNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobilenet" class="md-nav__link">
+    MobileNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shufflenet" class="md-nav__link">
+    ShuffleNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ghostnetost" class="md-nav__link">
+    GhostNet:[ɡoʊst]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vovnet" class="md-nav__link">
+    VoVNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vovnetv2" class="md-nav__link">
+    VoVNetV2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peleenet" class="md-nav__link">
+    PeleeNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bbn" class="md-nav__link">
+    BBN(解决长尾数据)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vgg" class="md-nav__link">
+    VGG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inception" class="md-nav__link">
+    Inception
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resnet" class="md-nav__link">
+    ResNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#squeezenet" class="md-nav__link">
+    SqueezeNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobilenet" class="md-nav__link">
+    MobileNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shufflenet" class="md-nav__link">
+    ShuffleNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ghostnetost" class="md-nav__link">
+    GhostNet:[ɡoʊst]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vovnet" class="md-nav__link">
+    VoVNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vovnetv2" class="md-nav__link">
+    VoVNetV2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peleenet" class="md-nav__link">
+    PeleeNet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bbn" class="md-nav__link">
+    BBN(解决长尾数据)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>图像识别论文解读</h1>
+                
+                <h3 id="vgg">VGG<a class="headerlink" href="#vgg" title="Permanent link">&para;</a></h3>
+<ul>
+<li>VGGNet有一个显著的特点：每次经过池化层（maxpool）后特征图的尺寸减小一倍，而通道数则增加一倍（最后一个池化层除外）</li>
+<li>VGGNet中，使用的卷积核基本都是<code>3×3</code>，而且很多地方出现了多个<code>3×3</code>堆叠的现象，这种结构的优点在于，首先从感受野来看，两个<code>3×3</code>的卷积核与一个<code>5×5</code>的卷积核是一样的；其次，同等感受野时，<code>3×3</code>卷积核的参数量更少。更为重要的是，两个<code>3×3</code>卷积核的非线性能力要比<code>5×5</code>卷积核强，因为其拥有两个激活函数，可大大提高卷积网络的学习能力。</li>
+</ul>
+<h3 id="inception">Inception<a class="headerlink" href="#inception" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><img alt="image-20200120184650315" src="../assets/image-20200120184650315.png" /></th>
+<th><img alt="image-20200120184215731" src="../assets/image-20200120184215731.png" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="image-20200120183607773" src="../assets/image-20200120183607773.png" /></td>
+<td><img alt="image-20200120184730935" src="../assets/image-20200120184730935.png" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>为进一步降低网络参数量，Inception又增加了多个<code>1×1</code>的卷积模块,这种<code>1×1</code>的模块可以先将特征图降维，再送给<code>3×3</code>和<code>5×5</code>大小的卷积核，由于通道数的降低，参数量也有了较大的减少。</li>
+<li>最后的Inception模块处使用了全局平均池化。为了避免深层网络训练时带来的梯度消失问题.</li>
+<li>Inception v2进一步通过卷积分解与正则化实现更高效的计算，增加了BN层，同时利用两个级联的3×3卷积取代了Inception v1版本中的5×5卷积。</li>
+<li>更进一步，Inception v2将<code>n×n</code>的卷积运算分解为<code>1×n</code>与<code>n×1</code>两个卷积</li>
+</ul>
+<h3 id="resnet">ResNet<a class="headerlink" href="#resnet" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20200120185334238" src="../assets/image-20200120185334238.png" /></p>
+<ul>
+<li>背景:当时的已经证明网络深度越深效果越好，但实验发现网络越深越难收敛，出现网络退化现象(56层的网络比20层网络效果还要差)，何凯明提出了残差网络。</li>
+<li>普通神经网络只需要关注输出F(x)，残差网络需要关注H(x)=F(x)+x -&gt; F(x)=H(x) - x，而且残差更小学习难度小点。</li>
+</ul>
+<p><strong>resnet的改进</strong></p>
+<p><a href="https://zhuanlan.zhihu.com/p/54289848">ResNet及其变种的结构梳理、有效性分析与代码解读</a></p>
+<ul>
+<li>改进一：改进downsample部分，减少信息流失。前面说过了，每个stage的第一个conv都有下采样的步骤，我们看左边第一张图左侧的通路，input数据进入后在会经历一个stride=2的1*1卷积，将特征图尺寸减小为原先的一半，请注意1x1卷积和stride=2会导致输入特征图&frac34;的信息不被利用，因此ResNet-B的改进就是就是将下采样移到后面的3x3卷积里面去做，避免了信息的大量流失。ResNet-D则是在ResNet-B的基础上将identity部分的下采样交给avgpool去做，避免出现1x1卷积和stride同时出现造成信息流失。ResNet-C则是另一种思路，将ResNet输入部分的7x7大卷积核换成3个3x3卷积核，可以有效减小计算量，这种做法最早出现在Inception-v2中。其实这个ResNet-C 我比较疑惑，ResNet论文里说它借鉴了VGG的思想，使用大量的小卷积核，既然这样那为什么第一部分依旧要放一个7x7的大卷积核呢，不知道是出于怎样的考虑，但是现在的多数网络都把这部分改成3个3x3卷积核级联。</li>
+</ul>
+<p><img alt="image-20210520152504051" src="../assets/image-20210520152504051.png" /></p>
+<ul>
+<li>改进二：ResNet V2。这是由ResNet原班人马打造的，主要是对ResNet部分组件的顺序进行了调整。各种魔改中常见的预激活ResNet就是出自这里。</li>
+</ul>
+<p><img alt="image-20210520152532769" src="../assets/image-20210520152532769.png" /></p>
+<p><strong>模型轻量化设计</strong></p>
+<p>从模型设计时就采用一些轻量化的思想，例如采用深度可分离卷积、分组卷积等轻量卷积方式，减少卷积过程的计算量。此外，利用全局池化来取代全连接层，利用1×1卷积实现特征的通道降维，也可以降低模型的计算量，这两点在众多网络中已经得到了应用。</p>
+<p><img alt="image-20200120221011322" src="../assets/image-20200120221011322.png" /></p>
+<h3 id="squeezenet"><strong>SqueezeNet</strong><a class="headerlink" href="#squeezenet" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20200120221235647" src="../assets/image-20200120221235647.png" /></p>
+<ul>
+<li>SqueezeNet层：首先使用<code>1×1</code>卷积进行降维，特征图的尺寸不变，这里的S1小于M，达到了压缩的目的。</li>
+<li>Expand层：并行地使用<code>1×1</code>卷积与<code>3×3</code>卷积获得不同感受野的特征图，有点类似Inception模块，达到扩展的目的。</li>
+<li>Concat：对得到的两个特征图进行**通道拼接**，作为最终输出。</li>
+<li>模块中的S1、e1与e2都是可调的超参，Fire Module默认e1=e2=4×S1。激活函数使用了ReLU函数。</li>
+</ul>
+<p><img alt="image-20200120222027698" src="../assets/image-20200120222027698.png" /></p>
+<ul>
+<li>SqueezeNet一共使用了3个Pool层，前两个是Max Pooling层，步长为2，最后一个为**全局平均池化**，利用该层可以取代全连接层，减少了计算量。</li>
+<li><strong>全局平均池化</strong>:我们对每个特征图一整张图片进行全局均值池化，这样每张特征图都可以得到一个输出。这样采用均值池化，连参数都省了，可以大大减小网络参数，避免过拟合.</li>
+<li>SqueezeNet虽在一定程度上减少了卷积计算量，但仍然使用传统的卷积计算方式</li>
+</ul>
+<h3 id="mobilenet"><strong>MobileNet</strong><a class="headerlink" href="#mobilenet" title="Permanent link">&para;</a></h3>
+<p><strong>MobileNet利用了更为高效的深度可分离卷积的方式，进一步加速了卷积网络在移动端的应用</strong></p>
+<p><strong>普通卷积</strong></p>
+<p><img alt="image-20200122120108574" src="../assets/image-20200122120108574.png" /></p>
+<ul>
+<li>假设有一个<code>3×3</code>大小的卷积层，其输入通道为<code>16</code>、输出通道为<code>32</code>，一共需要<code>(3×3×16)×32 =4068</code>个参数。</li>
+</ul>
+<p><strong>深度可分离卷积</strong></p>
+<p><img alt="image-20200122121446250" src="../assets/image-20200122121446250.png" /></p>
+<ul>
+<li><strong>深度可分离卷积=深度卷积+逐点卷积(<code>1x1</code>)</strong></li>
+<li>用16个<code>3×3</code>大小的卷积核（1通道）分别与输入的16通道的数据做卷积（这里使用了16个1通道的卷积核，输入数据的每个通道用1个3×3的卷积核卷积），得到了16个通道的特征图，我们说该步操作是depthwise（逐层）的，在叠加16个特征图之前接着用32个<code>1×1</code>大小的卷积核（16通道）在这16个特征图进行卷积运算，将16个通道的信息进行融合（用1×1的卷积进行不同通道间的信息融合），我们说该步操作是pointwise（逐像素）的。这样我们可以算出整个过程使用了<code>3×3×16+（1×1×16）×32 =656</code>个参数。</li>
+<li>总体计算量约等于标准卷积的1/9，极大地减少了卷积过程的计算量。</li>
+</ul>
+<p><strong>深度可分离卷积模块结构图</strong></p>
+<p><img alt="image-20200122124812558" src="../assets/image-20200122124812558.png" /></p>
+<p><img alt="image-20200122122314063" src="../assets/image-20200122122314063.png" /></p>
+<ul>
+<li>在此使用了ReLU6来替代原始的ReLU激活函数，将ReLU的最大输出限制在6以下</li>
+</ul>
+<p><img alt="image-20200122124851771" src="../assets/image-20200122124851771.png" /></p>
+<ul>
+<li>使用ReLU6的原因主要是为了满足移动端部署的需求。移动端通常使用Float16或者Int8等较低精度的模型，如果不对激活函数的输出进行限制的话，激活值的分布范围会很大，而低精度的模型很难精确地覆盖如此大范围的输出，这样会带来精度的损失。</li>
+</ul>
+<p><strong>MobileNetv1结构</strong></p>
+<p><img alt="image-20200122122343955" src="../assets/image-20200122122343955.png" /></p>
+<ul>
+<li>与VGGNet类似，也是一个逐层堆叠式网络</li>
+<li>Dw代表一个深度分解卷积，其后需要跟一个<code>1×1</code>卷积，s2代表步长为2的卷积，可以缩小特征图尺寸，起到与Pooling层一样的作用。网络最后利用一个全局平均池化层，送入到全连接与Softmax进行分类预测。</li>
+<li><strong>MobileNet v1还设置了两个超参数，用来控制模型的大小与计算量</strong></li>
+<li>宽度乘子：用于控制特征图的通道数，记做α，当α＜1时，模型会变得更薄，可以将计算量减少为原来的α2。</li>
+<li>分辨率乘子：用于控制特征图的尺寸，记做ρ，在相应的特征图上应用该乘子，也可以有效降低每一层的计算量。</li>
+<li><strong>缺点</strong></li>
+<li>模型结构较为复古，采用了与VGGNet类似的卷积简单堆叠，没有采用残差、特征融合等先进的结构。</li>
+<li>深度分解卷积中各通道相互独立，卷积核维度较小，输出特征中只有较少的输入特征，再加上ReLU激活函数，使得输出很容易变为0，难以恢复正常训练，因此在训练时部分卷积核容易被训练废掉。</li>
+</ul>
+<p><strong>MobileNetv2</strong></p>
+<ul>
+<li>利用残差结构取代了原始的卷积堆叠方式，提出了一个Inverted Residual Block结构</li>
+<li>传统的残差网络通常先使用1×1卷积进行特征降维，减少通道数，再送入<code>3×3</code>卷积，最后再利用1×1卷积升维，类似沙漏。</li>
+<li>
+<p>MobileNet v2中，由于使用了深度可分离卷积来逐通道计算，本身计算量就比较少，因此在此可以使用1×1卷积来升维，在计算量增加不大的基础上获取更好的效果，最后再用1×1卷积降维，类似柳叶。</p>
+</li>
+<li>
+<p><strong>去掉Block的ReLu6层</strong></p>
+</li>
+<li>
+<p>深度可分离卷积得到的特征对应于低维空间，特征较少，如果后续接线性映射则能够保留大部分特征，而如果接非线性映射如ReLU，则会破坏特征，造成特征的损耗，从而使得模型效果变差，针对此问题，MobileNet v2直接去掉了每一个Block中最后的ReLU6层(不是所有)，减少了特征的损耗，获得了更好的检测效果。</p>
+<p><img alt="image-20200123161251525" src="../assets/image-20200123161251525.png" /></p>
+</li>
+</ul>
+<p><strong>MobileNetv3</strong></p>
+<blockquote>
+<p>MobileNetv3有两个large和small，small的精度和MobileNetv2相似</p>
+<p>整体来说MobileNetV3有两大创新点</p>
+<ul>
+<li>
+<p>互补搜索技术组合：由资源受限的NAS执行模块级搜索(使用了神经网络搜索功能来**构建全局的网络结构**)，NetAdapt执行局部搜索(<strong>对每层的核数量进行优化</strong>)。</p>
+</li>
+<li>
+<p>网络结构改进：将最后一步的**平均池化层**前移并移除最后一个卷积层，引入<code>h-swish</code>激活函数。</p>
+</li>
+</ul>
+<p><img alt="image-20200123164141678" src="../assets/image-20200123164141678.png" /></p>
+<ul>
+<li>在mobilenetv2中，在avg pooling之前，存在一个1x1的卷积层，目的是提高特征图的维度，更有利于结构的预测，但是这其实带来了一定的计算量了，所以这里作者修改了，将其放在avg pooling的后面，首先利用avg pooling将特征图大小由7x7降到了1x1，降到1x1后，然后再利用1x1提高维度，这样就减少了7x7=49倍的计算量。并且为了进一步的降低计算量，作者直接去掉了前面纺锤型卷积的3x3以及1x1卷积，进一步减少了计算量，就变成了如下图第二行所示的结构，作者将其中的3x3以及1x1去掉后，精度并没有得到损失。这里降低了大约15ms的速度。</li>
+</ul>
+<p><img alt="image-20200123164457297" src="../assets/image-20200123164457297.png" /></p>
+</blockquote>
+<p><strong>MobileNetV3是综合了以下三种模型的思想</strong>：</p>
+<ul>
+<li><code>MobileNetV1</code>的深度可分离卷积</li>
+<li><code>MobileNetV2</code>的具有线性瓶颈的逆残差结构</li>
+<li><code>MnasNet</code>的基于squeeze and excitation结构的轻量级注意力模型。</li>
+</ul>
+<h3 id="shufflenet"><strong>ShuffleNet</strong><a class="headerlink" href="#shufflenet" title="Permanent link">&para;</a></h3>
+<p>当前先进的卷积网络通常在3×3卷积之前增加一个1×1卷积，用于通道间的信息流通与降维。然而在ResNeXt、MobileNet等高性能的网络中，1×1卷积却占用了大量的计算资源，ShuffleNet v1从优化网络结构的角度出发，利用**组卷积**与**通道混洗**（Channel Shuffle）的操作有效降低了<code>1×1</code>逐点卷积的计算量，是一个极为高效的轻量化网络。</p>
+<p><strong>分组卷积</strong></p>
+<p><img alt="image-20200123173115308" src="../assets/image-20200123173115308.png" /></p>
+<p><strong>通道混洗</strong></p>
+<p><img alt="image-20200123174444732" src="../assets/image-20200123174444732.png" /></p>
+<ul>
+<li>a图代表了常规的两个组卷积操作，可以看到，如果没有逐点的1×1卷积或者通道混洗，最终输出的特征仅由一部分输入通道的特征计算得出，这种操作阻碍了信息的流通，进而降低了特征的表达能力。</li>
+<li>b图我们希望在一个组卷积之后，能够将特征图之间的通道信息进行融合，将每一个组的特征分散到不同的组之后，再进行下一个组卷积，这样输出的特征就能够包含每一个组的特征，而通道混洗恰好可以实现这个过程，如图c所示。</li>
+</ul>
+<p><img alt="image-20200123173619640" src="../assets/image-20200123173619640.png" /></p>
+<p><strong>ShuffleNetv1</strong></p>
+<p><img alt="image-20200123174541461" src="../assets/image-20200123174541461.png" /></p>
+<ul>
+<li>a图是一个带有深度可分离卷积的普通残差模块，这里的<code>1×1</code>是逐点的卷积。相比深度可分离卷积，1×1计算量较大。</li>
+<li>b图则是基本的ShuffleNet基本单元，可以看到<code>1×1</code>卷积采用的是**组卷积**，然后进行通道的混洗，这两步可以取代1×1的逐点卷积，并且大大降低了计算量。3×3卷积仍然采用深度可分离的方式。</li>
+<li>c图是带有降采样的ShuffleNet单元，在旁路中使用了步长为2的3×3平均池化进行降采样，在主路中3×3卷积步长为2实现降采样。另外，由于降采样时通常要伴有通道数的增加，ShuffleNet直接将两分支拼接在一起来实现了通道数的增加，而不是常规的逐点相加。</li>
+</ul>
+<p><img alt="image-20200123175017400" src="../assets/image-20200123175017400.png" /></p>
+<ul>
+<li>g代表组卷积的组数，以控制卷积连接的稀疏性。组数越多，计算量越少，因此在相同的计算资源，可以使用更多的卷积核以获取更多的通道数。</li>
+<li>可以看到开始使用的普通的3x3的卷积和max pool层（深度可分离卷积虽然可以有效降低计算量，但其存储访问效率较差，因此第一个卷积并没有使用ShuffleNet基本单元）。</li>
+<li>然后是三个阶段，每个阶段都是重复堆积了几个ShuffleNet的基本单元。这3个阶段的第一个Block的步长为2以完成降采样，下一个阶段的通道数是上一个的两倍。</li>
+</ul>
+<p><strong>ShuffleNet_v2</strong></p>
+<p><img alt="image-20200123180524208" src="../assets/image-20200123180524208.png" /></p>
+<ul>
+<li>提出了一种新的Channel Split操作，如图7.13c所示，将输入特征分成两部分，一部分进行真正的深度可分离计算，将计算结果与另一部分进行通道Concat，最后进行通道的混洗操作，完成信息的互通。</li>
+<li>整个过程没有使用到<code>1×1</code>组卷积，也避免了逐点相加的操作。</li>
+<li>在需要降采样与通道翻倍时，ShuffleNet v2去掉了Channel Split操作，这样最后Concat时通道数会翻倍</li>
+</ul>
+<h3 id="ghostnetost">GhostNet:[ɡoʊst]<a class="headerlink" href="#ghostnetost" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1911.11907v2">论文</a>|<a href="https://github.com/huawei-noah/ghostnet">Code</a></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>Ghost Module是一个即插即用模块，可以无缝衔接现有的CNN中</li>
+<li><strong>采用Ghost Module设计的Ghost Net</strong>，在ILSVRC-2012上top1超过Mobilenet-V3，并且参数更少</li>
+</ul>
+<p><strong>论文提出观点</strong></p>
+<ul>
+<li><strong>特征图冗余</strong></li>
+</ul>
+<p><img alt="image-20201120161552277" src="../assets/image-20201120161552277.png" /></p>
+<ul>
+<li><strong>Ghost卷积</strong></li>
+</ul>
+<p><img alt="image-20201120163418834" src="../assets/image-20201120163418834.png" /></p>
+<ul>
+<li>Φ线性变换是什么？<strong>Φ线性变换其实也就是<code>3x3</code>卷积，卷积本身其实就是一种线性组合的运算，只不过在我们增加了激活函数之后赋予了其非线性</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GhostModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">oup</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dw_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">relu</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GhostModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oup</span> <span class="o">=</span> <span class="n">oup</span>
+        <span class="n">init_channels</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">oup</span> <span class="o">/</span> <span class="n">ratio</span><span class="p">)</span>
+        <span class="n">new_channels</span> <span class="o">=</span> <span class="n">init_channels</span><span class="o">*</span><span class="p">(</span><span class="n">ratio</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># 这个是②过程，就是普通的卷积，输出通道为N/2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">primary_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">init_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">init_channels</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">relu</span> <span class="k">else</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 线性变换</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cheap_operation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="c1"># 3x3卷积可以理解</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">init_channels</span><span class="p">,</span> <span class="n">new_channels</span><span class="p">,</span> <span class="n">dw_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dw_size</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="n">init_channels</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">new_channels</span><span class="p">),</span>
+            <span class="c1"># 用relu参数来控制是否进行线性变换</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">relu</span> <span class="k">else</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">primary_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cheap_operation</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 根据通道进行拼接</span>
+        <span class="k">return</span> <span class="n">out</span><span class="p">[:,:</span><span class="bp">self</span><span class="o">.</span><span class="n">oup</span><span class="p">,:,:]</span>
+</code></pre></div>
+<ul>
+<li><strong>Ghost模块</strong></li>
+</ul>
+<p><img alt="image-20200229133719262" src="../assets/image-20200229133719262.png" /></p>
+<ul>
+<li>Ghost Bottlenecks ，结构与ResNet的是类似的，并且与mobilenet-v2一样在第二个module之后不采用ReLU激活函数。</li>
+<li>左边是stride=1的Ghost Bottlenecks，右边是stride=2的Ghost Bottlenecks，目的是为了缩减特征图大小。</li>
+</ul>
+<h3 id="vovnet">VoVNet<a class="headerlink" href="#vovnet" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/abs/1904.09730v1">论文</a>|<a href="https://github.com/stigma0617/VoVNet.pytorch">Code1</a>|<a href="https://github.com/youngwanLEE/vovnetdetectron2/blob/master/vovnet/vovnet.py">Code2</a></p>
+<p>DenseNet的参数量和计算量相对于ResNet少，但是速度却慢，主要是:</p>
+<ul>
+<li>DenseNet中密集连接所导致的**高内存访问成本**(由于需要进行多次Concatnate操作，<strong>数据需要被复制多次，显存容易增加得很快</strong>)，附:根据shuffleNet V2论文中内存的计算方式，输入通道和输出通道相同时MAC才最优。</li>
+<li>由于输入channel数较大，DenseNet采用了1x1卷积层先压缩特征，这个额外层的引入对GPU高效计算不利。</li>
+</ul>
+<p>VoVNet从内存访问成本（Memory Access Cost，MAC）和GPU计算效率上来考虑，可以看成DenseNet的变体，在目标检测模型上性能优于DensNet。</p>
+<p><img alt="image-20201119190652195" src="../assets/image-20201119190652195.png" /></p>
+<p><img alt="image-20201119195518512" src="../assets/image-20201119195518512.png" /></p>
+<ul>
+<li>
+<p>DenseNet的一大问题就是密集连接太重了，而且每个layer都会聚合前面层的特征，其实造成的是特征冗余，VoVNet论文中通过研究DensNet模型weights的**L1范数**发现中间层对最后的分类层贡献较少(我的理解:后面的层已经学习到了中间层的核心信息)，这些信息冗余就可以被优化。所以VoVNet提出<code>OSA</code>模块</p>
+</li>
+<li>
+<p>OSA模块:就是只在最后一次性聚合前面所有的layer，改动较小解决问题较大。</p>
+</li>
+</ul>
+<p><img alt="image-20201119190755665" src="../assets/image-20201119190755665.png" /></p>
+<ul>
+<li>每个layer的输入channel数是固定的，这里可以让输出channel数和输入一致而取得最小的MAC</li>
+<li>
+<p>而且也不再需要1x1卷积层来压缩特征，所以OSA模块是GPU计算高效的。</p>
+</li>
+<li>
+<p>VoVNet由OSA模块构成，主要有三种不同的配置，详情见论文。</p>
+</li>
+</ul>
+<h3 id="vovnetv2">VoVNetV2<a class="headerlink" href="#vovnetv2" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1911.06667.pdf">论文</a>|<a href="https://github.com/youngwanLEE/CenterMask">Code</a>|分割网络:<code>Real-Time Anchor-Free Instance Segmentation</code></p>
+<p>VoVNetV2在VoVNet的基础上，引入了ResNet的残差连接和SENet的SE模块</p>
+<p><img alt="image-20201119192549816" src="../assets/image-20201119192549816.png" /></p>
+<ul>
+<li>b:直接将输入加到输出上，增加短路连接，使得VoVNet可以训练更深的网络，论文中是VoVNet-99。</li>
+<li>c:在最后的特征层上加上了sSE模块来进一步增强特征，原始的SE模块包含两个FC层，其中中间的FC层主要是为降维，这在一定程度上会造成信息丢失。而sSE模块是去掉了这个中间FC层。</li>
+<li>VoVNetV2相比VoVNet增加了少许的计算量，但是模型性能有提升</li>
+</ul>
+<h3 id="peleenet">PeleeNet<a class="headerlink" href="#peleenet" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1804.06882.pdf">论文</a>|<a href="https://github.com/Robert-JunWang/PeleeNet">分类Code</a>|<a href="https://github.com/Robert-JunWang/Pelee">检测Code</a></p>
+<p>DenseNet变体，被用于**解决存储和计算能力受限的情况。**PeleeNet只有MobileNet模型的<code>66%</code>,并且比MobileNet精度更高，常被用于<code>SSD</code>的<code>backbone</code></p>
+<p><strong>网络结构</strong>：核心设计原则也和DenseNet相仿</p>
+<ul>
+<li><strong>Two-Way Dense Layer：</strong></li>
+</ul>
+<p><img alt="image-20201119201647701" src="../assets/image-20201119201647701.png" /></p>
+<ul>
+<li><strong>Stem Block</strong>:<code>ResNet和DenseNet</code>在第一层都是用的是一个<code>7x7</code>、<code>stride为2</code>的卷积层，浅层网络的作用是提取图像的边缘、纹理等信息。Stem Block的设计就是**打算以比较小的代价取代<code>7x7</code>的卷积**。该结构可以有效的提升特征表达能力且不会增加额外的计算开销，比其他的方法（增加通道或增加增长率）都要好。</li>
+</ul>
+<p><img alt="image-20201119202342671" src="../assets/image-20201119202342671.png" /></p>
+<ul>
+<li>整个网络由一个<code>Stem Block</code>和四阶特征提取器组成(<code>Dense Layer+1x1 conv+avgpol</code>)</li>
+</ul>
+<p><img alt="image-20201119203006017" src="../assets/image-20201119203006017.png" /></p>
+<ul>
+<li>为什么是4阶？</li>
+<li>四阶段一般为大模型的通用设计结构，ShuffleNet使用了三阶段，并在每个阶段的开始都压缩了特征图大小，尽管这样可以提升计算速度，但是本文认为**前面的阶段对视觉任务尤为重要，且过早的减小特征图大小会损坏特征表达能力**，因此**仍然使用四阶段结构**，前两阶段的层数是专门控制在一个可接受的范围内的。</li>
+</ul>
+<h3 id="bbn">BBN(解决长尾数据)<a class="headerlink" href="#bbn" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1912.02413v4">论文</a>|<a href="https://github.com/Megvii-Nanjing/BBN">代码</a>|<a href="https://mp.weixin.qq.com/s/lPWd7Zvcmm5Sjqp17_dRTA">ACCV比赛</a></p>
+<p>为什么对于样本不均衡数据模型结果更倾向于数量多的类？<code>SGD</code>优化器的原因:均衡数据，学到的是全局最优或近似，但长尾数据SGD使得模型优化的是倾向于数量多的类的局部最优的(因为带动量的<code>SGD</code>的<code>momentum</code>会根据训练累加历史梯度)</p>
+<p>baseline训练长尾数据测试时精度长很差：长尾数据分布不均匀，测试数据常常均匀分布的，也就是训练数据分布和测试数据分布不一样，所以结果就较差了。</p>
+<p><img alt="image-20201210182717092" src="../assets/image-20201210182717092.png" /></p>
+<ul>
+<li>常用解决长尾效应的方法：<strong>类别重平衡策略</strong>(如权重重赋值，重采样等)，虽然可以达到令人满意的效果，但会在一定程度上破坏网络学习某些特征表示的能力。</li>
+<li>这些方法通过在一个batch中进行样本重采样；权重重赋值。<ul>
+<li>过采样:重复样本量少的数据类别。欠采样：减少样本量多的类别数据。副作用：增加尾部数据可能会导致网络对尾部类别的过拟合，而丢弃宝贵的数据必然会削弱深度网络的泛化能力。</li>
+<li>权重重赋值:在损失函数中为尾部类的训练样本分配较大的权重，但不适合处理大规模的真实世界的长尾数据，并且容易造成优化困难。</li>
+</ul>
+</li>
+<li><strong>BBN策略</strong>：提出了一个统一的**双边分支网络**，一边保证特征表示能力，另一边保证分类能力。同时引入**累计学习策略**:首先学习通用的特征表示，然后逐渐将注意力放在尾部数据（样本量较少的数据）上。</li>
+</ul>
+<p><strong>网络模型</strong></p>
+<p><img alt="image-20201210185151505" src="../assets/image-20201210185151505.png" /></p>
+<ul>
+<li>假设<code>X</code>为训练样本，<code>y</code>为对应的标签。对于双边分支，分别应用均匀采样和反向采样得到两组样本<code>(X_c,y_c)和(X_r,y_r)</code>，然后经过各自分支的特征提取和全局平均池化得到相应的特征向量<code>f_c,f_r</code>。然后通过**特定的累积学习策略**，可以在训练阶段将网络学习的“注意力”转移到两个分支之间：通过自适应平衡参数α控制分支的特征向量<code>αf_c,(1-α)f_r</code>被送到对应分支的分类器<code>W_c、W_r</code>中，然后通过元素相加进行融合，送到<code>softmax</code>后进行预测。</li>
+</ul>
+<p><img alt="image-20201210192142619" src="../assets/image-20201210192142619.png" /></p>
+<ul>
+<li>损失函数，对交叉熵损失函数(<code>E</code>)进行使用α控制加权</li>
+</ul>
+<p><img alt="image-20201210192433368" src="../assets/image-20201210192433368.png" /></p>
+<p><strong>均匀采样</strong>：是指在一个epoch中，训练集中的每一个样本都只会以相同的概率被采样一次，概率<code>1/N</code>。</p>
+<p><strong>反向采样</strong>：每个类别的采样概率与样本容量的倒数成正比，也就是说某个类别的样本容量越大，被采样的可能性就越小。</p>
+<p><img alt="image-20201210195829096" src="../assets/image-20201210195829096.png" /></p>
+<p><strong>累计学习策略</strong></p>
+<ul>
+<li>α通过适配器根据训练的迭代次数自动生成，促使整个BBN结构**首先从原始的分布中学习通用特征，然后逐渐将注意力集中到尾部数据及样本量较少的数据类别中去。**</li>
+</ul>
+<p><img alt="image-20201210193059638" src="../assets/image-20201210193059638.png" /></p>
+<ul>
+<li>
+<p>更重要的是，α可以控制每一个分支的参数更新，可以避免在训练末期，过度强调尾部数据而损害了通用的特征表示。</p>
+</li>
+<li>
+<p>推理阶段两个分支同样重要，设置自适应参数<code>α</code> 的值为<code>0.5</code>。</p>
+</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              人脸方向论文解读
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              深度学习基础
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

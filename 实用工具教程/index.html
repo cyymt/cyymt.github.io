@@ -1,0 +1,908 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>实用工具教程 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#link" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              实用工具教程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          实用工具教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        实用工具教程
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    国内如何下载谷歌网盘link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntugpu" class="md-nav__link">
+    Ubuntu下GPU环境搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vimlinux" class="md-nav__link">
+    vim/linux的基本使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    git的基本使用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    国内如何下载谷歌网盘link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntugpu" class="md-nav__link">
+    Ubuntu下GPU环境搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vimlinux" class="md-nav__link">
+    vim/linux的基本使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    git的基本使用
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>实用工具教程</h1>
+                
+                <h3 id="link">国内如何下载谷歌网盘<a href="https://www.cnblogs.com/aoru45/p/11990040.html">link</a><a class="headerlink" href="#link" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">moeclub</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="p">{</span><span class="n">FileID</span><span class="p">}</span> <span class="c1"># 填写fileId后访问即可下载。</span>
+</code></pre></div>
+<h3 id="ubuntugpu">Ubuntu下GPU环境搭建<a class="headerlink" href="#ubuntugpu" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>系统： Ubuntu-16.04 / Ubuntu-18.04</p>
+<p>显卡： GeForce GTX 1080Ti </p>
+<p>驱动： Driver Version：410.93 / 其他</p>
+</blockquote>
+<p><strong>安装驱动(软件安装)</strong></p>
+<ul>
+<li>
+<p>打开<code>ubuntu16/18</code>的<code>software &amp; updates</code></p>
+<p><img alt="image-20200318143751846" src="../assets/image-20200318143751846.png" /></p>
+</li>
+<li>
+<p>安装完成后，重启电脑，输入命令:<code>nvidia-smi</code>,输出如下,则表明安装成功</p>
+<p><img alt="image-20200318143316490" src="../assets/image-20200318143316490.png" /></p>
+</li>
+</ul>
+<p><strong>安装驱动(命令行安装)</strong></p>
+<ul>
+<li>禁用自带驱动</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 卸载之前驱动，若无驱动可以省略</span>
+sudo apt-get purge nvidia*
+<span class="c1"># 2. 禁用自带的nouveau驱动</span>
+sudo gedit /etc/modprobe.d/blacklist.conf <span class="c1"># 打开配置文件</span>
+blacklist nouveau <span class="c1"># 文末添加，保存即可</span>
+sudo update-initramfs -u <span class="c1"># 更新文件使其生效</span>
+<span class="c1"># 3. 重启(可省略)</span>
+sudo reboot
+<span class="c1"># 4. 查看自带驱动是否被禁用</span>
+lsmod <span class="p">|</span> grep nouveau <span class="c1"># 无输出则表明已被禁用</span>
+</code></pre></div>
+<ul>
+<li>下载安装NVIDIA驱动:<a href="https://www.geforce.cn/drivers">官网链接</a></li>
+</ul>
+<p><img alt="image-20200318142942841" src="../assets/image-20200318142942841.png" /></p>
+<p><img alt="image-20200318143005856" src="../assets/image-20200318143005856.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 给下载好的驱动赋予可执行权限</span>
+sudo chmod a+x NVIDIA-Linux-x86_64-390.48.run
+<span class="c1"># 2. 关闭X服务</span>
+sudo service lightdm stop
+<span class="c1"># 3. 运行驱动可执行文件</span>
+sudo ./NVIDIA-Linux-x86_64-390.48.run –no-opengl-files
+<span class="c1"># 4. 安装完后重启，输入命令:nvidia-smi，如下图显示则安装成功</span>
+</code></pre></div>
+<p><img alt="image-20200318143316490" src="../assets/image-20200318143316490.png" /></p>
+<p><strong>安装<code>CUDA</code></strong></p>
+<ul>
+<li>官网下载<code>cuda</code><a href="https://developer.nvidia.com/cuda-toolkit-archive">官网链接</a>，建议选择<code>cuda9.0/cuda10.0/cuda10.1</code>，当然，你也可以都下载安装，这样可以设置多版本共存，在训练的时候也方便。</li>
+</ul>
+<p><img alt="image-20200318144244303" src="../assets/image-20200318144244303.png" /></p>
+<ul>
+<li>开始安装:<code>root</code>权限</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 启动安装</span>
+sudo sh cuda_9.0.176_384.81_linux.run# 注意:在提示是否安装显卡驱动时，一定选择no，其他各项提示选择是，并默认安装路径即可。
+
+<span class="c1"># 下面是多版本cuda的介绍(可选)</span>
+<span class="c1"># 2. 安装多个版本cuda</span>
+sudo sh cuda_10.0***.run <span class="c1"># cuda官网下载</span>
+sudo sh cuda_10.1***.run <span class="c1"># cuda官网下载</span>
+<span class="c1"># 3. 默认路径:/usr/local/cuda，此时’/usr/local/‘目录下会有‘cuda’和&#39;cuda-9.0&#39;两个目录，实际上&#39;cuda&#39;目录是‘cuda-9.0’目录的link:如果不清楚`ln`命令用法,自行百度。</span>
+<span class="c1"># 4. 如果你想安装多个cuda版本，你只需要删除&#39;cuda&#39;目录，并把对应的&#39;cuda-xx&#39;目录链接到该目录下即可，例如选择使用cuda-10.0版本(前提是你已经安装好了):</span>
+sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda <span class="c1"># 这样就可以切换cuda版本了</span>
+</code></pre></div>
+<ul>
+<li>开始安装:非<code>root</code>权限，普通用户</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.下载cuda:https://developer.nvidia.com/cuda-toolkit-archive 格式选runfile(local)</span>
+<span class="c1"># 2.下载对应的cudnn:https://developer.nvidia.com/rdp/cudnn-download,备用</span>
+<span class="c1"># 3.选择合适的安装路径和lib位置，后面要用到</span>
+<span class="nb">cd</span> path
+mkdir cuda-10.1
+mkdir cuda-10.1/mylib
+<span class="c1"># 4.安装CUDA</span>
+sh cuda_10.1.243_418.87.00_linux.run
+<span class="c1"># 5.安装过程中的选择</span>
+<span class="c1"># 5.1 选择accept 后，更改安装选项（&#39;X&#39; 代表选中，这里我只安装CUDA Toolkit，一般不搞CUDA编程单跑深度学习就够了），当然，也可以选择多点</span>
+┌─────────────────────────────────────────────────────────────────────────────
+<span class="p">|</span> CUDA Installer                                                              
+│ - <span class="o">[</span> <span class="o">]</span> Driver                                                                 
+│      <span class="o">[</span> <span class="o">]</span> <span class="m">418</span>.87.00                                                           
+│ + <span class="o">[</span>X<span class="o">]</span> CUDA Toolkit <span class="m">10</span>.1                                                     
+│   <span class="o">[</span> <span class="o">]</span> CUDA Samples <span class="m">10</span>.1                                                     
+│   <span class="o">[</span> <span class="o">]</span> CUDA Demo Suite <span class="m">10</span>.1                                                  
+│   <span class="o">[</span> <span class="o">]</span> CUDA Documentation <span class="m">10</span>.1                                               
+│   Options                                                                   
+│   Install     
+<span class="c1"># 5.2 进入options选项，这里设置自定义的cuda安装路径和lib路径</span>
+┌─────────────────────────────────────────────────────────────────────────────
+│ Options                                                                     
+│   Driver Options                                                             
+│   Toolkit Options <span class="c1"># 这里更改自定义安装路径                                       </span>
+│   Samples Options                                                           
+│   Library install path <span class="o">(</span>Blank <span class="k">for</span> system default<span class="o">)</span><span class="c1"># 这里更改lib安装路径         </span>
+│   Done  
+<span class="c1"># 5.3 CUDA Toolkit 去掉全部含有/usr的目录，进入 Change Toolkit Install Path设置cuda安装到自己具有写入权限的，就是刚才建好的cuda-10.1</span>
+┌─────────────────────────────────────────────────────────────────────────────
+│ CUDA Toolkit
+│   Change Toolkit Install Path <span class="c1"># 在这里按Enter键来更改安装路径即可，绝对路径</span>
+│   <span class="o">[</span> <span class="o">]</span> Create symbolic link from /usr/local/cuda
+│ - <span class="o">[</span> <span class="o">]</span> Create desktop menu shortcuts
+│      <span class="o">[</span> <span class="o">]</span> Yes
+│      <span class="o">[</span> <span class="o">]</span> No
+│   <span class="o">[</span> <span class="o">]</span> Install manpage documents to /usr/share/man                           
+│   Done
+<span class="c1"># 5.4 回到options菜单，更改Library install path (不改不行，它会偷偷写入/var/lib)</span>
+┌─────────────────────────────────────────────────────────────────────────────
+│ Library install path <span class="o">(</span>Blank <span class="k">for</span> system default<span class="o">)</span>                             
+│ /home/chenyuyang/cuda-10.1/mylib/ 
+<span class="c1"># 6.然后在.bashrc中写入安装路径即可</span>
+</code></pre></div>
+<ul>
+<li>把安装路径写入到配置环境中</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 打开环境变量设置的配置文件</span>
+sudo vim ~/.bashrc
+<span class="c1"># 2. 导入安装路径</span>
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/cuda/lib64 
+<span class="c1"># 非root用户有点不同</span>
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/home/chenyuyang/cuda/lib64:/home/chenyuyang/cuda-10.1/mylib/lib64
+
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/cuda/bin 
+<span class="nb">export</span> <span class="nv">CUDA_HOME</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>:/usr/local/cuda <span class="c1"># ’$CUDA_HOME:‘可以去掉，因为有些项目编译过程中会报错，例如:maskrcnn_benchmark项目中编译过程中就会报错</span>
+<span class="c1"># 3. 使得路径生效</span>
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div>
+<ul>
+<li>查看是否安装成功,输入命令:<code>nvcc --version</code></li>
+</ul>
+<p><img alt="image-20200318145003965" src="../assets/image-20200318145003965.png" /></p>
+<p><strong>cudnn安装</strong></p>
+<ul>
+<li>官网下载<code>cudnn</code><a href="https://developer.nvidia.com/rdp/cudnn-archive">官网链接</a>，注意:这里要选择匹配你<code>Cuda</code>版本的<code>cudnn</code>版本，如果你安装多个版本<code>Cuda</code>，需要把各自对应的<code>cudnn</code>版本也下载下来</li>
+<li>把对应版本<code>cudnn</code>复制到<code>Cuda</code>中(可以把<code>cudnn</code>理解为<code>Cuda</code>的插件)，如果你是多版本，你只需要安装对应版本一一复制即可，注意:<code>Cuda</code>默认安装路径<code>/usr/local/cuda</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装cudnn 非root用户就不要加sudo了</span>
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include/ 
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/ 
+sudo chmod a+r /usr/local/cuda/include/cudnn.h 
+sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+
+<span class="c1"># 8.0以后的版本</span>
+$ sudo cp cuda/include/cudnn*.h /usr/local/cuda/include 
+$ sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64 
+$ sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+</code></pre></div>
+<ul>
+<li>查看是<code>cudnn</code>是否安装成功,成功后会输出<code>cudnn</code>版本</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看cudnn版本命令</span>
+cat /usr/local/cuda/include/cudnn.h <span class="p">|</span> grep CUDNN_MAJOR -A <span class="m">2</span>
+</code></pre></div>
+<p><img alt="image-20200318150319858" src="../assets/image-20200318150319858.png" /></p>
+<p><strong>环境搭建成功</strong></p>
+<h3 id="vimlinux">vim/linux的基本使用<a class="headerlink" href="#vimlinux" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.jianshu.com/p/bcbe916f97e1">vim博客</a>|<a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/">linux博客</a></p>
+<h3 id="git">git的基本使用<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
+<p><a href="https://git-reference.readthedocs.io/zh_CN/latest/">git博客-easy</a>|<a href="https://www.progit.cn/">git博客-hard</a>|<a href="http://www.4e00.com/git-zh/toc.html">git博客-thrid</a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.初始化</span>
+git init <span class="c1"># 初始化仓库</span>
+git clone xxx.git renameProject <span class="c1"># 克隆仓库</span>
+
+<span class="c1"># 2.跟踪状态等</span>
+<span class="c1"># 所有文件无外乎两种状态：跟踪或未跟踪</span>
+git status <span class="c1"># 检查当前文件状态，会显示文件是否被跟踪,除了新建文件且没有add是无跟踪状态，其他属于跟踪状态，包含修改，暂存，未更新等</span>
+git add xxx <span class="c1"># 跟踪新文件,存入缓存区</span>
+git rm --cached xxx <span class="c1"># 从缓存区移除</span>
+git rm --cached log/<span class="se">\*</span>.log <span class="c1"># 从缓存区批量删除log日志</span>
+git diff <span class="c1"># 比git status更详细，比较的是工作目录中还没暂存的改动和暂存区域快照之间的差异</span>
+git diff –cached <span class="c1"># 比较已经暂存起来的文件和上次提交时的快照之间的差异</span>
+git commit -m <span class="s2">&quot;提交说明&quot;</span> <span class="c1"># 每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较</span>
+
+
+<span class="c1"># 3.忽略某些文件</span>
+vi .gitignore
+$ cat.gitignore
+*.<span class="o">[</span>o,a<span class="o">]</span> <span class="c1"># 忽略所有以 .o 或 .a 结尾的文件,常是编译过程中出现，不需要跟踪他们的版本</span>
+*~ <span class="c1"># 忽略所有以波浪符（~）结尾的文件，常是文本编辑软件保存的副本。</span>
+<span class="c1"># 3.1 星号（*）匹配零个或多个任意字符；</span>
+<span class="c1"># 3.2 [abc] 匹配任何一个列在方括号中的字符（这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）；</span>
+<span class="c1"># 3.3 问号（?）只匹配一个任意字符；</span>
+<span class="c1"># 3.4 如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。</span>
+<span class="c1"># 举个小例子</span>
+*.a       <span class="c1"># 忽略所有 .a 结尾的文件</span>
+!lib.a    <span class="c1"># 但 lib.a 除外 # ！取反</span>
+/TODO     <span class="c1"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span>
+build/    <span class="c1"># 忽略 build/ 目录下的所有文件，目录必须带反斜杠(/)证明忽略的是目录</span>
+doc/*.txt <span class="c1"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              量化工具使用
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              学习网站收集
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

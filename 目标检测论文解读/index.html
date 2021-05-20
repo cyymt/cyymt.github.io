@@ -1,0 +1,2716 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>目标检测论文解读 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fpn" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              目标检测论文解读
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          目标检测论文解读
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        目标检测论文解读
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fpn" class="md-nav__link">
+    FPN的演变
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov1" class="md-nav__link">
+    YOLOV1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov2" class="md-nav__link">
+    YOLOV2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov3" class="md-nav__link">
+    YOLOV3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poly-yolo" class="md-nav__link">
+    Poly-YoLo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov42004" class="md-nav__link">
+    YOLOV4(20/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov5" class="md-nav__link">
+    YOLOV5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolof2103" class="md-nav__link">
+    YOLOF(21/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppyolo2007" class="md-nav__link">
+    PPYOLO(20/07)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppyolov22104" class="md-nav__link">
+    PPYOLOV2(21/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fasterrcnn1506" class="md-nav__link">
+    FasterRcnn(15/06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssd1611" class="md-nav__link">
+    SSD(16/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dssd1701" class="md-nav__link">
+    DSSD(17/01)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dsod1708" class="md-nav__link">
+    DSOD(17/08)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fssd1712" class="md-nav__link">
+    FSSD(17/12)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rssd1705" class="md-nav__link">
+    RSSD(17/05)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rfbnet1711" class="md-nav__link">
+    RFBNet(17/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refinedet1711" class="md-nav__link">
+    RefineDet(17/11:小目标)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segnet1511" class="md-nav__link">
+    SegNet(15/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enet1606" class="md-nav__link">
+    ENet(16/06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fpn1612" class="md-nav__link">
+    FPN(16/12)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maskrcnn1703" class="md-nav__link">
+    MaskRCNN(17/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ohem1604" class="md-nav__link">
+    OHEM(16/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retinanet1708focal-loss" class="md-nav__link">
+    RetinaNet(17/08:Focal Loss)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repulsion-loss1711" class="md-nav__link">
+    Repulsion Loss(17/11:解决遮挡)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panet1803" class="md-nav__link">
+    PANet(18/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficientnet1905" class="md-nav__link">
+    EfficientNet(19/05)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficientdet1911" class="md-nav__link">
+    EfficientDet(19/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hrnet1902" class="md-nav__link">
+    HRNet(19/02)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cascade-r-cnn1712" class="md-nav__link">
+    Cascade R-CNN(17/12)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mask-scoring-r-cnn1903" class="md-nav__link">
+    Mask Scoring R-CNN(19/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cornernet1808" class="md-nav__link">
+    CornerNet(18/08)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcos1903" class="md-nav__link">
+    FCOS(19/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanodet97fpsanchor-free" class="md-nav__link">
+    NanoDet(手机端97fps:Anchor Free)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centernet1904" class="md-nav__link">
+    CenterNet(19/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centripetalnet2003coco-48" class="md-nav__link">
+    CentripetalNet(20/03:coco 48%)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-c3d1703" class="md-nav__link">
+    R-C3D(17/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ghm1811" class="md-nav__link">
+    GHM(18/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atss1912" class="md-nav__link">
+    ATSS(19/12)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fpn" class="md-nav__link">
+    FPN的演变
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov1" class="md-nav__link">
+    YOLOV1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov2" class="md-nav__link">
+    YOLOV2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov3" class="md-nav__link">
+    YOLOV3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poly-yolo" class="md-nav__link">
+    Poly-YoLo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov42004" class="md-nav__link">
+    YOLOV4(20/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolov5" class="md-nav__link">
+    YOLOV5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolof2103" class="md-nav__link">
+    YOLOF(21/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppyolo2007" class="md-nav__link">
+    PPYOLO(20/07)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ppyolov22104" class="md-nav__link">
+    PPYOLOV2(21/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fasterrcnn1506" class="md-nav__link">
+    FasterRcnn(15/06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssd1611" class="md-nav__link">
+    SSD(16/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dssd1701" class="md-nav__link">
+    DSSD(17/01)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dsod1708" class="md-nav__link">
+    DSOD(17/08)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fssd1712" class="md-nav__link">
+    FSSD(17/12)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rssd1705" class="md-nav__link">
+    RSSD(17/05)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rfbnet1711" class="md-nav__link">
+    RFBNet(17/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refinedet1711" class="md-nav__link">
+    RefineDet(17/11:小目标)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segnet1511" class="md-nav__link">
+    SegNet(15/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enet1606" class="md-nav__link">
+    ENet(16/06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fpn1612" class="md-nav__link">
+    FPN(16/12)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maskrcnn1703" class="md-nav__link">
+    MaskRCNN(17/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ohem1604" class="md-nav__link">
+    OHEM(16/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retinanet1708focal-loss" class="md-nav__link">
+    RetinaNet(17/08:Focal Loss)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repulsion-loss1711" class="md-nav__link">
+    Repulsion Loss(17/11:解决遮挡)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panet1803" class="md-nav__link">
+    PANet(18/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficientnet1905" class="md-nav__link">
+    EfficientNet(19/05)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficientdet1911" class="md-nav__link">
+    EfficientDet(19/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hrnet1902" class="md-nav__link">
+    HRNet(19/02)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cascade-r-cnn1712" class="md-nav__link">
+    Cascade R-CNN(17/12)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mask-scoring-r-cnn1903" class="md-nav__link">
+    Mask Scoring R-CNN(19/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cornernet1808" class="md-nav__link">
+    CornerNet(18/08)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fcos1903" class="md-nav__link">
+    FCOS(19/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanodet97fpsanchor-free" class="md-nav__link">
+    NanoDet(手机端97fps:Anchor Free)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centernet1904" class="md-nav__link">
+    CenterNet(19/04)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centripetalnet2003coco-48" class="md-nav__link">
+    CentripetalNet(20/03:coco 48%)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-c3d1703" class="md-nav__link">
+    R-C3D(17/03)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ghm1811" class="md-nav__link">
+    GHM(18/11)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atss1912" class="md-nav__link">
+    ATSS(19/12)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>目标检测论文解读</h1>
+                
+                <p>大白老师课程笔记:很详尽](<a href="https://www.yuque.com/darrenzhang/cv">https://www.yuque.com/darrenzhang/cv</a>)</p>
+<p><a href="https://bbs.cvmart.net/topics/2158">从基础综述到工程经验，我这两年收藏的目标检测好文分享</a></p>
+<p><a href="https://github.com/luoqiuluoqiu/note">luoqiuluoqiu/note: 日常收集的资料和代码 - GitHub</a></p>
+<h3 id="fpn">FPN的演变<a class="headerlink" href="#fpn" title="Permanent link">&para;</a></h3>
+<p><strong>FPN的常见作用</strong></p>
+<p><img alt="image-20210330145646792" src="../assets/image-20210330145646792.png" /></p>
+<p><strong>FPN的常见类型</strong></p>
+<p><img alt="image-20210330145808183" src="../assets/image-20210330145808183.png" /></p>
+<ul>
+<li>
+<p><strong>无融合</strong>:这个最具有代表性的就是<code>SSD</code>，直接出来多个不同尺寸的特征图负责不同<code>scale</code>的大小物体检测</p>
+</li>
+<li>
+<p><strong>自上而下融合</strong>：常见的有<code>Faster/Mask RCNN、YOLOV3、RetinaNet、Cascade RCNN</code>等</p>
+</li>
+<li>
+<p><code>Faster(带FPN版本)/Mask RCNN</code>，<code>P2-&gt;P6</code>，而作为后续特征图输入的只有<code>p2-&gt;p5</code>，因为作者只是用<code>P6</code>在<code>RPN</code>中获取更大尺寸的<code>anchor</code>的，而且<code>C6</code>是直接通过<code>C5</code>进行<code>maxpool</code>产生的。</p>
+<p><img alt="image-20210330152430245" src="../assets/image-20210330152430245.png" /></p>
+</li>
+<li>
+<p><code>RetinaNet</code></p>
+<p><img alt="image-20210330152806564" src="../assets/image-20210330152806564.png" /></p>
+</li>
+<li>
+<p><code>YOLOV3</code></p>
+<p><img alt="image-20210330152831230" src="../assets/image-20210330152831230.png" /></p>
+</li>
+<li>
+<p><strong>简单双向融合</strong>：<code>PANet</code>，增加了增了从下而上的融合路径。</p>
+</li>
+</ul>
+<p><img alt="image-20210330153902668" src="../assets/image-20210330153902668.png" /></p>
+<ul>
+<li>
+<p><strong>复杂的双向融合</strong>：<code>ASFF、NAS-FPN、Bi-FPN</code></p>
+</li>
+<li>
+<p><code>ASFF</code></p>
+<p><img alt="image-20210330154331749" src="../assets/image-20210330154331749.png" /></p>
+</li>
+<li>
+<p><code>NAS-FPN、Bi-FPN</code>都是在<code>FPN</code>中寻找一个有效的block，然后重复叠加，这样就可以弹性的控制<code>FPN</code>的大小。</p>
+<p><img alt="image-20210330154604507" src="../assets/image-20210330154604507.png" /></p>
+<p><img alt="image-20210330154841121" src="../assets/image-20210330154841121.png" /></p>
+</li>
+</ul>
+<p><strong>新出的FPN的改进</strong></p>
+<ul>
+<li><strong>递归FPN</strong>:<code>DetectoRS</code>，效果出奇的好<code>COCO mAP 54.7</code></li>
+</ul>
+<p><img alt="image-20210330155243167" src="../assets/image-20210330155243167.png" /></p>
+<p><img alt="image-20210330155947963" src="../assets/image-20210330155947963.png" /></p>
+<ul>
+<li><strong>MLFPN</strong>:<code>M2det</code></li>
+</ul>
+<p><img alt="image-20210330160819745" src="../assets/image-20210330160819745.png" /></p>
+<p><img alt="image-20210330161041761" src="../assets/image-20210330161041761.png" /></p>
+<ul>
+<li><strong>CE-FPN</strong>：<code>CE-FPN</code></li>
+</ul>
+<p><img alt="image-20210330165455843" src="../assets/image-20210330165455843.png" /></p>
+<p>跨尺度融合的特征一般存在语义差异，<strong>综合的特征可能会产生混叠效应，混淆定位和识别</strong>。在FPN中，每一个合并的特征映射都要进行<code>3×3</code>的卷积，生成最终的特征金字塔。本文的**SSF+SCE融合**会使得混叠效应更严重，所以作者受<code>CBAM</code>启发提出**通道注意引导模块(CAG)<strong>，它可以引导金字塔的各个层次来缓解混叠效应。**CAG只通过集成映射I提取Channel权值，然后将Channel权值乘以每个输出特征。</strong></p>
+<p><img alt="image-20210331101647968" src="../assets/image-20210331101647968.png" /></p>
+<h3 id="yolov1">YOLOV1<a class="headerlink" href="#yolov1" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20201130102322193" src="../assets/image-20201130102322193.png" /></p>
+<ul>
+<li>将**输入图像**分成<code>SxS</code> 个方格(对应到特征图上就是一个点)，每个方格单元会产生两个边界框，如果一个物体的中心点落在了某个方格区域内，则该方格就负责检测该物体(将该方格的两个框与真实物体框进行匹配，loU更大的框负责回归该真实物体框)</li>
+</ul>
+<p><img src="../assets/image-20201130102230084.png" alt="image-20201130102230084" style="zoom: 67%;" /></p>
+<ul>
+<li>每个单元格输出通道数是<code>30</code>,包含<code>20</code>个类别(两框共用一个类别预测:一方格多类也只预测一类)+<code>2</code>个框的输出，每个边界框计算一个框置信度<code>C</code>(两部分:是否有物体[0/1]*边框准确度)和边界框4个值(中心点坐标:<code>x,y</code>+宽高:<code>w,h</code>&rarr;边界框宽度<code>w</code>和高度<code>h</code>用图像宽度和高度归一化。<code>×和y</code>是相应单元格的偏移量。因此<code>x, y, w, h</code>都在<code>0和1</code>之间。)</li>
+</ul>
+<p><img alt="image-20201130102842801" src="../assets/image-20201130102842801.png" /></p>
+<p><img alt="image-20201130104231220" src="../assets/image-20201130104231220.png" /></p>
+<ul>
+<li>YOLOv1在每一个区域内预测两个边框，这样整个图上—共预测<code>7×7×2=98</code>个框，这些边框大小与位置各不相同，基本可以覆盖整个图上可能出现的物体。由于两框共用一个类别预测，共计<code>7x7=49</code>个类别，如果一方格中有多类也只能预测一个类别。</li>
+</ul>
+<p><strong>网络结构</strong></p>
+<p><img alt="image-20201130130210755" src="../assets/image-20201130130210755.png" /></p>
+<p><strong>置信度得分</strong></p>
+<p><img src="../assets/image-20201130125422308.png" alt="image-20201130125422308" style="zoom:50%;" /></p>
+<p><strong>训练</strong></p>
+<ul>
+<li>
+<p>正样本:当—个真实物体的中心点落在了某个区域内时，该区域就负责检测该物体。具体做法是将与该真实物体有最大loU的边框设为正样本，这个区域的类别真值为该真实物体的类别，该边框的置信度真值为1。</p>
+</li>
+<li>
+<p>负样本:除了上述被赋予正样本的边框，其余边框都为负样本。负样本没有类别损失与边框位置损失,只有置信度损失，其真值为0。</p>
+</li>
+<li>
+<p>YOLO使用预测值和GT之间的误差平方的求和(MSE)来计算损失。损失函数包括:</p>
+</li>
+<li>
+<p><code>localization loss</code>-&gt;定位损失(预测边界框与GT之间的误差)</p>
+<p><img src="../assets/image-20201130134906042.png" alt="image-20201130134906042" style="zoom: 80%;" /></p>
+</li>
+<li>
+<p><code>confidence loss</code>-&gt;置信度损失（框的目标性, objectness of thebox)</p>
+<p><img src="../assets/image-20201130135252829.png" alt="image-20201130135252829" style="zoom:67%;" /></p>
+<ul>
+<li>大多数框不包含任何目标。这导致样本类别不平衡问题，即训练模型时更频繁地检测到背景而不是检测目标。为了解决这个问题，将这个损失用因子入noobj(默认值:0.5)降低。</li>
+</ul>
+</li>
+<li>
+<p><code>classification loss</code> -&gt;分类损失</p>
+<p><img src="../assets/image-20201130134124982.png" alt="image-20201130134124982" style="zoom:50%;" /></p>
+</li>
+</ul>
+<h3 id="yolov2">YOLOV2<a class="headerlink" href="#yolov2" title="Permanent link">&para;</a></h3>
+<p>YOLO v2:使用一系列的方法对YOLOv1进行了改进，在保持原有速度的同时提升准确。
+<strong>Better</strong></p>
+<ul>
+<li>
+<p>使用批归一化(<code>Batch Normalization</code>)提高准确度。</p>
+</li>
+<li>
+<p>高分辨率分类器(<code>High-resolution classifier</code>)：<code>YoLOv2</code>以<code>224 × 224</code>图片开始用于分类器训练，但是然后使用<code>10个epoch</code>再次用<code>448 x 448</code>图片重新调整分类器。让网络可以调整滤波器来适应高分辨率(因为resize到224容易丢失小目标信息)，这使得检测器训练更容易。使用高分辨率的分类网络提升了将近4%的mAP。</p>
+</li>
+<li>
+<p>用锚定框的卷积(<code>Convolutional with Anchor Boxes</code>)：<code>yolov1</code>使用<code>1470x1--&gt;reshape--&gt;7x7x30</code>，这样丢失较多的空间信息导致定为不准;<code>yolov2</code>移除了全连接层，采用卷积来生成<code>anchor</code>框，保留了空间信息。小技巧:输入分辨率改为<code>416x416</code>，这样后面产生的卷积特征图宽高都为奇数，就可以使用一个中心点来预测目标框(偶数的话需要使用<code>4个</code>方格来预测，增加计算量)</p>
+</li>
+</ul>
+<p><img alt="image-20201130144232236" src="../assets/image-20201130144232236.png" /></p>
+<ul>
+<li>
+<p>维度聚类(<code>Dimension Clusters</code>)：<code>K-means</code>聚类，距离度量使用<code>1-IOU</code>而不是欧式距离(欧式距离大框比小框产生更多误差，<code>IOU</code>与框的大小无关，<code>yolov2</code> <strong>k=5</strong>)</p>
+</li>
+<li>
+<p>直接位置预测(<code>Direct Location Prediction</code>)。预测边界框中心点相对于对应cell左上角位置的相对偏移值。预测公式如下:</p>
+</li>
+</ul>
+<p><img alt="image-20201130150524542" src="../assets/image-20201130150524542.png" /></p>
+<p><img alt="image-20201130150459019" src="../assets/image-20201130150459019.png" /></p>
+<p><img alt="image-20201130152650693" src="../assets/image-20201130152650693.png" /></p>
+<ul>
+<li>更精细的特征(<code>Fine-Grained Features</code>):<code>reog层</code></li>
+</ul>
+<p><img src="../assets/image-20201130155019869.png" alt="image-20201130155019869" style="zoom: 80%;" /></p>
+<ul>
+<li>多尺度训练(<code>Multi-Scale Training</code>)，因为是全卷积网络，不局限于输入大小:具体来说是在训练过程中每间隔一定的迭代次数之后改变模型的输入图片大小，yolov2是下采样<code>32</code>倍，输入图片一般选择一系列<code>32</code>倍数的值:{<code>320,352,...,608</code>}，特征图对应{<code>10x10,11x11,...,19x19</code>}。</li>
+</ul>
+<p><strong>正负样本和损失函数</strong></p>
+<ul>
+<li>
+<p>正负样本</p>
+</li>
+<li>
+<p>正样本:首先计算目标中心点落在哪个<code>grid</code>上，然后计算这个grid的<code>k</code>个先验框（anchor）和目标真实位置的IOU值（直接计算，不考虑二者的中心位置），<strong>取<code>IOU</code>值大于阈值的作为正样本</strong>。<code>loss</code>计算<code>box loss</code>(包括中心点+宽高)+<code>confidence loss</code> + 类别<code>loss</code>。</p>
+</li>
+<li>负样本：计算各个先验框和所有的目标<code>ground truth</code>之间的<code>IOU</code>，如果某先验框和图像中所有物体最大的IOU都小于阈值（一般0.5），那么就认为该先验框不含目标，记作负样本，其置信度应当为0<code>loss只计算confidence loss</code>。</li>
+<li>
+<p>忽略样本：和<code>gt box</code>的<code>iou</code>大于一定阈值，但又不负责该<code>gt box</code>的<code>anchor</code>，一般指中心点<code>grid cell</code>附近的其他<code>grid cell</code> 里的<code>anchor</code>。不计算任何<code>loss</code>。</p>
+</li>
+<li>
+<p>损失函数</p>
+</li>
+</ul>
+<p><img alt="image-20201130162423183" src="../assets/image-20201130162423183.png" /></p>
+<p><strong>Faster</strong></p>
+<ul>
+<li>Darknet-19网络模型</li>
+<li>使用连续的<code>3x3</code>卷积代替<code>7x7</code>卷积，减少计算量；</li>
+<li>去掉全连接层和DropOut层，采用全卷积，最后用<code>global avg pooling+Softmax</code>做预测，并使用<code>1x1</code>卷积来压缩</li>
+</ul>
+<h3 id="yolov3">YOLOV3<a class="headerlink" href="#yolov3" title="Permanent link">&para;</a></h3>
+<p><strong>类别预测</strong></p>
+<ul>
+<li>一张图即是<code>person</code>类又是<code>woman</code>类，<code>softmax</code>输出多个类别预测会相互抑制(只能预测一个类别)，<code>YOLOv3</code>用多个独立的逻辑分类器（<code>Logistic</code>:二元交叉嫡损失）替换<code>softmax</code>函数，因为<code>logistic</code>分类器相互独立，可以实现多类别的预测。这个<code>loss</code>可以实现类别间的解耦，可以实现物体的多标签分类。</li>
+</ul>
+<p><strong>训练样本选取</strong></p>
+<ul>
+<li>
+<p>正样本:首先计算目标中心点落在哪个<code>grid</code>上，然后计算这个grid的<code>k</code>个先验框（anchor）和目标真实位置的IOU值（直接计算，不考虑二者的中心位置），<strong>取IOU值最大的先验框和目标匹配</strong>。于是，找到的 该<code>grid</code>中的 该anchor 负责预测这个目标，其余的网格、anchor都不负责。<code>loss</code>计算<code>box loss</code>(包括中心点+宽高)+<code>confidence loss</code> + 类别<code>loss</code>。</p>
+</li>
+<li>
+<p>负样本：计算各个先验框和所有的目标<code>ground truth</code>之间的<code>IOU</code>，如果某先验框和图像中所有物体最大的IOU都小于阈值（一般0.5），那么就认为该先验框不含目标，记作负样本，其置信度应当为0<code>loss只计算confidence loss</code>。</p>
+</li>
+<li>忽略样本：和<code>gt box</code>的<code>iou</code>大于一定阈值，但又不负责该<code>gt box</code>的<code>anchor</code>，一般指中心点<code>grid cell</code>附近的其他<code>grid cell</code> 里的<code>anchor</code>。不计算任何<code>loss</code>。</li>
+</ul>
+<p>yolov3网络结构(<code>Darknet-53</code>):<strong>残差(缓解梯度消失)+FPN+多层特征融合(有利于小物体检测)</strong></p>
+<p><img alt="image-20201125142441449" src="../assets/image-20201125142441449.png" /></p>
+<ul>
+<li>无池化层:之前的<code>YOLO</code>网络有<code>5</code>个最大池化层，用来缩小特征图的尺寸，下采样率为<code>32</code>，而<code>DarkNet-53</code>并没有采用池化的做法，而是通过步长为<code>2</code>的卷积核来达到缩小尺寸的效果，下采样次数同样是<code>5</code>次，总体下采样率为<code>32</code>。</li>
+<li>输入<code>416x416</code>&rarr;输出三个特征图size：<code>13x13x255</code>，<code>26x26x255</code>，<code>52x52x255</code></li>
+<li>输入<code>608x608</code>&rarr;输出三个特征图size：<code>19x19x255</code>，<code>38x38x255</code>，<code>76x76x255</code></li>
+<li><code>255</code>=<code>3*(5+80)</code>=每个单元格<code>3</code>个<code>box*([x, y, w, h, confidence],80类)</code></li>
+<li><code>concat</code>操作是上面特征图和本分支特征图通道结合后输出，不像<code>ssd</code>直接拿来用，特征图融合，效果更好</li>
+<li><strong>多尺度特征融合+FPN</strong></li>
+<li><strong>多尺度特征进行对象检测</strong>（假设输入<code>416*416</code>）<ul>
+<li>下采样<code>32</code>倍,<code>13*13</code>的特征图:由于下采样倍数高，这里特征图的感受野比较大，因此**适合检测图像中尺寸比较大的对象**。</li>
+<li>下采样<code>16</code>倍,<code>26*26</code>的特征图:<strong>它具有中等尺度的感受野，适合检测中等尺度的对象。</strong></li>
+<li>下采样<code>8</code>倍,<code>52*52</code>的特征图:<strong>它的感受野最小，适合检测小尺寸的对象。</strong></li>
+</ul>
+</li>
+<li><strong>锚点聚类成了<code>9</code>类，这样就有9种尺度的anchor box</strong><ul>
+<li>因为有3个特征图，为每个特征图设置3种anchor box,这样聚类的时候聚类成九类就可以了。</li>
+<li>在最小的<code>13*13</code>特征图上（有最大的感受野）应用**较大的先验框**(116x90)，(156x198)，(373x326)，适合检测较大的对象。</li>
+<li>中等的<code>26*26</code>特征图上（中等感受野）应用**中等的先验框**(30x61)，(62x45)，(59x119)，适合检测中等大小的对象。</li>
+<li>较大的<code>52*52</code>特征图上（较小的感受野）应用**较小的先验框**(10x13)，(16x30)，(33x23)，适合检测较小的对象。</li>
+</ul>
+</li>
+<li><code>YOLO v3</code>使用的方法有别于<code>SSD</code>，虽然都利用了多个特征图的信息，但SSD的特征是从浅到深地**分别**预测，没有深浅的融合，而YOLO v3的基础网络更像是SSD与FPN的结合。</li>
+</ul>
+<p><strong>yolov3结构解析</strong></p>
+<p><img alt="image-20201126204156396" src="../assets/image-20201126204156396.png" /></p>
+<p><strong>Neck部分立体化:FPN结构</strong></p>
+<p><img alt="image-20201126204246637" src="../assets/image-20201126204246637.png" /></p>
+<p><strong>损失函数</strong></p>
+<p>YOLO每个网格单元预测多个边界框。为了计算<code>true positive</code>的损失，只希望其中—个框负责该目标。为此，选择与GT具有最高loU的那个框。YOLO使用预测值和GT之间的误差平方的求和来计算损失。损失函数包括:</p>
+<ul>
+<li><code>localization loss</code>:定位损失(预测边界框与GT之间的误差)</li>
+</ul>
+<p><img src="../assets/image-20201201104134553.png" alt="image-20201201104134553" style="zoom:67%;" /></p>
+<ul>
+<li><code>confidence loss</code>:置信度损失(框的目标性; objectness of the box)</li>
+</ul>
+<p><img src="../assets/image-20201201104617520.png" alt="image-20201201104617520" style="zoom:80%;" /></p>
+<ul>
+<li><code>classification loss</code>:分类损失</li>
+</ul>
+<p><img src="../assets/image-20201201104718228.png" alt="image-20201201104718228" style="zoom:67%;" /></p>
+<h3 id="poly-yolo">Poly-YoLo<a class="headerlink" href="#poly-yolo" title="Permanent link">&para;</a></h3>
+<p><a href="https://arxiv.org/pdf/2005.13243.pdf">论文</a>|<a href="https://gitlab.com/irafm-ai/poly-yolo">代码</a>|<a href="https://mp.weixin.qq.com/s/nvUhve8kcXHYZ9n61-EMVQ">博客</a></p>
+<p><strong>YoLoV3的两个缺点</strong></p>
+<ul>
+<li><strong>大量标签重写</strong>:yolo系列是把图片切成<code>cell</code>网格，每个物体的中心点落到该网格上，该网格就负责检测该物体。<code>416x416--&gt;13x13</code>特征图一个点的相对于原图的感受野就是<code>32</code>,对于稠密物体，同一个ceil网格预测多个物体概率很大，但是<code>yolov3</code>产生<code>anchor</code>的方式，每个特征图的方格产生3个先验框，这样的话**相同的两个目标中心位于同一个<code>cell</code>,并且分给同一个<code>anchor</code>这样的话前一个目标会被后面的目标重写**(<strong>很常见，因为大多数检测的物体size都处于相同尺寸:小汽车、猪只</strong>)，这样网络训练会忽略一些目标，导致正样本数量非常少，尤其是在小特征图中更常见（结果:漏检率增高）</li>
+</ul>
+<p><img alt="image-20201226105016323" src="../assets/image-20201226105016323.png" /></p>
+<ul>
+<li><strong>无效的anchor分配</strong>：yolov3中是使用3个特征图来分别产生anchor框预测的，分配原则是**小分辨率特征图分配较大先验框检测大物体，大分辨率特征图分配小先验框检测小物体，anchor通过kmeans聚类产生**，对于目标物体中有大中小物体，这样分配没有问题，很合理，但在通常的训练中物体一般处于同一个size，比如检测大物体，那么大中两个特征图的anchor利用率就极低了。</li>
+</ul>
+<p><strong>改进</strong></p>
+<ul>
+<li>标签重写问题</li>
+<li><strong>增大输出特征图大小(作者思路)</strong></li>
+<li><strong>增大图像分辨率(速度会很慢，抛弃)</strong></li>
+<li><strong>无效的anchor分配问题</strong></li>
+<li>kmeans聚类的改进，检测单类(猪只类)，使用kmeans聚类成9类，那么即使猪只类尺寸统一也会被强制分成9类，被规划到那3个特征图上去预测(不合理)。改进:先根据特征图的感受野定出三个大概的尺度范围，设置两个阈值，然后根据阈值对<code>bbox</code>进行单独三次聚类而不是作用于整个数据集。比如说猪只这个大物体被分配到同一个特征图中，其他两个特征图不是被浪费了嘛。</li>
+<li>
+<p>上面的方法会造成资源的浪费，考虑多尺度特征图是否有必要，是否能用分辨率高的单尺度来代替多尺度(FaceBoxes精简版就是这样做的，他们在最后特征图上每个方格产生了23个先验框)。特征图大了标签重写概率也会降低。</p>
+</li>
+<li>
+<p>网络改写，多尺度特征融合可以加强特征的提取能力。</p>
+</li>
+</ul>
+<p><img alt="image-20201226144128008" src="../assets/image-20201226144128008.png" /></p>
+<ul>
+<li>融合方式解析</li>
+</ul>
+<p><img alt="image-20201226144624051" src="../assets/image-20201226144624051.png" /></p>
+<h3 id="yolov42004">YOLOV4(20/04)<a class="headerlink" href="#yolov42004" title="Permanent link">&para;</a></h3>
+<p><a href="https://arxiv.org/abs/2004.10934v1">论文</a>|<a href="https://github.com/AlexeyAB/darknet">code</a>|<a href="https://github.com/Tianxiaomo/pytorch-YOLOv4">pytorch code</a>|<a href="https://blog.csdn.net/lifei1229/article/details/105848879">博客详解</a></p>
+<p><img alt="image-20201125172215347" src="C:/Users/EDZ/Pictures/001temp/backbone.jpg" /></p>
+<p><strong>输入端</strong></p>
+<ul>
+<li><code>Mosaic</code>(马赛克)数据增强:解决coco数据集中小目标占比<code>41.4%</code>大且不均匀问题</li>
+</ul>
+<p><img alt="image-20201125173614536" src="../assets/image-20201125173614536.png" /></p>
+<ul>
+<li>大大丰富数据集，特别是随机缩放增加了很多小目标，让网络的鲁棒性更好。</li>
+</ul>
+<p><strong>BackBone创新</strong></p>
+<ul>
+<li><code>CSPDarknet53</code>借鉴了<code>CSPNet</code>的经验，其中包含了5个<code>CSP</code>模块</li>
+<li><code>CSPNet(19/11)</code>该网络可以增强CNN学习能力(速度快，内存成本低)。<code>CSPNet</code>将底层的特征映射分为两部分，一部分经过密集块和过渡层，另一部分与传输的特征映射结合到下一阶段。</li>
+</ul>
+<p><img alt="image-20200529160933961" src="C:/Users/EDZ/Pictures/001temp/cspResnext.png" /></p>
+<ul>
+<li><strong>Mish激活函数</strong></li>
+</ul>
+<p><img alt="image-20201126100811474" src="C:/Users/EDZ/Pictures/001temp/mish.png" /></p>
+<ul>
+<li><strong>Dropblock</strong></li>
+</ul>
+<p><img alt="image-20201126101124011" src="C:/Users/EDZ/Pictures/001temp/dropblock.png" /></p>
+<ul>
+<li><code>Dropblock</code>缓解过拟合的一种正则化方式，卷积层对随机丢弃不敏感(因为随机丢弃后，卷积层仍然可以从相邻的激活单元学习到**相同的信息**)</li>
+<li>借鉴<code>cutout</code>数据增强(将输入图像部分置零:擦除),在训练中按照一定比例<code>Dropblock</code>每个特征图，比例不固定，开始是很小比例，随着训练过程**线性增加**这个比例。</li>
+</ul>
+<p><strong>Neck创新</strong></p>
+<p>在目标检测领域，为了更好的提取融合特征，通常在**Backbone**和**输出层**，会插入一些层，这个部分称为Neck。相当于目标检测网络的颈部，也是非常关键的。</p>
+<ul>
+<li><strong>SPP模块</strong></li>
+</ul>
+<p><img alt="image-20201126203845941" src="C:/Users/EDZ/Pictures/001temp/spp.png" /></p>
+<ul>
+<li>采用**SPP模块**的方式，比单纯的使用**k*k最大池化**的方式，更有效的增加主干特征的接收范围，显著的分离了最重要的上下文特征。</li>
+<li>
+<p>Yolov4的作者在使用**608*608**大小的图像进行测试时发现，在COCO目标检测任务中，以0.5%的额外计算代价将AP50增加了2.7%，因此Yolov4中也采用了**SPP模块**。</p>
+</li>
+<li>
+<p><strong>FPN+PAN结构</strong></p>
+</li>
+</ul>
+<p><img alt="image-20201126205056467" src="C:/Users/EDZ/Pictures/001temp/fpn_pan.png" /></p>
+<ul>
+<li>Yolov4在FPN层的后面还添加了一个**自底向上的特征金字塔。<strong>FPN层自顶向下传达**强语义特征</strong>，而特征金字塔则自底向上传达**强定位特征**</li>
+<li>原本的PANet网络的**PAN结构**中，两个特征图结合是采用**shortcut(add-维度不变)**操作，而Yolov4中则采用**concat（route:通道拼接）**操作，特征图融合后的尺寸发生了变化。</li>
+</ul>
+<p><strong>Prediction创新:(CIou_loss+DIou_nms)</strong></p>
+<ul>
+<li><strong>CIou_loss</strong></li>
+<li>**IOU_Loss：**主要考虑检测框和目标框重叠面积。</li>
+<li>**GIOU_Loss：**在IOU的基础上，解决边界框不重合时的问题。</li>
+<li>**DIOU_Loss：**在IOU和GIOU的基础上，考虑边界框中心点距离的信息。</li>
+<li>
+<p>**CIOU_Loss：**在DIOU的基础上，考虑边界框宽高比的尺度信息。</p>
+</li>
+<li>
+<p><strong>DIOU_nms</strong>：效果优于传统<code>NMS</code>，为什么不用<code>CIOU_nms</code>?</p>
+</li>
+<li><code>ciou</code>是在<code>Diou</code>的基础上添加了影响因子，包含<code>GT</code>，预测的时候没有<code>GT</code>信息，不用考虑影响因子，所以直接用<code>DIOU_nms</code>即可</li>
+</ul>
+<h3 id="yolov5">YOLOV5<a class="headerlink" href="#yolov5" title="Permanent link">&para;</a></h3>
+<p><a href="https://zhuanlan.zhihu.com/p/172121380">博客</a>|<a href="https://github.com/ultralytics/yolov5">code</a></p>
+<p><img alt="image-20201127151915239" src="../assets/image-20201127151915239.png" /></p>
+<p><strong>输入端</strong></p>
+<ul>
+<li>Mosaic数据增强</li>
+<li>自适应锚点框计算:将锚点框计算嵌入训练程序，每次训练可以自适应的计算不同训练集中的最佳锚点框(可关闭)</li>
+<li>推理时自适应图片缩放:不同长宽比的图片resize到相同尺寸会有畸变，若填充黑边后resize虽然无畸变但长宽<code>2:1</code>的填充黑边过多，存在信息冗余，影响推理速度；改进:长边求缩放系数，短边等比例缩放，<code>pad_width=(缩放长边-缩放短边)%32 / 2</code>，短边补<code>pad_width</code>即可(yolov5不是补黑边,而是灰色<code>114,114,114</code>，其实结果都一样)；<code>32</code>：Yolov5的网络经过5次下采样，而2的5次方，等于**32**。所以至少要去掉32的倍数，再进行取余。</li>
+</ul>
+<p><strong>Backbone创新</strong></p>
+<ul>
+<li>
+<p>Yolov4中只有主干网络使用了CSP结构，yolov5主干和neck都用了CSP结构</p>
+</li>
+<li>
+<p><strong>Focus结构</strong></p>
+</li>
+</ul>
+<p><img alt="image-20201127163326507" src="../assets/image-20201127163326507.png" /></p>
+<p><strong>Neck创新</strong></p>
+<ul>
+<li>
+<p>FPN+PAN结构</p>
+</li>
+<li>
+<p>Yolov4的Neck结构中，采用的都是普通的卷积操作。而Yolov5的Neck结构中，采用借鉴CSPnet设计的CSP2结构，加强网络特征融合的能力。</p>
+</li>
+</ul>
+<p><img alt="image-20201127163747484" src="../assets/image-20201127163747484.png" /></p>
+<p><strong>Predict</strong></p>
+<ul>
+<li><code>yolov4-&gt;CIOU_loss  vs  yolov5-&gt;GIOU_loss</code></li>
+<li><code>yolov4-&gt;GIOU_nms  vs  yolov5-&gt;加权的nms</code></li>
+</ul>
+<p>总结:yolov5四个网络<code>yolov5s/yolov5m/yolov5l/yolov5x</code>网络结构都相似，只不过通过不同的<code>depth_multiple/width_umltiple</code>来控制网络的深度和宽度。</p>
+<h3 id="yolof2103">YOLOF(21/03)<a class="headerlink" href="#yolof2103" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/2103.09460v1.pdf">论文</a>|<a href="https://github.com/megvii-model/YOLOF">code</a></p>
+<p><strong>作者认为FPN的作用有以下两个，探索FPN的这两个作用的实际贡献程度</strong></p>
+<ul>
+<li>一是多尺度特征融合，提高了特征的丰富程度；</li>
+<li>二是使用分治法，将目标检测任务按照目标尺寸不同，分成若干个检测子任务(浅层特征分布小尺度<code>anchor</code>检测小目标，深层特征分配大<code>anchor</code>检测大目标)。</li>
+</ul>
+<p><strong>以Retinanet的FPN做实验结果如下</strong></p>
+<p><img alt="image-20210324145731404" src="../assets/image-20210324145731404.png" /></p>
+<ul>
+<li>多输入和单输入对结果相差不大，但是多输出和单输出对结果影响巨大，也就是说<code>FPN</code>的实际贡献度大部分在分治法这边。分析原因是：<strong>多尺度输出可以获得更大丰富的感受野。</strong></li>
+</ul>
+<p><strong>a-&gt;d，如果p5的输出获得的感受野和a等同的话，计算量是不是会大大降低？</strong></p>
+<p><img alt="image-20210324150802645" src="../assets/image-20210324150802645.png" /></p>
+<p><img alt="image-20210324153343633" src="../assets/image-20210324153343633.png" /></p>
+<p><strong>使用Dilated Encoder代替FPN效果很棒</strong></p>
+<p><img alt="image-20210324155537204" src="../assets/image-20210324155537204.png" /></p>
+<p><strong>问题:引入positive anchor不均衡问题</strong></p>
+<p><code>retinaNet</code>某个<code>anchor</code>和<code>gt框</code>的最大<code>iou&gt;0.5</code>即为<code>positive anchor</code>,称为<code>Max-IoU Matching</code>，其他检测器也常用(因为，多尺度特征可以产生很多<code>positive anchor</code>)，但<code>Dilated Encoder</code>结构只有一个输出特征，如果使用该方法，<code>positive anchor</code>会很少(<code>100k--&gt;5k</code>)，而且，<code>ground truth</code>尺寸大的目标产生的<code>positive anchor</code>要多于<code>ground truth</code>尺寸小的目标产生的<code>positive anchor</code>，这种现象会导致网络在训练时更关注大尺寸的目标，忽略小尺寸目标。解决:<code>Uniform Matching</code></p>
+<ul>
+<li>对于每个目标，都将和该目标<code>ground truth</code>最近的<code>k</code>个<code>anchor</code>作为该目标的<code>positive anchor</code>，从而保证每个目标都有相同数量的<code>positive anchor</code>，保证网络训练时能兼顾尺寸大小不同的目标。在实际应用中，为了避免一些极端情况，忽略<code>Uniform Matching</code>方法中产生的与<code>ground truth</code>的<code>IoU</code>大于<code>0.7</code>的<code>negative anchor</code>和与<code>ground truth</code>的<code>IoU</code>小于<code>0.15</code>的<code>positive anchor</code>。</li>
+</ul>
+<p><img alt="image-20210324155204490" src="../assets/image-20210324155204490.png" /></p>
+<p><strong>网络结构</strong></p>
+<p><img alt="image-20210324160025406" src="../assets/image-20210324160025406.png" /></p>
+<h3 id="ppyolo2007">PPYOLO(20/07)<a class="headerlink" href="#ppyolo2007" title="Permanent link">&para;</a></h3>
+<p>全称:<code>PaddlePaddle-YOLO</code>|<a href="https://arxiv.org/pdf/2007.12099.pdf">论文地址</a>|<a href="https://github.com/PaddlePaddle/PaddleDetection">code</a></p>
+<p>基于<code>yolov3</code>的目标检测器，尝试结合各种不增加模型参数的技巧，确保现有速度的情况下尽可能提高精度。<strong>经验+实验技巧文：无创新点，探索的是技巧如何结合效果更优</strong></p>
+<p><strong>网络结构</strong>:<code>backbone:resnet50-vd-dcn,detectionNeck:FPN,detectionHead:yolv3</code></p>
+<p><img alt="image-20210520142529843" src="../assets/image-20210520142529843.png" /></p>
+<ul>
+<li>紫色三角表示使用了<code>DropBlock</code>,所以仅仅在<code>FPN</code>上使用了，在<code>backbone</code>上使用性能会下降；</li>
+<li>黄色钻石表示<code>CoordConv(坐标卷积)</code></li>
+<li>红色五角星表示<code>SPP</code>结构</li>
+</ul>
+<p><strong>技巧的运用结合</strong>：最终PP-YOLO在COCO test-dev 2017上的性能表现：<strong>45.2% mAP，72.9 FPS！</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 数据增强</span>
+<span class="c1"># 1. 应用从Beta(a=1.5,b=1.5)分布中采样的权重MixUp</span>
+<span class="c1"># 2. RandomColorDistortion, RandomExpand,RandCrop和RandomFlip以0.5的概率依次应用。</span>
+<span class="c1"># 3. 将RGB通道分别减去0.485、0.456、0.406、0.229、0.224、0.225进行归一化处理。</span>
+<span class="c1"># 4. 最后，输入大小从[320,352,384,416,448,480,512,544,576,608]均匀抽取。</span>
+</code></pre></div>
+<p><img alt="image-20210520142711518" src="../assets/image-20210520142711518.png" /></p>
+<ul>
+<li><code>ResNet50-vd:resnet50的d版改进</code>;<code>Deformable Conv</code>:可变形卷积；</li>
+</ul>
+<p><img alt="image-20210520152504051" src="../assets/image-20210520152504051.png" /></p>
+<ul>
+<li><code>LB:Larger Batch Size(64-&gt;192)</code>;指数移动平均<code>EMA</code>;<code>DropBlock:feature map drop</code>:作者仅仅用于<code>FPN</code>上，因为作者用到<code>backbone</code>上导致性能下降；</li>
+</ul>
+<p><img alt="image-20210520153035369" src="../assets/image-20210520153035369.png" /></p>
+<ul>
+<li>
+<p><code>IOU Loss</code>:作者发现各种<code>IOU Loss</code>的改善是相似的,所以选择最基础的<code>IOU Loss</code>，且并没有直接用该<code>Iou loss</code>替换<code>smooth L1 Loss</code>，而是添加了一个分支去计算。</p>
+</li>
+<li>
+<p><code>Iou Aware</code>:<code>yolov3</code>中<code>detection_score=class_score*objectness[0,1]</code>，然而这并没有考虑定位的精度。为了解决这个问题增加了<code>Iou</code>预测分支来衡量定位的准确性。在训练期间，采用<code>IoU aware loss</code>来训练<code>IoU</code>预测分支。 在推理过程中:<code>detection_score=iou_aware_loss*class_score*objectness[0,1]</code>，这与定位精度更加相关。 然后将最终的检测置信度用作后续<code>NMS</code>的输入，虽然加入了一个单独的分支但是参数只增加了一点点。</p>
+</li>
+<li>
+<p><code>Grid Sensitive</code>:网格敏感性。</p>
+</li>
+</ul>
+<p><img alt="image-20210520155219186" src="../assets/image-20210520155219186.png" /></p>
+<ul>
+<li>
+<p><code>Matrix NMS</code>:矩阵NMS是由Soft-NMS推动的，它会削弱其他检测得分，因为它们的重叠部分呈单调递减函数；速度优于传统<code>NMS</code></p>
+</li>
+<li>
+<p><code>CoordConv(坐标卷积)</code>:其工作原理是通过使用额外的坐标通道来使卷积访问其自身的输入坐标来增加特征之间的依赖性。因为其向卷积层添加两个输入通道，添加一些参数和<code>FLOP</code>，为了尽可能减少效率损失，我们不更改主干中的卷积层，而仅用<code>CoordConv</code>替换了<code>FPN</code>中的<code>1x1</code>卷积层和检测头中的第一个卷积层。 </p>
+</li>
+<li>
+<p><code>Better Pretrain Model</code>:在<code>ImageNet</code>上使用具有较高分类精度的预训练模型可能会导致更好的检测性能</p>
+</li>
+</ul>
+<h3 id="ppyolov22104">PPYOLOV2(21/04)<a class="headerlink" href="#ppyolov22104" title="Permanent link">&para;</a></h3>
+<p><a href="https://arxiv.org/pdf/2104.10419.pdf">论文地址</a>|<a href="https://github.com/PaddlePaddle/PaddleDetection">code</a>|<a href="https://mp.weixin.qq.com/s/WoEnjA3LDI5VrNYecEo0cg">博客</a></p>
+<p><strong>改进v1(fpn)的NECK</strong>:创建新<code>neck</code>，目的是用于构建所有尺度的高级语义特征<code>map</code>，因为在不同尺度下检测任务是目标检测的一个基本挑战；如下图，路径是自底向上。</p>
+<p><img alt="image-20210520144404680" src="../assets/image-20210520144404680.png" /></p>
+<p><strong>结果提升如下图</strong></p>
+<p><img alt="image-20210520160431585" src="../assets/image-20210520160431585.png" /></p>
+<p><strong>改进Iou Aware</strong>:计算采用了<code>soft weight format</code>，这与最初的意图不一致。因此改进为应用<code>soft label format</code></p>
+<p><img alt="image-20210520145635543" src="../assets/image-20210520145635543.png" /></p>
+<ul>
+<li><code>t</code>为<code>anchor</code>与<code>ground-truth-bounding box</code>之间的<code>IoU</code></li>
+<li><code>p</code>为<code>IoU aware branch</code>的原始输出，<code>σ</code>为<code>sigmoid</code>激活函数。</li>
+<li>注意，只计算正样本的<code>IoU aware loss</code>。通过替换损失函数<code>IoU aware branch</code>比以前更好。</li>
+</ul>
+<p><strong>Larger Input Size</strong>：输入大小均匀地从<code>[320,352,384,416,448,480，512、544、576、608、640、672、704、736、768]</code>获取，更大尺寸预示着更多内存，需要减少<code>batch size</code></p>
+<p><strong>mish激活</strong>:<code>mish</code>在<code>yolov4/yolov5</code>上被证明是有效的，作者为了<code>backbone</code>使用预训练参数，没有在<code>backbone</code>上使用<code>mish</code>，而是在<code>neck</code>上用了<code>mish</code>激活</p>
+<p><img alt="image-20210520145048669" src="../assets/image-20210520145048669.png" /></p>
+<p><strong>其他详见论文，下面这些不确定是否work</strong></p>
+<ul>
+<li><code>Cosine Learning Rate Decay</code></li>
+<li><code>Backbone Parameter Freezing</code></li>
+<li><code>SiLU Activation Function</code></li>
+</ul>
+<h3 id="fasterrcnn1506">FasterRcnn(15/06)<a class="headerlink" href="#fasterrcnn1506" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1506.01497.pdf">论文地址</a></p>
+<p><img alt="image-20200102093416686" src="../assets/image-20200102093416686.png" /></p>
+<p><img alt="image-20200102093434547" src="../assets/image-20200102093434547.png" /></p>
+<p><strong>主要思想</strong></p>
+<ul>
+<li>
+<p><strong>输入任意大小PxQ的图像，首先缩放至固定大小MxN</strong>(<code>800*600</code>)，送入卷积网络产生一张特征图，这张特征图有两个作用，一是经过RPN网络生成较为精准的建议框，二是和这些建议框结合依次送入到RoiPooling中，得到一系类建议特征图，再送入全连接层进行后续的softmax交叉熵分类和smooth l1边框回归（<strong>分类概率和边框回归联合训练</strong>），得到精准的边框和物体类别。</p>
+</li>
+<li>
+<p>网络细节：<strong>在整个Conv layers中，conv和relu层不改变输入输出大小，只有pooling层使输出长宽都变为输入的&frac12;。</strong></p>
+</li>
+</ul>
+<p><strong>anchor</strong></p>
+<p><strong>9种尺寸=3个面积(128,256,512)*3种尺寸(1:1,1:2,2:1)，这9个Anchors大小宽高不同，对应到原图基本可以覆盖所有可能出现的物体</strong></p>
+<p><img alt="image-20200102095303420" src="../assets/image-20200102095303420.png" /></p>
+<ul>
+<li>**对于一幅<code>W*H</code>的feature map,对应<code>W*H*k(9)</code>个**锚点(Anchor)，就VGG16而言，到特征图那一步下采样了16倍，共有anchor:</li>
+</ul>
+<p><img alt="image-20200102095543131" src="../assets/image-20200102095543131.png" /></p>
+<ul>
+<li><code>256-d</code>是ZF网络的，使用VGG16网络的话是<code>512-d</code>，也就是说该特征图输出维度是512。</li>
+</ul>
+<p><strong>RPN</strong></p>
+<p><img alt="image-20200102095939684" src="../assets/image-20200102095939684.png" /></p>
+<ul>
+<li>特征图之后又做了<code>3x3</code>的卷积，不改变通道数，其目的是让每个点又融合了周围3x3的空间信息。</li>
+<li>然后该特征图又经过了两个<code>1x1卷积</code>，修改通道分别为<code>2k+4k</code>，其实就是对每个锚点框进行2分类(softmax交叉熵：是否是物体,注意不能得到具体类别)和4个偏移量(smooth l1 loss:x,y,w,h)</li>
+<li>如何获取合适的anchor？</li>
+<li>按照输入的foreground softmax scores由大到小排序anchors，提取前pre_nms_topN(e.g. 6000)个anchors</li>
+<li>设置合适阈值，剔除非常小（width&lt;threshold or height&lt;threshold）的foreground anchors</li>
+<li>再次按照nms后的foreground softmax scores由大到小排序fg anchors，提取前post_nms_topN(e.g. 300)结果作为proposal输出</li>
+<li><code>w*h*k*2+w*h*k*4</code>如何混合？建议网络层(proposal layer)。三个输入(2+im_info:保存了此次缩放的所有信息)</li>
+</ul>
+<p><strong>RoiPooling</strong></p>
+<p><strong>固定长度的输出，为了方便向后面的全连接层输出。</strong></p>
+<p><img alt="image-20200102102259738" src="../assets/image-20200102102259738.png" /></p>
+<ul>
+<li>最后，将得到的特征拼接起来，得到的特征是<code>16c+4c+c= 21c</code>维的特征。很显然，这个输出特征的长度与w、h两个值是无关的，因此**SPP池化层可以把任意宽度、高度的卷积特征转换为固定长度的向量**。</li>
+</ul>
+<h3 id="ssd1611">SSD(16/11)<a class="headerlink" href="#ssd1611" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1611.10012.pdf">论文地址</a>|<a href="https://shartoo.github.io/2018/03/09/SSD_detail/">博客详解</a></p>
+<p><strong>简单思想:使用一种全卷积网络(魔改了vgg16)，然后使用多尺度特征图做检测，并且使用了不同长宽的先验框</strong></p>
+<p><strong>简单步骤</strong></p>
+<ul>
+<li><strong>魔改vgg16</strong></li>
+</ul>
+<p><img alt="image-20200101223029381" src="../assets/image-20200101223029381.png" /></p>
+<ul>
+<li>
+<p>将VGG16的FC6和FC7层转化为卷积层，后面加了四层卷积，conv4,7,8,9,10,11,共6个特征图。每个特征图的每一个点构造4/6(<code>4,6,6,6,4,4</code>)个不同尺度大小的BB，然后分别进行检测和分类，将不同feature map获得的BB结合起来(映射到原图像)，经过NMS方法来抑制掉一部分重叠或者不正确的BB，生成最终的BB集合（即检测结果）</p>
+<p><img alt="image-20200101224537663" src="../assets/image-20200101224537663.png" /></p>
+</li>
+<li>
+<p><strong>先验框生成：<code>Prior box</code></strong></p>
+</li>
+</ul>
+<p><img alt="image-20200101224048251" src="../assets/image-20200101224048251.png" /></p>
+<ul>
+<li>
+<p>针对<code>feature map</code>中的每个点作为一个<code>cell</code>，通过等比放缩的方法来找到原图像中对应的位置，然后将<code>cell</code>作为一个中心点，提取出不同尺度的<code>bounding box</code>候选区域，这些候选区域叫做<code>Prior box</code>。针对每一个<code>Prior Box</code>和<code>真值GT</code>比较会得到<code>label</code>。对于<code>cell</code>会对应到不同的<code>Prior Box</code>，分别当前<code>Prior Box</code><strong>预测类别概率和坐标<code>(x,y,w,h)</code></strong>.如果预测类别共有<code>C</code>类，最终一个<code>Prior Box</code>的输出为<code>C+4</code>维度，所以<code>m*n</code>的特征图，每个<code>cell</code>有<code>K</code>个<code>Prior box</code>，输出的特征图维度是:<code>(C+4)*k*m*n</code></p>
+</li>
+<li>
+<p>先验框生成规则：<strong>每一个<code>cell</code>生成固定的<code>scale</code>和<code>aspect ratio</code>(纵横比)的<code>box</code></strong>，由图可知，<code>SSD</code>最后生成了<code>8732</code>个先验框。</p>
+<p><img alt="image-20200101224942207" src="../assets/image-20200101224942207.png" /></p>
+<p><img alt="image-20201128150806976" src="../assets/image-20201128150806976.png" /></p>
+</li>
+<li>
+<p><strong>训练</strong></p>
+</li>
+<li>
+<p>正负样本确定:<strong>难例挖掘</strong>  每一个<code>feature map</code> <code>cell</code>不是<code>k</code>个<code>default box</code>都取<code>prior box</code>与<code>GT box</code>做匹配，<code>IOU</code>&gt;阈值(<code>0.5</code>)为正样本，通过难例挖掘，使得正负样本比为<code>1:3</code></p>
+<p><img alt="image-20201128151239704" src="../assets/image-20201128151239704.png" /></p>
+</li>
+<li>
+<p>分类和回归(每一个特征图都要进行<code>Detector&amp;classifier</code>)</p>
+</li>
+<li>
+<p>比如block7(<code>19x19</code>)，默认框（def boxes）数目为<code>6</code>，每个默认框包含<code>4个</code>偏移位置和<code>21=(20+1)个</code>类别置信度<code>（4+21）</code>。因此，<code>block7</code>的最后输出为<code>(19*19)*6*(4+21)</code>。</p>
+</li>
+</ul>
+<p><img alt="image-20200808164321931" src="../assets/image-20200808164321931.png" /></p>
+<ul>
+<li>
+<p>推理的时候，代码中会取<code>top200做nms</code>，然后根据阈值筛选即可</p>
+</li>
+<li>
+<p>Loss：分类是<code>softmax</code>，回归是<code>Smooth L1 Loss</code>，两个loss用参数<code>alpha</code>调整权重比例</p>
+</li>
+<li>
+<p>先验框和目标类别的置信度loss+位置回归loss，其中N是match到Ground Truth的default box数量；而alpha参数用于调整confidence loss和location loss之间的比例，默认alpha=1。</p>
+<p><img alt="image-20201128151922609" src="../assets/image-20201128151922609.png" /></p>
+<ul>
+<li>置信度loss</li>
+</ul>
+<p><img alt="image-20200101225936424" src="../assets/image-20200101225936424.png" /></p>
+<ul>
+<li>回归loss</li>
+</ul>
+<p><img alt="image-20200101225953232" src="../assets/image-20200101225953232.png" /></p>
+</li>
+<li>
+<p><strong>缺点</strong></p>
+</li>
+<li>
+<p>在<code>SSD</code>中，不同层的<code>feature map</code>都是独立作为分类网络的输入，因此容易出现相同物体被不同大小的框同时检测出来（不同特征图之间缺乏缺乏联系）</p>
+<p><img alt="image-20201128160129244" src="../assets/image-20201128160129244.png" /></p>
+</li>
+<li>
+<p>SSD算法对**小目标不够鲁棒**的最主要的原因是**浅层**feature map的**表征能力不够强**</p>
+</li>
+</ul>
+<h3 id="dssd1701">DSSD(17/01)<a class="headerlink" href="#dssd1701" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1701.06659.pdf">论文:ssd原作者</a>：SSD算法对**小目标不够鲁棒**的最主要的原因是**浅层**feature map的**表征能力不够强**，这篇论文主要是在原始SSD上加入了**反卷积**用来提升表征能力。</p>
+<p><img alt="image-20201128152726552" src="../assets/image-20201128152726552.png" /></p>
+<p><img src="../assets/image-20201128152828964.png" alt="image-20201128152828964" style="zoom: 67%;" /></p>
+<h3 id="dsod1708">DSOD(17/08)<a class="headerlink" href="#dsod1708" title="Permanent link">&para;</a></h3>
+<p><a href="https://arxiv.org/abs/1708.01241">论文</a>|<a href="https://github.com/szq0214/DSOD">代码</a></p>
+<p><code>DSOD=SSD+DenseNet</code>：提出一种新的dense结构用于融合多尺度信息（相比原版SSD的一个改进）</p>
+<p><img alt="image-20201128154239616" src="../assets/image-20201128154239616.png" /></p>
+<h3 id="fssd1712">FSSD(17/12)<a class="headerlink" href="#fssd1712" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1712.00960v3">论文</a>|<a href="https://github.com/lzx1413/PytorchSSD">pytorch 代码</a>|<a href="https://github.com/lzx1413/CAFFE_SSD/tree/fssd">caffe 代码</a></p>
+<p><code>FSSD=SSD+FPN</code></p>
+<p><img alt="image-20201128154849189" src="../assets/image-20201128154849189.png" /></p>
+<p><img alt="image-20201128155005009" src="../assets/image-20201128155005009.png" /></p>
+<ul>
+<li>FSSD中将**较小**的特征图上采样到统一尺寸，通过<code>concat</code>进行特征连接，作为后续SSD预测模块的输入。</li>
+</ul>
+<h3 id="rssd1705">RSSD(17/05)<a class="headerlink" href="#rssd1705" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1705.09587v1">论文</a></p>
+<p>改善了SSD存在的两个问题</p>
+<ul>
+<li>一方面利用**分类网络**增加不同层之间的feature map联系，减少重复框的出现；</li>
+<li>另一方面增加<code>feature pyramid</code>中feature map的个数，使其可以检测更多的小尺寸物体。</li>
+</ul>
+<p><strong>pooling方式生成特征金字塔</strong></p>
+<p><img alt="image-20201128161255272" src="../assets/image-20201128161255272.png" /></p>
+<ul>
+<li><code>pooling</code>是降维，从左往右<code>concate</code>：最左边的<code>38*38</code>的<code>feature map</code>，将其做<code>pooling</code>后和右边第二个的<code>19*19</code>的<code>feature map做concate</code>，这样就有两个<code>19*19</code>的<code>feature map</code>了（一个红色，一个橙色）；然后再对这两个<code>19*19</code>的<code>feature map</code>做<code>pooling</code>，再和左边第三个黄色的<code>10*10</code>的<code>feature map</code>做<code>concate</code>……</li>
+</ul>
+<p><strong>deconvolusion反卷积方式生成特征金字塔</strong></p>
+<p><img alt="image-20201128161657363" src="../assets/image-20201128161657363.png" /></p>
+<ul>
+<li>反卷积是升维，从右到左，最右边的<code>1*1</code>的紫色feature map往左做concate</li>
+</ul>
+<p><strong>作者认为前两种特征融合方式的缺点在于信息的传递都是单向的，这样分类网络就没法利用其它方向的信息，因此就有了<code>both pooling and deconvolution（Rainbow concatenation）</code></strong></p>
+<p><strong>Rainbow concatenation</strong></p>
+<p><img alt="image-20201128162403018" src="../assets/image-20201128162403018.png" /></p>
+<ul>
+<li>用不同颜色的矩形框表示不同层的<code>feature map</code>(组合起来像彩虹)，同时采用<code>pooling和deconvolution</code>进行特征融合，从左至右（<code>pooling，concate</code>）和从右至左（<code>deconvolution，concate</code>）</li>
+<li><strong>在做<code>concate</code>之前都会对<code>feature map</code>做一个<code>normalization</code>操作，因为不同层的<code>feature map</code>的<code>scale</code>是不同的，文中的<code>normalization</code>方式采用 <code>batch normalization</code></strong></li>
+</ul>
+<h3 id="rfbnet1711">RFBNet(17/11)<a class="headerlink" href="#rfbnet1711" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1711.07767.pdf">论文地址</a></p>
+<p><strong>主要思想:提出了RFB模块，并将它添加到SSD的顶部，构建了RFBnet，Inception思想(并联)+空洞卷积:增大感受野,总而言之:出发点是模拟人类视觉的感受野进行RFB结构的设计</strong></p>
+<p><img alt="image-20200101231033795" src="../assets/image-20200101231033795.png" /></p>
+<p><strong>RFB模块</strong></p>
+<p><img alt="image-20200101231550289" src="../assets/image-20200101231550289.png" /></p>
+<div class="codehilite"><pre><span></span><code>* 参考了`Inception结构`，RFB模块引用了不同尺寸的卷积核(`1x1,3x3,5x5`)构成并联分支。
+* 空洞卷积层(`3x3 rate=1`,`3x3 rate=3`,`3x3 rate=5`)
+</code></pre></div>
+
+<ul>
+<li>RFB结构中最后会将不同尺寸和rate的卷积层输出进行concat，达到融合不同特征的目的。( <code>1x1</code>卷积)</li>
+</ul>
+<p><strong>网络结构</strong></p>
+<ul>
+<li>RFB模块</li>
+</ul>
+<p><img alt="image-20200101232545617" src="../assets/image-20200101232545617.png" /></p>
+<ul>
+<li>RFB-s模块</li>
+</ul>
+<p><img alt="image-20200101232609247" src="../assets/image-20200101232609247.png" /></p>
+<ul>
+<li>
+<p>RFB-s和RFB相比主要有两个改进</p>
+<ul>
+<li>一方面用<code>3*3卷积层</code>代替<code>5*5卷积层</code></li>
+<li>另一方面用<code>1*3</code>和<code>3*1</code>卷积层代替<code>3*3</code>卷积层，主要目的应该是为了减少计算量，类似Inception后期版本对Inception结构的改进。</li>
+</ul>
+</li>
+<li>
+<p><strong>网络结构(对ssd轻微改动)</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200101232843999" src="../assets/image-20200101232843999.png" /></p>
+<ul>
+<li>主干网络上用两个RFB结构替换原来新增的两层。</li>
+<li>conv4_3和conv7_fc在接预测层之前分别接RFB-s和RFB结构</li>
+</ul>
+<h3 id="refinedet1711">RefineDet(17/11:小目标)<a class="headerlink" href="#refinedet1711" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1711.06897.pdf">论文地址</a></p>
+<p>保证<code>SSD</code>高效的前提下提升检测效果(做法:结合<code>one stage + two stage</code>)：SSD+RPN+FPN的思想。</p>
+<ul>
+<li>引入two stage的object detection中的对box由粗到细的回归思想(<strong>RPN先粗粒度回归box信息+一个常规回归分支得到更准确的框信息</strong>)</li>
+<li>引入类似**FPN网络的特征融合操作**，可以有效提高对**小目标的检测效果**，检测网络的框架还是**SSD**。</li>
+</ul>
+<p><strong>网络搭建</strong></p>
+<p><img alt="image-20200229135251260" src="../assets/image-20200229135251260.png" /></p>
+<p><strong>以特征提取网络为ResNet101为例</strong></p>
+<ul>
+<li>输入图像大小为<code>320*320</code>为例，在<code>ARM</code>部分的4个灰色矩形块（feature map）的size分别是<code>40*40,20*20,10*10,5*5</code>，其中前三个是<code>ResNet101</code>网络本身的输出层，最后<code>5*5</code>输出是另外添加的一个residual block。</li>
+<li>有了特征提取的主网络后，就要开始做**融合层操作**了，首先是<code>5*5</code>的feature map经过一个transfer connection block得到对应大小的蓝色矩形块（P6）,对于生成P6的这条支路而言只是3个卷积层而已。接着基于<code>10*10</code>的灰色矩形块（feature map）经过transfer connection block得到对应大小的蓝色矩形块（P5），此处的transfer connection block相比P6增加了**反卷积支路**，反卷积支路的输入来自于生成P6的中间层输出。P4和P3的生成与P5同理。</li>
+</ul>
+<p><strong>网络结构思想</strong></p>
+<p><img alt="image-20200229135251260" src="../assets/image-20200229135251260.png" /></p>
+<p><strong>上面这个网络类似两阶段:一个子模块做RPN的事，另一个子模块做SSD的事。</strong></p>
+<ul>
+<li>
+<p><code>ARM</code>部分扮演了<code>RPN</code>网络的角色:去除一些负样本(因为负样本数量&gt;正样本数量)，得到了较为精细的boxes。并且<code>ARM</code>部分输入利用了多层特征，而RPN网络的输入是单层特征。基于4层特征最后得到的还是两条支路，一个bbox的坐标回归支路，另一个是bbox的二分类支路。</p>
+</li>
+<li>
+<p>注意:IOU阈值设置为0.5会有很多背景标签(负样本)，<code>ARM</code>结构虽然可以过滤掉一些负样本，但接下来还是要采用类似SSD算法中的<code>hard negative mining</code>来设定正负样本的比例（一般设定为1:3），当然负样本不是随机选的，而是根据box的分类loss排序来选的，按照指定比例选择loss最高的那些负样本即可。</p>
+</li>
+<li>
+<p><code>TCB</code>部分是做特征的转换操作，也就是将<code>ARM</code>部分的输出feature map转换成<code>ODM</code>部分的输入，这部分其实和FPN算法的特征融合很像，FPN也是这样的upsample后融合的思想。</p>
+</li>
+</ul>
+<p><img alt="image-20200229142307747" src="../assets/image-20200229142307747.png" /></p>
+<ul>
+<li>
+<p><code>ODM</code>部分就是SSD了,也是融合不同层的特征，然后做多分类和回归。不同于SSD的两方面:</p>
+</li>
+<li>
+<p>输入的<code>anchors</code>是<code>ARM</code>部分得到的精准<code>anchors</code>(类似RPN网络输出的proposal)</p>
+</li>
+<li>
+<p>另一方面和FPN算法类似(多尺度融合)，对SSD做了改进。</p>
+<ul>
+<li>
+<p>在SSD中浅层的feature map是直接拿来用的（并没有和高层的feature map融合），也就是对bbox的预测是在每一层上进行的，预测得到结果后再将各层结果整合在一起。</p>
+</li>
+<li>
+<p>而这里的浅层feature map（size较大的蓝色矩形块）融合了高层feature map的信息，然后预测bbox是基于每层feature map（每个蓝色矩形块）进行，最后将各层结果再整合到一起。</p>
+</li>
+<li>这是非常重要的区别：<strong>这样做的好处就是对小目标物体的检测效果更好</strong>，这在FPN和RON等算法中已经证明过了。</li>
+</ul>
+</li>
+</ul>
+<p><strong>损失函数</strong></p>
+<p><img alt="image-20200229142819142" src="../assets/image-20200229142819142.png" /></p>
+<ul>
+<li>ARM部分包含binary classification损失Lb和回归损失Lr</li>
+<li>ODM部分包含multi-class classification损失Lm和回归损失Lr。</li>
+</ul>
+<h3 id="segnet1511">SegNet(15/11)<a class="headerlink" href="#segnet1511" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1511.00561.pdf">论文地址</a></p>
+<p><img alt="image-20200309222654810" src="../assets/image-20200309222654810.png" /></p>
+<ul>
+<li>使用<code>VGG16</code>网络，去掉全连接层，搭建对称模型。2016年，Segnet研究组在原有网络框架基础加入了跳跃连接，算是有了进一步发展。</li>
+<li><code>Segnet</code>语义分割网络的关键在于下采样和上采样。在上采样(反卷积)的过程中，使用下采样时记录的<code>Max Value</code>像素位置指标，这样做的好处是防止边缘信息的丢失(ENet中也使用了)。</li>
+</ul>
+<h3 id="enet1606">ENet(16/06)<a class="headerlink" href="#enet1606" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1606.02147.pdf">论文地址</a></p>
+<p><strong>实时语义分割</strong>:<strong>要想在移动终端或者嵌入式系统上应用，小巧高速是很重要的。ENet在追求高效率的同时兼顾了精度</strong></p>
+<p><img alt="image-20200102131340468" src="../assets/image-20200102131340468.png" /></p>
+<p><img alt="image-20200102131312368" src="../assets/image-20200102131312368.png" /></p>
+<ul>
+<li><strong>初始化层</strong>:压缩输入图片的分辨率，减少计算量。因为直接使用原始分辨率代价较高，而且视觉信息存在大量冗余，需要对输入做一个预处理，先用一层网络讲这些信息浓缩，当然**这一步的特征图个数(通道个数)不用太多，16与32效果几乎相同。**</li>
+<li>
+<p>下采样(边缘信息丢失问题):单独存储边缘信息,然后上采样恢复时使用之前保存的边缘信息(<strong>SegNet方案</strong>)</p>
+</li>
+<li>
+<p>不同于普通的编解码结构(结构上完全对等)，<strong>作者的编码器规模大一些，**因为要**用来提取信息；**但是**解码器本质上只是对编码器结果的细节精调，**因此**规模可以减小</strong>，这样也缩小了网络体积，加速了运算。</p>
+</li>
+<li>经过作者的测试,在ENet中使用ReLU非线性激活函数反而降低了ENet的精度(原因:作者推论网络本身较浅)，所以使用了<code>PReLu</code>精度反而较高。</li>
+<li><strong>对称卷积(低阶近似)</strong>：考虑到卷积层权重其实有相当大的冗余，可以用<code>nx1和1xn</code>的两个卷积层级联（对称卷积）来替代一个<code>nxn</code>的卷积层来缩小计算量。具体地，用n=5的对称卷积的计算量近似于一个3x3的普通卷积，但是由于引入了非线性，这样的操作还能够增加函数的多样性</li>
+<li><strong>空洞卷积</strong>：空洞卷积可以减小计算量、增大感受野。为了使空洞卷积发挥最大的作用，ENet中穿插地使用了普通卷积、对称卷积和空洞卷积。</li>
+</ul>
+<h3 id="fpn1612">FPN(16/12)<a class="headerlink" href="#fpn1612" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1612.03144.pdf">论文地址</a></p>
+<p><strong>FPN主要解决的是物体检测中的多尺度问题，通过简单的网络连接改变，在基本不增加原有模型计算量情况下，大幅度提升了小物体检测的性能。</strong></p>
+<p><img alt="image-20200102110906230" src="../assets/image-20200102110906230.png" /></p>
+<p><img alt="image-20200102111531725" src="../assets/image-20200102111531725.png" /></p>
+<ul>
+<li>这里的上采样直接使用的是**最近邻上采样(直接对临近元素进行复制)**，而不是使用线性插值或反卷积操作，一方面简单，另外一方面可以减少训练参数。</li>
+<li>进行<code>1 * 1</code>的卷积，以调整通道数和上采样的结果相同。</li>
+<li>相加:是指特征图的长宽相同，通道数固定为<code>256</code>，逐元素相加。</li>
+<li>相加之后，<strong>对相加的结果进行<code>3*3</code>的卷积，以消除上采样的混淆现象（aliasing effect）</strong></li>
+</ul>
+<h3 id="maskrcnn1703">MaskRCNN(17/03)<a class="headerlink" href="#maskrcnn1703" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1703.06870.pdf">论文地址</a></p>
+<p><strong>MaskRCNN是在FasterRCNN的基础上改进的，主干网络换成了ResNet-FPN,增加了RoiAlign,FCN预测mask分支</strong></p>
+<p><strong>ResNet-FPN</strong></p>
+<ul>
+<li>实际上，<strong>上图少绘制了一个分支</strong>：M5经过步长为<code>2</code>的max pooling下采样得到<code>P6</code>，作者指出使用P6是想得到更大的anchor尺度<code>512×512</code>。<strong>但<code>P6</code>是只用在 RPN中用来得到region proposal的，并不会作为后续Fast RCNN的输入</strong></li>
+<li><strong>ResNet-FPN作为RPN输入的feature map是</strong>[P 2, P 3, P 4, P 5, P 6]，而作为后续<code>Fast RCNN</code>的输入则是[P 2, P 3, P 4, P 5]</li>
+</ul>
+<p><img alt="image-20200102112420525" src="../assets/image-20200102112420525.png" /></p>
+<ul>
+<li>
+<p>Resnet-FPN产生了大小不同的五个特征图[P 2, P 3, P 4, P 5, P 6]，这些特征图各自经过RPN层产生很多先验框，但是用于映射到特征图的只有[P 2, P 3, P 4, P 5]没有 P6 ，也就是说要在[P 2, P 3, P 4, P 5]中根据<code>region proposal</code>切出<code>ROI</code><strong>进行后续的分类和回归预测</strong>。</p>
+</li>
+<li>
+<p><strong>我们要选择哪个feature map来切出这些ROI区域才算最合适的feature map呢？</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200102113234150" src="../assets/image-20200102113234150.png" /></p>
+<ul>
+<li><strong>大尺度的ROI要从低分辨率的feature map上切，有利于检测大目标，小尺度的ROI要从高分辨率的feature map上切，有利于检测小目标</strong></li>
+</ul>
+<p><strong>RoiAlign(roi特征图输送到roipooling)</strong></p>
+<p><strong>Faster Rcnn的两次整数化</strong></p>
+<ul>
+<li><code>region proposal</code>的(x,y,w,h)通常是**小数**，但是为了方便操作会把它整数化。</li>
+<li>将整数化后的边界区域平均分割成<code>k x k</code>个单元，对每一个单元的边界进行整数化。</li>
+</ul>
+<p><strong>ROI Align方法取消整数化操作，保留了小数，使用双线性插值的方法获得坐标为浮点数的像素点上的图像数值</strong></p>
+<p><strong>损失函数</strong></p>
+<p><img alt="image-20200102124352916" src="../assets/image-20200102124352916.png" /></p>
+<ul>
+<li>假设一共有<code>K</code>个类别，则<code>mask</code>分割分支的输出维度是 <code>K * m * m</code>，对于<code>m*m</code> 中的每个点，都会输出<code>K</code>个二值Mask（每个类别使用sigmoid输出）。</li>
+<li>需要注意的是，计算loss的时候，<strong>并不是每个类别的sigmoid输出都计算二值交叉熵损失，而是该像素属于哪个类，哪个类的sigmoid输出才要计算损失(如图红色方形所示)</strong>。并且在测试的时候，我们是通过分类分支预测的类别来选择相应的mask预测。<strong>这样，mask预测和分类预测就彻底解耦了</strong>。</li>
+<li>这与FCN方法是不同，<strong>FCN是对每个像素进行多类别softmax分类，然后计算交叉熵损失</strong>，<strong>很明显，这种做法是会造成类间竞争的</strong>，<strong>而每个类别使用sigmoid输出并计算二值损失，可以避免类间竞争</strong>。实验表明，通过这种方法，可以较好地提升性能。</li>
+</ul>
+<h3 id="ohem1604">OHEM(16/04)<a class="headerlink" href="#ohem1604" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1604.03540.pdf">论文地址</a></p>
+<p><strong>OHEM(FastRCNN作为基础检测算法)，用来解决目标不均衡问题</strong></p>
+<p><img alt="image-20200125140118273" src="../assets/image-20200125140118273.png" /></p>
+<ul>
+<li>对RoI的损失进行排序，进行一步NMS操作，以去除掉重叠严重的RoI，并在筛选后的RoI中选择出固定数量损失较大的部分，作为难样本。</li>
+<li>将筛选出的难样本输入到可读写的b网络中，进行前向计算，得到损失。</li>
+<li>利用b网络得到的反向传播更新网络，并将更新后的参数与上半部的a网络同步，完成一次迭代。</li>
+<li>OHEM是近年兴起的另一种筛选example的方法，它通过对loss排序，选出loss最大的example来进行训练，这样就能保证训练的区域都是hard example。这个方法有个缺陷，它把所有的easy example都去除掉了，造成easy positive example无法进一步提升训练的精度。</li>
+<li><strong>OHEM算法虽然增加了错分类样本的权重，但是OHEM算法忽略了容易分类的样本。</strong></li>
+</ul>
+<h3 id="retinanet1708focal-loss">RetinaNet(17/08:Focal Loss)<a class="headerlink" href="#retinanet1708focal-loss" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1708.02002.pdf">论文地址</a></p>
+<p><code>Focal Loss + OneStage = RetinaNet</code>，目的是想提高单阶段网络精度不高的问题，主要原因是**正负类别不均衡**问题(一张图片要产生成千上万的候选框，其中只有一小部分含有object)。</p>
+<p><img alt="image-20200224134307957" src="../assets/image-20200224134307957.png" /></p>
+<ul>
+<li>
+<p><strong>正负类别不均衡会带来什么？</strong></p>
+<ul>
+<li>负样本数量太大，占总的loss的大部分，而且多是容易分类的，因此使得模型的优化方向并不是我们所希望的那样，因为分类器无脑地把所有bbox统一归类为background，accuracy也可以刷得很高。</li>
+</ul>
+</li>
+<li>
+<p><strong>ssd、yolo和faster-Rcnn的解决方案</strong>:</p>
+<ul>
+<li>在SSD中利用Hard-Negtive-Mining的方式将正负样本的比例控制在1:3</li>
+<li>
+<p>YOLO通过损失函数中权重惩罚的方式增大正样本对损失函数的影响</p>
+</li>
+<li>
+<p>Faster-RCNN在FPN阶段会根据前景分数提出最可能是前景的example，这就会滤除大量背景概率高的easy negtive样本</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Focal Loss</strong></p>
+<p>引入了Focal Loss来解决**难易样本数量不平衡**，<strong>通过减少易分类样本的权重，使得模型在训练时更专注于难分类的样本</strong>。</p>
+<p><img alt="image-20200224142257688" src="../assets/image-20200224142257688.png" /></p>
+<p><strong>损失函数详解</strong></p>
+<p><img alt="image-20200224142641913" src="../assets/image-20200224142641913.png" /></p>
+<p><img alt="image-20200224143058329" src="../assets/image-20200224143058329.png" /></p>
+<ul>
+<li>因为是二分类，所以y的值是正1或负1，p的范围为0到1。当真实label是1，也就是y=1时，假如某个样本x预测为1这个类的概率p=0.6，那么损失就是-log(0.6)，注意这个损失是大于等于0的。如果p=0.9，那么损失就是-log(0.9)，所以p=0.6的损失要大于p=0.9的损失，这很容易理解。</li>
+</ul>
+<p><img alt="image-20200224143147489" src="../assets/image-20200224143147489.png" /></p>
+<ul>
+<li>at系数类似于pt，当label=1的时候，at=a；当label=-1的时候，at=1-a，a的范围也是0到1。<strong>因此可以通过设定a的值（一般而言假如1这个类的样本数比-1这个类的样本数多很多，那么a会取0到0.5来增加-1这个类的样本的权重）来控制正负样本对总的loss的共享权重。</strong></li>
+<li><strong>虽然可以控制正负样本的权重，但是没法控制容易分类和难分类样本的权重</strong>，于是就有了focal loss</li>
+</ul>
+<p><img alt="image-20200224143406430" src="../assets/image-20200224143406430.png" /></p>
+<p><img alt="image-20200224143449364" src="../assets/image-20200224143449364.png" /></p>
+<ul>
+<li>当一个样本被分错的时候，pt是很小的（请结合pt公式的定义，比如当y=1时，p要小于0.5才是错分类，此时pt就比较小，反之亦然），因此调制系数就趋于1，也就是说相比原来的loss是没有什么大的改变的。当pt趋于1的时候（此时分类正确而且是易分类样本），调制系数趋于0，也就是对于总的loss的贡献很小。</li>
+<li>当γ=0的时候，focal loss就是传统的交叉熵损失，当γ增加的时候，调制系数也会增加。</li>
+</ul>
+<p><img alt="image-20200224143716522" src="../assets/image-20200224143716522.png" /></p>
+<ul>
+<li>这样既能调整正负样本的权重，又能控制难易分类样本的权重</li>
+<li>在实验中a的选择范围也很广，一般而言当γ增加的时候，a需要减小一点（实验中γ=2，a=0.25的效果最好）</li>
+</ul>
+<p><strong>RetinaNet网络结构</strong></p>
+<p><img alt="image-20200224143900065" src="../assets/image-20200224143900065.png" /></p>
+<p><strong>效果</strong></p>
+<p><img alt="image-20200224144021635" src="../assets/image-20200224144021635.png" /></p>
+<ul>
+<li>(a)是在交叉熵的基础上加上参数a，a=0.5就表示传统的交叉熵，可以看出当a=0.75的时候效果最好，AP值提升了0.9。</li>
+<li>(b) 是对比不同的参数γ和a的实验结果，可以看出随着γ的增加，AP提升比较明显。</li>
+<li>(d) 通过和OHEM的对比可以看出最好的Focal Loss比最好的OHEM提高了3.2AP。这里OHEM1:3表示在通过OHEM得到的minibatch上强制positive和negative样本的比例为1:3，通过对比可以看出这种强制的操作并没有提升AP。</li>
+<li>(e) 加入了运算时间的对比，可以和前面的Figure2结合起来看，速度方面也有优势！注意这里RetinaNet-101-800的AP是37.8，当把训练时间扩大1.5倍同时采用scale jitter，AP可以提高到39.1，这就是全文和table2中的最高的39.1AP的由来。</li>
+</ul>
+<p><img alt="image-20200224144300128" src="../assets/image-20200224144300128.png" /></p>
+<ul>
+<li>
+<p>对比forground和background样本在不同γ情况下的累积误差。</p>
+<ul>
+<li>纵坐标是归一化后的损失</li>
+<li>横坐标是总的foreground或background样本数的百分比。</li>
+</ul>
+</li>
+<li>
+<p>可以看出γ的变化对正（forground）样本的累积误差的影响并不大，但是对于负（background）样本的累积误差的影响还是很大的（γ=2时，将近99%的background样本的损失都非常小）</p>
+</li>
+</ul>
+<h3 id="repulsion-loss1711">Repulsion Loss(17/11:解决遮挡)<a class="headerlink" href="#repulsion-loss1711" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1711.07752v2">论文地址</a>|<a href="https://github.com/bailvwangzi/repulsion_loss_ssd">Code</a>|<a href="https://mp.weixin.qq.com/s/xLe4xxAjYGLzt_35FFvfUg">博客</a>|<a href="https://github.com/dongdonghy/repulsion-loss-faster-rcnn-pytorch/blob/master/lib/model/faster_rcnn/repulsion_loss.py">博客代码</a>|[rɪ'pʌlʃən]:斥力</p>
+<p>本文是旷视研究院CVPR2018上的一篇工作，主要目的是为了解决行人检测的遮挡(类间或类内)问题，这里先讲解类内遮挡。</p>
+<p><strong>遮挡问题</strong></p>
+<ul>
+<li>问题一:框偏移</li>
+</ul>
+<p><img alt="image-20201124191318752" src="../assets/image-20201124191318752.png" /></p>
+<ul>
+<li>问题二:框抑制，漏检</li>
+<li>
+<p>**NMS**操作是为了抑制去除掉多余的框。但是在遮挡检测中，<code>NMS</code>操作会带来更糟糕的检测结果，因为<code>T</code>的预测框<code>P</code>会被<code>B</code>的预测框给抑制，导致漏检。</p>
+</li>
+<li>
+<p>总结:<strong>对NMS阈值很敏感</strong>：阈值太低了会带来漏检，阈值太高了会带来**假正例**（即标出错误的目标:<strong>红色偏移部分</strong>）</p>
+</li>
+</ul>
+<p><strong>问题解决</strong></p>
+<ul>
+<li>不仅仅考虑目标框，还要考虑周围框的影响，磁铁效应:设计损失函数在要求预测框<code>P</code>靠近目标框<code>T</code>(吸引)的同时，也要求预测框<code>P</code>远离其他不属于目标<code>T</code>的真实框(排斥)，这样就很好的降低<code>NMS</code>的对阈值的敏感性</li>
+</ul>
+<p><img alt="image-20201124194342552" src="../assets/image-20201124194342552.png" /></p>
+<ul>
+<li>
+<p>参数解释:设 <code>P(lP , tP , wP , hP )</code>为候选框 <code>G(lG, tG, wG, hG)</code>为真实框，<code>P+</code>为正候选框集合，正候选框的意思是，至少与其中一个真实框的<code>IoU</code>大于某个阈值，这里是<code>0.5 g = {G}</code> 是真实框集合</p>
+</li>
+<li>
+<p><code>L_attr</code>:<code>smooth L1</code>损失，目的是使得预测框和匹配上的目标框尽可能接近。</p>
+</li>
+</ul>
+<p><img alt="image-20201124195106142" src="../assets/image-20201124195106142.png" /></p>
+<ul>
+<li><code>L_RepGT</code>:目标使预测框要尽量远离和它重叠的第二大的<code>GT</code>(除去本身要回归目标的真实框外，与其IoU最大的真实框)</li>
+</ul>
+<p><img alt="image-20201124202223687" src="../assets/image-20201124202223687.png" /></p>
+<ul>
+<li>
+<p>使用<code>IoG</code>而不使用<code>IoU</code>的原因是，<strong>IoG的分母下，真实框大小area(G)是固定的</strong>，因此其优化目标是去减少与目标框重叠，即**area(B∩G)**。而在<code>IoU</code>下，回归器也许会尽可能让预测框更大（即分母）来最小化<code>loss</code></p>
+</li>
+<li>
+<p><code>L_RepBox</code>:使分派到不同GT的预测框之间尽量远离。</p>
+</li>
+</ul>
+<p><img alt="image-20201124201634792" src="../assets/image-20201124201634792.png" /></p>
+<ul>
+<li><code>α和β</code>用于平衡两者的权重</li>
+</ul>
+<p><img alt="image-20201124202514407" src="../assets/image-20201124202514407.png" /></p>
+<ul>
+<li>后续的NMS可以使用soft-nms、DIOU-NMS用来减少损失。</li>
+</ul>
+<p><strong>结论</strong></p>
+<ul>
+<li>猪只数据集合提升不大，整体仅提升了0.5个百分点；选取iou重叠(阈值0.5)占比达30%,的数据集，验证整体提升了2.1个百分点。画出结果，肉眼观察很明显漏检消失。</li>
+</ul>
+<h3 id="panet1803">PANet(18/03)<a class="headerlink" href="#panet1803" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1803.01534.pdf">论文地址</a></p>
+<p><strong>COCO2017实例分割比赛的冠军，也是目标检测比赛的第二名。</strong></p>
+<ul>
+<li>可以看做是<code>Mask RCNN</code>的多处改进，充分利用了特征融合，比如引入<code>bottom-up path augmentation</code>结构，充分利用网络浅特征进行分割</li>
+<li>引入<code>adaptive feature pooling</code>使得提取到的ROI特征更加丰富</li>
+<li>引入<code>fully-connected fusion</code>，通过融合一个前背景二分类支路的输出得到更加精确的分割结果。</li>
+</ul>
+<p><img alt="image-20200302171847415" src="../assets/image-20200302171847415.png" /></p>
+<ul>
+<li>
+<p><strong><code>FPN</code></strong>:主要是通过融合高低层特征提升目标检测的效果，尤其可以提高小尺寸目标的检测效果</p>
+</li>
+<li>
+<p><strong><code>bottom-up path augmentation</code></strong>:这个引入主要是考虑浅层特征信息(边缘形状等特征)对实例分割(因为是像素级的分类)非常重要。</p>
+</li>
+</ul>
+<p><img alt="image-20200304102121226" src="../assets/image-20200304102121226.png" /></p>
+<ul>
+<li>FPN的红色箭头，由底层传到顶层，要经过几十上百的层，浅层特征信息丢失严重</li>
+<li>
+<p>绿色箭头(这个结构不到10层)：浅层特征&rarr;P2&rarr;沿着<code>bottom-up path augmentation</code>传递到顶层，经过的层数就不到10层，能较好地保留浅层特征信息。</p>
+</li>
+<li>
+<p><strong><code>adaptive feature pooling</code></strong>:主要做的还是特征融合，将单层特征(类似FasterRcnn的每个ROI层要经过一个ROIPooling一样,(FPN也是单层))换成每个ROI需要经过**多层特征**：也就是说每个ROI需要和多层特征(<code>N2.N3.N4.N5</code>)做ROI Align的操作，然后将得到的不同层的ROI特征融合在一起，这样每个ROI特征就融合了多层特征。</p>
+</li>
+</ul>
+<p><img alt="image-20200304105618874" src="../assets/image-20200304105618874.png" /></p>
+<ul>
+<li>
+<p>多层特征融合是因为论文中作者做了一个实验，详情看AI之路博客或论文。</p>
+</li>
+<li>
+<p><strong><code>fully-connected fusion</code></strong>:针对原有的分割支路（FCN）引入一个前背景二分类的全连接支路，通过融合这两条支路的输出得到更加精确的分割结果。</p>
+</li>
+</ul>
+<p><img alt="image-20200304112346459" src="../assets/image-20200304112346459.png" /></p>
+<h3 id="efficientnet1905">EfficientNet(19/05)<a class="headerlink" href="#efficientnet1905" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1905.11946.pdf">论文地址</a></p>
+<p>目前分类网络常用优化方向:<strong>加宽网络、加深网络、增加分辨率</strong>，作者认为这三种方式不应该相互独立，所以作者通过综合这些方式，大大减少了模型参数量和计算量。</p>
+<p><img alt="image-20200304113336606" src="../assets/image-20200304113336606.png" /></p>
+<p>作者做了一个小实验进行验证:</p>
+<ul>
+<li>单个维度的优化:能提升模型效果，但是上限也比较明显，基本上在Acc达到80后提升就很小了。</li>
+<li>3个维度共同优化:有效提升模型的效果（突破80），这就说明多维度融合是有效的。</li>
+</ul>
+<p><strong>如何找到3个维度合适的缩放系数呢？</strong></p>
+<p><strong>1.建立优化公式</strong></p>
+<p><img alt="image-20200304114848634" src="../assets/image-20200304114848634.png" /></p>
+<ul>
+<li>N表示分类网络，X表示输入，Fi表示基础网络层，i表示stage，Li表示Fi结构在第i个stage中的重复数量。</li>
+<li>公式1这样的定义方式对应的最直观例子就是ResNet系列网络，我们知道ResNet系列网络有多个stage，每个stage包含不同数量的block结构。</li>
+</ul>
+<p><img alt="image-20200304114948459" src="../assets/image-20200304114948459.png" /></p>
+<ul>
+<li>待优化的参数就是网络深度（d）、网络宽度（w）和分辨率（r）</li>
+<li>在模型参数和计算量满足限制条件的情况下最大化网络的准确率</li>
+</ul>
+<p><img alt="image-20200304115302363" src="../assets/image-20200304115302363.png" /></p>
+<ul>
+<li>引入Φ参数，并将3个待优化参数都用Φ指数表示</li>
+<li>同时对底做了数值限制，做限制可以减少网格搜索时的计算量，而具体的限制公式确定是为了方便计算FLOPS。<ul>
+<li>这里需要说明一下d、w和r参数对FLOPS计算的影响，以卷积层为例,假如d变成原来的2倍，那么FLOPS也会变成原来的2倍；假如w变成原来的2倍，那么FLOPS就变成原来的4倍，因为输入输出通道都变成原来的2倍了，所以在计算量方面相当于4倍；r和w同理。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2.通过网络结构搜索设计baseline网络</strong></p>
+<p><img alt="image-20200304115752438" src="../assets/image-20200304115752438.png" /></p>
+<p><strong>3.如何优化</strong></p>
+<ul>
+<li>第一步是固定<code>Φ=1</code>，然后通过网格搜索找到满足公式3的最优<code>α、β、γ</code>，比如对于<code>EfficientNet-B0</code>网络而言，最佳的参数分别是α=1.2、β=1.1、γ=1.15（此时得到的也就是<code>EfficientNet-B1</code>）</li>
+<li>固定第一步求得的α、β、γ参数，然后用不同的Φ参数得到EfficientNet-B1到EfficientNet-B7网络</li>
+</ul>
+<p><strong>模型结果</strong></p>
+<p><img alt="image-20200304124512461" src="../assets/image-20200304124512461.png" /></p>
+<h3 id="efficientdet1911">EfficientDet(19/11)<a class="headerlink" href="#efficientdet1911" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1911.09070.pdf">论文地址</a></p>
+<p>EfficientDet是一个总称，可以分为 EfficientDet D1 ~ EfficientDet D7，速度逐渐变慢，但是精度也逐渐提高。</p>
+<p><img alt="image-20200304124922154" src="../assets/image-20200304124922154.png" /></p>
+<p><strong>两点主要贡献：<code>BiFPN</code>和<code>Compound Scaling</code></strong></p>
+<p><strong>BiFPN</strong></p>
+<p><img alt="image-20200304125259520" src="../assets/image-20200304125259520.png" /></p>
+<p><img alt="image-20200304125400023" src="../assets/image-20200304125400023.png" /></p>
+<ul>
+<li>**FPN**中不同的输入特征具有不同的分辨率，我们观察到它们对融合输出特征的贡献往往是不平等的。</li>
+<li><strong>BiFPN**作者提出了一种简单而高效的**加权（类似与attention）**双向特征金字塔网络（**BiFPN</strong>），它引入可学习的权值来学习不同输入特征的重要性，同时反复应用自顶向下和自下而上的多尺度特征融合。</li>
+</ul>
+<p><strong>BiFPN加权策略</strong></p>
+<p><img alt="image-20200304131535691" src="../assets/image-20200304131535691.png" /></p>
+<ul>
+<li><code>Wi</code>可以是一个特征/一个通道/一个多维度的tensor，但是如果不对其限制容易导致训练不稳定。</li>
+</ul>
+<p><img alt="image-20200304131740692" src="../assets/image-20200304131740692.png" /></p>
+<ul>
+<li>所以对每一个权重用<code>softmax</code>，但是计算<code>softmax</code>速度较慢</li>
+</ul>
+<p><img alt="image-20200304131851148" src="../assets/image-20200304131851148.png" /></p>
+<ul>
+<li>
+<p>作者提出了快速的限制方法，为了保证weight大于0，weight前采用relu函数。</p>
+</li>
+<li>
+<p><strong>举例说明</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200304132051807" src="../assets/image-20200304132051807.png" /></p>
+<p><strong>Compound Scaling</strong></p>
+<ul>
+<li>
+<p><strong>Backbone network：直接使用EfficientNet-b0~b6</strong></p>
+</li>
+<li>
+<p><strong>BiFPN network</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200304132637028" src="../assets/image-20200304132637028.png" /></p>
+<ul>
+<li><strong>Box/class prediction network</strong></li>
+</ul>
+<p><img alt="image-20200304132749113" src="../assets/image-20200304132749113.png" /></p>
+<ul>
+<li><strong>Input image resolution（文中说必须是2^7＝128的倍数）</strong></li>
+</ul>
+<p><img alt="image-20200304132849295" src="../assets/image-20200304132849295.png" /></p>
+<p><img alt="image-20200304132942511" src="../assets/image-20200304132942511.png" /></p>
+<h3 id="hrnet1902">HRNet(19/02)<a class="headerlink" href="#hrnet1902" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1902.09212v1">论文</a>|<a href="https://mp.weixin.qq.com/s/GPIpgEchrBKo5MUCxWiKvg">博客</a>|<a href="https://github.com/HRNet">Code</a></p>
+<p><code>HRNet</code>打通了各个方向(分类、检测、分割、姿态估计、人脸关键点等)，主要原理:<strong>通过并行多个分辨率的分支，加上不断进行不同分支之间的信息交互(目的是补充通道数减少带来的损耗)，同时达到强语义信息和精准位置信息的目的</strong>。就检测而言，高分辨率对于位置信息十分敏感，之前的许多网络为了维持高分辨率，常常是下采样得到强语义信息后再上采样恢复高分辨率，这个过程中会损失大量的有效信息，<code>HRNet</code>重点在**并行**</p>
+<p><strong>backbone解析</strong></p>
+<p><img alt="image-20201218165654091" src="../assets/image-20201218165654091.png" /></p>
+<p><strong>FuseLayer</strong></p>
+<p>前向计算时用一个二重循环将构建好的二维矩阵一一解开，将对应同一个post的pre转换后进行融合相加。比如<code>post1 = f11(pre1) + f12(pre2) + f13(pre3)</code></p>
+<p><img alt="image-20201218170721856" src="../assets/image-20201218170721856.png" /></p>
+<p><strong>TransitionLayer</strong></p>
+<p>静态构建一个一维矩阵，然后将pre和post对应连接的操作一一填入这个一维矩阵中。post4比较特殊，<strong>这一部分代码和图例不太一致</strong>，图例是pre1&amp;pre2&amp;pre3都进行下采然后进行融合相加得到post4，而代码中post4通过pre3下采得到。</p>
+<p><img alt="image-20201218171749951" src="../assets/image-20201218171749951.png" /></p>
+<p><strong>Neck设计</strong>:<code>HRNet</code>的<code>backbone</code>输出有四个分支，<code>paper</code>中给出了几种方式对输出分支进行操作</p>
+<p><img alt="image-20201218172412177" src="../assets/image-20201218172412177.png" /></p>
+<p><img alt="image-20201218172656619" src="../assets/image-20201218172656619.png" /></p>
+<h3 id="cascade-r-cnn1712">Cascade R-CNN(17/12)<a class="headerlink" href="#cascade-r-cnn1712" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1712.00726.pdf">论文地址</a></p>
+<p><strong>通过级联几个检测网络(设置不同IOU值确定正负样本)达到不断优化预测结果的目的，主要解决了检测框不是特别准，容易出现噪声干扰的问题</strong></p>
+<p><strong>思路解剖</strong></p>
+<p><img alt="image-20200214134140871" src="../assets/image-20200214134140871.png" /></p>
+<ul>
+<li><code>u=0.5</code>常用,会出现较多误检测，因为这个阈值会使得正样本中含有有较多的背景。</li>
+<li><code>u=0.7</code>这样可以减少误检测了吧，但是这样会导致,正样本数量较少，过拟合风险大，检测效果就差</li>
+<li>作者通过实验，c中可以看出:<strong>当一个检测模型采用某个阈值（假设u=0.6）来界定正负样本时，那么当输入proposal的IOU在这个阈值（u=0.6）附近时，该检测模型比基于其他阈值训练的检测模型的效果要好</strong>。既然这样，那IOU阈值设置的越大不就越好吗？思路走不通，解答为上。</li>
+<li>所以我们希望的是:<strong>同时训练多个检测模型，每个检测模型用的IOU阈值要尽可能和输入proposal的IOU接近，这样每个检测模型得到的效果都很好。这几个检测模型如何连接呢？**作者在实验中发现，**输出的IOU大于输入的IOU，如果前一个模型的输出作为后一个检测模型的输入，这样IOU阈值会一直上升。</strong> <strong>因此采取cascade的方式能够让每一个stage的detector都专注于检测IOU在某一范围内的proposal，因为输出IOU普遍大于输入IOU，因此检测效果会越来越好</strong>。<ul>
+<li>这也就解释了只用固定IOU=0.5,检测效果不精准的原因:当输入proposal的IOU不在你训练检测模型时IOU值附近时，效果不会有太大提升。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20200214140224327" src="../assets/image-20200214140224327.png" /></p>
+<p><img alt="image-20200214140237263" src="../assets/image-20200214140237263.png" /></p>
+<p><img alt="image-20200214140454400" src="../assets/image-20200214140454400.png" /></p>
+<h3 id="mask-scoring-r-cnn1903">Mask Scoring R-CNN(19/03)<a class="headerlink" href="#mask-scoring-r-cnn1903" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1903.00241.pdf">论文地址</a></p>
+<p><strong>思想</strong>:本算法是在<code>Mask R-CNN</code>的基础上提出的，作者发现经典分割框架存在着一个缺陷:mask score=bounding box的classification confidence，然而mask score和mask quality不配准(classification confidence高可以表示检测框的置信度高（严格来讲不能表示框的定位精准），但也会存在mask分割的质量差的情况)，如何得到精准mask质量呢？</p>
+<ul>
+<li>mask quality = maskIoU(pre_mask+gt_mask) * classification score:mask score就同时表示分类置信度和分割的质量</li>
+</ul>
+<p><strong>做法</strong>:</p>
+<p><img alt="image-20200313102632074" src="../assets/image-20200313102632074.png" /></p>
+<ul>
+<li>在Mask R-CNN的基础上添加了一个**MaskIoU分支**用于得到pre mask和gt mask的IoU，输入由两部分组成<ul>
+<li>一是ROIAlign得到的RoI feature map = gt_mask</li>
+<li>二是mask分支输出的mask = pre_mask<ul>
+<li>检测分支输出score最高的100个框，再送入mask分支，得到mask结果</li>
+</ul>
+</li>
+<li>两者concat之后经过3层卷积和2层全连接输出<code>MaskIoU</code><ul>
+<li>RoI feature map和mask结果送入MaskIoU分支得到mask iou，与box的classification score相乘就得到最后的mask score。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="cornernet1808">CornerNet(18/08)<a class="headerlink" href="#cornernet1808" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1808.01244.pdf">论文地址</a></p>
+<p><strong>通过检测目标框的左上角和右下角两个关键点得到预测框</strong>，因此CornerNet算法中没有anchor的概念，也就没有样本不均衡，也无需NMS。</p>
+<p><strong>CornerNet算法整体结构</strong></p>
+<p><img alt="image-20200304200240801" src="../assets/image-20200304200240801.png" /></p>
+<ul>
+<li>
+<p>主干网络<code>Hourglass</code>,下采样因子<code>4</code>：<code>512//4=128</code></p>
+</li>
+<li>
+<p>后面接了两个分支(<strong>左上角点预测分支和右下角点预测分支</strong>)，每个分支模块包含一个<code>corner pooling</code>层和<code>3</code>个输出：<code>heatmaps、embeddings和offsets</code>。</p>
+</li>
+<li>
+<p><code>heatmaps</code>是输出**预测角点信息**，可以用维度为<code>C*H*W</code>的特征图表示，其中C表示目标的类别（注意：没有背景类），这个特征图的每个通道都是一个mask，mask的每个值（预测值范围为0~1）表示该点是**角点的分数**</p>
+<p><img alt="image-20200304201550677" src="../assets/image-20200304201550677.png" /></p>
+<ul>
+<li>
+<p><code>p_cij</code>表示预测的heatmaps在第c个通道（类别c）的(i,j)位置的值，<code>y_cij</code>表示对应位置的<code>ground truth</code>，<code>N</code>表示目标的数量。<code>y_cij=1</code>时候的损失函数容易理解，就是<code>focal loss</code>，<code>α参数</code>用来控制难易分类样本的损失权重；<code>y_cij</code>等于其他值时表示(i,j)点不是<code>类别c</code>的目标角点，照理说此时<code>y_cij</code>应该是0（大部分算法都是这样处理的），但是这里ycij不是0，而是用基于<code>ground truth</code>角点的高斯分布计算得到，因此距离ground truth比较近的(i,j)点的<code>y_cij</code>值接近1，这部分通过<code>β参数</code>控制权重，这是和<code>focal loss</code>的差别。为什么对不同的负样本点用不同权重的损失函数呢？这是因为靠近ground truth的误检角点组成的预测框仍会和ground truth有较大的重叠面积。</p>
+</li>
+<li>
+<p><strong>对不同负样本点的损失函数采取不同权重值的原因</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200304202742269" src="../assets/image-20200304202742269.png" /></p>
+</li>
+<li>
+<p><code>embeddings</code>用来对预测的角点做group，也就是找到属于同一个目标的左上角角点和右下角角点</p>
+<ul>
+<li>
+<p>上面介绍的两个角点的预测是独立的，如何找到一个目标的两个角点就是这步完成的。<strong>基于不同角点的embedding vector之间的距离找到每个目标的一对角点，如果一个左上角角点和一个右下角角点属于同一个目标，那么二者的embedding vector之间的距离应该很小</strong>。</p>
+</li>
+<li>
+<p>这部分的训练主要是通过两个损失函数完成</p>
+</li>
+</ul>
+<p><img alt="image-20200305144925529" src="../assets/image-20200305144925529.png" /></p>
+<ul>
+<li><code>e_tk</code>表示第<code>k</code>个目标的**左上角角点**的embedding vector，<code>e_bk</code>表示第k个目标的**右下角角点**的embedding vector，<code>e_k</code>表示<code>e_tk和e_bk</code>的均值。</li>
+<li>公式4用来缩小属于同一个目标（第k个目标）的两个角点的embedding vector（etk和ebk）距离。</li>
+<li>公式5用来扩大不属于同一个目标的两个角点的embedding vector距离。</li>
+</ul>
+</li>
+<li>
+<p><code>offsets</code>用来**对预测框做微调**，这是因为从输入图像中的点映射到特征图时有量化误差，offsets就是用来输出这些误差信息。</p>
+<p><img alt="image-20200304203121682" src="../assets/image-20200304203121682.png" /></p>
+<p><img alt="image-20200304203524472" src="../assets/image-20200304203524472.png" /></p>
+<ul>
+<li>从输入图像到特征图之间会有尺寸缩小，假设缩小倍数是n，那么输入图像上的(x,y)点对应到特征图上的式子:<img alt="image-20200304203259920" src="../assets/image-20200304203259920.png" />,向下取整会带来精度丢失(类似FasterRcnn中的精度丢失:<strong>尤其影响小尺寸目标的回归</strong>)</li>
+<li>公式2计算offset，然后通过公式3的smooth L1损失函数监督学习该参数，和常见的目标检测算法中的回归支路类似。</li>
+</ul>
+</li>
+<li>
+<p><code>corner pooling</code></p>
+<ul>
+<li><strong>为什么使用<code>corner pooling</code>而不是使用普通池化</strong></li>
+</ul>
+<p><img alt="image-20200305145532477" src="../assets/image-20200305145532477.png" /></p>
+<ul>
+<li>
+<p>因为CornerNet是预测左上角和右下角两个角点，但是这两个角点在不同目标上没有相同规律可循，如果采用普通池化操作，那么在训练预测角点支路时会比较困难。考虑到左上角角点的右边有目标顶端的特征信息（第一张图的头顶），左上角角点的下边有目标左侧的特征信息（第一张图的手），因此如果左上角角点经过池化操作后能有这两个信息，那么就有利于该点的预测，这就有了corner pooling。</p>
+</li>
+<li>
+<p><strong>如何针对左上角点做<code>corner pooling</code>？</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200305145720295" src="../assets/image-20200305145720295.png" /></p>
+<ul>
+<li>
+<p>上层有2个输入特征图，特征图的宽高分别用W和H表示，假设接下来要对图中红色点（坐标假设是(i,j)）做corner pooling，那么就计算(i,j)到(i,H)的最大值（对应Figure3上面第二个图），类似于找到Figure2中第一张图的左侧手信息；同时计算(i,j)到(W,j)的最大值（对应Figure3下面第二个图），类似于找到Figure2中第一张图的头顶信息，然后将这两个最大值相加得到(i,j)点的值（对应Figure3最后一个图的蓝色点）。右下角点的corner pooling操作类似，只不过计算最大值变成从(0,j)到(i,j)和从(i,0)到(i,j)。</p>
+</li>
+<li>
+<p><strong>举例解释如何对左上角做<code>corner pooling</code></strong></p>
+</li>
+</ul>
+<p><img alt="image-20200305150120809" src="../assets/image-20200305150120809.png" /></p>
+<ul>
+<li>
+<p>该图一共计算了4个点的corner pooling结果。第二列的数值计算和Figure3介绍的一样，比如第一行第一个图中的0值点，计算该点的最大值时是计算该点和其右侧的值为2的点的最大值，因此得到的就是2。</p>
+</li>
+<li>
+<p><strong>预测模块详细结构</strong></p>
+</li>
+</ul>
+<p><img alt="image-20200305150259561" src="../assets/image-20200305150259561.png" /></p>
+<ul>
+<li>该结构包括corner pooling模块和预测输出模块两部分，corner pooling模块采用了类似residual block的形式，有一个skip connection，虚线框部分执行的就是corner pooling操作，也就是Figure6的操作，这样整个corner pooling操作就介绍完了。</li>
+</ul>
+</li>
+<li>
+<p><strong>模型测试时细节</strong></p>
+<ul>
+<li>在得到预测角点后，会对这些角点做NMS操作，选择前100个左上角角点和100个右下角角点。</li>
+<li>计算左上角和右下角角点的embedding vector的距离时采用L1范数，距离大于0.5或者两个点来自不同类别的目标的都不能构成一对。</li>
+<li>测试图像采用0值填充方式得到指定大小作为网络的输入，而不是采用resize，另外同时测试图像的水平翻转图并融合二者的结果。</li>
+<li>最后通过soft-nms操作去除冗余框，只保留前100个预测框。</li>
+</ul>
+</li>
+</ul>
+<h3 id="fcos1903">FCOS(19/03)<a class="headerlink" href="#fcos1903" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1904.01355.pdf">论文</a>|<a href="https://github.com/tianzhi0549/FCOS/">代码</a></p>
+<p><strong>核心思想(不太利于小目标训练)</strong></p>
+<ul>
+<li><code>one-stage(与RetinaNet对比)+anchorfree(cornerNet思想)</code></li>
+<li>借鉴<code>FCN</code>的逐像素目标检测思想:预测输入图像中每个点所属的目标类别和目标框</li>
+<li>提出了<code>中心度（Center—ness）</code>的思想</li>
+</ul>
+<p><img alt="image-20200326172737539" src="../assets/image-20200326172737539.png" /></p>
+<p><strong>网络结构</strong></p>
+<p><img alt="image-20200326175303760" src="../assets/image-20200326175303760.png" /></p>
+<p>类似<code>FPN</code>的网络结构(因为和<code>RetinaNet</code>做对比,所以网络结构类似),最后基于5个特征图做预测,预测层有三个分支,下面解释三个预测层。</p>
+<ul>
+<li>第一个是**分类支路**:<code>H*W</code>表示特征的大小,<code>C</code>表示类别数,该预测层的特征图位置(x,y)对应到输入图像位置换算公式如下(s表示缩放比例),方便计算特征图上每个点的分类和回归目标:</li>
+</ul>
+<p><img alt="image-20200326190324598" src="../assets/image-20200326190324598.png" /></p>
+<ul>
+<li>
+<p>第三个是**回归分支**:4表示**回归相关的4个值**(<code>(l,t,r,b)</code>不同于<code>anchor</code>的主要差别)</p>
+</li>
+<li>
+<p>4个值<code>(l,t,r,b)</code>表示目标框内某个点离框的左边、上边、右边、下边的距离</p>
+<p><img alt="image-20200326190959084" src="../assets/image-20200326190959084.png" /></p>
+<ul>
+<li>
+<p>标注好的目标框(左上角+右下角+类别)表示:<span><span class="MathJax_Preview">B_i = ({x_0}^{(i)},{y_0}^{(i)},{x_1}^{(i)},{y_1}^{(i)},{c}^{(i)})</span><script type="math/tex">B_i = ({x_0}^{(i)},{y_0}^{(i)},{x_1}^{(i)},{y_1}^{(i)},{c}^{(i)})</script></span></p>
+</li>
+<li>
+<p>确定输入图像的每个点类别标签(根据这个点是否在标记框中:在-&gt;正样本,类别=标注框类别.不在:负样本,类别=0)，回归目标就是下面这4个值(为保证都是正值,四值都需要通过exp()函数):</p>
+</li>
+</ul>
+<p><img alt="image-20200326192213748" src="../assets/image-20200326192213748.png" /></p>
+<ul>
+<li>FCOS的正负样本是基于每个点的，一般一张图像上目标框的面积和非目标框的面积差距不会非常大，<strong>因此基本不存在正负样本不均衡的现象(小目标就不太好训练了)</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>上图框重叠,重合点的训练目标如何算？</strong></p>
+<p><img alt="image-20200326193555826" src="../assets/image-20200326193555826.png" /></p>
+<ul>
+<li>作者引入<code>FPN</code>结构并基于不同特征层预测不同尺度的目标框,这样可以把**大部分重合目标框给剥离**。</li>
+<li>如何确定某个点在哪个特征层(5个)呢?<ul>
+<li>该点的<code>(l, t, r, b)</code>这4个值的最大值是否在预先设定好的范围内(每个特征层都预先设定好尺度范围，比如P3层只负责最大值在[0, 64]范围内的点，P4层只负责最大值在[64, 128]范围内的点，依次类推)</li>
+<li>举例子:上图中,假设重合部分的那个点到球拍框的4个距离中最大值为60，到人框的4个距离中最大值为120，那么这个点在P3层时的回归目标是球拍框，在P4层时的回归目标是人框，而在P5、P6、P7层时是负样本点。</li>
+<li><strong>该策略适用于基于大部分有重合而且目标框尺度差别较大的</strong></li>
+</ul>
+</li>
+<li>
+<p>如果重合目标框大小接近且类别不同,这个就比较棘手了,如何做？</p>
+<ul>
+<li>对于那些仍旧无法剥离的目标框，使用**强制策略**：训练目标基于重合目标框中面积最小的那个框进行计算(yolov3中3个特征图上分别分3段anchor,大特征图小anchor,但这种方式并不是强制的:<strong>有一些大目标可能还是通过浅层预测得到的，反之亦然</strong>)。</li>
+</ul>
+</li>
+<li>
+<p>第二个分支输出<code>Center-ness</code>(中心度),用于计算每个点和目标中心点的距离，用于减少那些离目标中心点较远的预测点。</p>
+</li>
+<li>
+<p>如果不加入这个分支,<code>AP</code>最好的是<code>33.8</code>&lt;<code>RetinaNet AP=36.1</code>,原因:<strong>部分误检框(错的离谱的框)离真实框的中心点距离较大</strong>,解决:<strong>分类支路的输出乘以一个<code>权重图(Center-ness分支输出)</code>得到最终的分类置信度，而这个权重图代表的就是目标框中每个点到中心点的距离，距离越近，权重越大</strong>。</p>
+<p><img alt="image-20200326195719563" src="../assets/image-20200326195719563.png" /></p>
+</li>
+<li>
+<p>该分支既然训练得到权重图，其监督信息用下式表示，四个输入值是回归支路的回归目标:</p>
+<p><img alt="image-20200326195926403" src="../assets/image-20200326195926403.png" /></p>
+</li>
+</ul>
+<h3 id="nanodet97fpsanchor-free">NanoDet(手机端97fps:Anchor Free)<a class="headerlink" href="#nanodet97fpsanchor-free" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/RangiLyu/nanodet">code</a>|<a href="https://zhuanlan.zhihu.com/p/306530300">知乎博客</a>|<a href="https://mp.weixin.qq.com/s/7mHhltqDcnYZdHWoRS_EBg">微信博客</a>|FCOS改进</p>
+<p><img alt="image-20201125100307135" src="../assets/image-20201125100307135.png" /></p>
+<h3 id="centernet1904">CenterNet(19/04)<a class="headerlink" href="#centernet1904" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1904.07850.pdf">论文地址</a>|<a href="https://github.com/xingyizhou/CenterNet">code</a>|<a href="https://www.cnblogs.com/silence-cho/p/13955766.html">博客1</a>|<a href="https://zhuanlan.zhihu.com/p/66048276">博客2</a>|<strong>通过预测中心点来预测物体</strong></p>
+<p>无<code>Anchor</code>，每一个目标对应一个框，无需区分anchor是背景还是物体。输出分辨率的下采样因子<code>4</code>相对<code>maskRcnn(最小:16)</code>和<code>ssd(16)</code>比较小，所以输出的分辨率比较大(<code>512//4=128</code>)。<code>PS：</code>本篇论文是<code>Objects as Points</code>,和<code>CenterNet:Keypoint Triplets for Object Detection</code>论文网络名冲突了，不要混淆。</p>
+<p><strong>网络结构</strong></p>
+<p>论文中CenterNet提到了三种用于目标检测的网络，这三种网络都是编码解码(encoder-decoder)的结构，每个网络内部的结构不同，但是在模型的最后都是加了**三个网络构造**来输出预测值，默认是<code>80</code>个类、<code>2个</code>预测的中心点坐标、<code>2个</code>中心点的偏置，pytorch输出分别是<code>hm-&gt;Conv2d(64,80):heatmap热力图,wh-&gt;Conv2d(64,2),reg-&gt;Conv2d(64,2)</code>：</p>
+<ul>
+<li>Resnet-18 with up-convolutional layers : 28.1% coco and 142 FPS</li>
+<li>DLA-34 : 37.4% COCOAP and 52 FPS</li>
+<li>Hourglass-104 : 45.1% COCOAP and 1.4 FPS</li>
+</ul>
+<p><img alt="image-20201231205053376" src="../assets/image-20201231205053376.png" /></p>
+<p><strong>热力图理解</strong>(GT框label的生成)</p>
+<p><code>heatmap</code>是表示分类信息。每一个类别都有一张<code>heatmap</code>，每一张<code>heatmap</code>上，若某个坐标处有物体目标的中心点，即在该坐标处产生一个<code>keypoint</code>(用**高斯圆**表示）</p>
+<p><img src="../assets/image-20201231205639131.png" alt="image-20201231205639131" style="zoom:50%;" /></p>
+<ul>
+<li>
+<p>原始框中心点坐标(<code>p=((x1+x2)/2,(y1+y2)/2)</code>)&rarr;特征图中心点<code>p//4-&gt;p~</code></p>
+</li>
+<li>
+<p>该类的<code>heatmap</code>(其实就是特征图的第c个通道)，有几个同类物体就有几个点，但只有一个点值为<code>1</code>周围其余点为<code>0</code>太严格了，周边需要用二维的高斯核过渡一下(简单来说就是该点为圆心，半径<code>r</code>为<code>GT</code>框<code>IOU</code>大于<code>0.7</code>的这些点(这些点生成的框也能很好的包围目标)，标签不直接设置为<code>0</code>，而是使用二维高斯的方式逐渐减少该值，<strong>如果某一个类的两个高斯分布发生了重叠，直接取元素间最大的就可以</strong>)</p>
+</li>
+<li>
+<p>高斯函数</p>
+</li>
+</ul>
+<p><img alt="image-20210104111352653" src="../assets/image-20210104111352653.png" /></p>
+<ul>
+<li>最终结果</li>
+</ul>
+<p><img alt="image-20210104103340173" src="../assets/image-20210104103340173.png" /></p>
+<p><strong>损失函数</strong></p>
+<ul>
+<li>中心点预测的损失函数(是不是物体):修改版<code>Focal Loss</code></li>
+</ul>
+<p><img alt="image-20210104111822476" src="../assets/image-20210104111822476.png" /></p>
+<ul>
+<li><code>alpha=2,beta=4</code>,是<code>Focal loss</code>超参数，<code>N</code>:是图像<code>I</code>的关键点数量</li>
+<li>当<code>Y_xyc=1</code>时<ul>
+<li>对于<code>easy point</code>适当减少其训练比重(Y=1,Y<sup>-&gt;1,(1-Y</sup>)-&gt;0)</li>
+<li>对于<code>hard point</code>适当增加其权重比重(Y=1,Y<sup>-&gt;0,(1-Y</sup>)-&gt;1)</li>
+</ul>
+</li>
+<li>当<code>Y_xyc=otherwise</code>时<ul>
+<li><code>Y^</code>本该趋于<code>0</code>，如果趋近<code>1</code>则会加大训练权重进行惩罚，让其趋近于<code>0</code></li>
+<li><code>1-Y</code>对距离中心点很近的点进行抑制(离中心点越近越容易影响造成误检测)(Y-&gt;1,1-Y-&gt;0)</li>
+</ul>
+</li>
+<li>如何让<code>(1-Y)和Y^</code>协同合作呢？</li>
+</ul>
+<p><img alt="image-20210104113443324" src="../assets/image-20210104113443324.png" /></p>
+<ul>
+<li>目标中心点的偏置损失:下采样<code>R=4</code>，取正后中心点位置会带来误差，所有<code>C</code>类公用一个偏置，损失用<code>L1 Loss</code>来训练。</li>
+</ul>
+<p><img alt="image-20210104133538341" src="../assets/image-20210104133538341.png" /></p>
+<ul>
+<li>
+<p><code>Q</code>为预测出来的偏置<code>(N,2)</code>，<code>(p/R - p~)</code>是实际计算出的偏置<code>[98.97667 2.3566666] - [98  2] = [0.97667, 0.3566666]</code></p>
+</li>
+<li>
+<p>目标大小损失：</p>
+</li>
+</ul>
+<p><img alt="image-20210104134509924" src="../assets/image-20210104134509924.png" /></p>
+<ul>
+<li><code>sk = [xmax-xmin,ymax-ymin]</code>,k为所属类别，是进行了下采样之后<code>h,w</code></li>
+<li>
+<p><code>S^_pk</code>：预测值，使用<code>(N,2)</code>表示</p>
+</li>
+<li>
+<p><strong>整体损失</strong></p>
+</li>
+</ul>
+<p><img alt="image-20210104134821729" src="../assets/image-20210104134821729.png" /></p>
+<p><strong>如何推理？</strong></p>
+<ul>
+<li>
+<p>对于某类的一个<code>heatmap</code>,使用<code>3x3的MaxPool</code>选取100个预测的中心点(类似<code>NMS</code>，其实就是检测当前热点的值是否比周围的八个近邻点(八方位)都大(或者等于)，选取100个，得分按照<code>Y~</code>)，然后选取阈值结果大于<code>0.3</code>的中心点作为最终结果。</p>
+</li>
+<li>
+<p>框如何表示？</p>
+</li>
+</ul>
+<p><img alt="image-20210104140913448" src="../assets/image-20210104140913448.png" /></p>
+<p><strong>缺点</strong>：两个物体在GT中的中心点重叠了，CenterNet对于这种情况也是无能为力的，也就是将这两个物体的当成一个物体来训练(因为只有一个中心点)。同理，在预测过程中，如果两个同类的物体在下采样后的中心点也重叠了，那么CenterNet也是只能检测出一个中心点，不过CenterNet对于这种情况的处理要比faster-rcnn强一些的，具体指标可以查看论文相关部分。</p>
+<p><strong>优点</strong>:感受野较大，对小目标检测较友好。对于大目标而言，loss相对较大，不太容易训练，效果不太好。</p>
+<h3 id="centripetalnet2003coco-48">CentripetalNet(20/03:coco 48%)<a class="headerlink" href="#centripetalnet2003coco-48" title="Permanent link">&para;</a></h3>
+<p><a href="https://arxiv.org/pdf/2003.09119.pdf">论文</a>|<a href="https://github.com/KiveeDong/CentripetalNet">代码</a>|<a href="https://mp.weixin.qq.com/s/rpqDpXJA2OBHhGjkBUDPXQ">博客</a></p>
+<p><strong>核心思想:提出一种使用向心偏移来对同一目标中的角点进行精准配对,改善<code>Anchore Free</code>关键点匹配出错的问题</strong>，<code>CentripetalNet</code>不仅以48.0％的AP胜过所有现有的anchor-free检测器，而且以40.2％的MaskAP达到了与最新实例分割方法相当的性能.</p>
+<ul>
+<li><strong>向心偏移角匹配方法:</strong></li>
+</ul>
+<h3 id="r-c3d1703">R-C3D(17/03)<a class="headerlink" href="#r-c3d1703" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1703.07814.pdf">论文地址</a></p>
+<p><strong>R-C3D=C3D(基础)+faster-rcnn(思路)，对于任意的输入视频L，先进行proposal，然后3D-pooling,最后进行分类和回归操作</strong></p>
+<ul>
+<li>在单个titan x maxwell gpu上每秒569帧</li>
+<li>可以针对**任意长度视频**、任意长度行为进行**端到端的检测**</li>
+<li><strong>速度很快(是目前网络的5倍)</strong>，通过共享Progposal generation 和Classification网络的C3D参数</li>
+<li>作者测试了3个不同的数据集，效果都很好，显示了通用性。</li>
+</ul>
+<p><img alt="image-20200102135744071" src="../assets/image-20200102135744071.png" /></p>
+<p><strong>特征提取网络</strong></p>
+<p>骨干网络作者选择了C3D网络，经过C3D网络的5层卷积后，可以得到<code>512 x L/8 x H/16 x W/16</code>大小的**特征图**。这里不同于C3D网络的是，R-C3D允许任意长度的视频L作为输入。</p>
+<p><strong>时序候选框提取网络</strong></p>
+<p><strong>类似于Faster R-CNN中的RPN，这里是提取一系列可能存在行为的候选时序</strong></p>
+<p><img alt="image-20200102135938353" src="../assets/image-20200102135938353.png" /></p>
+<ul>
+<li><strong>候选时序生成</strong>：输入视频经过上述C3D网络后得到了<code>512 x L/8 x H/16 x W/16</code>大小的特征图，作者假设anchor均匀分布在L/8的时间域上，<strong>也就是有<code>L/8</code>个anchors，每个anchor生成K个不同scale的候选时序</strong></li>
+<li><strong>为了获得每个时序点（anchor）上每段候选时序的中心位置偏移和时序的长度</strong>：得到的 <code>512xL/8xH/16xW/16</code>的特征图后，作者将空间上<code>H/16 x W/16</code>的特征图经过一个<code>3x3x3</code>的卷积核和一个3D pooling层下采样到<code>1x1</code>。最后输出<code>512xL/8x1x1</code>.</li>
+</ul>
+<p><strong>行为分类子网络</strong></p>
+<p><img alt="image-20200102141607602" src="../assets/image-20200102141607602.png" /></p>
+<ul>
+<li>对于生成的一系列时序候选框，先进行NMS(阈值0.7)</li>
+<li><strong>3D ROI池化</strong>：假设C3D输出的是 <code>512xL/8x7x7</code>大小的特征图，假设其中有一个<code>proposal</code>的长度（时序长度）为<code>lp</code>，那么这个proposal的大小为<code>512xlpx7x7</code>，这里借鉴SPPnet中的池化层，利用一个动态大小的池化核，<code>ls x hs x ws</code>。最终得到 <code>512x1x4x4</code>大小的特征图。</li>
+<li><strong>分类和回归</strong>：经过池化后，再输出到全连接层。最后接一个边框回归(<strong>start-end time</strong> )和类别分类(Activity Scores)。</li>
+</ul>
+<p><strong>loss</strong></p>
+<p><img alt="image-20200102142549682" src="../assets/image-20200102142549682.png" /></p>
+<h3 id="ghm1811">GHM(18/11)<a class="headerlink" href="#ghm1811" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1811.05181v1.pdf">论文地址</a></p>
+<p>单阶段比两阶段更优雅，但是存在正负样本间数量不均衡，对于单阶段分类器来说，存在着大量的负样本，可以很容易地正确分类，少量的正样本通常是困难样本。因此正负样本的不均衡性本质是简单困难样本的不均衡性。</p>
+<ul>
+<li>传统解决方式:<ul>
+<li>OHEM：直接放弃大量examples(它只选择topN而丢弃了太多样本)，训练效率较低。</li>
+<li>Focal loss：存在两个超参需要设置，不能随训练数据的变化动态调整。同时，Focal loss是一种静态损失，对数据集的分布不敏感，而在训练过程中，数据集的分布是会发生变化的。</li>
+</ul>
+</li>
+<li>本文解决方式:<ul>
+<li>GHM:从梯度的角度(<strong>梯度均衡机制</strong>)解决正负样本间数量差异和easy、hard examples之间的矛盾。<ul>
+<li>easy examples:模型很难从简单样本(很容易被正确分类)中得到更多信息，从梯度的角度来说，这个样本产生的梯度幅值相对较小。</li>
+<li>Hard examples:对于一个分错的样本来说，它产生的梯度信息则会更丰富，它更能指导模型优化的方向。作者认为，模型更应该关注被分错的样本。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>gradient norm(梯度模长)的定义</strong></p>
+<p><img alt="image-20200312213524346" src="../assets/image-20200312213524346.png" /></p>
+<ul>
+<li>p[0~1]:模型预测出的概率。</li>
+<li>P*代表对于特定类别的ground truth 标签取值0或1</li>
+</ul>
+<p><img alt="image-20200312213907384" src="../assets/image-20200312213907384.png" /></p>
+<ul>
+<li>令x作为模型的输出</li>
+</ul>
+<p><img alt="image-20200312213934471" src="../assets/image-20200312213934471.png" /></p>
+<ul>
+<li>
+<p>定义了g等式如上所示，g与Lce对x的偏导值的正则相等，g代表一个样本的属性以及该样本对整体梯度的作用，本文将g称为<code>gradient norm</code>(梯度模长:样本的真实值与当前预测值的距离)。</p>
+<p><img alt="image-20200312221856041" src="../assets/image-20200312221856041.png" /></p>
+<ul>
+<li>文中的<code>very hard examples</code>比<code>medium</code>的样本数量还要多，定义为离群点outliers，这些outliers在模型的不断拟合过程中一直为very hard examples，因为他们的梯度模与整体的梯度模的分布差异太大，并且模型很难处理，如果让模型强行去学习这些离群样本，反而会导致整体性能下降。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Gradient Density(梯度密度:解决g分布不均匀的问题)</strong></p>
+<p>思路是对于梯度分布切bin，统计每一个bin内的样本数量，得到每个bin的分布，进行分布的均衡化。具体地，基于这个bin内的样本数量和这个bin的长度</p>
+<p><img alt="image-20200312222356109" src="../assets/image-20200312222356109.png" /></p>
+<ul>
+<li>GD(g):梯度密度，表示某个单位区间内样本的数量。</li>
+</ul>
+<p><img alt="image-20200312222405741" src="../assets/image-20200312222405741.png" /></p>
+<ul>
+<li><span><span class="MathJax_Preview">\delta_{\epsilon}(x, y)</span><script type="math/tex">\delta_{\epsilon}(x, y)</script></span>:表明了样本<code>1～N</code>中，梯度模长分布在<span><span class="MathJax_Preview">\left(g-\frac{\varepsilon}{2}, g+\frac{\varepsilon}{2}\right)</span><script type="math/tex">\left(g-\frac{\varepsilon}{2}, g+\frac{\varepsilon}{2}\right)</script></span>范围内的样本数</li>
+<li><span><span class="MathJax_Preview">l_{\varepsilon}(g)</span><script type="math/tex">l_{\varepsilon}(g)</script></span>:代表了<span><span class="MathJax_Preview">\left(g-\frac{\varepsilon}{2}, g+\frac{\varepsilon}{2}\right)</span><script type="math/tex">\left(g-\frac{\varepsilon}{2}, g+\frac{\varepsilon}{2}\right)</script></span>区间的长度</li>
+<li>因此梯度密度<code>gradient density</code>的直观理解就是：单位梯度模长g长度内所分部的样本个数，及gradient norm的密度。</li>
+</ul>
+<p><img alt="image-20200312222843000" src="../assets/image-20200312222843000.png" /></p>
+<ul>
+<li>N:是为了使得当划分的区间长度<span><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span>很大为1的时候,<span><span class="MathJax_Preview">\beta_{i}=1</span><script type="math/tex">\beta_{i}=1</script></span></li>
+<li><span><span class="MathJax_Preview">\beta_{i}</span><script type="math/tex">\beta_{i}</script></span>是抑制参数，GD小该参数大，GD大该参数小，从上面的<code>gradient norm</code>图中可以看到easy example和very hard example的分布都非常的密集，即GD的值很大，因此通过参数刚好能够达到抑制这两部分，同时提高有用样本权重的目的。</li>
+</ul>
+<p><strong>GHM-C Loss:针对分类</strong></p>
+<ul>
+<li>把<span><span class="MathJax_Preview">\beta_{i}</span><script type="math/tex">\beta_{i}</script></span>抑制参数引入到交叉熵函数，可以得到GHM-C loss的定义如下:</li>
+</ul>
+<p><img alt="image-20200312223822605" src="../assets/image-20200312223822605.png" /></p>
+<ul>
+<li>
+<p>效果如下</p>
+<p><img alt="image-20200312224151140" src="../assets/image-20200312224151140.png" /></p>
+<ul>
+<li>GHM-C和Focal Loss都对easy example做了很好的抑制</li>
+<li>而GHM-C比Focal Loss在对very hard examples上有更好的抑制效果。</li>
+</ul>
+</li>
+<li>
+<p>原始定义的gadient density的计算复杂度较高，作者给出了简化版本:</p>
+<p><img alt="image-20200312224814236" src="../assets/image-20200312224814236.png" /></p>
+<ul>
+<li>将g的空间划以间隔<span><span class="MathJax_Preview">\varepsilon</span><script type="math/tex">\varepsilon</script></span>，分为独立的单元区域，因此有<span><span class="MathJax_Preview">M=\frac{1}{\varepsilon}</span><script type="math/tex">M=\frac{1}{\varepsilon}</script></span>个单元区域，rj代表索引为j的区域<span><span class="MathJax_Preview">r_{j}=[(j-1) \epsilon, j \epsilon)</span><script type="math/tex">r_{j}=[(j-1) \epsilon, j \epsilon)</script></span>,令Rj代表落入rj区域的样本数量。定义ind<span><span class="MathJax_Preview">(g)=t</span><script type="math/tex">(g)=t</script></span> s.t. <span><span class="MathJax_Preview">(t-1) \epsilon&lt;=g&lt;t \epsilon</span><script type="math/tex">(t-1) \epsilon<=g<t \epsilon</script></span>用于获得g所在单元区域的索引。</li>
+</ul>
+<p><img alt="image-20200312224601431" src="../assets/image-20200312224601431.png" /></p>
+<p><img alt="image-20200312224700485" src="../assets/image-20200312224700485.png" /></p>
+<p><img alt="image-20200312224711374" src="../assets/image-20200312224711374.png" /></p>
+</li>
+</ul>
+<p><strong>GHM-R Loss:针对目标框的回归</strong></p>
+<p>提到目标框的回归损失,常用:Smooth L1 loss</p>
+<p><img alt="image-20200312225740871" src="../assets/image-20200312225740871.png" /></p>
+<ul>
+<li>
+<p>其中d指的是学习的偏移量:<span><span class="MathJax_Preview">d=\left(t_{i}-t_{i}^{*}\right)</span><script type="math/tex">d=\left(t_{i}-t_{i}^{*}\right)</script></span></p>
+<p><img alt="image-20200312225834600" src="../assets/image-20200312225834600.png" /></p>
+</li>
+<li>
+<p>当<span><span class="MathJax_Preview">|d| \leq \delta</span><script type="math/tex">|d| \leq \delta</script></span>时,<span><span class="MathJax_Preview">d / \delta</span><script type="math/tex">d / \delta</script></span>可以定量的表示数据结果和真实值之间的距离；</p>
+</li>
+<li>
+<p>当<span><span class="MathJax_Preview">|d| \geq \delta</span><script type="math/tex">|d| \geq \delta</script></span>时,损失的梯度均为1，这样我们就无法根据梯度来估计一些example输出贡献度。基于此作者对smooth L1做了修正，得到ASL1：</p>
+</li>
+</ul>
+<p><img alt="image-20200312230033223" src="../assets/image-20200312230033223.png" /></p>
+<p><img alt="image-20200312230051080" src="../assets/image-20200312230051080.png" /></p>
+<p>通过上图可以发现有相当数量的outliers，以及outliers所对用的gradient norm值很大，因此与GHM-C相似的方式，定义GHM-R，达到对outlier的loss达到抑制的目的。:</p>
+<p><img alt="image-20200312230127730" src="../assets/image-20200312230127730.png" /></p>
+<p>注意:GHM-R中并没有对easy example做抑制，因为作者认为，在目标框的回归阶段，easy examples同样能够对提升框回归的准确性带来帮助。</p>
+<p><strong>效果展示</strong></p>
+<p><img alt="image-20200312230517811" src="../assets/image-20200312230517811.png" /></p>
+<p><img alt="image-20200312230550733" src="../assets/image-20200312230550733.png" /></p>
+<p><img alt="image-20200312230639052" src="../assets/image-20200312230639052.png" /></p>
+<h3 id="atss1912">ATSS(19/12)<a class="headerlink" href="#atss1912" title="Permanent link">&para;</a></h3>
+<p><a href="http://xxx.itp.ac.cn/pdf/1912.02424.pdf">论文</a> | <a href="https://github.com/sfzhang15/ATSS">代码</a></p>
+<p>论文指出<code>one-stage anchor-based</code>和<code>center-based anchor-free</code>检测算法间的差异主要来自于**正负样本的选择**，提出一种能够自动根据<code>GT</code>的相关统计特征**选择合适的anchor box作为正样本**，在不带来额外计算量和参数的情况下，能够大幅提升模型的性能的方法。</p>
+<p><strong><code>anchor base and free</code>正负样本3点差异分析(RetinaNet vs FCOS)</strong></p>
+<ul>
+<li>
+<p><strong>数量差异</strong>:RetinaNet在特征图上每个点铺设多个anchor，而FCOS在特征图上每个点只铺设一个中心点，这是数量上的差异。</p>
+</li>
+<li>
+<p><strong>正负样本选择不同</strong>:RetinaNet基于anchor和GT之间的<code>IoU</code>和设定的阈值来确定正负样本，而FCOS通过GT中心点和铺设点之间的距离和尺寸来确定正负样本。</p>
+<p><img alt="image-20200326212716840" src="../assets/image-20200326212716840.png" /></p>
+<ul>
+<li>蓝色框:GT，红色框:RetinaNet的anchor，红色点:FCOS铺设的点，数值:0负样本,1正样本。</li>
+</ul>
+</li>
+<li>
+<p>偏置(offeset)预测不同:RetinaNet通过回归矩形框的2个角点偏置进行预测框位置和大小的预测，而FCOS是基于中心点预测四条边和中心点的距离进行预测框位置和大小的预测。</p>
+<p><img alt="image-20200326213759422" src="../assets/image-20200326213759422.png" /></p>
+<ul>
+<li>蓝色框+蓝色点:GT，红色框:RetinaNet正样本，红色点:FCOS正样本。</li>
+</ul>
+</li>
+</ul>
+<p><strong>做实验，比较3个差异的结果影响大小</strong></p>
+<ul>
+<li>
+<p>**差异1排除:**将RetinaNet在每个点铺设的anchor数量减少到1(和FCOS保持一致),AP值仅差<code>0.8</code></p>
+<ul>
+<li>由于FCOS论文中用了一些训练的技巧(比如<code>Group Normalization</code>、<code>GIoU Loss</code>等)，所以为了公平对比2个算法，作者在RetinaNet上也加上了这些技巧。</li>
+</ul>
+<p><img alt="image-20200326214541282" src="../assets/image-20200326214541282.png" /></p>
+</li>
+<li>
+<p><strong>差异2排除(按行看):</strong></p>
+<p><img alt="image-20200326214948795" src="../assets/image-20200326214948795.png" /></p>
+<ul>
+<li><code>Intersection over Union</code>：表示RetinaNet和FCOS都采用基于IoU方式确定正负样本，二者的mAP基本没有差别。</li>
+<li><code>Spatial and Scale Constraint</code>:表示RetinaNet和FCOS都采用基于距离和尺寸方式确定正负样本，二者的mAP也是一样。</li>
+<li><strong>回归方式的不同并不是造成FCOS和RetinaNet效果差异的原因</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>确定差异三是根本:(按列看)</strong></p>
+<p><img alt="image-20200326214948795" src="../assets/image-20200326214948795.png" /></p>
+<ul>
+<li>Box这一列的两个数值表示将RetinaNet的正负样本确定方式从IoU换成和FCOS一样的基于距离和尺寸，那么mAP就从37.0上升到37.8</li>
+<li>Point这一列的两个数值表示将FCOS的正负样本确定方式从基于距离和尺寸换成和RetinaNet一样的基于IoU，那么mAP就从37.8降为36.9。</li>
+<li><strong>如何确定正负样本才是造成FCOS和RetinaNet效果差异的原因</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>ATSS确定正负样本</strong></p>
+<p><img alt="image-20200326215833254" src="../assets/image-20200326215833254.png" /></p>
+<ul>
+<li>小小的缺点:<ul>
+<li><code>ATSS</code>的<code>A</code>表示<code>adaptive</code>表示自适应，但是上图中有少量超参数，例如:k</li>
+<li>感觉<code>IOU</code>的选择有一定的先验知识。</li>
+</ul>
+</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              OCR方向论文解读
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

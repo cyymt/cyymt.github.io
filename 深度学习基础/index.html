@@ -1,0 +1,2376 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>深度学习基础 - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              深度学习基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          深度学习基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        深度学习基础
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    语义分割和实例分割
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    感受野
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    卷积层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    空洞卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    转置卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    边框回归
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flops" class="md-nav__link">
+    FLOPs(计算量)和模型参数计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kl" class="md-nav__link">
+    交叉熵=熵+KL散度详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#focal-loss" class="md-nav__link">
+    Focal Loss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#label-smoothing" class="md-nav__link">
+    Label Smoothing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wing-loss" class="md-nav__link">
+    Wing loss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    小目标难检测的原因
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prior-box" class="md-nav__link">
+    Prior box概念
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kmeans" class="md-nav__link">
+    Kmeans聚类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    常用激活函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    目标检测MAP计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roc" class="md-nav__link">
+    ROC曲线
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmslink" class="md-nav__link">
+    NMS及其变体link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bn-and-gn" class="md-nav__link">
+    Bn and GN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    通道剪枝
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    知识蒸馏(分类/回归用)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fp32" class="md-nav__link">
+    FP32扫盲
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int8" class="md-nav__link">
+    int8量化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#winograd" class="md-nav__link">
+    Winograd快速卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bnn" class="md-nav__link">
+    二值模型(BNN)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    调参小技巧
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    目标追踪
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorrt" class="md-nav__link">
+    TensorRT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    常用目标检测损失函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    常用人脸识别损失函数link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    人脸识别评估指标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    常见边缘处理算子
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    图像滤波
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c++面试常问题目
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vim_cmake_git/" class="md-nav__link">
+        vim_git_cmake
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    语义分割和实例分割
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    感受野
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    卷积层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    空洞卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    转置卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    边框回归
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flops" class="md-nav__link">
+    FLOPs(计算量)和模型参数计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kl" class="md-nav__link">
+    交叉熵=熵+KL散度详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#focal-loss" class="md-nav__link">
+    Focal Loss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#label-smoothing" class="md-nav__link">
+    Label Smoothing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wing-loss" class="md-nav__link">
+    Wing loss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    小目标难检测的原因
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prior-box" class="md-nav__link">
+    Prior box概念
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kmeans" class="md-nav__link">
+    Kmeans聚类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    常用激活函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    目标检测MAP计算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roc" class="md-nav__link">
+    ROC曲线
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmslink" class="md-nav__link">
+    NMS及其变体link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bn-and-gn" class="md-nav__link">
+    Bn and GN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    通道剪枝
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    知识蒸馏(分类/回归用)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fp32" class="md-nav__link">
+    FP32扫盲
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int8" class="md-nav__link">
+    int8量化
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#winograd" class="md-nav__link">
+    Winograd快速卷积
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bnn" class="md-nav__link">
+    二值模型(BNN)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    调参小技巧
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    目标追踪
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tensorrt" class="md-nav__link">
+    TensorRT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    常用目标检测损失函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    常用人脸识别损失函数link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    人脸识别评估指标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    常见边缘处理算子
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    图像滤波
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    c++面试常问题目
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>深度学习基础</h1>
+                
+                <h3 id="_1">语义分割和实例分割<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>语义分割:把图像中的每个像素赋予<code>一个</code>类别标签</strong>，只能判断类别，无法区分个体</li>
+</ul>
+<p><img src="../assets/image-20210224101727841.png" alt="image-20210224101727841" style="zoom:50%;" /></p>
+<ul>
+<li><strong>实例分割：类似物体检测，不需要对每个像素进行标记，它只需要找到感兴趣物体的边缘轮廓就行</strong>，因此我们可以区分出单个个体。</li>
+</ul>
+<p><img src="../assets/image-20210224103453713.png" alt="image-20210224103453713" style="zoom: 67%;" /></p>
+<ul>
+<li><strong>全景分割:语义分割+实例分割</strong>，我们可以知道哪个像素属于哪个类中的哪个实例。</li>
+</ul>
+<p><img src="../assets/image-20210224103637602.png" alt="image-20210224103637602" style="zoom: 67%;" /></p>
+<h3 id="_2">感受野<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>概括来说就是特征图上的点能看到原始图像的多大区域。</li>
+<li><code>3</code>个<code>3x3</code>卷积，保持滑动窗口步长为<code>1</code>,其感受野和<code>7x7</code>卷积一样</li>
+</ul>
+<p><img src="../assets/image-20201130155803279.png" alt="image-20201130155803279" style="zoom:50%;" /></p>
+<p><img alt="image-20201130155821906" src="../assets/image-20201130155821906.png" /></p>
+<ul>
+<li>**TridentNet**中证明了：不同尺度物体的检测性能和<code>dilation rate</code>正相关！也就是说，更大的<code>receptive field</code>(感受野)对于大物体性能会更好，更小的<code>receptive field</code>(感受野)对于小物体更加友好。</li>
+</ul>
+<h3 id="_3">卷积层<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20200526082012252" src="../assets/image-20200526082012252.png" /></p>
+<ul>
+<li><code>N = (W − F + 2P )/S+1</code></li>
+</ul>
+<p><strong>池化层的反向传播：</strong><a href="https://blog.csdn.net/Jason_yyz/article/details/80003271">https://blog.csdn.net/Jason_yyz/article/details/80003271</a></p>
+<p><img alt="image-20201116142512994" src="../assets/image-20201116142512994.png" /></p>
+<h3 id="_4">空洞卷积<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>空洞卷积:在增加感受野的同时保持特征图的尺寸不变，从而替代池化与上采样操作。</li>
+</ul>
+<p><img alt="image-20200318134244353" src="../assets/image-20200318134244353.png" /></p>
+<ul>
+<li>一个3×3卷积，却可以起到5×5、7×7等卷积的效果。可以看出，空洞卷积在不增加参数量的前提下，增大了感受野。假设空洞卷积的卷积核大小为k，空洞数为d，则其等效卷积核大小k’计算如式:</li>
+</ul>
+<p><img alt="image-20200120172822302" src="../assets/image-20200120172822302.png" /></p>
+<p><strong>空洞卷积的缺点</strong></p>
+<ul>
+<li>网格效应（Gridding Effect）：由于空洞卷积是一种稀疏的采样方式，当多个空洞卷积叠加时，有些像素根本没有被利用到，会损失信息的连续性与相关性，进而影响分割、检测等要求较高的任务。</li>
+<li>远距离的信息没有相关性：空洞卷积采取了稀疏的采样方式，导致远距离卷积得到的结果之间缺乏相关性，进而影响分类的结果。</li>
+<li>不同尺度物体的关系：大的dilation rate对于大物体分割与检测有利，但是对于小物体则有弊无利，如何处理好多尺度问题的检测，是空洞卷积设计的重点</li>
+</ul>
+<p><strong>解决方案</strong>:典型的有图森未来提出的HDC（Hybrid Dilated Convolution）结构。该结构的设计准则是堆叠卷积的dilation rate不能有大于1的公约数，同时将dilation rate设置为类似于[1,2,5,1,2,5]这样的锯齿类结构。此外各dilation rate之间还需要满足一个数学公式，这样可以尽可能地覆盖所有空洞，以解决网格效应与远距离信息的相关性问题，具体细节可参考相关资料.</p>
+<h3 id="_5">转置卷积<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>尽量模型中不要有**反卷积(转置卷积)**(会有锯齿问题出现)，可以使用上采样+卷积的方式代替，<code>DBFaceV2</code>中就使用了这种方式。转置卷积是普通卷积的反向操作：</p>
+<p><img alt="image-20201226163857814" src="../assets/image-20201226163857814.png" /></p>
+<p><img alt="image-20201226163128140" src="../assets/image-20201226163128140.png" /></p>
+<h3 id="_6">边框回归<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20200529082456245" src="../assets/image-20200529082456245.png" /></p>
+<ul>
+<li>我们的目的是P框回归到G框，如何做呢？</li>
+</ul>
+<p><img alt="image-20200529091917189" src="../assets/image-20200529091917189.png" /></p>
+<ul>
+<li>
+<p>我们需要寻找一种变换<code>G^</code>,使得<code>P==G^,G^约等于G</code>，这个<code>G^</code>就是我们的所要求的预测框。如何做呢？</p>
+</li>
+<li>
+<p><strong>平移(dx,dy)+尺度缩放(dw,dh)，就是我们要学习的四个参数</strong></p>
+<p><img alt="image-20200529095309454" src="../assets/image-20200529095309454.png" /></p>
+</li>
+<li>
+<p>我们已知的<code>P-&gt;G</code>的平移量和尺度缩放量如下：</p>
+</li>
+</ul>
+<p><img alt="image-20200529083945980" src="../assets/image-20200529083945980.png" /></p>
+<p><strong>为什么叫做线性回归呢？</strong></p>
+<p><img alt="image-20200529095508869" src="../assets/image-20200529095508869.png" /></p>
+<p><strong>边框回归输入的什么？</strong></p>
+<ul>
+<li>注意输入的是先验框对应的特征图向量(Φ)，而不是<code>Px,Py,Pw,Ph</code>坐标。</li>
+</ul>
+<p><strong>Loss函数</strong></p>
+<ul>
+<li><img alt="image-20200529100010174" src="../assets/image-20200529100010174.png" /></li>
+</ul>
+<p><img alt="image-20200529085524249" src="../assets/image-20200529085524249.png" /></p>
+<ul>
+<li>
+<p><code>dx,dy,dw,dh</code>如何获得？</p>
+<p><img alt="image-20200529095721012" src="../assets/image-20200529095721012.png" /></p>
+<ul>
+<li><code>W*</code>表示要学习的参数</li>
+<li><code>Φ5(P)</code>表示输入的特征图</li>
+</ul>
+</li>
+<li>
+<p>所以，函数最终的优化目标为：</p>
+<p><img alt="image-20200529090054893" src="../assets/image-20200529090054893.png" /></p>
+</li>
+</ul>
+<h3 id="flops">FLOPs(计算量)和模型参数计算<a class="headerlink" href="#flops" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>FLOPS</code>：注意全大写，是<code>floating point operations per second</code>的缩写，意指每秒浮点运算次数，理解为计算速度。是一个衡量硬件性能的指标。</li>
+<li><code>FLOPs</code>：注意s小写，是<code>floating point operations</code>的缩写（s表复数），意指浮点运算数，理解为计算量。<strong>可以用来衡量算法/模型的复杂度</strong>。由于目前模型计算能力巨大，所以通常使用<code>GFlops</code>来衡量算法性能，其表示**十亿**（<code>=10^9</code>）次的浮点运算</li>
+<li><code>GMACs = 0.5 * GFLOPs</code></li>
+</ul>
+<p><strong>FLOPs计算(一般越小越好)</strong></p>
+<ul>
+<li>卷积层:<code>C_i:input_channel,K:kernel_size,H*W:feature_map,C_o:output_channel</code></li>
+</ul>
+<p><img alt="image-20201117111244061" src="../assets/image-20201117111244061.png" /></p>
+<ul>
+<li>
+<p>括号里是计算<code>output_feature</code>的一个<code>pixel</code>的浮点运算数:卷积一次会有<code>C_i*K^2</code>次乘法和<code>C_i*K^2 - 1</code>次加法(n个数相加，要加n-1次)，如果不考虑bias，会有一个<code>-1</code>，如果考虑bias，这个一会被中和掉，最后括号内会变为(<code>2*C_i*K^2</code>)</p>
+<p><img alt="image-20201117111756461" src="../assets/image-20201117111756461.png" /></p>
+</li>
+<li>
+<p>全连接层：<code>I:input neuron numbers, O:output neuron numbers</code></p>
+</li>
+</ul>
+<p><img alt="image-20201117165041560" src="../assets/image-20201117165041560.png" /></p>
+<p><strong>模型参数计算(一般越小越好)</strong></p>
+<ul>
+<li>基本卷积:<code>k*k（卷积核参数）*C_in(卷积核维度)*C_out(卷积核输出维度)[+c_out(bias个数)]</code></li>
+</ul>
+<p><strong>FLOPs小并且参数量少的网络一定速度快吗？</strong></p>
+<ul>
+<li>
+<p>在设计轻量级网络时，FLOPs和模型参数是主要考虑因素，但是减少模型大小和FLOPs不等同于减少推理时间和降低能耗。比如ShuffleNetv2与MobileNetv2在相同的FLOPs下，前者在GPU上速度更快。所以除了FLOPs和模型大小外，还需要考虑其他因素对能耗和模型推理速度的影响，例如:内存访问成本（Memory Access Cost，MAC）和GPU计算效率:DensNet的变体:<strong>VoVNet/Pelee</strong></p>
+</li>
+<li>
+<p>MAC计算:shuffleNet V2论文中给出了计算方式:<code>DenseNet</code>因为密集链接会聚合前面所有的layer，这导致每个layer的输入channel数线性增长。concat操作B尺寸必须是固定的，才能进行通道连接。</p>
+</li>
+</ul>
+<p><img alt="image-20201119184449177" src="../assets/image-20201119184449177.png" /></p>
+<ul>
+<li>
+<p>Densnet慢也好理解:需要进行多次Concatnate操作,数据需要被复制多次，显存容易增加得很快</p>
+</li>
+<li>
+<p>GPU计算效率</p>
+</li>
+</ul>
+<p>GPU计算的优势在于**并行计算机制**，这意味着当要计算的tensor较大时会充分发挥GPU的计算能力。如果将一个较大的卷积层拆分成几个小的卷积层，尽管效果是相同的，但是却是GPU计算低效的。所以如果功效一样，尽量采用较少的层。比如MobileNet中采用深度可分离卷积（depthwise conv+1x1 conv）虽然降低了FLOPs，但是因为额外的1x1卷积而不利于GPU运算效率。相比FLOPs，我们更应该关注的指标是FlOPs per Second，即用总的FLOPs除以总的GPU推理时间，这个指标越高说明GPU利用越高效。</p>
+<p><img alt="image-20210208184311172" src="../assets/image-20210208184311172.png" /></p>
+<h3 id="kl">交叉熵=熵+KL散度<a href="https://blog.csdn.net/Dby_freedom/article/details/83374650?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">详解</a><a class="headerlink" href="#kl" title="Permanent link">&para;</a></h3>
+<p><strong>熵</strong>:就是一个事件所包含的**信息量**。例如:“我不会死亡”，信息量很大；“我是我妈生的”，信息量为0；独立事件的信息量可以叠加(一句话:a-&gt;张三喝了酒，b-&gt;李四吃了馒头)，a,b是独立事件，这句话的信息量就是a的信息量+b的信息量，因此熵的定义为:</p>
+<p><img alt="image-20201119204553133" src="../assets/image-20201119204553133.png" /></p>
+<p><strong>KL散度</strong>：衡量两个事件/**分布**之间的不同，有时也称为KL距离(事件a和事件b的不同程度)，但不具备对称性；距离的对称性:A到B的距离等于B到A的距离</p>
+<p><img alt="image-20201119205805475" src="../assets/image-20201119205805475.png" /></p>
+<p><strong>交叉熵</strong></p>
+<p><img alt="image-20201120144500186" src="../assets/image-20201120144500186.png" /></p>
+<ul>
+<li><strong>为什么用交叉熵做损失函数而不用KL散度？</strong></li>
+<li>A是真实的数据分布，B是模型预测测数据分布</li>
+<li>训练数据A的分布式给定的，也就是A的熵S(A)是常量，此时KL散度和交叉熵等价(因为此时熵对于模型来说是一个不可优化的常数项)。</li>
+</ul>
+<h3 id="focal-loss">Focal Loss<a class="headerlink" href="#focal-loss" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20201202104032992" src="../assets/image-20201202104032992.png" /></p>
+<p><img alt="image-20201202104447575" src="../assets/image-20201202104447575.png" /></p>
+<p><code>Focal Loss</code>主要是在原有交叉熵损失的基础上加入了<code>gamma</code>因子和<code>alpha</code>因子，其中<code>gamma</code>因子主要是控制困难样本挖掘的，<code>alpha</code>因子主要是平衡正负样本比例不均衡的。</p>
+<ul>
+<li>困难样例挖掘，加入<code>gamma</code>因子</li>
+</ul>
+<p><img alt="image-20210510145945535" src="../assets/image-20210510145945535.png" /></p>
+<ul>
+<li>对于正样本而言，预测结果<code>y'=0.95</code>肯定是简单样本，<code>1-0.95</code>的<code>alpha</code>次方就很小，损失函数就很小;如果<code>y'=0.35</code>肯定是困难样本，<code>1-0.35</code>的<code>alpha</code>次方相对简单样本会较大，损失也会相对较大，这样就会更加关注困难样本。</li>
+<li>
+<p>对于负样本而言，预测结果<code>y'=0.05</code>肯定是简单样本，<code>0.05</code>的<code>alpha</code>次方就很小，损失函数就很小;如果<code>y'=0.75</code>肯定是困难样本，<code>0.75</code>的<code>alpha</code>次方相对简单样本会较大，损失也会相对较大，这样就会更加关注困难样本。</p>
+</li>
+<li>
+<p>平衡正负样本比例不均衡，加入平衡因子<code>alpha</code></p>
+</li>
+</ul>
+<p><img alt="image-20210510150156814" src="../assets/image-20210510150156814.png" /></p>
+<ul>
+<li><code>alpha=0.25</code>，通过控制平衡因子大小来平衡<code>loss</code></li>
+</ul>
+<h3 id="label-smoothing">Label Smoothing<a class="headerlink" href="#label-smoothing" title="Permanent link">&para;</a></h3>
+<p><a href="https://mp.weixin.qq.com/s/A79jYm2-X2D85LUmffw8qg">Label Smoothing在人脸损失上不起作用的原因</a></p>
+<p>对于多分类而言，我们常用交叉熵损失函数，label标签常常制作为<code>one-hot</code>编码，但这样做网络会驱使自身往正确标签和错误标签差值大的方向学习，存在一个问题，就是在训练数据不足以表征所以的样本特征的情况下，这就会导致网络过拟合。所以做了软化措施:<strong>label smooth的思路“做软化、防止过拟合、增加扰动”</strong>，最终通过**抑制正负样本输出差值**，使得网络能有更好的泛化能力。</p>
+<p><img alt="image-20201123163430396" src="../assets/image-20201123163430396.png" /></p>
+<h3 id="wing-loss">Wing loss<a class="headerlink" href="#wing-loss" title="Permanent link">&para;</a></h3>
+<p>一般而言人脸关键点<code>loss</code>尝尝是<code>l2 loss</code>或者<code>smooth l2 loss</code>,但是尝尝因为**人脸姿态角度多样**而导致的检测精度不高，使用<code>wing loss</code>可以很好解决离群点(<code>large error</code>)问题和<code>small error</code>问题。</p>
+<ul>
+<li><code>L2 loss</code>或者<code>smooth l2 loss</code>在<code>0</code>附近(<code>small error</code>)的<code>gradient</code>变化趋于平缓的，更不容易优化；而且<code>L2 loss</code>很容易受离群点(<code>large error</code>)影响</li>
+<li><code>wing loss</code>分段函数，当两点距离过远时，为了避免<code>loss</code>过大(<code>large loss</code>)使用<code>|x| - C</code>来限定<code>loss</code>不要过大；当<code>|x|&lt;w</code>时，<code>small error</code>时使<code>gradient</code>变化陡峭，使得模型可以继续优化。</li>
+</ul>
+<p><img alt="image-20210510154750642" src="../assets/image-20210510154750642.png" /></p>
+<h3 id="_7">小目标难检测的原因<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>传统的分类网络为了减少计算量，都使用到了下采样，而下采样过多，会导致**小目标的信息在最后的特征图上只有几个像素（甚至更少）**，信息损失较多</p>
+<h3 id="prior-box">Prior box概念<a class="headerlink" href="#prior-box" title="Permanent link">&para;</a></h3>
+<p>先验框，就是anchor box的概念:针对feature map中的每个点作为一个cell，通过等比放缩的方法来找到原图像中对应的位置，然后将cell作为一个中心点，提取出不同尺度的bounding box候选区域，这些候选区域叫做Prior box。针对每一个Prior Box和真值GT比较会得到label。对于cell会对应到不同的Prior Box，分别当前Prior Box预测类别概率和坐标(x,y,w,h).</p>
+<h3 id="kmeans">Kmeans聚类<a class="headerlink" href="#kmeans" title="Permanent link">&para;</a></h3>
+<p>kmeans与kmeans++聚类:<a href="https://blog.csdn.net/zxyhhjs2017/article/details/83012425">博客</a></p>
+<p><strong>kemeans聚类出k类长宽(不是长宽比)即可,由于数据集中图片大小可能不同，需要先归一化box的宽高:·=<code>w=w_box/w_img,h=h_box/h_img</code>，kmeans聚类的衡量指标是<code>d = 1 - IOU</code>(因为我们只关心pre_box与gt_box的iou，且iou越大表示距离越近)，计算IOU时，不用管box的位置，我们假设所有box的左上顶点都在原点</strong></p>
+<p><img alt="image-20210427143646100" src="../assets/image-20210427143646100.png" /></p>
+<ul>
+<li><code>Kmeans</code>(缺点:对种子点的初始化非常敏感)</li>
+<li>随机选取<code>K</code>个<code>box</code>作为初始<code>anchor</code>；</li>
+<li>使用<code>1 - IOU</code>度量，将每个<code>box</code>分配给与其距离最近的<code>anchor</code>；</li>
+<li>计算每个簇中所有<code>box</code>宽和高的均值，更新<code>anchor</code>；</li>
+<li>重复2、3步，直到anchor不再变化，或者达到了最大迭代次数</li>
+<li><code>kmeans++</code></li>
+<li>随机选取<code>1</code>个<code>box</code>作为初始<code>anchor</code>；</li>
+<li>使用<code>1 - IOU</code>度量，计算<code>box</code>与最近的聚类中心的距离D(x)；</li>
+<li><code>选择D(x)</code>较大的点作为新增的聚类中心，注意不要选择最大值(排序按照概率值选择)，可能是异常点</li>
+<li>重复2~3，直到k个聚类中心被选出来</li>
+<li>利用这<code>k</code>个初始的聚类中心来运行标准的<code>k-means</code>算法</li>
+</ul>
+<h3 id="_8">常用激活函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>ReLU/LeakyReLU/PReLU</strong></p>
+<p><img alt="image-20201203143855044" src="../assets/image-20201203143855044.png" /></p>
+<ul>
+<li>
+<p><code>a_i=0:ReLU</code>;<code>a_i=0.01:LeakyReLU</code>;<code>a_i=超参数可训练更新:PReLU</code></p>
+</li>
+<li>
+<p><code>BP</code>更新<code>ai</code>时，采用的是带**动量**的更新方式</p>
+</li>
+</ul>
+<p><img alt="image-20201203144123380" src="../assets/image-20201203144123380.png" /></p>
+<p><strong>CReLU</strong></p>
+<p>论文中提出，网络在浅层的时候参数分布呈现较强的负相关性(更倾向于同时捕获正负响应的信息)，如果浅层使用<code>ReLU</code>的话会抹掉负响应，会造成卷积核存在冗余，解决:<code>CReLU</code>；随着网络变深，这种负相关性逐步减弱。</p>
+<p><img alt="image-20201203145929722" src="../assets/image-20201203145929722.png" /></p>
+<p><img alt="image-20201203150044164" src="../assets/image-20201203150044164.png" /></p>
+<p><strong>Swish激活函数</strong></p>
+<p>Swish 在深层模型上的效果优于 ReLU。可以看做是**介于线性函数与ReLU函数之间的平滑函数**，例如，仅仅使用 Swish 单元替换 ReLU 就能把 Mobile NASNetA 在 ImageNet 上的 top-1 分类准确率提高 0.9%，Inception-ResNet-v 的分类准确率提高 0.6%。</p>
+<p><img src="../assets/image-20210427194635098.png" alt="image-20210427194635098" style="zoom: 80%;" /></p>
+<p><strong>Mish激活函数</strong></p>
+<p>一种自正则的非单调神经激活函数，平滑的激活函数允许更好的信息深入神经网络，从而得到更好的准确性和泛化。根据论文实验，该函数在最终准确度上比<code>Swish(+0.494%)</code>和<code>ReLU(+ 1.671%)</code>都有提高。</p>
+<p><img src="../assets/image-20210427194805128.png" alt="image-20210427194805128" style="zoom: 67%;" /></p>
+<h3 id="map">目标检测MAP计算<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
+<p><strong>主要是<code>TP+FP</code>有用</strong></p>
+<p><img alt="image-20200119203647792" src="../assets/image-20200119203647792.png" /></p>
+<p><strong>AP值计算</strong></p>
+<ul>
+<li>预测值（Dets:所有预测框）：物体类别、边框位置的4个预测值、该物体的得分。</li>
+<li>标签值（GTs）：物体类别、边框位置的4个真值。</li>
+</ul>
+<p><img alt="image-20200119203750850" src="../assets/image-20200119203750850.png" /></p>
+<ul>
+<li>在遍历完所有的预测框后，我们会得到每一个预测框的属性，即**TP或FP**</li>
+</ul>
+<p><strong>一个例子为：R=“所有好瓜中有多少比例被挑出来”，P=“挑出来的西瓜中有多少比例是好瓜”</strong></p>
+<ul>
+<li>
+<p><strong>召回率(Recall,R)</strong></p>
+<p><img alt="image-20200119204509966" src="../assets/image-20200119204509966.png" /></p>
+</li>
+<li>
+<p><strong>准确率(Precisioin,P)</strong></p>
+<p><img alt="image-20200119204553789" src="../assets/image-20200119204553789.png" /></p>
+</li>
+<li>
+<p><strong>P-R曲线</strong></p>
+<p><img alt="image-20200119204745888" src="../assets/image-20200119204745888.png" /></p>
+</li>
+<li>
+<p><strong>AP计算:召回率高的时候准确率会很低，准确率高的时候往往召回率很低(把某类的所有预测框(数据库的所有图片,不是每张图片单独计算出AP再平均)按照score从大到小排序，索引从0开始，召回率逐渐增大:检测对的框越来越多，精准率逐渐下降:误检框越来越多）</strong></p>
+<p><img src="../assets/image-20210413204307783.png" alt="image-20210413204307783" style="zoom:67%;" /></p>
+<p><img src="../assets/image-20210413204412080.png" alt="image-20210413204412080" style="zoom: 67%;" /></p>
+</li>
+<li>
+<p><code>07的是11points method</code>:<strong>使用11个不同召回率对应的准确率求平均的方式求AP</strong></p>
+</li>
+<li>
+<p><code>2010的area方式</code>:<strong>求面积的方式</strong>，求积分很麻烦，用下面的方式容易。</p>
+<p><img src="../assets/image-20210413205908845.png" alt="image-20210413205908845" style="zoom: 80%;" /></p>
+</li>
+<li>
+<p><strong>MAP计算:每个类别的AP是相互独立的，将每个类别的AP进行平均，即可得到mAP</strong></p>
+</li>
+</ul>
+<h3 id="roc">ROC曲线<a class="headerlink" href="#roc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>正类和负类:假设阈值为<code>0.6</code>,得分大于等于<code>0.6</code>的为正类，小于<code>0.6</code>的为负类</p>
+</li>
+<li>
+<p><code>ROC</code>曲线的横纵坐标</p>
+</li>
+<li>
+<p><strong>纵坐标<code>真正率-TPR</code></strong>:预测为正实际为正占所有正实例的比例:<code>p=1,gt=1/all(gt=1)</code></p>
+</li>
+<li>
+<p><strong>横坐标<code>假正率-FPR</code></strong>:预测为正实际为负占所有负实例的比例:<code>p=1,gt=0/all(gt=0)</code></p>
+</li>
+<li>
+<p>每个阈值代表一对<code>(FPR,TPR)</code>,阈值无穷大时预测无正例<code>FPR=TPR=0</code>，阈值为<code>0</code>时预测无负例<code>FPR=TPR=1</code>,一般随着阈值逐渐增大，正例越来越少，横坐标减少的更快</p>
+</li>
+</ul>
+<p><img src="../assets/image-20210511171419879.png" alt="image-20210511171419879" style="zoom:67%;" /></p>
+<ul>
+<li>
+<p>如何画<code>roc</code>曲线，一般选取<code>range(0.1,1,0.001)</code>共计<code>90</code>组阈值，计算<code>AUC:(Area under Curve)</code>，是个概率值<code>[0,1]</code>,越大分类效果越好。</p>
+</li>
+<li>
+<p>为什么使用<code>ROC曲线</code>而不使用<code>PR</code>曲线？原因:<strong>当测试集中的正负样本的分布变换的时候(例如负样本数量增大10倍)，ROC曲线能够保持不变,但是PR曲线巨变</strong></p>
+</li>
+</ul>
+<h3 id="nmslink">NMS及其变体<a href="https://bbs.cvmart.net/topics/4457">link</a><a class="headerlink" href="#nmslink" title="Permanent link">&para;</a></h3>
+<p><strong>NMS</strong>：直接把iou大于阈值(常<code>0.5</code>)的框踢掉(得分置为0)</p>
+<ul>
+<li>根据置信度降序排列候选框列表</li>
+<li>选取置信度最高的框A添加到输出列表，并将其从候选框列表中删除</li>
+<li>计算A与候选框列表中的所有框的IoU值，删除大于阈值的候选框(相当于得分直接置为0)</li>
+<li>重复上述过程，直到候选框列表为空，返回输出列表</li>
+<li><strong>对重叠物体效果不好(行人/猪只等)，会导致漏检增多</strong></li>
+</ul>
+<p><img alt="image-20201217195018218" src="../assets/image-20201217195018218.png" /></p>
+<p><strong>soft-nms</strong>：iou大于阈值的框得分不置为0(对于重叠目标这个框可能有用)，而是更具<code>IOU大小</code>以某种函数衰减，<code>IOU</code>越大得分越低，衰减越严重。</p>
+<ul>
+<li>
+<p>假设一个图中有三个框，得分为<code>0.9,0.7,0.85</code>，经过<code>soft-nms</code>第一次处理变为<code>0.9,0.65,0.55</code>(如果是<code>nms:0.9,0,0</code>)，然后再循环即可，这样就不会删除框，最后通过阈值删除得分低的框即可。</p>
+</li>
+<li>
+<p>衰减函数常用的两种方式:</p>
+</li>
+</ul>
+<p><img alt="image-20201217200404995" src="../assets/image-20201217200404995.png" /></p>
+<ul>
+<li><code>linear: result_score = base_score - base_score*iou</code></li>
+<li>
+<p><code>gausian:result_score = base_score * np.exp(-iou**2 / sigma:0.5)</code></p>
+</li>
+<li>
+<p>效果展示:<strong>问题就是置信度的阈值如何选择</strong>，作者在这里依然使用手工设置的值，依然存在很大的局限性</p>
+</li>
+</ul>
+<p><img alt="image-20201217200014919" src="../assets/image-20201217200014919.png" /></p>
+<p><strong>WBF(比赛专用:Weighted Boxes Fusion)</strong><a href="https://github.com/ZFTurbo/Weighted-Boxes-Fusion">code</a></p>
+<p><strong>加权边框融合</strong>，常用于融合多个模型对同一张图片的框预测，或者单个模型不同尺度的结果融合，比<code>NMS</code>慢<code>3</code>倍。</p>
+<ul>
+<li>
+<p>每个模型的每个预测框都添加到<code>List B</code>，并将此列表按置信度得分<code>C</code>**降序**排列 </p>
+</li>
+<li>
+<p>建立空<code>List L</code> 和 <code>list F</code>（用于融合的） </p>
+</li>
+<li>
+<p>循环遍历<code>B</code>，并在<code>F</code>中找到与之匹配的<code>box</code>（同一类别<code>MIOU &gt; 0.55:最佳阈值</code>） </p>
+</li>
+<li>
+<p>如果<code>step3</code> 中没有找到匹配的<code>box</code> 就将这个框加到<code>L</code>和<code>F</code>的尾部，如果 <code>step3</code> 中找到了匹配的<code>box</code> 就将这个框加到<code>L</code>，加入的位置是<code>box</code>在<code>F</code>中匹配框的<code>Index</code>；<code>L</code>中每个位置可能有多个框，需要根据这多个框更新对应<code>F[index]</code>的值，其实<code>list L</code>称为<code>dict L</code>更好。更新方式如下(对坐标值根据置信度求和):</p>
+</li>
+</ul>
+<p><img alt="image-20210415144031690" src="../assets/image-20210415144031690.png" /></p>
+<ul>
+<li>遍历完成后对<code>F</code>中的元素再进行置信度得分的缩放，减少某些<code>box</code>只被少数模型预测到的置信值(如果群集中的多个框得分较低，则可能意味着 只有少数模型可以预测。 因此，我们需要降低此类情况的置信度得分)。</li>
+</ul>
+<p><img alt="image-20210415144436680" src="../assets/image-20210415144436680.png" /></p>
+<h3 id="bn-and-gn">Bn and GN<a class="headerlink" href="#bn-and-gn" title="Permanent link">&para;</a></h3>
+<p><strong>BN</strong></p>
+<p>研究者发现，网络越深越难收敛，只有通过较小的学习率和初始化参数才能得到相对较好的结果，经研究每次反向传播参数迭代更新后，前一层网络输出数据经过该层网络后数据分布会发生变化，为下一层网络的学习带来困难(网络层本质就是学习数据分布，分布一直变就难收敛)。</p>
+<p><code>Batchnorm</code>以加速收敛速度和模型稳定性而出名，它能突出数据分布之间的相对差异；<strong>如果单独的对每层进行归一化就会破坏模型本身所学得的特征，导致学不到任何东西，BN的成功在于引入了缩放量γ 和平移量β来恢复原始特征</strong>。</p>
+<p><img src="../assets/image-20210414141715253.png" alt="image-20210414141715253" style="zoom:80%;" /></p>
+<p><strong>bn在训练过程和推理过程是如何设置方差和期望的？</strong></p>
+<ul>
+<li><strong>训练过程</strong>:<code>[batch,N,H,W]</code>，<code>batchnorm</code>层是在<code>batch</code>维度上进行<code>norm</code>的，所以归一化的是[N,H,W]，即对batch中的channel做归一化。<strong>第一个样本的第一个通道，加上第二个样本的第一个通道.....,第N个样本的第一个通道，得到第一个通道的均值（除以NxHxW而不是单纯除以N，最后得到的是代表这个batch的第一个通道的平均值的数字，而不是一个HxW的矩阵）。同样的方法求出方差。注意求得的均值方差不是一个值，而是通道个数个值</strong></li>
+<li><strong>推理过程</strong>:用的是所有mini-batches**训练样本**均值和方差的**累计滑动平均结果**，这样的话单样本也能预测。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># momentum : 动量参数，一般为0.9， 0.99， 0.999</span>
+<span class="c1"># pytorch的BN中常有以下变量。</span>
+<span class="c1"># running_mean ：滑动平均的方式计算新的均值，训练时计算，为测试数据做准备</span>
+<span class="c1"># running_var  : 滑动平均的方式计算新的方差，训练时计算，为测试数据做准备</span>
+
+<span class="n">running_mean</span> <span class="o">=</span> <span class="n">momentum</span> <span class="o">*</span> <span class="n">running_mean</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">momentum</span><span class="p">)</span> <span class="o">*</span> <span class="n">x_mean</span>
+<span class="n">running_var</span> <span class="o">=</span> <span class="n">momentum</span> <span class="o">*</span> <span class="n">running_var</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">momentum</span><span class="p">)</span> <span class="o">*</span> <span class="n">x_var</span>
+</code></pre></div>
+<p><strong>GN:Group Normbalization</strong></p>
+<p><code>BN</code>的缺点</p>
+<ul>
+<li><code>BN</code>是以<code>batch</code>为主的，<strong>过小的<code>batch size</code>会导致其性能下降</strong>(一般来说每个<code>gpu</code>上<code>batch_size=32</code>最合适)，但对于大型的网络，尤其是检测网络，<code>batch_size</code>有的设置成<code>2,4</code>就占满显存</li>
+</ul>
+<p><img alt="image-20210414161815924" src="../assets/image-20210414161815924.png" /></p>
+<ul>
+<li>预测时，均值方差是用**训练集的滑动平均**求得的，如果当训练数据和测试数据分布有差别时，结果就会不好</li>
+</ul>
+<p><img alt="image-20210414163042762" src="../assets/image-20210414163042762.png" /></p>
+<p><code>GN</code>的归一化方式避开了<code>batch size</code>对模型的影响，特征的<code>group</code>归一化同样可以解决数据分布差异的问题，并取得较好的效果。<strong>小的batch size可以考虑使用GN</strong></p>
+<h3 id="_9">通道剪枝<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>思想</strong>:每个卷积层有很多通道，这些通道有可能是冗余的，想法对于每一个通道引入一个缩放因子<code>gamma</code>,然后和通道的输出相乘，接着联合训练网络权重和这些缩放因子，最后将小缩放因子的通道直接移除，微调剪枝后的网络即可，因为conv+bn是一般网络的标配，所以可以把<code>BN</code>层的<code>gamma</code>系数作为缩放因子来进行<code>L1</code>正则。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pytorch对BN层进行L1正则化</span>
+<span class="k">def</span> <span class="nf">updateBN</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_modules</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">):</span>
+            <span class="c1"># torch.sign是判断正负的，大于0的返回1，小于0的返回-1</span>
+            <span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">s</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>  <span class="c1"># L1</span>
+</code></pre></div>
+<ul>
+<li>我们先对所有<code>bn</code>层缩放因子<code>gamma</code>的绝对值排个序，然后取从小到大排序的缩放因子中70%（剪枝比）的位置的缩放因子为阈值。</li>
+</ul>
+<p><strong>剪枝方式</strong></p>
+<p>剪枝后每层通道剩余，至少为<code>1</code>，或者可以设置为<code>2^x</code>数目，这样较稳定但牺牲了部分压缩率</p>
+<ul>
+<li>恒定<code>s</code>剪枝:一直以固定的<code>L1</code>惩罚系数<code>s=0.01</code></li>
+<li>全局<code>s</code>衰减剪枝:<code>s = s if epoch &lt;= opt.epochs * 0.5 else s * 0.01</code>，超过<code>epochs/2</code>后惩罚系数衰减<code>100</code>倍，使得精度稍微恢复。</li>
+<li>局部<code>s</code>衰减剪枝:超过<code>epochs/2</code>后对<code>85</code>%的通道(所有<code>bn</code>通道<code>s</code>排序)保持原始恒定惩罚系数<code>s</code>压缩，<code>15%</code>的通道进行<code>s</code>衰减<code>100</code>倍的压缩(<code>85%</code>是个先验知识，一般这个压缩率是最佳的)。</li>
+</ul>
+<h3 id="_10">知识蒸馏(分类/回归用)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><strong>只蒸馏一个输出层</strong></p>
+<ul>
+<li>
+<p>要蒸馏的小模型，以大模型的输出的概率向量(<code>soft target</code>:<strong>软标签</strong>-&gt;拥有不同类之间关系的信息)为学习目标，因为<code>one-hot</code>包含的信息量很低<code>[0,1]</code>（类似<code>label smooth</code>），因为负标签也带有大量信息。</p>
+</li>
+<li>
+<p>如何做，在训练的时候在<code>softmax</code>中增加温度参数<code>T</code>，推理的时候<code>T=1</code>，优化<code>L_soft</code>的时候常用<code>KL散度</code>计算<code>Loss</code>:<strong>交叉熵=<code>KL</code>散度+熵</strong>，<code>one-hot</code>标签的真实信息熵是固定的所以用交叉熵代替<code>KL</code>散度，但是<code>soft label</code>的信息熵是<code>teacher</code>网络生成的，不是固定的，所以必须用<code>KL</code>散度。</p>
+</li>
+</ul>
+<p><img alt="image-20210210125249328" src="../assets/image-20210210125249328.png" /></p>
+<p><img alt="image-20210210125715947" src="../assets/image-20210210125715947.png" /></p>
+<ul>
+<li>温度<code>T</code>:越小越放大正样本，越大越放大负样本(即放大小概率值分量所携带的信息)。</li>
+</ul>
+<p><img alt="image-20210210130121235" src="../assets/image-20210210130121235.png" /></p>
+<p><strong>精度更高的模型蒸馏小模型提升点更少，原因分析</strong>：</p>
+<p><img alt="image-20210210135323109" src="../assets/image-20210210135323109.png" /></p>
+<ul>
+<li><code>Teacher</code>更复杂，<code>Student</code>没有足够的能力来模仿<code>Teacher</code></li>
+<li><code>Teacher</code>的精度更高，模型确定性更强，输出<code>logits</code>（<code>soft label</code>）变得<code>less soft</code>，趋近于<code>one-hot</code></li>
+<li>解决方案:可以利用超大模型作为**助教网络**辅助蒸馏(超大网络作为<code>Teacher</code>,大网络作为<code>Teach-Assistant</code>，小网络作为<code>Student</code>)</li>
+<li>首先对超大网络对大网络进行蒸馏(大网络的选取和超大网络相差不要太大(<code>7倍</code>以上)，不然也蒸不出来)</li>
+<li>再用整理好的大网络对最终的小网络进行蒸馏</li>
+</ul>
+<p><strong>多个Teacher模型如何蒸馏<a href="https://mp.weixin.qq.com/s/l2O-0ZkYW3nFyAGaLS04aQ">link</a></strong></p>
+<ul>
+<li>将多个teacher模型的预测概率（softmax后输出）求平均值来进行蒸馏，效果好于随机选一个teacher模型进行蒸馏。</li>
+</ul>
+<p><img alt="image-20201214203900255" src="../assets/image-20201214203900255.png" /></p>
+<p><strong>输出层和特征层一起蒸馏</strong></p>
+<p><img alt="image-20210427162149923" src="../assets/image-20210427162149923.png" /></p>
+<ul>
+<li>对于T和S中间特征图输出维度不匹配的问题，采用在<code>S</code>网络输出接一个转换器(<code>conv+bn+mish</code>)，将其升维到<code>T</code>网络匹配，T的话直接接一个<code>mish</code>保证激活函数相同(<code>mish=x*tanh(ln(1+e^x))</code>)。<code>loss:nn.MSE--&gt;预测数据和原始数据对应点误差的平方和的均值</code></li>
+</ul>
+<p><img alt="image-20210210142154568" src="../assets/image-20210210142154568.png" /></p>
+<h3 id="fp32">FP32扫盲<a class="headerlink" href="#fp32" title="Permanent link">&para;</a></h3>
+<p><strong>位，字节解释</strong>:1位=1bit=0/1(一个0或1就代表一位)，1Byte(字节)=8位=8bit</p>
+<p><a href="http://www.cppblog.com/jianjianxiaole/articles/float.html">浮点数详解1</a>|<a href="https://www.jianshu.com/p/a7700923780d">浮点数详解2</a></p>
+<p><code>fp32组成=1符号位S[ ] + 8指数位e[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] + 尾数f[ ]*23</code></p>
+<p><img alt="image-20201203113427002" src="../assets/image-20201203113427002.png" /></p>
+<p><img alt="image-20201203125838262" src="../assets/image-20201203125838262.png" /></p>
+<ul>
+<li>
+<p><code>1</code>符号位，只有<code>0/1</code>，<code>float</code>和<code>double</code>符号位均为<code>1</code>位，<code>0</code>代表正数，<code>1</code>代表负数</p>
+</li>
+<li>
+<p><code>8</code>指数位表示指数部分，存储科学计数法中的指数部分，采用移位存储，指数范围:<code>[-127,128]</code></p>
+</li>
+<li>
+<p><code>23</code>尾数表示小数部分，存储科学计数法中的尾数部分:</p>
+</li>
+</ul>
+<p><img alt="image-20201203113143021" src="../assets/image-20201203113143021.png" /></p>
+<h3 id="int8">int8量化<a class="headerlink" href="#int8" title="Permanent link">&para;</a></h3>
+<p><strong>在神经网络中的基本操作就是权重和激活值的卷积乘加操作</strong></p>
+<p>模型量化主要包括两个部分，一是针对权重<code>Weight</code>量化，一是针对激活值<code>Activation</code>量化，在一些文章中已经表明了将权重和激活值量化到<code>8bit</code>时就可以等价<code>32bit</code>的性能。</p>
+<p>本次介绍的是静态离线训练在预测前**使用量化校准集进行模型激活值分布的统计**，确定激活层的量化参数的方式。</p>
+<p><code>FP32占用4个字节共32位;FP16占用2个字节共16位;int8占用1个字节共8位;</code>|<a href="https://github.com/Ewenwan/MVision/tree/master/CNN/Deep_Compression/quantization">量化方法汇总</a>|<a href="https://arleyzhang.github.io/articles/923e2c40/">TensorRt量化详解</a></p>
+<p><strong>简介</strong></p>
+<p>量化不是新东西，我们做图像预处理就用到了量化；**反量化:**一张图片(0-255)&rarr;归一化(0~1)；**量化:**反过来，量化本质上只是对数值范围的重新调整，是一种映射关系。</p>
+<p><strong>举个简单例子，量化到底在量化什么？</strong></p>
+<p>一图胜千言，卷积量化是对输入的<code>tensor</code>和<code>weight</code>参数都需要进行量化，将计算层的输入进行离散化，原本32bit浮点数的乘加操作变为8bit的整数乘加操作，减少了模型推理的计算量</p>
+<p><img alt="image-20200917133724854" src="../assets/image-20200917133724854.png" /></p>
+<p><strong>公式解析</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 线性量化公式：FP32 数值（Tensor Values）被表示成 INT8 数值（INT8 array）乘以量化因子加上一个量化偏，两个参数均为 FP32 类型。</span>
+<span class="n">Tensor</span> <span class="n">Values</span> <span class="o">=</span> <span class="n">FP32</span> <span class="n">scale</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">INT8</span> <span class="n">array</span> <span class="o">+</span> <span class="n">FP32</span> <span class="n">bias</span>
+
+<span class="c1"># 2.利用上述的公式可以表示神经网络中两个矩阵相乘</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">scale_A</span> <span class="o">*</span> <span class="n">QA</span> <span class="o">+</span> <span class="n">bias_A</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">scale_B</span> <span class="o">*</span> <span class="n">QB</span> <span class="o">+</span> <span class="n">bias_B</span>
+<span class="n">A</span> <span class="o">*</span> <span class="n">B</span> <span class="o">=</span> <span class="n">scale_A</span> <span class="o">*</span> <span class="n">scale_B</span> <span class="o">*</span> <span class="n">QA</span> <span class="o">*</span> <span class="n">QB</span> <span class="o">+</span> <span class="n">scale_A</span> <span class="o">*</span> <span class="n">QA</span> <span class="o">*</span> <span class="n">bias_B</span> <span class="o">+</span> <span class="n">scale_B</span> <span class="o">*</span> <span class="n">QB</span> <span class="o">*</span> <span class="n">bias_A</span> <span class="o">+</span> <span class="n">bias_A</span> <span class="o">*</span> <span class="n">bias_B</span>
+<span class="c1"># 2.1 NVIDIA研究员实验表明:并不需要在量化的时候加上偏置(我理解:偏置只是改变数值的分布位置),公式简化</span>
+<span class="n">A</span> <span class="o">*</span> <span class="n">B</span> <span class="o">=</span> <span class="n">scale_A</span> <span class="o">*</span> <span class="n">scale_B</span> <span class="o">*</span> <span class="n">QA</span> <span class="o">*</span> <span class="n">QB</span> <span class="c1"># QA、QB=F32A/scale_A、F32B/scale_B</span>
+<span class="c1"># 所以最终的问题就变成了如何得到量化参数scale factor的问题</span>
+</code></pre></div>
+<p><strong>如何选取合适的scale?</strong></p>
+<p><img alt="image-20200811202131038" src="../assets/image-20200811202131038.png" /></p>
+<p><img alt="image-20200911151355085" src="../assets/image-20200911151355085.png" /></p>
+<ul>
+<li>上面是按照绝对值最大值作为阀值，但是当正负分布不均匀的时候，是有一部分是空缺的，也就是一部分值域被浪费了(考虑极端:激活值全为正)，于是大多数情况下是这么干的:</li>
+</ul>
+<p><img alt="image-20200813144359228" src="../assets/image-20200813144359228.png" /></p>
+<ul>
+<li>选择合适的阈值T后,<strong>将<code>±|T| 映射为±127</code>,超出 阈值<code>±|T|</code> 外的直接映射为阈值<code>±127</code>，**如何寻找最优的阀值T使得精度的损失最小呢？这就变成了最优化问题，我首先想到的是损失函数，而且是前后两者的分布差异最小，那么用<a href="https://www.cnblogs.com/liaohuiqiang/p/7673681.html">相对熵(KL散度)</a>|<a href="https://www.zhihu.com/question/65288314">博客1</a>|<a href="https://www.zhihu.com/question/41252833">博客2</a>:用于**衡量两个概率分布之间的差异</strong>，即用相对熵来描述int8量化后的值分布跟f32的值分布之间的信息量丢失程度, KL散度越小代表 INT8编码后的信息损失越少。</li>
+<li>截断区(<code>-T~T</code>)之外的值为什么要加到截断区内最后一个值呢？<ul>
+<li>一是求P的概率分布时，需要总的P总值.</li>
+<li>二将截断区之外的加到截断P的最后，这样是尽可能地将截断后的信息给加进来。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20200813145451106" src="../assets/image-20200813145451106.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_KL</span><span class="p">():</span>
+    <span class="c1"># 随机生成两个离散型分布</span>
+    <span class="n">x</span>  <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="n">px</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span>  <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="n">py</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">KL</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">KL</span> <span class="o">+=</span> <span class="n">px</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">px</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">py</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">KL</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">KL</span>
+</code></pre></div>
+<ul>
+<li>
+<p>这样问题就转换为了求概率了，即事件q（int8）分布的概率以及事件p（f32）分布的概率。</p>
+</li>
+<li>
+<p>直方图(<code>hist,bin_edges=np.histogram(arr,bins=xx,range=(min,max))</code>)，(频数,分界箱边界)，即落到某个数值范围的数值有多少个，这样数据的概率分布就出来了。</p>
+</li>
+</ul>
+<p><img alt="image-20200813155418849" src="../assets/image-20200813155418849.png" /></p>
+<ul>
+<li>
+<p>int类的离散点各个概率还好求一些，直接统计这些整型数据集合hist即可</p>
+</li>
+<li>
+<p>float呢？精度理论上是很小的呀，如何定边界才能把数据归类好？因此就类似于整型的我们分bin，那么分多少个bin才能求bin的概率？看下图，bins越多当然你和的越好，但算力有限啊，NVIDAIA给的是**2048**个bin（maxnet代码里面给的是**8000**bins），比128bin要多，但是又不会多处太多从而迭代太多影响计算速度！</p>
+<p><img alt="image-20200813153303942" src="../assets/image-20200813153303942.png" /></p>
+</li>
+<li>
+<p><strong>NvidiA处理流程</strong></p>
+<ul>
+<li>提供一个样本数据集（最好是验证集的子集:500/1000张就差不多了，但要保证多样性），称为“校准数据集”，它用来做所谓的校准。首先在 校准集上 进行 <code>FP32 inference</code> 推理，然后对网络每层遍历</li>
+<li>收集这一层的激活值(经过激活函数之后的值)，并做 直方图（histograms ），分成几个组别（bins）（官方给的一个说明使用的是2048组/maxnet是8000），分组是为了下面遍历 |T| 时，减少遍历次数(要不然你每一个值都测试一次，那么一定范围内的浮点值有无穷个你怎么测？)；</li>
+<li>对于不同的 阈值 |T| 进行遍历，因为这里 |T|的取值肯定在 第<code>128-2047</code> 组之间(如果小于128，那直接一一对应就行了，然后超出 阈值<code>±|T|</code> 外的直接映射为阈值<code>±127</code>，想啥好事呢)，所以就选取每组的中间值(用该bin的中间值作为该bin的阈值)进行遍历；<ul>
+<li>选取使得 KL_divergence(ref_distr, quant_distr) 取得最小值的 |T|。</li>
+</ul>
+</li>
+<li>返回一系列 |T|值，每一层都有一个 |T|。创建 <strong>CalibrationTable</strong> ，选取最小的那个即可；假设 最后 使得 KL散度最小的|T|值是第200组的中间值，那么就把原来 第 0-200组的 数值线性映射到 0-128之间，超出范围的直接映射到128。</li>
+<li>有个小问题，ReLU的激活值全是正值啊，如果按照英伟达的PPT里走，那么量化只量化了正半轴，但是有时候我们的激活值是<code>sigmoid/tanh/ELU</code>，有正有负啊，负轴不考虑那数据分布绝对差异很大。因此得把负轴考虑进去。例如:<strong>从bin0位置开始对称向正负方向移动寻找饱和阀值</strong></li>
+</ul>
+</li>
+<li>
+<p>INT8量化实现-校准算法</p>
+</li>
+</ul>
+<p><img alt="image-20200813151447342" src="../assets/image-20200813151447342.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1">#首先分成 2048个组，每组包含多个数值（基本都是小数）</span>
+<span class="n">Input</span><span class="p">:</span> <span class="n">FP32</span> <span class="n">histogram</span> <span class="n">H</span> <span class="k">with</span> <span class="mi">2048</span> <span class="n">bins</span><span class="p">:</span> <span class="nb">bin</span><span class="p">[</span> <span class="mi">0</span> <span class="p">],</span> <span class="err">…</span><span class="p">,</span> <span class="nb">bin</span><span class="p">[</span> <span class="mi">2047</span> <span class="p">]</span> 
+<span class="c1"># |T|的取值肯定在 第128-2047 组之间,取每组的中点,为什么从128开始呢？因为|T|所在组i&lt;=128组的话，那么我们直接一一对应就好了</span>
+<span class="n">For</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="mi">128</span> <span class="p">,</span> <span class="mi">2048</span> <span class="p">):</span> 
+    <span class="c1"># 选取前 i 组构成P，i&gt;=128</span>
+    <span class="n">reference_distribution_P</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">bin</span><span class="p">[</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="nb">bin</span><span class="p">[</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span> <span class="p">]</span> 
+    <span class="n">outliers_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="nb">bin</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="p">,</span> <span class="nb">bin</span><span class="p">[</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="p">]</span> <span class="p">,</span> <span class="err">…</span> <span class="p">,</span> <span class="nb">bin</span><span class="p">[</span> <span class="mi">2047</span> <span class="p">]</span> <span class="p">)</span> <span class="c1">#边界外的组</span>
+    <span class="c1">#边界外的组加到边界P[i-1]上，没有直接丢掉</span>
+    <span class="n">reference_distribution_P</span><span class="p">[</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span> <span class="o">+=</span> <span class="n">outliers_count</span> 
+    <span class="n">P</span> <span class="o">/=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="c1"># 归一化</span>
+
+    <span class="c1"># 将前面的P（包含i个组，i&gt;=128），映射到 0-128 上，映射后的称为Q，Q包含128个组，一个整数是一组</span>
+    <span class="n">candidate_distribution_Q</span> <span class="o">=</span> <span class="n">quantize</span> <span class="p">[</span> <span class="nb">bin</span><span class="p">[</span> <span class="mi">0</span> <span class="p">],</span> <span class="err">…</span><span class="p">,</span> <span class="nb">bin</span><span class="p">[</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="p">]</span> <span class="p">]</span> <span class="n">into</span> <span class="mi">128</span> <span class="n">levels</span>
+
+    <span class="c1">#这时的P（包含i个组，i&gt;=128）和Q向量（包含128个组）的大小是不一样的，无法直接计算二者的KL散度</span>
+    <span class="c1">#因此需要将Q扩展为 i 个组，以保证跟P大小一样</span>
+    <span class="n">expand</span> <span class="n">candidate_distribution_Q</span> <span class="n">to</span> <span class="err">‘</span> <span class="n">i</span> <span class="err">’</span> <span class="n">bins</span> 
+
+    <span class="n">Q</span> <span class="o">/=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="c1"># 归一化</span>
+    <span class="c1">#计算P和Q的KL散度，这个要求len(P)==len(Q)，这是个硬性要求</span>
+    <span class="n">divergence</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="o">=</span> <span class="n">KL_divergence</span><span class="p">(</span> <span class="n">reference_distribution_P</span><span class="p">,</span> <span class="n">candidate_distribution_Q</span><span class="p">)</span>
+<span class="n">End</span> <span class="n">For</span>
+<span class="c1">#找出 divergence[ i ] 最小的数值，假设 divergence[m] 最小，</span>
+<span class="c1">#那么|T|=( m + 0.5 ) * ( width of a bin )</span>
+<span class="n">Find</span> <span class="n">index</span> <span class="err">‘</span><span class="n">m</span><span class="err">’</span> <span class="k">for</span> <span class="n">which</span> <span class="n">divergence</span><span class="p">[</span> <span class="n">m</span> <span class="p">]</span> <span class="ow">is</span> <span class="n">minimal</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="p">(</span> <span class="n">m</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">width</span> <span class="n">of</span> <span class="n">a</span> <span class="nb">bin</span> <span class="p">)</span>
+
+<span class="c1"># 如何将Q扩充到和P个数相等？举个小例子</span>
+<span class="n">P</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="c1"># 这里假设一个bin只包含一个数据，故有8个bin</span>
+<span class="c1"># 我们想把它映射为 2 个bins，于是 4个一组合并</span>
+<span class="p">[</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">,</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="c1"># 然后要成比例的 扩展回到 8个组，保留原来是0的组</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">6</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="o">/</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="c1"># 对P和Q进行标准化</span>
+<span class="n">P</span> <span class="o">/=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="err">、</span><span class="n">Q</span> <span class="o">/=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="c1"># 计算散度</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">KL_divergence</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>python实现</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 实现代码</span>
+<span class="k">def</span> <span class="nf">threshold_distribution</span><span class="p">(</span><span class="n">distribution</span><span class="p">,</span> <span class="n">target_bin</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Return the best threshold value.</span>
+<span class="sd">      Ref: https://github.com//apache/incubator-mxnet/blob/master/</span>
+<span class="sd">                   python/mxnet/contrib/quantization.py</span>
+<span class="sd">      Args:</span>
+<span class="sd">          distribution: list, activations has been processed by histogram</span>
+<span class="sd">          and normalize,size is 2048 </span>
+<span class="sd">          target_bin: int, the num of bin that</span>
+<span class="sd">          is used by quantize, Int8 default value is 128</span>
+<span class="sd">      Returns:</span>
+<span class="sd">          target_threshold: int, num of bin with the minimum KL</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+  <span class="n">distribution</span> <span class="o">=</span> <span class="n">distribution</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+  <span class="n">length</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">size</span>
+  <span class="n">threshold_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">distribution</span><span class="p">[</span><span class="n">target_bin</span><span class="p">:])</span>
+  <span class="n">kl_divergence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="n">target_bin</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">target_bin</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+    <span class="n">sliced_nd_hist</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">distribution</span><span class="p">[:</span><span class="n">threshold</span><span class="p">])</span>
+
+    <span class="c1"># generate reference distribution p</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">sliced_nd_hist</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">p</span><span class="p">[</span><span class="n">threshold</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">threshold_sum</span>
+    <span class="n">threshold_sum</span> <span class="o">=</span> <span class="n">threshold_sum</span> <span class="o">-</span> <span class="n">distribution</span><span class="p">[</span><span class="n">threshold</span><span class="p">]</span>
+
+    <span class="c1"># is_nonzeros[k] indicates whether hist[k] is nonzero</span>
+    <span class="n">is_nonzeros</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">quantized_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">target_bin</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="c1"># calculate how many bins should be merged to generate </span>
+    <span class="c1"># quantized distribution q</span>
+    <span class="n">num_merged_bins</span> <span class="o">=</span> <span class="n">sliced_nd_hist</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="n">target_bin</span>
+
+    <span class="c1"># merge hist into num_quantized_bins bins</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">target_bin</span><span class="p">):</span>
+      <span class="n">start</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">num_merged_bins</span>
+      <span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">num_merged_bins</span>
+      <span class="n">quantized_bins</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">sliced_nd_hist</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+      <span class="n">quantized_bins</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sliced_nd_hist</span><span class="p">[</span><span class="n">target_bin</span> <span class="o">*</span> <span class="n">num_merged_bins</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+      <span class="c1"># expand quantized_bins into p.size bins</span>
+      <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sliced_nd_hist</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">target_bin</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">num_merged_bins</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">target_bin</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">stop</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">num_merged_bins</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">is_nonzeros</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">norm</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+              <span class="n">q</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">quantized_bins</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
+              <span class="c1"># q[p == 0] = 0</span>
+              <span class="n">p</span> <span class="o">=</span> <span class="n">_smooth_distribution</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+              <span class="n">q</span> <span class="o">=</span> <span class="n">_smooth_distribution</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+              <span class="c1"># p[p == 0] = 0.0001</span>
+              <span class="c1"># q[q == 0] = 0.0001</span>
+
+              <span class="c1"># calculate kl_divergence between q and p</span>
+              <span class="n">kl_divergence</span><span class="p">[</span><span class="n">threshold</span> <span class="o">-</span> <span class="n">target_bin</span><span class="p">]</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+
+              <span class="n">min_kl_divergence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">kl_divergence</span><span class="p">)</span>
+              <span class="n">threshold_value</span> <span class="o">=</span> <span class="n">min_kl_divergence</span> <span class="o">+</span> <span class="n">target_bin</span>
+
+              <span class="k">return</span> <span class="n">threshold_value</span>
+
+            <span class="k">def</span> <span class="nf">_smooth_distribution</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">):</span>
+              <span class="sd">&quot;&quot;&quot;Given a discrete distribution (may have not been normalized to 1),</span>
+<span class="sd">      smooth it by replacing zeros with eps multiplied by a scaling factor </span>
+<span class="sd">      and taking the corresponding amount off the non-zero values.</span>
+<span class="sd">      Ref: http://web.engr.illinois.edu/~hanj/cs412/bk3/KL-divergence.pdf</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+              <span class="n">is_zeros</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+              <span class="n">is_nonzeros</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+              <span class="n">n_zeros</span> <span class="o">=</span> <span class="n">is_zeros</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+              <span class="n">n_nonzeros</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">n_zeros</span>
+              <span class="k">if</span> <span class="ow">not</span> <span class="n">n_nonzeros</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The discrete probability distribution is malformed. All entries are 0.&#39;</span><span class="p">)</span>
+                <span class="n">eps1</span> <span class="o">=</span> <span class="n">eps</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_zeros</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_nonzeros</span><span class="p">)</span>
+                <span class="k">assert</span> <span class="n">eps1</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;n_zeros=</span><span class="si">%d</span><span class="s1">, n_nonzeros=</span><span class="si">%d</span><span class="s1">, eps1=</span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_zeros</span><span class="p">,</span> <span class="n">n_nonzeros</span><span class="p">,</span> <span class="n">eps1</span><span class="p">)</span>
+                <span class="n">hist</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+                <span class="n">hist</span> <span class="o">+=</span> <span class="n">eps</span> <span class="o">*</span> <span class="n">is_zeros</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">eps1</span><span class="p">)</span> <span class="o">*</span> <span class="n">is_nonzeros</span>
+                <span class="k">assert</span> <span class="p">(</span><span class="n">hist</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+                <span class="k">return</span> <span class="n">hist</span>
+</code></pre></div>
+<p><strong>smooth处理</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># smooth处理的原因:评估信息丢失情况的,</span>
+KL<span class="o">(</span>P,Q<span class="o">)</span> <span class="o">=</span> sum<span class="o">(</span><span class="nv">i</span> <span class="o">=</span> <span class="m">1</span>..n<span class="o">)</span> <span class="o">[</span> p_i * log<span class="o">(</span> p_i / q_i<span class="o">)</span> <span class="o">]</span>
+<span class="c1"># 1. 当某些qi=0或者pi=0时我们怎么处理？例如 pi!=0 同时 qi=0,结果无穷大......(这就好比一个分布(P)认为某个事件e是可能存 在的，但是另外一个分布(Q)却认为该事件完全不可能存在，因此这两 个分布是绝对绝对不可能相同的。),使用绝对减值法</span>
+  <span class="c1"># 2.算法流程</span>
+  P: a:1/2,  b:1/4,  c:1/4
+  Q: a:7/12, b:2/12, d:3/12
+  <span class="c1"># 绝对减值算法流程如下：</span>
+  <span class="m">1</span>. 设置一个很小的常量eps <span class="o">(</span>比如 <span class="nv">eps</span><span class="o">=</span><span class="m">0</span>.0001<span class="o">)</span>；
+  <span class="m">2</span>. <span class="nv">SP</span> <span class="o">=</span> <span class="o">{</span>a, b, c<span class="o">}</span> 从P中观察到的样本；
+  <span class="m">3</span>. <span class="nv">CP</span> <span class="o">=</span> <span class="p">|</span>SP<span class="p">|</span> <span class="o">=</span> <span class="m">3</span>, P分布中观察到的样本的数量；
+  <span class="m">4</span>. <span class="nv">SQ</span> <span class="o">=</span> <span class="o">{</span>a, b, d<span class="o">}</span>；
+  <span class="m">5</span>. <span class="nv">CQ</span> <span class="o">=</span> <span class="m">3</span>；
+  <span class="m">6</span>. <span class="nv">SU</span> <span class="o">=</span> SP U <span class="nv">SQ</span> <span class="o">=</span> <span class="o">{</span>a, b, c, d<span class="o">}</span> 所有观察到的样本，即限定一个全集；
+  <span class="m">7</span>. <span class="nv">CU</span> <span class="o">=</span> <span class="p">|</span>SU<span class="p">|</span> <span class="o">=</span> <span class="m">4</span>。# 最终的样本长度
+  <span class="c1"># 我们重新可以定义P和Q的平滑版本</span>
+  P’平滑版本:
+  <span class="m">1</span>. P<span class="s1">&#39;(i) = P(i) - pc;  if i in SP</span>
+<span class="s1">  2. P&#39;</span><span class="o">(</span>i<span class="o">)</span> <span class="o">=</span>  eps<span class="p">;</span>  otherwise <span class="k">for</span> i <span class="k">in</span> SU - SP
+  Q’平滑版本:
+  <span class="m">3</span>. Q<span class="s1">&#39;(i) = Q(i) - qc;  if i in SP</span>
+<span class="s1">  4. Q&#39;</span><span class="o">(</span>i<span class="o">)</span> <span class="o">=</span>  eps<span class="p">;</span>  otherwise <span class="k">for</span> i <span class="k">in</span> SU - SP
+  <span class="c1"># 最终结果，根据 sum(P&#39;(i)) = 1.0; sum(Q&#39;(j)) = 1.0;的约束条件可计算出pc和qc</span>
+  P<span class="s1">&#39;: a:1/2-pc, b:1/4-pc, c:1/4-pc, d: eps</span>
+<span class="s1">       pc = eps/3</span>
+<span class="s1">  Q&#39;</span>: a:7/12-qc, b:2/12-qc, c: eps, d:3/12-qc
+      <span class="nv">qc</span> <span class="o">=</span> eps/3
+  <span class="c1"># 或者可以直接使用公式</span>
+  <span class="nv">pc</span> <span class="o">=</span> eps*<span class="o">(||</span>SU-SP<span class="o">||</span>/<span class="o">||</span>SP<span class="o">||)</span>
+  <span class="nv">qc</span> <span class="o">=</span> eps*<span class="o">(||</span>SU-SQ<span class="o">||</span>/<span class="o">||</span>SQ<span class="o">||)</span>
+</code></pre></div>
+<h3 id="winograd">Winograd快速卷积<a class="headerlink" href="#winograd" title="Permanent link">&para;</a></h3>
+<p>按理说int8量化后相比于fp32理论上加速4x，但是也要经过fp32-to-int8-IO的转换等额外操作，很多情况下，我们依然仅仅能达到约1.2~1.5的加速比。</p>
+<p>如<a href="https://github.com/Tencent/ncnn">NCNN</a>、<a href="https://github.com/Maratyszcza/NNPACK">NNPACK</a>等，可以看到，对于卷积层，大家不约而同地采用了Winograd快速卷积算法，该算法出自<a href="https://arxiv.org/abs/1509.09308">Fast Algorithms for Convolutional Neural Networks</a>，博客详解<a href="https://www.cnblogs.com/shine-lee/p/10906535.html">link</a>，主要思想是让卷积的乘法数量更少。</p>
+<p><strong>举例说明Winograd F(2x2,3x3)的实现细节</strong></p>
+<p><img alt="image-20200917104021437" src="../assets/image-20200917104021437.png" /></p>
+<p><img alt="image-20200917104105885" src="../assets/image-20200917104105885.png" /></p>
+<p>那么剩下的<code>g和d</code>表示什么？</p>
+<ul>
+<li>Winograd F(2x2,3x3)，到底在计算神马？</li>
+<li>“2x2”: **输出**4个结果（因为2x2 = 4）</li>
+<li>“3x3”: 卷积核是3x3（conv3x3s1的卷积核当然是3x3）</li>
+<li>因此，需要输入的Feature Map就是4x4的matrix(输入数据)。</li>
+<li>Y 输出的matrix[2,2]，4个结果</li>
+<li>g 卷积核matrix[3,3]，9个数据</li>
+<li>d 输入的matrix[4,4]，16个输入</li>
+</ul>
+<p><strong>如何对快速卷积进行int8定点量化？</strong></p>
+<p>我们并不需要对Winograd的计算过程进行量化，而是将量化后的数据进行Winograd计算。除了Matrix G中有0.5，其他的Matrix都是Int8的整形数据了。那么只需要做一个简单的操作将Matrix G变成Int8整形就行了：<code>G’ = G x 2</code></p>
+<p><img alt="image-20200917105106228" src="../assets/image-20200917105106228.png" /></p>
+<p>最后我们得到的Y’再除以4（为什么是4不是2呢？因为乘以了两次的，G与G^T）就是我们需要的Y了。我们的Int8 Convolution 计算流程变化如下：</p>
+<ul>
+<li><code>Int8 Convolution 流程：</code></li>
+<li>input_fp32 -&gt; quantize -&gt; int8-conv -&gt; Int32 -&gt; dequantize -&gt; output_fp32</li>
+<li><code>Int8 Winograd流程：</code></li>
+<li>input_fp32 -&gt; quantize -&gt; int8-winograd -&gt; Int32 -&gt; dequantize -&gt; output_fp32</li>
+</ul>
+<h3 id="bnn">二值模型(BNN)<a class="headerlink" href="#bnn" title="Permanent link">&para;</a></h3>
+<p><a href="https://zhuanlan.zhihu.com/p/270184068">博客总结1</a>|<a href="http://chenrudan.github.io/blog/2018/10/02/networkquantization.html">博客总结2</a></p>
+<p><strong>在神经网络中的基本操作就是权重(W)和激活值(X)的卷积乘加操作(W*X)</strong></p>
+<p><strong>L1范数是指向量中各个元素绝对值之和；L2范数是指向量各元素的平方和然后求平方根</strong></p>
+<p>实际项目中一直在用的<code>binary_conv</code>图示结果如下，其实就是<code>BWN</code>(不同卷积核的绝对值**相同**)改版，每个卷积核自身的绝对值都相同(<code>c_in,k_h,k_w</code>)【caffe/pytorch的卷积核维度一样】，但不同卷积核的绝对值**不相同**：</p>
+<p><img alt="image-20210204200921876" src="../assets/image-20210204200921876.png" /></p>
+<p><strong>开山之作:《BinaryNet: Training Deep Neural Networks with Weights and Activations Constrained to +1 or -1.》</strong></p>
+<ul>
+<li>
+<p>它首次提出一种方法，可以用随机梯度下降的方式训练同时使用二值化的<code>weights</code>和<code>activations</code>的神经网络。二值权重<code>{-1,1}</code>替代浮点权重，作者通过<code>sign</code>函数获取:<code>W_binary = sign(W_float32)</code></p>
+</li>
+<li>
+<p>对于<code>sign</code>函数在<code>0</code>处不可导，其他倒数为<code>0</code>无法进行梯度传递，所以作者设计了**直通估计器：<code>STE</code>**，即使用<code>clip(-1,x,1)</code>的导数来拟合<code>sign</code>的导数。</p>
+</li>
+</ul>
+<p><img alt="image-20210518200117331" src="../assets/image-20210518200117331.png" /></p>
+<ul>
+<li>其实论文中权重二值化反向传播时遇到<code>sign</code>函数直接为输入的梯度(相当于<code>src_grad*1</code>)，激活二值化是<code>clip(-1,x,1)</code>函数的梯度拟合<code>sign</code>，也就是说<code>output_grad = abs(input)&gt;1---&gt;grad==0*src_grad</code>，当<code>output_grad = abs(input)&lt;=1---&gt;1*src_grad</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 如果要进行激活二值化，第一个卷积层参数不能是二值，因为图片是8bit，如果直接二值化，丢失信息过多</span>
+<span class="c1"># 1. 对激活值进行二值化的具体实现</span>
+<span class="k">class</span> <span class="nc">BinActive</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Binarize the input activations for ***** BNN and XNOR *****.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">sign</span><span class="p">()</span> <span class="c1"># 使用y=x函数拟合梯度</span>
+        <span class="k">return</span> <span class="nb">input</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">,</span> <span class="p">):</span>
+        <span class="nb">input</span><span class="p">,</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_tensors</span>
+        <span class="n">grad_input</span> <span class="o">=</span> <span class="n">grad_output</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="c1"># 开山之作BNN中激活值:当sign函数的输入的绝对值大于1的时候，将梯度置0可以得到更好的实验结果。</span>
+        <span class="n">grad_input</span><span class="p">[</span><span class="nb">input</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">grad_input</span><span class="p">[</span><span class="nb">input</span><span class="o">.</span><span class="n">le</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 最终的梯度结果就是sign函数的梯度计算使用clip(-1,x,1)函数来拟合</span>
+        <span class="k">return</span> <span class="n">grad_input</span> <span class="c1"># 当在[-1,1]范围内，输入梯度是啥直接返回啥，不需要关心该阈值函数的实际导数</span>
+
+<span class="c1"># 2.对权重进行二值化</span>
+<span class="k">class</span> <span class="nc">Binary_w</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
+        <span class="c1">#*******************ste*********************</span>
+        <span class="n">grad_input</span> <span class="o">=</span> <span class="n">grad_output</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">grad_input</span>
+</code></pre></div>
+<ul>
+<li>这样<code>weights</code>二值化{-1,+1},激活值<code>activation</code>二值化{-1,+1},卷积过程两者只要进行<code>XNOR+bitcout</code>计算代替<code>float32</code>的累乘操作，速度提升很大。</li>
+</ul>
+<p><img alt="image-20210204162844716" src="../assets/image-20210204162844716.png" /></p>
+<p><strong>XNOR-Net</strong></p>
+<p><a href="http://xxx.itp.ac.cn/pdf/1603.05279v4">论文</a>|<a href="https://github.com/jiecaoyu/XNOR-Net-PyTorch">代码</a></p>
+<p>该篇论文提出<code>BWN+XNOR-Net</code>两种二值化网络。</p>
+<ul>
+<li>
+<p><code>BWN(Binary Weight Networks)</code>:只对<code>weights</code>二值化{-1,+1}，对于<code>activation</code>仍然采用<code>float32</code>全精度，精度影响不大(<code>resnet18</code>除外)。</p>
+</li>
+<li>
+<p><code>W_float= a*B</code>,<code>a</code>:是尺度参数,<code>B</code>是二值矩阵{-1,1}，<code>a</code>的最优值=<code>np.sum(abs(w)) / n</code>（权重的L1范数的均值）</p>
+</li>
+<li>
+<p>推理步骤:</p>
+<p><img alt="image-20210205141322046" src="../assets/image-20210205141322046.png" /></p>
+</li>
+<li>
+<p><code>XNOR-Net</code>是<code>weights</code>和<code>activation</code>都进行二值化</p>
+</li>
+<li>
+<p>权重(W)二值化：<code>W_float= a*B</code>，同上</p>
+</li>
+<li>激活值(X)二值化：<code>X_float = β*H</code>,<code>H</code>是二值矩阵{-1,1},<code>β</code>的最优值是<code>np.sum(abs(X)) / n</code>（输入X的L1范数的均值）</li>
+<li><code>XNOR-Net</code>的二值操作过程：</li>
+</ul>
+<p><img alt="image-20210204172558418" src="../assets/image-20210204172558418.png" /></p>
+<p><strong>Bi-Real Net</strong></p>
+<p><a href="https://arxiv.org/pdf/1808.00278.pdf">论文</a>|<a href="https://my.oschina.net/u/3647270/blog/4734121">博客</a>|<a href="https://github.com/liuzechun/Bi-Real-net">code</a>|<a href="https://github.com/ShuaiZ1037/bnn-xnor-bireal">综合代码</a></p>
+<p>作者发现常用的二值化网络有两个缺陷</p>
+<ul>
+<li>
+<p><strong>1-bit CNN 的表达能力本身很有限，不如实数值的网络。</strong></p>
+</li>
+<li>
+<p>Bi-Real-Net <strong>借用 残差的思想，用shortcut 传递网络中已有的实数值</strong>，从而提高二值化网络的表达能力。</p>
+</li>
+<li>卷积参数<code>{-1,1}</code>，激活值<code>{-1,1}</code>，进行<code>xnor+bitcout</code>操作，结果出现非{-1,1}的**实数值**，但是这个实数值的输出如果经过下一层二值卷积就又会被二值化，造成极大的信息丢失。</li>
+</ul>
+<p><img alt="image-20210207142542973" src="../assets/image-20210207142542973.png" /></p>
+<ul>
+<li>
+<p><strong>1-bit CNN 在训练过程中有导数不匹配的问题导致难以收敛到很好的精度</strong></p>
+</li>
+<li>
+<p>激活值求导时，常用<code>clip(-1,x,1)</code>来拟合<code>sign</code>函数的导数；但是<code>clip</code> 函数与 <code>sign</code> 函数有差距（灰色斜线），这种计算方式会带来所谓的**导数值不匹配的问题**。提出**用二阶拟合 sign 的 ApproxSign 的导数来作为 sign 的导数，从而缩小导数值的不匹配问题**。这个带来了**约 12% 的性能提升**。</p>
+</li>
+</ul>
+<p><img alt="image-20210207151839888" src="../assets/image-20210207151839888.png" /></p>
+<ul>
+<li>使用<code>Clip</code>函数代替<code>ReLU</code>函数效果更好，因为<code>x-&gt;{-1,1}</code>，使用截断函数会更快收敛。</li>
+</ul>
+<h3 id="_11">调参小技巧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/FlyEgle/cub_baseline">ACCV细粒度识别比赛某分享代码</a>|<a href="https://mp.weixin.qq.com/s/aqKFZeJEEV8qZRJsdGYd1Q">博客</a></p>
+<ul>
+<li>
+<p><strong>Warm up</strong>:如果模型是从头训练(模型权重随机初始化)，可以用一个小的学习率先训练几个<code>epoch</code>，假如一开始就采用较大的学习率容易出现数值不稳定；如果模型比较难训练可以考虑如下策略:如果是普通分类模型可以使用<code>ImageNet</code>的预训练模型初始化权重，如果是细粒度分类可以使用<code>CUB-200-2011</code>(Caltech-UCSD Birds-200-2011:细粒度识别数据集,注意测试集与ImageNet训练集有重叠)的预训练模型初始化权重。总结:无论是比赛还是其他，最好先找公开数据集训练个baseline再做模型迁移即可。</p>
+</li>
+<li>
+<p>多训练几个epochs，平均一下就能得到更好的模型。一般训练后，选取最优模型，使用该模型进行固定学习率(<code>2e-4</code>或者余弦退火学习率:效果更好，<code>pytorch</code>中有实现:<code>CosineAnnealingLR</code>)来多训练结果epoch，平均其权重即可。</p>
+<p><img alt="image-20201225180116519" src="../assets/image-20201225180116519.png" /></p>
+<ul>
+<li>余弦退火学习率:设置一个基础学习率(0.02),然后设置<code>T_0=5,T_mult=x(x&gt;=1)</code>,那么每到<code>epoch=5,(1+T_mult)*T_0,(1+T_mult+T_mult**2)*T_0,...</code>处回到最大的学习率(0.02)，其他epoch会自动按照cosin下降学习率</li>
+</ul>
+<p><img src="../assets/image-20201225182044796.png" alt="image-20201225182044796" style="zoom:50%;" /></p>
+</li>
+<li>
+<p>使用<code>fp16</code>和<code>fp32</code>混合精度训练，可以快速收敛，尤其是对人脸识别训练来说。</p>
+</li>
+<li>
+<p>数据处理，如果数据里面有脏数据，可以先训练一个<code>baseline</code>，然后对每个类别的<code>feature</code>进行聚类，聚<code>2</code>个类，哪个类别的数据量多就选哪个做为正例，同时按正负样本的比例进行少量负例采样(大概是<code>10%</code>。</p>
+</li>
+<li>
+<p>常规的数据增强：随机裁剪，角度旋转，亮度/对比度调节等</p>
+</li>
+<li>
+<p>使用<code>Mixup</code>、<code>Cutout</code>、<code>Cutmix(一般更优)</code>对比选择效果好的再配合<code>labelsmooth</code>一起。</p>
+</li>
+<li>
+<p><code>Mixup</code>:将随机的两张样本按比例混合，分类的结果按比例分配；</p>
+</li>
+<li><code>Cutout</code>:随机的将样本中的部分区域cut掉，并且填充0像素值，分类的结果不变；</li>
+<li><code>CutMix</code>:就是将一部分区域cut掉但不填充0像素而是随机填充训练集中的其他数据的区域像素值，分类结果按一定的比例分配</li>
+</ul>
+<p><img src="../assets/image-20201201142540918.png" alt="image-20201201142540918" style="zoom:67%;" /></p>
+<ul>
+<li>
+<p>使用**cosinelr**来衰减学习率(余弦函数衰减)，带有动量的<code>SGD</code></p>
+</li>
+<li>
+<p>如果你的**分类精度不够是因为有两类或者多类太相近造成的**，考虑使用其他<code>softmax</code>，比如**amsoftmax**。</p>
+<p><img alt="image-20200312114249038" src="../assets/image-20200312114249038.png" /></p>
+</li>
+<li>
+<p>如果你的分类精度不够是**样本不均衡**造成的，考虑使用<code>focal loss</code></p>
+</li>
+<li>
+<p>尽可能使用全卷积网络来做landmark，不要直接用fc回归，回归真的不太稳定</p>
+</li>
+</ul>
+<h3 id="_12">目标追踪<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><strong>Sort(多目标跟踪)</strong></p>
+<ul>
+<li>以<code>IOU</code>作为前后两帧间目标关系度量指标</li>
+<li>利用**卡尔曼滤波器**预测修正得到下一帧目标的精准框(OpenCV中已实现)。<ul>
+<li>思想:下一帧模型对A的预测框+对A目标的轨迹的预测框+两框的误差，利用卡尔曼滤波方程计算出最优框</li>
+<li>通过**匈牙利算法(匹配线地位相同)<strong>对前后两帧中的框进行匹配(寻找最优解)，进化版是:**KM算法(匹配线带权重)</strong></li>
+<li>论文中使用的是匈牙利算法，但是实际代码是KM算法。</li>
+</ul>
+</li>
+</ul>
+<p><strong>DeepSort(同一团队)</strong></p>
+<ul>
+<li>整体没啥改变，主要改变有两点:<ul>
+<li>加入特征提取网络，输入一张图片会输出一个向量，通过比对两个向量(128维度)之间的余弦距离，来判断两副输入图片是否是同一个目标(在行人重识别数据集上训练的)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="tensorrt">TensorRT<a class="headerlink" href="#tensorrt" title="Permanent link">&para;</a></h3>
+<p><strong>TensorRT为什么能加速?(单精度<code>FP32</code>半精度<code>FP16</code>)</strong></p>
+<ul>
+<li>
+<p>TensorRT支持<code>FP16 或者 INT8</code>的计算，而推理精度不发生明显的降低。只支持推理，不支持训练，训练阶段因为要进行梯度更新，训练后期每次梯度更新是微小的，这个时候需要高参数需要高精度，例如float32，但是只是推理的话对精度要求并不高，所以可以降低精度。</p>
+</li>
+<li>
+<p>TensorRT对于网络结构进行了重构，把一些能够合并的运算合并在了一起，而且针对NVIDIA显卡做了多方面优化。</p>
+<ul>
+<li><strong>它把一些网络层进行了合并</strong>：比如<code>一个卷积层、一个偏置层和一个relu层</code>，这三层是需要调用三次cuDNN对应的API，TensorRT对此进行了合并。</li>
+<li><strong>取消<code>concat</code>层</strong>：在concat这一层，比如说这边计算出来一个<code>1×3×24×24</code>，另一边计算出来<code>1×5×24×24</code>，concat到一起，变成一个1×8×24×24的矩阵，这个叫concat这层这其实是完全没有必要的，因为TensorRT完全可以实现直接接到需要的地方，不用专门做concat的操作，所以这一层也可以取消掉。</li>
+</ul>
+</li>
+</ul>
+<p><strong>TensorRT的流程</strong></p>
+<ul>
+<li>
+<p><strong>解析器解析模型</strong>：首先输入一个预先训练好的<code>FP32</code>的模型和网络，将模型通过<code>parser（解析器）</code>等方式输入到<code>TensorRT</code>中</p>
+<ul>
+<li>
+<p>在这个解析过程中可以设置模型的<code>DataType</code>是用<code>FP16</code>还是使用<code>INT8</code>，</p>
+<ul>
+<li>
+<p><code>FP32-&gt;FP16</code>，仅仅<code>Tesla P100/V100</code>支持<code>FP16</code>?如果只是使用 float 16 的数据精度代替 float-32 ， 实际上并不会有多大的性能提升。真正提升性能的是 <code>half2mode</code>，即使用了交叉存存储方式的模式(图片上相邻区域的 tensor 是 以16位 交叉存储的方式存在的<a href="https://blog.csdn.net/meng825/article/details/103968626">链接</a>)</p>
+<p><img alt="image-20200528122531441" src="../assets/image-20200528122531441.png" /></p>
+</li>
+<li>
+<p><code>FP32-&gt;INT8</code>,注意，这里传入的<code>DataType::KFLOAT</code>，是FP32，因为INT8 需要先用FP32的精度来确定转换系数，TensorRT自己会在内部转换成INT8。</p>
+<p><img alt="image-20200528123552097" src="../assets/image-20200528123552097.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>TensorRT引擎</strong>：模型解析后，engine会进行模型优化，得到优化好的engine可以**序列化到内存（buffer）或文件（file）<strong>，读的时候需要**反序列化</strong>，将其变成engine以供使用。然后在执行的时候创建context(上下文)，主要是分配预先的资源，engine加context就可以做推断（Inference）。</p>
+</li>
+</ul>
+<p><strong>扩展</strong></p>
+<ul>
+<li>TensorRT5加速yolov3<ul>
+<li>caffe版本的yolov3加速，然后实际运用到项目上后，发现原始模型在TX2（使用TensorRT加速后，FP16）上运行260ms，进行L1 排序剪枝后原始模型由246.3M压缩到64.8M，但是时间运行只提速到了142ms</li>
+</ul>
+</li>
+</ul>
+<h3 id="_13">常用目标检测损失函数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p><strong>L1或L2一般不用作框回归损失的原因</strong></p>
+<ul>
+<li><code>L1 loss</code>的导数为常数，在训练后期，<code>x</code>很小时，如果<code>lr</code>不变，损失函数会在稳定值附近波动，很难收敛到更高精度。</li>
+<li><code>L2 loss</code>训练初期，<code>x</code>值很大时，其导数也很大，训练初期训练不稳定。</li>
+</ul>
+<p><strong>Smooth L1 Loss</strong></p>
+<ul>
+<li>定义</li>
+</ul>
+<p><img alt="image-20200618141414557" src="../assets/image-20200618141414557.png" /></p>
+<p><img alt="image-20200618141427627" src="../assets/image-20200618141427627.png" /></p>
+<ul>
+<li>
+<p>实际目标检测框回归loss</p>
+<p><img alt="image-20200618141701143" src="../assets/image-20200618141701143.png" /></p>
+<ul>
+<li>预测的框坐标：<img alt="image-20200618142006640" src="../assets/image-20200618142006640.png" /></li>
+<li><code>GT</code>的框坐标：<img alt="image-20200618141907798" src="../assets/image-20200618141907798.png" /></li>
+<li>注意，这里是求和<code>sum</code>，也有的会求均值<code>mean</code></li>
+</ul>
+</li>
+<li>
+<p>缺点</p>
+<ul>
+<li>这里先求出四个点的loss，再相加，但实际四个点是相关联的，实际评价框检测的指标是使用<code>IOU</code>，用这种方式很可能多个检测框IOU差异很大，但<code>smooth l1 loss</code>相同。</li>
+</ul>
+</li>
+</ul>
+<p><strong>IOU Loss</strong></p>
+<p><img alt="image-20200618144531712" src="../assets/image-20200618144531712.png" /></p>
+<ul>
+<li>
+<p>定义2：<code>IOU Loss = -ln(IOU)</code>|<code>L_iou = 1 - iou</code></p>
+</li>
+<li>
+<p>缺点：无法优化无交集的边界框(<code>loss</code>恒定为<code>1</code>)，不能反映两框之间的距离远近，且只要<code>iou</code>相同，两框的位置关系无法区分。</p>
+</li>
+</ul>
+<p><strong>GIou Loss</strong></p>
+<p><img alt="image-20200618144519434" src="../assets/image-20200618144519434.png" /></p>
+<ul>
+<li><code>C为B与B^gt最小外接矩形</code>,相当于在<code>IoU loss</code>的基础上增加一个惩罚项，当<code>bbox</code>的距离越大时，惩罚项将越大，但是<code>IoU</code>和<code>GIoU</code>的值都一样，此时<code>GIoU</code>退化为<code>IoU</code>, 无法区分其相对位置关系</li>
+</ul>
+<p><strong>DIou Loss</strong>:不重叠仍然可以为边界框提供梯度，直接优化两框距离收敛更快，但是没有考虑长宽比。</p>
+<p><img alt="image-20201127135534707" src="../assets/image-20201127135534707.png" /></p>
+<ul>
+<li>
+<p>缺点，没有考虑长宽比</p>
+<p><img src="../assets/image-20201127140602939.png" alt="image-20201127140602939" style="zoom:67%;" /></p>
+</li>
+<li>
+<p><strong>DIoU-NMS</strong> 能够更好的引导bbox的消除，以后考虑使用<code>CIoU Loss + DIoU-NMS</code>，为什么不使用<code>CIOU_nms</code></p>
+</li>
+<li>
+<p><code>ciou</code>是在<code>Diou</code>的基础上添加了影响因子，包含<code>GT</code>，预测的时候没有<code>GT</code>信息，不用考虑影响因子，所以直接用<code>DIOU_nms</code>即可</p>
+</li>
+</ul>
+<p><strong>CIou Loss</strong>:<code>Lciou = Ldiou + 长宽比</code></p>
+<p><img alt="image-20200618151734992" src="../assets/image-20200618151734992.png" /></p>
+<ul>
+<li>
+<p>在<code>DIOU</code>基础上加了一个影响因子<code>av</code>：<strong>加入了长宽比的考量</strong>(考虑了预测框长宽比拟合目标框的长宽比)</p>
+<ul>
+<li><code>v</code>：用来衡量长宽比一致性的参数</li>
+</ul>
+<p><img alt="image-20200618152015109" src="../assets/image-20200618152015109.png" /></p>
+<ul>
+<li>
+<p><code>a</code>：权衡因子</p>
+<p><img alt="image-20200618152143775" src="../assets/image-20200618152143775.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>这样<code>CIOU Loss</code>考虑了:重叠面积、中心点距离，长宽比，效果会更好。</p>
+</li>
+<li>
+<p>缺点：<code>v</code>过于复杂，减慢收敛速度；v的导数中含有<code>1/(w^2+h^2)</code>这个值往往很大，通常会导致梯度爆炸。</p>
+</li>
+</ul>
+<p><img alt="image-20210210103325100" src="../assets/image-20210210103325100.png" /></p>
+<p><strong>Focal-EIoU Loss</strong></p>
+<ul>
+<li><code>EIOU Loss</code></li>
+</ul>
+<p><img alt="image-20210210104437984" src="../assets/image-20210210104437984.png" /></p>
+<ul>
+<li><code>Focal-EIoU Loss</code></li>
+</ul>
+<p><img alt="image-20210210104954206" src="../assets/image-20210210104954206.png" /></p>
+<p><img alt="image-20210210104740722" src="../assets/image-20210210104740722.png" /></p>
+<p>**IOU_Loss：**主要考虑检测框和目标框重叠面积。</p>
+<p>**GIOU_Loss：**在IOU的基础上，解决边界框不重合时的问题。</p>
+<p>**DIOU_Loss：**在IOU和GIOU的基础上，考虑边界框中心点距离的信息。</p>
+<p>**CIOU_Loss：**在DIOU的基础上，考虑边界框宽高比的尺度信息。</p>
+<h3 id="link">常用人脸识别损失函数<a href="https://zhuanlan.zhihu.com/p/62680658">link</a><a class="headerlink" href="#link" title="Permanent link">&para;</a></h3>
+<p>人脸识别：本质上是分类问题(目的就是不同类的**类间间距够大，同一类的类内距离足够小**)。一般分类损失函数就是<code>softmax loss</code>(交叉熵损失)，但对于人脸就不够用了，因为**人脸特征差异不明显**，<code>softmax loss</code>对类间距离和类内距离控制的都不好，所以最后识别精度不高，泛化能力较差，常用<code>Center-Loss、L-Softmax、A-Softmax、ArcFace、AM-softmax</code>等</p>
+<ul>
+<li><strong>softmax Loss:类间距离和类内距离控制的都不好</strong>，各类损失权重相同，类间类内都没做优化。</li>
+</ul>
+<p><img alt="image-20201204150350461" src="../assets/image-20201204150350461.png" /></p>
+<ul>
+<li><strong>Center Loss:主要优化了类内距离，但对类间距离控制不足(人脸方向还行(单类)，用于其他方向效果差于softmax)</strong>，引入真实类别的中心距离向量<code>C_yi</code>，类内损失增大，优化后使类内距离更紧凑。λ 是超参，控制类内距离损失在当前样本损失中的比重。</li>
+</ul>
+<p><img alt="image-20201204150706814" src="../assets/image-20201204150706814.png" /></p>
+<ul>
+<li><strong>L-softmax Loss(Large-Margin Softmax Loss):类内距离和类间距离都能优化</strong>:借用<code>SVM</code>思想，如果原来的softmax loss是只要支持向量和分类面的距离大于h就算分类效果比较好了，那么<code>L-softmax loss</code>就是需要距离达到<code>mh</code>（<code>m是&gt;=2</code>正整数）才算分类效果比较好了。<strong>乘法角度间隔</strong>。</li>
+</ul>
+<p><img alt="image-20201204155332616" src="../assets/image-20201204155332616.png" /></p>
+<ul>
+<li>解释:很好理解，原先只需要<code>θ1&gt;θ2</code>就能分类，现在至少<code>θ1&gt;m*θ2</code>，边界距离增加了<code>m</code>倍，更难训练了，但如果收敛好后类内距离会更大，类间距离会更好，因为这个<code>m</code>强迫你往这个方向收敛。通常用<code>m</code>调节训练难度，<code>m</code>越大效果越好，当然模型越不易收敛，常<code>m=2,3,4</code></li>
+</ul>
+<p><img alt="image-20201204153125329" src="../assets/image-20201204153125329.png" /></p>
+<p><img alt="image-20201204155657968" src="../assets/image-20201204155657968.png" /></p>
+<ul>
+<li><a href="https://blog.csdn.net/loveliuzz/article/details/93494206"><code>A-softmax loss</code></a>(<strong>SphereFace</strong>):类似<code>L-softmax</code>，限制条件(归一化权重,bias置0):<code>w=1,bias=0,代码中实现:归一化权重(w/w_2范数)</code>，用角度增大间隔。</li>
+</ul>
+<p><img alt="image-20201208200718721" src="../assets/image-20201208200718721.png" /></p>
+<ul>
+<li><strong>AM-Softmax(余弦距离:同CosFace)</strong>：<code>A-softmax(角度距离)</code>的改进。限制条件(归一化权重和特征向量,bias置0):<code>w=1,x=1,bias=0,代码中实现:归一化权重(w/w_2范数)，归一化特征向量(x/x_2范数)</code>，<strong>减法余弦间隔</strong></li>
+</ul>
+<p><img alt="image-20201208202804117" src="../assets/image-20201208202804117.png" /></p>
+<ul>
+<li><strong>ArcFace loss(角度间隔) **:<code>A-softmax(角度距离)</code>的改进，角度<code>θ</code>加上间隔<code>m</code>。限制条件(归一化权重和特征向量,bias置0):<code>w=1,x=1,bias=0,代码中实现:归一化权重(w/w_2范数)，归一化特征向量(x/x_2范数)</code>，用角度来增大间隔。**加法角度间隔</strong></li>
+</ul>
+<p><img alt="image-20201210163948134" src="../assets/image-20201210163948134.png" /></p>
+<ul>
+<li>先将特征向量L2归一化，权重L2归一化，计算两者的cos(θ)，求反余弦arccos(θ)得到特征<code>x</code>与真实权值<code>W</code>之间的夹角θ，添加角度间隔<code>m</code>，再求余弦<code>cos(θ+m)</code>，将所有的<code>log</code>乘以特征尺度<code>s</code>，然后将<code>log</code>送到<code>softmax</code>函数得到各类别概率。再用<code>Ground Truth</code>和<code>One Hot Vector</code>一起算出交叉熵损失</li>
+</ul>
+<p><code>ArcFace loss</code>终极大法:<a href="https://zhuanlan.zhihu.com/p/76541084">联合<code>margin</code></a>:<code>结合所有的margin惩罚(cos(m1*θ+m2)−m3)</code></p>
+<p><img alt="image-20201210165000725" src="../assets/image-20201210165000725.png" /></p>
+<p><img alt="image-20201210170856251" src="../assets/image-20201210170856251.png" /></p>
+<h3 id="_14">人脸识别评估指标<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>FAR(误识别率:<code>False Accept Rate</code>):不同人判定为同一人的比例：right/类间匹配总次数</strong></p>
+</li>
+<li>
+<p><strong>FRR(拒识别率:<code>False Reject Rate</code>):同一人判定为不同人的比例：right/类内匹配总次数</strong></p>
+</li>
+</ul>
+<p><img alt="image-20201217150630844" src="../assets/image-20201217150630844.png" /></p>
+<ul>
+<li><strong>EER(等错误率:<code>Equal Error Rate</code>):FAR是随阈值增大而减小的，FRR是随阈值增大而增大的。因此它们一定有交点为EER，从而选取最佳阈值。常取<code>FAR=1e-3</code>时，FRR的值作为参考，值越小，性能越好(论文中常常<code>TAR =xx @ FAR=0.00100</code>)来评测</strong></li>
+</ul>
+<p><img alt="image-20201217153440277" src="../assets/image-20201217153440277.png" /></p>
+<h3 id="_15">常见边缘处理算子<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p><strong>Sobel算子</strong></p>
+<p>​                                              Sx=<img alt="image-20200521112122892" src="../assets/image-20200521112122892.png" />              Sy=<img alt="image-20200521112140949" src="../assets/image-20200521112140949.png" /></p>
+<ul>
+<li><code>3*3</code>Sobel两个方向的算子在图像上滑动，模板与其覆盖的图像<code>3*3</code>区域9个像素进行卷积，求和后得到此方向的**边缘检测幅值**。</li>
+</ul>
+<p><img alt="image-20200521112049572" src="../assets/image-20200521112049572.png" /></p>
+<p><img alt="image-20200521112227525" src="../assets/image-20200521112227525.png" /></p>
+<ul>
+<li>A为图像</li>
+<li>Gx和Gy分别是水平和竖直方向算子的卷积结果</li>
+<li>G则是最终得到的边缘检测幅值</li>
+<li>
+<p>θ值则是边缘方向</p>
+</li>
+<li>
+<p>Sobel算子还有一种变种，是各向同性Sobel算子(更准确)，其模板为</p>
+</li>
+</ul>
+<p><img alt="image-20200521112032745" src="../assets/image-20200521112032745.png" /></p>
+<ul>
+<li>模板的权值是离中心位置越远则权值影响越小，但是上面的模板使其距离一样长，例如:中心点到(0,0)点距离是根号2，到(1,0)点距离也是根号2，这样就消除了权重的影响。</li>
+</ul>
+<p><img alt="image-20200521112815005" src="../assets/image-20200521112815005.png" /></p>
+<p><strong>Canny算子(6步)</strong></p>
+<ul>
+<li>彩色图片灰度化。</li>
+<li>使用高斯滤波器，以平滑图像，滤除噪声。<ul>
+<li>高斯卷积核尺寸越大，检测器对噪声的敏感度越低，但是边缘检测的定位误差也将略有增加，一般而言<code>5x5</code>是最合适的。</li>
+</ul>
+</li>
+<li>计算图像中每个像素点的梯度强度和方向。<ul>
+<li>图像中的边缘可以指向各个方向，所以这步常用一阶微分算子(如:Sobel算子)，得到像素点的梯度G和方向theta。</li>
+</ul>
+</li>
+<li><strong>应用非极大值抑制</strong>，使得边缘细化。<ul>
+<li>主要作用是"瘦边"，仅仅基于梯度值提取的边缘仍然很模糊，将局部最大值之外的所有梯度值抑制为0(将当前像素的梯度强度与沿正负梯度方向上的两个像素的梯度强度进行比较，最大则保留，否则被抑制)</li>
+</ul>
+</li>
+<li>应用**双阈值检测**来优化边缘连接处理。<ul>
+<li>非极大值抑制后，边缘已经很明显了，但还是存在噪声和颜色变化引起的一些边缘像素(噪点)，可以通过高低阈值来解决(用弱梯度值过滤边缘像素，并保留具有高梯度值的边缘像素)。<ul>
+<li>如果边缘像素的梯度值小于低阈值，则会被抑制；</li>
+<li>如果边缘像素的梯度值小于高阈值并且大于低阈值，则将其标记为**弱边缘像素(保留？)**；</li>
+<li>如果边缘像素的梯度值高于高阈值，则将其标记为**强边缘像素(保留)**；</li>
+<li>阈值的选择取决于给定输入图像的内容。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>通过抑制孤立的弱边缘最终完成边缘检测(二值化图像输出结果)。<ul>
+<li>强边缘像素保留，因为它们是从图像中的真实边缘中提取出来的，然而，弱边缘区域是否保留？(因为这些像素可以从真实边缘提取也可以是因噪声或颜色变化引起的)，保留真实的，去除噪声引起的。</li>
+<li>通常，由真实边缘引起的弱边缘像素将连接到强边缘像素，而噪声响应未连接。为了跟踪边缘连接，通过查看弱边缘像素及其8个邻域像素，只要其中一个为强边缘像素，则该弱边缘点就可以保留为真实的边缘。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20200521112900364" src="../assets/image-20200521112900364.png" /></p>
+<h3 id="_16">图像滤波<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><strong>图像滤波的目的</strong></p>
+<ul>
+<li>消除图像中混入的噪声</li>
+<li>为图像识别抽取出图像特征</li>
+</ul>
+<p><strong>滤波种类</strong></p>
+<ul>
+<li>线性滤波：均值滤波、高斯滤波</li>
+<li>非线性滤波：中值滤波、双边滤波</li>
+</ul>
+<p><strong>均值滤波</strong></p>
+<p><img alt="image-20200608080523115" src="../assets/image-20200608080523115.png" /></p>
+<ul>
+<li>均值滤波，对**高斯噪声**表现较好，对椒盐噪声表现较差。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">blur</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">blur</span><span class="p">(</span><span class="n">src_img</span><span class="p">,(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span> <span class="c1"># 核尺寸一般有 3x5,5x5,7x7,一般核越大，图片处理完的效果越模糊</span>
+</code></pre></div>
+<p><strong>中值滤波(非线性)</strong></p>
+<ul>
+<li>中值滤波主题思想是取相邻像素的点，然后对相邻像素的点进行排序，取中点的灰度值作为该像素点的灰度值</li>
+<li>该方法在去除**脉冲噪声、椒盐噪声**的同时还能保留图像的细节部分</li>
+<li>中值滤波花费的时间比均值滤波更久，但其在噪声的消除能力上更强。</li>
+</ul>
+<p><strong>高斯滤波(高斯模糊)</strong></p>
+<p>高斯滤波一般针对的是**高斯噪声**，能够很好的抑制图像输入时**随机引入的噪声**，将像素点跟邻域像素看作是一种高斯分布的关系，<strong>它的操作是将图像和一个高斯核进行卷积操作</strong>： </p>
+<p><img alt="image-20200527114257451" src="../assets/image-20200527114257451.png" /></p>
+<p><strong>双边滤波</strong></p>
+<ul>
+<li>
+<p>目的是**保边去噪**，原理:二维高斯函数生成距离模板，使用一维高斯函数生成值域模板，两者相乘即可。</p>
+</li>
+<li>
+<p><strong>距离模板</strong>:其中，(k,l)为模板窗口的中心坐标；(i,j)为模板窗口其他系数的坐标；σ为高斯函数的标准差。</p>
+<p><img alt="image-20200608081302419" src="../assets/image-20200608081302419.png" /></p>
+</li>
+<li>
+<p><strong>值域模板</strong></p>
+<p><img alt="image-20200608081343959" src="../assets/image-20200608081343959.png" /></p>
+</li>
+<li>
+<p>两者相乘得到双边过滤器模板:</p>
+<p><img alt="image-20200608081419644" src="../assets/image-20200608081419644.png" /></p>
+</li>
+</ul>
+<p><strong>小总结</strong></p>
+<ul>
+<li>均值模糊无法克服边缘像素信息丢失的缺陷，原因是均值滤波是基于平均权重的。</li>
+<li>高斯模糊部分克服了该缺陷，但无法完全避免，因为没有考虑像素值的不同。</li>
+<li>高斯双边模糊-是边缘保留的滤波方法，避免了边缘信息丢失，保留了图像轮廓不变。</li>
+</ul>
+<h3 id="c">c++面试常问题目<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<p><a href="https://cnblogs.com/inception6-lxc/p/8686156.html">博客链接</a></p>
+<p><strong>栈内存和堆内存</strong></p>
+<ul>
+<li>栈内存:常分配给局部变量、临时变量、函数参数等，为编译器自动分配和释放<ul>
+<li>当在栈上分配一个新的变量时(或进入一个函数时)，栈的指针会下移，相当于在栈上分配了一块内存。。当这个变量的生命周期结束时，栈的指针会上移，相同于回收了内存。由于栈上的内存的分配和回收都是由编译器控制的，所以在栈上是不会发生内存泄露的，只会发生**栈溢出**，也就是分配的空间超过了规定的栈大小(一个线程的栈内存是有限的，通常来说是 8M 左右（取决于运行的环境）)。</li>
+</ul>
+</li>
+<li>堆内存:为成员分配和释放，一般由程序员自己申请、自己释放。否则发生内存泄露。典型为使用new申请的堆内容。<ul>
+<li>内存泄露:堆上的内存是由程序直接控制的，程序可以通过 malloc/free 或 new/delete 来分配和回收内存，如果程序中通过 malloc/new 分配了一块内存，但忘记使用 free/delete 来回收内存，就发生了内存泄露。</li>
+</ul>
+</li>
+<li>静态存储区:主要存放静态数据、全局数据和常量。内存在程序编译的时候就已经分配好，而且这块内存在程序的整个运行期间都存在。</li>
+</ul>
+<p><strong>c++中内存泄露和野指针</strong></p>
+<ul>
+<li><strong>在类的构造函数和析构函数中没有匹配的调用new和delete函数</strong><ul>
+<li>一是在堆里创建了对象占用了内存，但是没有显示地释放对象占用的内存；</li>
+<li>二是在类的构造函数中动态的分配了内存，但是在析构函数中没有释放内存或者没有正确的释放内存</li>
+</ul>
+</li>
+<li>
+<p><strong>在释放对象数组时在delete中没有使用方括号</strong></p>
+<ul>
+<li><code>int *p = new int[10]</code>方括号是告诉编译器这个指针指向的是一个**对象数组**，<code>delete p</code>如果没有方括号，那么这个指针就被默认为只指向一个对象，对象数组中的其他对象的析构函数就不会被调用，结果造成了内存泄露，正确做法<code>delete [] p;</code></li>
+</ul>
+</li>
+<li>
+<p>一个类里有指针成员变量，必须显示的写拷贝构造函数</p>
+<ul>
+<li>如果没有定义拷贝构造函数，那么编译器就会调用默认的拷贝构造函数，如果类里有指针成员变量会被定义为将一个变量的地址赋给另一个变量，这种隐式的指针复制结果就是**两个对象拥有指向同一个动态分配的内存空间的指针**。当释放第一个对象的时候，它的析构函数就会释放与该对象有关的动态分配的内存空间。而释放第二个对象的时候，它的析构函数会释放相同的内存，这是错误的同时有可能造成堆崩溃。</li>
+</ul>
+</li>
+<li>
+<p><strong>没有将基类的析构函数定义为虚函数</strong></p>
+<ul>
+<li>当基类指针指向子类对象时，如果基类的析构函数不是virtual，释放由一个基类指针指向的派生类对象时，只会调用基类的析构函数，不会触发动态绑定，那么子类的析构函数将不会被调用，子类的资源没有正确是释放，因此造成内存泄露。</li>
+</ul>
+</li>
+<li>
+<p><strong>野指针</strong>：指向被释放的或者访问受限内存的指针</p>
+<ul>
+<li>指针变量没有被初始化（如果值不定，可以初始化为NULL）</li>
+<li>指针被free或者delete后，没有置为NULL, free和delete只是把指针所指向的内存给释放掉，并没有把指针本身干掉，此时指针指向的是“垃圾”内存。释放后的指针应该被置为NULL.</li>
+<li>指针操作超越了变量的作用范围，比如返回指向栈内存的指针就是野指针。</li>
+</ul>
+</li>
+</ul>
+<p><strong>指针和引用</strong></p>
+<ul>
+<li>指针是一个变量，他的内容是所指向内存的地址；引用是某块内存的别名。</li>
+<li><code>Sizeof 指针</code>:得到的是指针本身的大小；<code>Sizeof 引用</code>：所指向的变量(对象)的大小。</li>
+<li>指针可以为空，引用不可为空；指针见异思迁，引用从一而终(只在定义时被初始化一次,之后不可变)；</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              图像识别论文解读
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              PyTorch快速教程
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>

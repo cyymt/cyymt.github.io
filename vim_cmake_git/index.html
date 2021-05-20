@@ -1,0 +1,1451 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>vim_git_cmake - 个人笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="pink">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vim" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="个人笔记" class="md-header__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            个人笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              vim_git_cmake
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="个人笔记" class="md-nav__button md-logo" aria-label="个人笔记">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    个人笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        一、计算机视觉专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="一、计算机视觉专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          一、计算机视觉专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        目标检测论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OCR%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        OCR方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BA%BA%E8%84%B8%E6%96%B9%E5%90%91%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        人脸方向论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/" class="md-nav__link">
+        图像识别论文解读
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        深度学习基础
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        二、AI代码专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="二、AI代码专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          二、AI代码专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PyTorch%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PyTorch快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PaddlePaddle%E5%BF%AB%E9%80%9F%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        PaddlePaddle快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caffe%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        Caffe快速教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onnx%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        ONNX简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/" class="md-nav__link">
+        深度学习工具代码
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas%E3%80%81matplotlib%E7%AE%80%E6%B4%81%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        PD+PLT简洁笔记
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        三、常用工具专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="三、常用工具专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          三、常用工具专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%8C%96%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        量化工具使用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        实用工具教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        学习网站收集
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%E5%BA%93%28albumentations%2BAugmentor%29/" class="md-nav__link">
+        图像增强库
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        四、编程语言专栏
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="四、编程语言专栏" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          四、编程语言专栏
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        c++简明教程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          vim_git_cmake
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        vim_git_cmake
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    Vim简单配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    git配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    CMake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    docker
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%E5%88%B7%E9%A2%98/" class="md-nav__link">
+        python刷题
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8Band%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        java简明教程and安卓开发
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    Vim简单配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    git配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    CMake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    docker
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>vim_git_cmake</h1>
+                
+                <h3 id="vim">Vim简单配置<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>filetype plugin on
+<span class="s2">&quot; 按 F5 执行当前 Python 代码&quot;</span>
+map &lt;F5&gt; :call PRUN<span class="o">()</span>&lt;CR&gt;
+func! PRUN<span class="o">()</span>
+    <span class="nb">exec</span> <span class="s2">&quot;w&quot;</span> 
+    <span class="k">if</span> <span class="p">&amp;</span><span class="nv">filetype</span> <span class="o">==</span> <span class="s1">&#39;python&#39;</span>
+        <span class="nb">exec</span> <span class="s2">&quot;!python %&quot;</span>
+    endif
+endfunc
+
+<span class="s2">&quot;更多配色方案:https://hub.fastgit.org/wklken/k-vim&quot;</span>
+<span class="s2">&quot;colorscheme desert 设定配色方案&quot;</span>
+
+
+<span class="s2">&quot;python 自动缩进&quot;</span>
+<span class="nb">set</span> <span class="nv">filetype</span><span class="o">=</span>python
+au BufNewFile,BufRead *.py,*.pyw setf python
+<span class="nb">set</span> <span class="nv">helplang</span><span class="o">=</span>cn <span class="s2">&quot;中文帮助文档(前提是下了中文包)</span>
+<span class="s2">syntax enable</span>
+<span class="s2">syntax on &quot;</span> 自动语法高亮
+<span class="nb">set</span> <span class="nv">guifont</span><span class="o">=</span>Consolas:h12:cANSI <span class="s2">&quot;英文字体</span>
+<span class="s2">set guifontwide=SimSun-ExtB:h12:cGB2312</span>
+<span class="s2">autocmd FileType python set tabstop=4 | set expandtab | set autoindent</span>
+<span class="s2">set autoread &quot;</span> 当文件在外部被修改时，自动重新读取
+<span class="nb">set</span> <span class="nv">history</span><span class="o">=</span><span class="m">400</span> <span class="s2">&quot;vim记住的历史操作的数量，默认的是20</span>
+<span class="s2">set nocompatible &quot;</span>使用vim自己的键盘模式,而不是兼容vi的模式
+<span class="nb">set</span> confirm <span class="s2">&quot;处理未保存或者只读文件时,给出提示</span>
+<span class="s2">set smartindent &quot;</span>智能对齐<span class="s2">&quot;</span>
+<span class="s2">set shiftwidth=4</span>
+
+<span class="s2">&quot;</span>设置编码,支持中文不乱码<span class="s2">&quot;</span>
+<span class="s2">set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span>
+<span class="s2">set termencoding=utf-8</span>
+<span class="s2">set encoding=utf-8</span>
+<span class="s2">&quot;</span>显示行号<span class="s2">&quot;</span>
+<span class="s2">set nu</span>
+<span class="s2">set number</span>
+<span class="s2">&quot;</span>突出显示当前行<span class="s2">&quot;</span>
+<span class="s2">set cursorline</span>
+<span class="s2">set cul &quot;</span>cursorline的缩写形式<span class="s2">&quot;</span>
+<span class="s2">set autoindent &quot;</span>继承前一行的缩进方式，适用于多行注释<span class="s2">&quot;</span>
+<span class="s2">set laststatus=2 &quot;</span>总是显示状态栏<span class="s2">&quot;</span>
+<span class="s2">set ruler &quot;</span>显示光标当前位置<span class="s2">&quot;</span>
+<span class="s2">set ignorecase &quot;</span>查找时忽略大小写<span class="s2">&quot;       </span>
+<span class="s2">set nohlsearch &quot;</span>高亮显示查找内<span class="s2">&quot;</span>
+
+
+
+<span class="s2">&quot;</span>让vimrc配置变更立即生效<span class="s2">&quot;</span>
+<span class="s2">autocmd BufWritePost </span><span class="nv">$MYVIMRC</span><span class="s2"> source </span><span class="nv">$MYVIMRC</span><span class="s2"></span>
+</code></pre></div>
+<h3 id="git">git配置<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
+<p><a href="https://mp.weixin.qq.com/s/FzFwIDxWqGqcfTXJ0CbPFg">干货博客</a></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 因为Git是分布式版本控制系统，所以需要填写用户名和邮箱作为一个标识</span>
+<span class="c1"># git config --global 参数，有了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然你也可以对某个仓库指定的不同的用户名和邮箱。</span>
+git config --global user.name <span class="s2">&quot;用户名&quot;</span>
+git config --global user.email <span class="s2">&quot;邮箱&quot;</span>
+
+<span class="c1"># 提交代码</span>
+mkdir MyProject <span class="o">&amp;&amp;</span> <span class="nb">cd</span> MyProject <span class="c1"># 创建项目名</span>
+git init <span class="c1"># 把目录变成git可以管理的仓库,项目下会多一个.git文件</span>
+vi readme.txt <span class="c1"># 111111 在该项目下写代码即可，本次使用readme.txt作为演示</span>
+git add readme.txt <span class="c1"># 把内容添加到暂存区里</span>
+git commit -m <span class="s2">&quot;提交注释&quot;</span> <span class="c1"># 把文件提交到仓库</span>
+git status <span class="c1"># 查看是否还有文件未提交</span>
+vi readme.txt <span class="c1"># append 222222,修改readme.txt</span>
+git status <span class="c1"># 这个命令告诉我们 readme.txt文件已被修改，但是未被提交的修改</span>
+git diff readme.txt <span class="c1"># 看下readme.txt文件到底改了什么内容</span>
+git add readme.txt <span class="c1"># 把内容添加到暂存区里</span>
+git status <span class="c1"># 提交之前查看状态</span>
+git commit -m <span class="s2">&quot;再次添加注释&quot;</span> <span class="c1"># 把文件提交到仓库</span>
+
+<span class="c1"># 版本回退</span>
+vi readme.txt <span class="c1"># append 333333,readme.txt文件总共进行了三次更改</span>
+git log <span class="c1"># 查看历史记录，显示从最近到最远的显示日志，默认显示详细信息</span>
+git log --pretty<span class="o">=</span>oneline <span class="c1"># 显示简洁的历史信息，显示3次更改</span>
+<span class="c1"># 开始版本回退</span>
+git reset --hard HEAD^ <span class="c1"># 回退到上个版本</span>
+git reset --hard HEAD^^ <span class="c1"># 回退到上上个版本,依次类推，如果想回退到前100个版本呢？</span>
+git reset --hard HEAD~100 <span class="c1"># 回退到前100个版本</span>
+git log --pretty<span class="o">=</span>oneline <span class="c1"># 显示2次更改§</span>
+<span class="c1"># 如何获取每次更改后的版本号呢？</span>
+git reflog <span class="c1"># 即使我执行过一次回退，但是我忘记了这次回退，也可以显示出来</span>
+git reset --hard 版本号<span class="o">(</span>6fcfc89<span class="o">)</span> <span class="c1"># 如果回退错了，想返回到最新，也可以直接用最新版本号来回退</span>
+
+<span class="c1"># 工作区和暂存区</span>
+<span class="c1"># 工作区:就是你在电脑上看到的目录。</span>
+<span class="c1"># 暂存区:工作区有一个隐藏目录.git,这个不属于工作区，这是版本库,版本库里面有个stage的暂存区，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。</span>
+vi readme.txt <span class="c1"># append 555555,突然发现添加的内容有错误，但是你忘记了修改了啥如何撤销？当然是在未提交之前</span>
+git status <span class="c1"># 查看一下是不是未提交，如果未提交</span>
+git checkout --readme.txt <span class="c1"># git checkout -- file 可以丢弃在工作区的修改。</span>
+<span class="c1"># 注意 命令git checkout -- readme.txt 中的 -- 很重要，如果没有 -- 的话，那么命令变成创建分支了。</span>
+
+
+<span class="c1"># 远程仓库</span>
+ssh-keygen -t rsa –C “youremail@example.com” <span class="c1"># 创建ssh秘钥，找到.ssh/id_rsa.pub公钥</span>
+<span class="c1"># 登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”,填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容</span>
+<span class="c1"># 我们已经在本地创建了一个Git仓库后，又想在github创建一个Git仓库，并且希望这两个仓库进行远程同步，这样github的仓库可以作为备份，又可以其他人通过该仓库来协作，在github上创建一个新仓库，仓库名保持一致，其他默认</span>
+git remote add origin https://github.com/tugenhua0707/testgit.git <span class="c1"># 后面的链接改为自己的</span>
+<span class="c1"># 由于远程库是空的，我们第一次推送master分支时，加上了 –u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</span>
+git push -u origin master <span class="c1"># 把本地仓库分支master内容推到远程仓库中去</span>
+git push origin master <span class="c1"># 以后用这个命令就可以了</span>
+
+
+<span class="c1"># 创建其他分支</span>
+git checkout -b dev <span class="c1"># 创建并切换分支为dev，git checkout -b相当于 git branch dev+git checkout dev</span>
+git branch <span class="c1"># 查看当前分支</span>
+<span class="c1"># 把dev分支上的内容合并到分支master上了，可以在master分支上，使用如下命令 git merge dev </span>
+git merge dev <span class="c1"># 把dev分支上的内容合并到分支master上了,需在master分支上执行该命令，这样就合并了两个分支</span>
+git branch -d dev <span class="c1"># 删除dev分支，因为已经合并到master上了</span>
+
+
+<span class="c1"># 解决冲突，假设readme.txt文件，dev分支上添加了888888，而master分支上添加了999999</span>
+git merge dev <span class="c1"># 会报错，有冲突，查看readme.txt会出现冲突的代码位置:&lt;&lt;&lt;HEAD是指主分支修改的内容，&gt;&gt;&gt;&gt;&gt;dev 是指dev上修改的内容</span>
+<span class="c1"># 解决:修改代码和master分支上的内容保持一致即可</span>
+</code></pre></div>
+<h3 id="cmake">CMake<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h3>
+<p><strong>基础用法(外部构建)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.变量引用方式,其实就是表示变量的值:${变量}，IF语句是直接使用变量名引用，而不需要${}。如果使用了${}去应用变 量，其实 IF 会去判断名为${}所代表的值的变量，那当然是不存在的了。</span>
+<span class="c1"># 2.指令中参数格式:指令(参数1 参数2 参数3)，指令是大小写无关的，参数和变量是大小写相关的。但，推荐你全部使用大写指令。</span>
+<span class="c1"># 3.需要为任何子目录建立CMakeLists.txt文件</span>
+cmake_minimum_required<span class="o">(</span>VERSION <span class="m">3</span>.15<span class="o">)</span>
+
+<span class="c1"># PROJECT(projectname [CXX] [C] [Java]),可以指定工程名称+语言</span>
+<span class="c1"># 这个指令默认生成两个变量:Test_BINARY_DIR+Test_SOURCE_DIR,但是cmake系统也预定义了:PROJECT_BINARY_DIR+PROJECT_SOURCE_DIR(建议使用)</span>
+project<span class="o">(</span>Test<span class="o">)</span> <span class="c1"># 工程名和生成的可执行文件hello是没有任何关系的</span>
+
+<span class="c1"># SET 指令可以用来显式的定义变量,当然可以指定多个.c文件，SET(SRC_LIST main.c t1.c t2.c)</span>
+set<span class="o">(</span>CMAKE_CXX_STANDARD <span class="m">14</span><span class="o">)</span>
+set<span class="o">(</span>SRC_LIST main.cpp<span class="o">)</span> <span class="c1"># 等价于set(SRC_LIST &quot;main.cpp&quot;)，如果某文件名包含空格:fu nc.c，必须带双引号</span>
+
+<span class="c1"># 向终端输出用户定义的信息，包含了三种类型: SEND_ERROR，产生错误，生成过程被跳过。 SATUS，输出前缀为—的信息。FATAL_ERROR，立即终止所有 cmake 过程.</span>
+MESSAGE<span class="o">(</span>STATUS <span class="s2">&quot;This is BINARY dir &quot;</span> <span class="si">${</span><span class="nv">PROJECT_BINARY_DIR</span><span class="si">}</span><span class="o">)</span> <span class="c1"># 编译所在路径，一般是build文件路径</span>
+MESSAGE<span class="o">(</span>STATUS <span class="s2">&quot;This is SOURCE dir &quot;</span> <span class="si">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="si">}</span><span class="o">)</span> <span class="c1"># 指代工程路径，绝对路径就到工程名称</span>
+
+<span class="c1">#定义了这个工程会生成一个文件名为 hello 的可执行文件，相关的源文件是 SRC_LIST 中 定义的源文件列表， 本例中你也可以直接写成 ADD_EXECUTABLE(hello main.c)。</span>
+add_executable<span class="o">(</span>Test <span class="si">${</span><span class="nv">SRC_LIST</span><span class="si">}</span><span class="o">)</span> <span class="c1"># 可执行文件名，你可以随便起名称，一般和工程名相同</span>
+
+<span class="c1"># 和cmake同级目录下构建build文件夹，然后cd 进入</span>
+<span class="c1"># 生成MakeFile文件:cmake ..</span>
+<span class="c1"># 构建工程:make,如果想看到详细构建过程，make VERBOSE=1</span>
+<span class="c1"># 清理工程:make clean</span>
+</code></pre></div>
+<p><strong>构建整个工程用法</strong></p>
+<div class="highlight"><pre><span></span><code>-src
+ <span class="p">|</span>-CMakeLists.txt
+ <span class="p">|</span>-main.cpp
+-build
+ <span class="p">|</span>-要执行cmake ..的编译文件
+-doc <span class="c1"># 用于防止本工程的文档</span>
+ <span class="p">|</span>-hello.txt <span class="c1"># 写一些描述性内容</span>
+-runhello.sh <span class="c1"># 调用结果二进制，本次内容为hello</span>
+-COPYRIGHT <span class="c1"># 添加文本文件</span>
+-README <span class="c1"># 添加文本文件</span>
+-CMakeLists.txt
+
+<span class="c1"># 最终安装这些文件：将 hello 二进制与 runhello.sh 安装至/usr/bin，将 doc 目录 的内容以及 COPYRIGHT/README 安装到/usr/share/doc/cmake/t2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 注意，需要为任何子目录建立一个CMakeLists.txt文件</span>
+
+
+<span class="c1"># src/CMakeLists.txt的编写</span>
+ADD_EXECUTABLE<span class="o">(</span>hello main.c<span class="o">)</span>
+<span class="c1"># 工程下CMakeLists.txt的编写</span>
+PROJECT<span class="o">(</span>HELLO<span class="o">)</span>
+<span class="c1"># ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</span>
+<span class="c1"># 用于向当前工程添加存放源文件的子目录,并可以指定中间二进制和目标二进制存 放的位置。</span>
+ADD_SUBDIRECTORY<span class="o">(</span>src bin<span class="o">)</span> <span class="c1"># 指定编译输出(包含编译中间结果)路径为 bin 目录,如果不指定那么编译结果(包括中间结果)都将存放在 build/src 目录(这个目录跟原有的 src 目录对应)，指定 bin 目录后，相当于在编译时 将 src 重命名为 bin，所有的中间结果和目标二进制都将存放在 bin 目录。</span>
+
+
+<span class="c1">#然后建立 build 目录，进入 build 目录进行外部编译。 </span>
+<span class="c1">#cmake ..</span>
+<span class="c1">#make </span>
+<span class="c1">#构建完成后，你会发现生成的目标文件 hello 位于 build/bin 目录中。</span>
+
+
+<span class="c1"># 当然，如果不想编译输出直接放在build/bin目录下，可以通过set指令重新定义EXECUTABLE_OUTPUT_PATH 和 LIBRARY_OUTPUT_PATH 变量 来指定最终的目标二进制的位置(指最终生成的 hello 或者最终的共享库，不包含编译生成 的中间文件),但是两行放在哪呢？把握一个简单的原则，在哪里 ADD_EXECUTABLE 或 ADD_LIBRARY， 如果需要改变目标存放路径，就在哪里加入上述的定义。这里放在src/CMakeLists.txt里面</span>
+SET<span class="o">(</span>EXECUTABLE_OUTPUT_PATH <span class="si">${</span><span class="nv">PROJECT_BINARY_DIR</span><span class="si">}</span>/bin<span class="o">)</span> <span class="c1"># 二进制的输出路径</span>
+SET<span class="o">(</span>LIBRARY_OUTPUT_PATH <span class="si">${</span><span class="nv">PROJECT_BINARY_DIR</span><span class="si">}</span>/lib<span class="o">)</span> <span class="c1"># 库的输出路径，常用于共享库和静态库</span>
+
+
+<span class="c1"># 安装项目:一个项目clone下来后是需要安装的，例如opencv，安装到本地后使用非常方便，下面介绍hello项目的安装</span>
+make install <span class="c1"># 直接安装，默认安装路径:/usr/bin目录</span>
+make install <span class="nv">DESTDIR</span><span class="o">=</span>/tmp/test <span class="c1"># 指定目录安装:安装到/tmp/test/usr/bin目录（打包时常用）</span>
+
+<span class="c1"># INSTALL命令:用于定义安装规则，安装的内容可以包括目标二进制、动态库、静态库以及 文件、目录、脚本等</span>
+<span class="c1"># 1.目标文件安装</span>
+INSTALL<span class="o">(</span>TARGETS targets...# 后面跟的就是我们通过 ADD_EXECUTABLE 或者 ADD_LIBRARY 定义的 目标文件，可能是可执行二进制、动态库、静态库
+       <span class="o">[[</span>ARCHIVE<span class="p">|</span>LIBRARY<span class="p">|</span>RUNTIME<span class="o">]</span><span class="c1"># 目标类型也就相对应的有三种，ARCHIVE 特指静态库，LIBRARY 特指动态库，RUNTIME 特指可执行目标二进制。</span>
+       <span class="o">[</span>DESTINATION &lt;dir&gt;<span class="o">]</span> <span class="c1"># 定义了安装的路径，如果路径以/开头，那么指的是绝对路径，这时候 CMAKE_INSTALL_PREFIX 其实就无效了。如果你希望使用 CMAKE_INSTALL_PREFIX 来 定义安装路径，就要写成相对路径，即不要以/开头，那么安装后的路径就是 ${CMAKE_INSTALL_PREFIX}/&lt;DESTINATION 定义的路径&gt;,注意相对路径要不要以/结尾(abc,abc/)，如果目录名不以/结尾，那么这个目录将被安装为目标路径下的 abc，如果目录名以/结尾， 代表将这个目录中的内容安装到目标路径，但不包括这个目录本身。</span>
+       <span class="o">[</span>PERMISSIONS permissions...<span class="o">]</span> 
+       <span class="o">[</span>CONFIGURATIONS <span class="o">[</span>Debug<span class="p">|</span>Release<span class="p">|</span>...<span class="o">]]</span> 
+       <span class="o">[</span>COMPONENT &lt;component&gt;<span class="o">]</span> 
+       <span class="o">[</span>OPTIONAL<span class="o">]</span> <span class="o">]</span> <span class="o">[</span>...<span class="o">])</span>
+<span class="c1"># 举例子</span>
+INSTALL<span class="o">(</span>TARGETS myrun mylib mystaticlib <span class="c1"># DESTINATION描述的是安装路径</span>
+        RUNTIME DESTINATION bin <span class="c1"># 可执行二进制myrun安装到${CMAKE_INSTALL_PREFIX}/bin目录 </span>
+        LIBRARY DESTINATION lib# 动态库lib mylib 安装到<span class="si">${</span><span class="nv">CMAKE_INSTALL_PREFIX</span><span class="si">}</span>/lib 目录 
+        ARCHIVE DESTINATION libstatic<span class="o">)</span><span class="c1"># 静态库lib mystaticlib 安装到${CMAKE_INSTALL_PREFIX}/libstatic 目录</span>
+
+<span class="c1"># 2.普通文件安装，可用于安装一般文件，并可以指定访问权限，文件名是此指令所在路径下的相对路径</span>
+INSTALL<span class="o">(</span>FILES files... DESTINATION &lt;dir&gt; <span class="c1"># dir写相对路径为好</span>
+       <span class="o">[</span>PERMISSIONS permissions...<span class="o">]</span> <span class="c1"># 后面的可以用于指定权限:默认644权限</span>
+       <span class="o">[</span>CONFIGURATIONS <span class="o">[</span>Debug<span class="p">|</span>Release<span class="p">|</span>...<span class="o">]]</span> 
+       <span class="o">[</span>COMPONENT &lt;component&gt;<span class="o">]</span> 
+       <span class="o">[</span>OPTIONAL<span class="o">]</span> <span class="o">]</span> <span class="o">[</span>...<span class="o">])</span>
+
+<span class="c1"># 3.非目标文件的可执行程序安装(比如脚本等)</span>
+INSTALL<span class="o">(</span>PROGRAMS files... DESTINATION &lt;dir&gt; <span class="c1"># dir写相对路径为好</span>
+       <span class="o">[</span>PERMISSIONS permissions...<span class="o">]</span> <span class="c1"># 后面的可以用于指定权限:默认755权限</span>
+       <span class="o">[</span>CONFIGURATIONS <span class="o">[</span>Debug<span class="p">|</span>Release<span class="p">|</span>...<span class="o">]]</span> 
+       <span class="o">[</span>COMPONENT &lt;component&gt;<span class="o">]</span> 
+       <span class="o">[</span>OPTIONAL<span class="o">]</span> <span class="o">]</span> <span class="o">[</span>...<span class="o">])</span>
+
+<span class="c1"># 介绍安装步骤</span>
+<span class="c1"># 1，安装 COPYRIGHT|README，直接修改主工程文件 CMakelists.txt，加入以下指令：</span>
+INSTALL<span class="o">(</span>FILES COPYRIGHT README DESTINATION share/doc/cmake/t2<span class="o">)</span> 
+<span class="c1"># 2，安装 runhello.sh，直接修改主工程文件 CMakeLists.txt，加入如下指令： </span>
+INSTALL<span class="o">(</span>PROGRAMS runhello.sh DESTINATION bin<span class="o">)</span> 
+<span class="c1"># 3，安装 doc 中的 hello.txt，这里有两种方式：</span>
+<span class="c1"># * 一是通过在 doc 目录建立 CMakeLists.txt 并将 doc 目录通过 ADD_SUBDIRECTORY 加入工程来完成。</span>
+<span class="c1"># * 另一种方法 是直接在工程目录通过 INSTALL(DIRECTORY 来完成)，前者比较简单，各位可以根据兴趣自己完成，我们来尝试 后者，顺便演示以下 DIRECTORY 的安装。因为 hello.txt 要安装到/&lt;prefix&gt;/share/doc/cmake/t2，所以我们不能直接安装 整个 doc 目录，这里采用的方式是安装 doc 目录中的内容，也就是使用”doc/”，在工程文件中添加</span>
+INSTALL<span class="o">(</span>DIRECTORY doc/ DESTINATION share/doc/cmake/t2<span class="o">)</span>
+
+<span class="c1"># 编译和安装，现在进入 build 目录进行外部编译，注意使用 CMAKE_INSTALL_PREFIX 参数，这里我们 将它安装到了/tmp/t2 目录</span>
+cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span>/tmp/t2/usr ..
+<span class="c1"># 如果你想直接安装到系统，可以使用  cmake -DCMAKE_INSTALL_PREFIX=/usr ..</span>
+<span class="c1"># 如果没有定义 CMAKE_INSTALL_PREFIX，默认会安装到:/usr/local</span>
+make
+make install
+<span class="c1"># 让我们进入/tmp/t2 目录看一下安装结果：</span>
+./usr
+./usr/share
+./usr/share/doc
+./usr/share/doc/cmake
+./usr/share/doc/cmake/t2
+./usr/share/doc/cmake/t2/hello.txt
+./usr/share/doc/cmake/t2/README
+./usr/share/doc/cmake/t2/COPYRIGHT
+./usr/bin
+./usr/bin/hello
+./usr/bin/runhello.sh
+</code></pre></div>
+<p><strong>静态库与动态库构建</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 目录结构</span>
+-lib
+ <span class="p">|</span>-hello.c
+ <span class="p">|</span>-hello.h
+ <span class="p">|</span>-CMakeLists.txt
+-CMakeLists.txt
+
+<span class="c1"># 工程目录下 CMakeLists.txt</span>
+PROJECT<span class="o">(</span>HELLOLIB<span class="o">)</span>
+ADD_SUBDIRECTORY<span class="o">(</span>lib &lt;目录&gt;<span class="o">)</span> <span class="c1"># 其实也可以在这里指定.so文件的输出位置</span>
+<span class="c1"># lib/CMakeLists.txt</span>
+SET<span class="o">(</span>LIBHELLO_SRC hello.cpp<span class="o">)</span>
+SET<span class="o">(</span>LIBRARY_OUTPUT_PATH <span class="si">${</span><span class="nv">PROJECT_BINARY_DIR</span><span class="si">}</span>/aa<span class="o">)</span><span class="c1"># 指定.so文件的输出位置</span>
+<span class="c1"># 解释附录1</span>
+ADD_LIBRARY<span class="o">(</span>hello SHARED <span class="si">${</span><span class="nv">LIBHELLO_SRC</span><span class="si">}</span><span class="o">)</span> <span class="c1"># 添加动态库 xxx.so</span>
+<span class="c1"># 或者,如果动态库和静态库的libname名称相同，那么后者构建指令失效,方案一:采用不同名方案</span>
+ADD_LIBRARY<span class="o">(</span>hello_static STATIC <span class="si">${</span><span class="nv">LIBHELLO_SRC</span><span class="si">}</span><span class="o">)</span> <span class="c1"># 添加静态库 xxx.a</span>
+<span class="c1"># 方案二:如果想静态库和动态库同名且同时存在，需要在lib/CMakeLists.txt中添加如下指令，详解见附录2</span>
+SET_TARGET_PROPERTIES<span class="o">(</span>hello_static PROPERTIES OUTPUT_NAME <span class="s2">&quot;hello&quot;</span><span class="o">)</span>
+
+<span class="c1"># 指定动态库版本，一般而言动态库是应该包含一个版本号的，例如:libhello.so.1.2</span>
+<span class="c1"># VERSION 指代动态库版本，SOVERSION 指代 API 版本。</span>
+SET_TARGET_PROPERTIES<span class="o">(</span>hello PROPERTIES VERSION <span class="m">1</span>.2 SOVERSION <span class="m">1</span><span class="o">)</span>
+<span class="c1"># 这样构建后会生成三个文件</span>
+libhello.so.1.2 
+libhello.so.1-&gt;libhello.so.1.2 
+libhello.so -&gt;libhello.so.1
+
+<span class="c1"># 附录1.指令 ADD_LIBRARY详解</span>
+ADD_LIBRARY<span class="o">(</span>libname <span class="c1"># 不需要完全填写libhello.so，只需要填写hello，cmake系统会自动生成.x文件</span>
+           <span class="o">[</span>SHARED<span class="p">|</span>STATIC<span class="p">|</span>MODULE<span class="o">]</span> <span class="c1"># 动态库|静态库|类似动态库，dyld 的系统有效</span>
+           <span class="o">[</span>EXCLUDE_FROM_ALL<span class="o">]</span><span class="c1"># 这个库不会被默认构建</span>
+           source1 source2 ... sourceN<span class="o">)</span>
+<span class="c1"># 附录2:SET_TARGET_PROPERTIES,这条指令可以用来设置输出的名称，对于动态库，还可以用来指定动态库版本和 API 版本</span>
+SET_TARGET_PROPERTIES<span class="o">(</span>target1 target2 ... PROPERTIES prop1 value1 prop2 value2 ...<span class="o">)</span>
+
+<span class="c1">#编译 </span>
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake ..
+make
+<span class="c1"># 可以在build/aa目录下得到一个libhello.so</span>
+
+<span class="c1"># 安装共享库和头文件，我们需要将 libhello.a, libhello.so.x 以及 hello.h 安装到系统目 录，才能真正让其他人开发使用</span>
+<span class="c1"># 需要在lib/CMakeLists.txt中添加如下指令</span>
+INSTALL<span class="o">(</span>TARGETS hello hello_static 
+        LIBRARY DESTINATION lib 
+        ARCHIVE DESTINATION lib<span class="o">)</span><span class="c1"># 注意，静态库要使用 ARCHIVE 关键字</span>
+INSTALL<span class="o">(</span>FILES hello.h DESTINATION include/hello<span class="o">)</span>
+<span class="c1"># 通过:</span>
+cmake -DCMAKE_INSTALL_PREFIX<span class="o">=</span>/usr ..
+make 
+make install 
+<span class="c1"># 我们就可以将头文件和共享库安装到系统目录/usr/lib 和/usr/include/hello 中了。</span>
+</code></pre></div>
+<p><strong>使用共享库和头文件</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1.建立 src 目录，编写源文件 main.c</span>
+<span class="cp">#include</span> <span class="cpf">&lt;hello.h&gt;</span><span class="c1"> </span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">HelloFunc</span><span class="p">();</span><span class="c1">// 这个函数是写在原来的hell.cpp中的，声明在hello.h中的</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="c1">// 编写工程主文件 CMakeLists.txt </span>
+<span class="n">PROJECT</span><span class="p">(</span><span class="n">NEWHELLO</span><span class="p">)</span> 
+<span class="n">ADD_SUBDIRECTORY</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+<span class="c1">// 编写 src/CMakeLists.txt </span>
+<span class="n">ADD_EXECUTABLE</span><span class="p">(</span><span class="n">main</span> <span class="n">main</span><span class="p">.</span><span class="n">c</span><span class="p">)</span>
+<span class="c1">// 开始构建，build ...,出错了，看看为啥出错，用make VERBOSE=1来详细构建打印构建过程，没有&lt;hello.h&gt;文件，hello.h 位于/usr/include/hello 目录中，并没有位于系统标准的头文件路径，如果直接使用 #include &lt;hello/hello.h&gt;，那这一节也没啥可讲的啦</span>
+
+<span class="c1">// 2.引入头文件搜索路径，为了让我们的工程能够找到 hello.h 头文件，我们需要引入一个新的指令</span>
+<span class="c1">//在src/CMakeLists.txt 中添加一个头文件搜索路径</span>
+<span class="n">INCLUDE_DIRECTORIES</span><span class="p">(</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">hello</span><span class="p">)</span>
+<span class="c1">// 指令详解</span>
+<span class="n">INCLUDE_DIRECTORIES</span><span class="p">([</span><span class="n">AFTER</span><span class="o">|</span><span class="n">BEFORE</span><span class="p">]</span> 
+                    <span class="p">[</span><span class="n">SYSTEM</span><span class="p">]</span> <span class="n">dir1</span> <span class="n">dir2</span> <span class="p">...)</span>
+<span class="c1">// 这条指令可以用来向工程添加多个特定的头文件搜索路径，路径之间用空格分割，如果路径中包含了空格，可以使用双引号将它括起来，默认的行为是追加到当前的头文件搜索路径的后面，你可以通过两种方式来进行控制搜索路径添加的方式：</span>
+<span class="c1">//１，CMAKE_INCLUDE_DIRECTORIES_BEFORE，通过 SET 这个 cmake 变量为 on，可以 将添加的头文件搜索路径放在已有路径的前面。</span>
+<span class="c1">//２，通过 AFTER 或者 BEFORE 参数，也可以控制是追加还是置前。</span>
+
+<span class="c1">// 重新构建会出现HelloFunc找不到的错误，这是因为我们并没有 link 到共享库 libhello 上，只包含头文件当然不能使用了</span>
+
+<span class="c1">// 3.为target添加共享库,在src/CMakeLists.txt 中添加如下指令</span>
+<span class="n">TARGET_LINK_LIBRARIES</span><span class="p">(</span><span class="n">main</span> <span class="n">hello</span><span class="p">)</span><span class="c1">// hello也可以写成libhello.so,构建成功后悔得到main的可执行文件</span>
+<span class="c1">// 指令详解</span>
+<span class="c1">// 这里需要引入两个新的指令:LINK_DIRECTORIES 和 TARGET_LINK_LIBRARIES</span>
+<span class="n">LINK_DIRECTORIES</span><span class="p">(</span><span class="n">directory1</span> <span class="n">directory2</span> <span class="p">...)</span> <span class="c1">// 添加非标准的共享库搜索路径,比如，在工程内部同时存在共享库和可 执行二进制，在编译时就需要指定一下这些共享库的路径。这个例子中我们没有用到这个指令。</span>
+<span class="n">TARGET_LINK_LIBRARIES</span><span class="p">(</span><span class="n">target</span> <span class="n">library1</span> <span class="c1">// 这个指令可以用来为 target 添加需要链接的共享库</span>
+                      <span class="o">&lt;</span><span class="n">debug</span> <span class="o">|</span> <span class="n">optimized</span><span class="o">&gt;</span> <span class="n">library2</span> 
+                      <span class="p">...)</span>
+
+<span class="c1">// 4.如何链接到静态库呢,很简单</span>
+<span class="n">TARGET_LINK_LIBRARIES</span><span class="p">(</span><span class="n">main</span> <span class="n">libhello</span><span class="p">.</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>两个特殊的环境变量(不是cmake变量)</strong></p>
+<div class="highlight"><pre><span></span><code>CMAKE_INCLUDE_PATH 和 CMAKE_LIBRARY_PATH
+<span class="c1"># 用法:在 bash 中用 export 或者在 csh 中使用 set 命令设置</span>
+<span class="c1"># 或者:</span>
+<span class="nv">CMAKE_INCLUDE_PATH</span><span class="o">=</span>/home/include 
+cmake ..
+<span class="c1"># 等方式。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 主要是解决:头文件没有存放在常规路径(/usr/include,/usr/local/include 等),则可以通过这些变量就行弥补。</span>
+<span class="c1"># 我们以本例中的 hello.h 为例，它存放在/usr/include/hello 目录，所以直接查找肯定是找不到的。前面我们直接使用了绝对路径 INCLUDE_DIRECTORIES(/usr/include/hello)告诉工程这个头文件目录。为了将程序更智能一点，我们可以使用 CMAKE_INCLUDE_PATH 来进行，使用 bash 的方法 如下：</span>
+<span class="nb">export</span> <span class="nv">CMAKE_INCLUDE_PATH</span><span class="o">=</span>/usr/include/hello
+<span class="c1"># 然后在头文件中将 INCLUDE_DIRECTORIES(/usr/include/hello)替换为： </span>
+FIND_PATH<span class="o">(</span>myHeader hello.h<span class="o">)</span> <span class="c1"># FIND_PATH 用来在指定路径中搜索文件名,这里我们没有指定路径，但是，cmake 仍然可以帮我们找到 hello.h 存放的路径，就是因 为我们设置了环境变量 CMAKE_INCLUDE_PATH。</span>
+IF<span class="o">(</span>myHeader<span class="o">)</span> 
+INCLUDE_DIRECTORIES<span class="o">(</span><span class="si">${</span><span class="nv">myHeader</span><span class="si">}</span><span class="o">)</span> 
+ENDIF<span class="o">(</span>myHeader<span class="o">)</span>
+<span class="c1"># 以此为例，CMAKE_LIBRARY_PATH 可以用在 FIND_LIBRARY 中。</span>
+</code></pre></div>
+<p><strong>Cmake常用变量和常用环境变量</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1.cmake变量${},IF语句中直接使用变量名</span>
+<span class="c1"># 2.cmake变量的隐式定义(义&lt;projectname&gt;_BINARY_DIR 和&lt;projectname&gt;_SOURCE_DIR)和显示定义(SET(HELLO_SRC main.c))</span>
+
+<span class="c1"># 3.cmake常用变量</span>
+<span class="nv">CMAKE_BINARY_DIR</span> <span class="o">==</span> <span class="nv">PROJECT_BINARY_DIR</span> <span class="o">==</span> &lt;projectname&gt;_BINARY_DIR <span class="c1"># 指的是工程编译发生的目录</span>
+<span class="nv">CMAKE_SOURCE_DIR</span> <span class="o">==</span> <span class="nv">PROJECT_SOURCE_DIR</span> <span class="o">==</span> &lt;projectname&gt;_SOURCE_DIR <span class="c1"># 指的是工程顶层目录</span>
+CMAKE_CURRRENT_BINARY_DIR <span class="c1"># 指的是 target 编译目录，使用我们上面提到的 ADD_SUBDIRECTORY(src bin)可以更改这个变量的值。使用 SET(EXECUTABLE_OUTPUT_PATH &lt;新路径&gt;)并不会对这个变量造成影响，它仅仅 修改了最终目标文件存放的路径。</span>
+CMAKE_CURRENT_LIST_FILE <span class="c1"># 输出调用这个变量的 CMakeLists.txt 的完整路径</span>
+CMAKE_CURRENT_LIST_LINE <span class="c1"># 输出这个变量所在的行</span>
+CMAKE_MODULE_PATH <span class="c1"># 这个变量用来定义自己的 cmake 模块所在的路径。如果你的工程比较复杂，有可能会自己 编写一些 cmake 模块，这些 cmake 模块是随你的工程发布的，为了让 cmake 在处理 CMakeLists.txt 时找到这些模块，你需要通过 SET 指令，将自己的 cmake 模块路径设 置一下。比如 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake) 这时候你就可以通过 INCLUDE 指令来调用自己的模块了。</span>
+EXECUTABLE_OUTPUT_PATH 和 LIBRARY_OUTPUT_PATH <span class="c1"># 分别用来重新定义最终结果的存放目录</span>
+PROJECT_NAME <span class="c1"># 返回通过 PROJECT 指令定义的项目名称</span>
+
+<span class="c1"># 4.cmake 调用环境变量的方式</span>
+MESSAGE<span class="o">(</span>STATUS <span class="s2">&quot;HOME dir: </span><span class="nv">$ENV</span><span class="s2">{HOME}&quot;</span><span class="o">)</span> <span class="c1"># 使用$ENV{NAME}指令就可以调用系统的环境变量了。</span>
+SET<span class="o">(</span>ENV<span class="o">{</span>变量名<span class="o">}</span> 值<span class="o">)</span> <span class="c1"># 设置环境变量的方式</span>
+<span class="c1"># 1.CMAKE_INCLUDE_CURRENT_DIR:自动添加 CMAKE_CURRENT_BINARY_DIR 和 CMAKE_CURRENT_SOURCE_DIR 到当前处理 的 CMakeLists.txt。相当于在每个 CMakeLists.txt 加入： </span>
+INCLUDE_DIRECTORIES<span class="o">(</span><span class="si">${</span><span class="nv">CMAKE_CURRENT_BINARY_DIR</span><span class="si">}</span> <span class="si">${</span><span class="nv">CMAKE_CURRENT_SOURCE_DIR</span><span class="si">}</span><span class="o">)</span>
+<span class="c1"># 2.CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE:将工程提供的头文件目录始终至于系统头文件目录的前面，当你定义的头文件确实跟系统发生冲突时可以提供一些帮助。</span>
+<span class="c1"># 3.CMAKE_INCLUDE_PATH 和 CMAKE_LIBRARY_PATH 我们在上一节已经提及。</span>
+
+<span class="c1"># 5.系统信息</span>
+<span class="m">1</span>,CMAKE_MAJOR_VERSION，CMAKE 主版本号，比如 <span class="m">2</span>.4.6 中的 <span class="m">2</span> 
+<span class="m">2</span>,CMAKE_MINOR_VERSION，CMAKE 次版本号，比如 <span class="m">2</span>.4.6 中的 <span class="m">4</span> 
+<span class="m">3</span>,CMAKE_PATCH_VERSION，CMAKE 补丁等级，比如 <span class="m">2</span>.4.6 中的 <span class="m">6</span> 
+<span class="m">4</span>,CMAKE_SYSTEM，系统名称，比如 Linux-2.6.22 
+<span class="m">5</span>,CMAKE_SYSTEM_NAME，不包含版本的系统名，比如 Linux 
+<span class="m">6</span>,CMAKE_SYSTEM_VERSION，系统版本，比如 <span class="m">2</span>.6.22 
+<span class="m">7</span>,CMAKE_SYSTEM_PROCESSOR，处理器名称，比如 i686. 
+<span class="m">8</span>,UNIX，在所有的类 UNIX 平台为 TRUE，包括 OS X 和 cygwin <span class="m">9</span>,WIN32，在所有的 win32 平台为 TRUE，包括 cygwin
+
+<span class="c1"># 6:主要的开关选项</span>
+<span class="c1"># 1，CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS，用来控制 IF ELSE 语句的书写方式</span>
+<span class="c1"># 2，BUILD_SHARED_LIBS,这个开关用来控制默认的库编译方式，如果不进行设置，使用 ADD_LIBRARY 并没有指定库 类型的情况下，默认编译生成的库都是静态库。 如果 SET(BUILD_SHARED_LIBS ON)后，默认生成的为动态库。 </span>
+<span class="c1"># ３，CMAKE_C_FLAGS 设置 C 编译选项，也可以通过指令 ADD_DEFINITIONS()添加。 </span>
+<span class="c1"># 4，CMAKE_CXX_FLAGS 设置 C++编译选项，也可以通过指令 ADD_DEFINITIONS()添加。</span>
+</code></pre></div>
+<p><strong>CMake基本指令</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1，ADD_DEFINITIONS，向 C/C++编译器添加-D 定义，比如:</span>
+ADD_DEFINITIONS<span class="o">(</span>-DENABLE_DEBUG -DABC<span class="o">)</span><span class="c1"># 参数之间用空格分割。 如果你的代码中定义了#ifdef ENABLE_DEBUG #endif，这个代码块就会生效。如果要添加其他的编译器开关，可以通过 CMAKE_C_FLAGS 变量和 CMAKE_CXX_FLAGS 变 量设置。</span>
+
+<span class="c1"># ２，ADD_DEPENDENCIES定义 target 依赖的其他target，确保在编译本target之前，其他的target已经被构建。</span>
+ADD_DEPENDENCIES<span class="o">(</span>target-name depend-target1 depend-target2 ...<span class="o">)</span>
+
+<span class="c1"># ３，ADD_EXECUTABLE、ADD_LIBRARY、ADD_SUBDIRECTORY 前面已经介绍过了，这里不再罗唆。</span>
+
+<span class="c1"># ４，ADD_TEST 与 ENABLE_TESTING 指令。 ENABLE_TESTING 指令用来控制 Makefile 是否构建 test 目标，涉及工程所有目录。语 法很简单，没有任何参数，ENABLE_TESTING()，一般情况这个指令放在工程的主 CMakeLists.txt 中.ADD_TEST 指令的语法是:</span>
+ADD_TEST<span class="o">(</span>testname  <span class="c1"># testname 是自定义的 test 名称</span>
+         Exename arg1 arg2 ...<span class="o">)</span><span class="c1"># Exename 可以是构建的目标文件也可以是外部脚本等 等。后面连接传递给可执行文件的参数</span>
+<span class="c1"># 如果没有在同一个 CMakeLists.txt 中打开 ENABLE_TESTING()指令，任何 ADD_TEST 都是无效的。比如我们前面的 Helloworld 例子，可以在工程主 CMakeLists.txt 中添加 </span>
+ADD_TEST<span class="o">(</span>mytest <span class="si">${</span><span class="nv">PROJECT_BINARY_DIR</span><span class="si">}</span>/bin/main<span class="o">)</span> 
+ENABLE_TESTING<span class="o">()</span>
+<span class="c1"># 生成 Makefile 后，就可以运行 make test 来执行测试了。</span>
+
+<span class="c1"># ５，AUX_SOURCE_DIRECTORY 基本语法是： </span>
+AUX_SOURCE_DIRECTORY<span class="o">(</span>dir VARIABLE<span class="o">)</span><span class="c1"># 作用是发现一个目录下所有的源代码文件并将列表存储在一个变量中，这个指令临时被用来 自动构建源文件列表。因为目前 cmake 还不能自动发现新添加的源文件。 比如 </span>
+AUX_SOURCE_DIRECTORY<span class="o">(</span>. SRC_LIST<span class="o">)</span> ADD_EXECUTABLE<span class="o">(</span>main <span class="si">${</span><span class="nv">SRC_LIST</span><span class="si">}</span><span class="o">)</span><span class="c1"># 你也可以通过后面提到的 FOREACH 指令来处理这个 LIST</span>
+
+<span class="c1"># 6，CMAKE_MINIMUM_REQUIRED 其语法为 </span>
+CMAKE_MINIMUM_REQUIRED<span class="o">(</span>VERSION versionNumber <span class="o">[</span>FATAL_ERROR<span class="o">])</span> 
+<span class="c1"># 比如 </span>
+CMAKE_MINIMUM_REQUIRED<span class="o">(</span>VERSION <span class="m">2</span>.5 FATAL_ERROR<span class="o">)</span> <span class="c1"># 如果 cmake 版本小与 2.5，则出现严重错误，整个过程中止。</span>
+
+<span class="c1"># 7，EXEC_PROGRAM 在 CMakeLists.txt 处理过程中执行命令，并不会在生成的 Makefile 中执行。具体语法 为： </span>
+EXEC_PROGRAM<span class="o">(</span>Executable <span class="o">[</span>directory <span class="k">in</span> which to run<span class="o">]</span> 
+            <span class="o">[</span>ARGS &lt;arguments to executable&gt;<span class="o">]</span> 
+            <span class="o">[</span>OUTPUT_VARIABLE &lt;var&gt;<span class="o">]</span> 
+            <span class="o">[</span>RETURN_VALUE &lt;var&gt;<span class="o">])</span> 
+<span class="c1"># 用于在指定的目录运行某个程序，通过 ARGS 添加参数，如果要获取输出和返回值，可通过 OUTPUT_VARIABLE 和 RETURN_VALUE 分别定义两个变量.这个指令可以帮助你在 CMakeLists.txt 处理过程中支持任何命令，比如根据系统情况去 修改代码文件等等。 举个简单的例子，我们要在 src 目录执行 ls 命令，并把结果和返回值存下来。可以直接在 src/CMakeLists.txt 中添加： </span>
+EXEC_PROGRAM<span class="o">(</span>ls ARGS <span class="s2">&quot;*.c&quot;</span> OUTPUT_VARIABLE LS_OUTPUT RETURN_VALUE LS_RVALUE<span class="o">)</span> 
+IF<span class="o">(</span>not LS_RVALUE<span class="o">)</span> 
+MESSAGE<span class="o">(</span>STATUS <span class="s2">&quot;ls result: &quot;</span> <span class="si">${</span><span class="nv">LS_OUTPUT</span><span class="si">}</span><span class="o">)</span> 
+ENDIF<span class="o">(</span>not LS_RVALUE<span class="o">)</span>
+<span class="c1"># 在 cmake 生成 Makefile 的过程中，就会执行 ls 命令，如果返回 0，则说明成功执行， 那么就输出 ls *.c 的结果。关于 IF 语句，后面的控制指令会提到。</span>
+
+<span class="c1"># 8，FILE 指令 文件操作指令，基本语法为:</span>
+FILE<span class="o">(</span>WRITE filename <span class="s2">&quot;message to write&quot;</span>... <span class="o">)</span> 
+FILE<span class="o">(</span>APPEND filename <span class="s2">&quot;message to write&quot;</span>... <span class="o">)</span> 
+FILE<span class="o">(</span>READ filename variable<span class="o">)</span> 
+FILE<span class="o">(</span>GLOB variable <span class="o">[</span>RELATIVE path<span class="o">]</span> <span class="o">[</span>globbing expressions<span class="o">]</span>...<span class="o">)</span>
+FILE<span class="o">(</span>GLOB_RECURSE variable <span class="o">[</span>RELATIVE path<span class="o">]</span> <span class="o">[</span>globbing expressions<span class="o">]</span>...<span class="o">)</span>
+FILE<span class="o">(</span>REMOVE <span class="o">[</span>directory<span class="o">]</span>...<span class="o">)</span> 
+FILE<span class="o">(</span>REMOVE_RECURSE <span class="o">[</span>directory<span class="o">]</span>...<span class="o">)</span> 
+FILE<span class="o">(</span>MAKE_DIRECTORY <span class="o">[</span>directory<span class="o">]</span>...<span class="o">)</span> 
+FILE<span class="o">(</span>RELATIVE_PATH variable directory file<span class="o">)</span> 
+FILE<span class="o">(</span>TO_CMAKE_PATH path result<span class="o">)</span> 
+FILE<span class="o">(</span>TO_NATIVE_PATH path result<span class="o">)</span>
+
+<span class="c1"># 9，INCLUDE 指令，用来载入 CMakeLists.txt 文件，也用于载入预定义的 cmake 模块.</span>
+INCLUDE<span class="o">(</span>file1 <span class="o">[</span>OPTIONAL<span class="o">])</span> 
+INCLUDE<span class="o">(</span>module <span class="o">[</span>OPTIONAL<span class="o">])</span> 
+<span class="c1"># OPTIONAL参数的作用是文件不存在也不会产生错误。 你可以指定载入一个文件，如果定义的是一个模块，那么将在 CMAKE_MODULE_PATH 中搜 索这个模块并载入。载入的内容将在处理到 INCLUDE 语句是直接执行。</span>
+</code></pre></div>
+<p><strong>FIND_指令</strong></p>
+<div class="highlight"><pre><span></span><code>FIND_FILE<span class="o">(</span>&lt;VAR&gt; name1 path1 path2 ...<span class="o">)</span> <span class="c1"># VAR 变量代表找到的文件全路径，包含文件名</span>
+FIND_LIBRARY<span class="o">(</span>&lt;VAR&gt; name1 path1 path2 ...<span class="o">)</span> <span class="c1"># VAR 变量表示找到的库全路径，包含库文件名</span>
+FIND_PATH<span class="o">(</span>&lt;VAR&gt; name1 path1 path2 ...<span class="o">)</span> <span class="c1"># VAR 变量代表包含这个文件的路径。</span>
+FIND_PROGRAM<span class="o">(</span>&lt;VAR&gt; name1 path1 path2 ...<span class="o">)</span> <span class="c1"># VAR 变量代表包含这个程序的全路径。</span>
+FIND_PACKAGE<span class="o">(</span>&lt;name&gt; <span class="o">[</span>major.minor<span class="o">]</span> <span class="o">[</span>QUIET<span class="o">]</span> <span class="o">[</span>NO_MODULE<span class="o">]</span> <span class="o">[[</span>REQUIRED<span class="p">|</span>COMPONENTS<span class="o">]</span> <span class="o">[</span>componets...<span class="o">]])</span> <span class="c1"># 用来调用预定义在 CMAKE_MODULE_PATH 下的 Find&lt;name&gt;.cmake 模块，你也可以自己 定义 Find&lt;name&gt;模块，通过 SET(CMAKE_MODULE_PATH dir)将其放入工程的某个目录 中供工程使用，我们在后面的章节会详细介绍 FIND_PACKAGE 的使用方法和 Find 模块的 编写。</span>
+FIND_LIBRARY 示例： 
+FIND_LIBRARY<span class="o">(</span>libX X11 /usr/lib<span class="o">)</span> 
+IF<span class="o">(</span>NOT libX<span class="o">)</span> 
+MESSAGE<span class="o">(</span>FATAL_ERROR “libX not found”<span class="o">)</span> 
+ENDIF<span class="o">(</span>NOT libX<span class="o">)</span>
+</code></pre></div>
+<p><strong>控制指令</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1,IF 指令,另外一个指令是 ELSEIF，总体把握一个原则，凡是出现 IF 的地方一定要有对应的 ENDIF.出现 ELSEIF 的地方，ENDIF 是可选的。基本语法为：</span>
+    IF<span class="o">(</span>expression<span class="o">)</span> 
+    <span class="c1"># THEN section. </span>
+    COMMAND1<span class="o">(</span>ARGS ...<span class="o">)</span>
+    COMMAND2<span class="o">(</span>ARGS ...<span class="o">)</span> 
+    ...
+    ELSE<span class="o">(</span>expression<span class="o">)</span> 
+    <span class="c1"># ELSE section. </span>
+    COMMAND1<span class="o">(</span>ARGS ...<span class="o">)</span> 
+    COMMAND2<span class="o">(</span>ARGS ...<span class="o">)</span> 
+    ...
+    ENDIF<span class="o">(</span>expression<span class="o">)</span>
+<span class="c1"># 表达式的使用方法</span>
+IF<span class="o">(</span>var<span class="o">)</span> <span class="c1"># 如果变量不是：空，0，N, NO, OFF, FALSE, NOTFOUND 或 &lt;var&gt;_NOTFOUND 时，表达式为真。</span>
+IF<span class="o">(</span>NOT var <span class="o">)</span> <span class="c1"># 与上述条件相反。</span>
+IF<span class="o">(</span>var1 AND var2<span class="o">)</span><span class="c1"># 当两个变量都为真是为真。</span>
+IF<span class="o">(</span>var1 OR var2<span class="o">)</span><span class="c1"># 当两个变量其中一个为真时为真。</span>
+IF<span class="o">(</span>COMMAND cmd<span class="o">)</span><span class="c1"># 当给定的 cmd 确实是命令并可以调用是为真。</span>
+IF<span class="o">(</span>EXISTS dir<span class="o">)</span>或者 IF<span class="o">(</span>EXISTS file<span class="o">)</span><span class="c1"># 当目录名或者文件名存在时为真。</span>
+IF<span class="o">(</span>file1 IS_NEWER_THAN file2<span class="o">)</span><span class="c1"># 当 file1 比 file2 新，或者 file1/file2 其 中有一个不存在时为真，文件名请使用完整路径。</span>
+IF<span class="o">(</span>IS_DIRECTORY dirname<span class="o">)</span><span class="c1"># 当 dirname 是目录时，为真。</span>
+IF<span class="o">(</span>variable MATCHES regex<span class="o">)</span> 
+IF<span class="o">(</span>string MATCHES regex<span class="o">)</span> <span class="c1"># 当给定的变量或者字符串能够匹配正则表达式 regex 时为真。比如： </span>
+    IF<span class="o">(</span><span class="s2">&quot;hello&quot;</span> MATCHES <span class="s2">&quot;ell&quot;</span><span class="o">)</span> 
+    MESSAGE<span class="o">(</span><span class="s2">&quot;true&quot;</span><span class="o">)</span> 
+    ENDIF<span class="o">(</span><span class="s2">&quot;hello&quot;</span> MATCHES <span class="s2">&quot;ell&quot;</span><span class="o">)</span>
+<span class="c1"># 数字比较表达式</span>
+IF<span class="o">(</span>variable LESS number<span class="o">)</span> 
+IF<span class="o">(</span>string LESS number<span class="o">)</span> 
+IF<span class="o">(</span>variable GREATER number<span class="o">)</span> 
+IF<span class="o">(</span>string GREATER number<span class="o">)</span> 
+IF<span class="o">(</span>variable EQUAL number<span class="o">)</span> 
+IF<span class="o">(</span>string EQUAL number<span class="o">)</span>
+<span class="c1"># 按照字母序的排列进行比较.</span>
+IF<span class="o">(</span>variable STRLESS string<span class="o">)</span> 
+IF<span class="o">(</span>string STRLESS string<span class="o">)</span> 
+IF<span class="o">(</span>variable STRGREATER string<span class="o">)</span> 
+IF<span class="o">(</span>string STRGREATER string<span class="o">)</span> 
+IF<span class="o">(</span>variable STREQUAL string<span class="o">)</span> 
+IF<span class="o">(</span>string STREQUAL string<span class="o">)</span> 
+IF<span class="o">(</span>DEFINED variable<span class="o">)</span><span class="c1"># 如果变量被定义，为真。</span>
+<span class="c1"># 一个小例子，用来判断平台差异： I</span>
+F<span class="o">(</span>WIN32<span class="o">)</span>
+    MESSAGE<span class="o">(</span>STATUS “This is windows.”<span class="o">)</span>
+    <span class="c1">#作一些 Windows 相关的操作 </span>
+ELSE<span class="o">(</span>WIN32<span class="o">)</span>
+    MESSAGE<span class="o">(</span>STATUS “This is not windows”<span class="o">)</span>
+    <span class="c1">#作一些非 Windows 相关的操作 </span>
+ENDIF<span class="o">(</span>WIN32<span class="o">)</span> 
+<span class="c1">#上述代码用来控制在不同的平台进行不同的控制，但是，阅读起来却并不是那么舒服， ELSE(WIN32)之类的语句很容易引起歧义。</span>
+<span class="c1"># 这就用到了我们在“常用变量”一节提到的 CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS 开关。 可以 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON) 这时候就可以写成:</span>
+IF<span class="o">(</span>WIN32<span class="o">)</span> 
+ELSE<span class="o">()</span> 
+ENDIF<span class="o">()</span>
+<span class="c1"># 如果配合 ELSEIF 使用，可能的写法是这样:</span>
+IF<span class="o">(</span>WIN32<span class="o">)</span> 
+<span class="c1">#do something related to WIN32 </span>
+ELSEIF<span class="o">(</span>UNIX<span class="o">)</span> 
+<span class="c1">#do something related to UNIX </span>
+ELSEIF<span class="o">(</span>APPLE<span class="o">)</span> 
+<span class="c1">#do something related to APPLE ENDIF(WIN32)</span>
+
+
+<span class="c1"># 2.WHELE指令，其真假判断条件可以参考 IF 指令。</span>
+WHILE<span class="o">(</span>condition<span class="o">)</span> 
+    COMMAND1<span class="o">(</span>ARGS ...<span class="o">)</span> 
+    COMMAND2<span class="o">(</span>ARGS ...<span class="o">)</span> ...
+ENDWHILE<span class="o">(</span>condition<span class="o">)</span> 
+
+
+<span class="c1"># 3.FOREACH指令，三种形式</span>
+<span class="c1"># 1.列表</span>
+FOREACH<span class="o">(</span>loop_var arg1 arg2 ...<span class="o">)</span>
+    COMMAND1<span class="o">(</span>ARGS ...<span class="o">)</span> 
+    COMMAND2<span class="o">(</span>ARGS ...<span class="o">)</span>
+    ...
+ENDFOREACH<span class="o">(</span>loop_var<span class="o">)</span>
+<span class="c1"># 像我们前面使用的 AUX_SOURCE_DIRECTORY 的例子 </span>
+AUX_SOURCE_DIRECTORY<span class="o">(</span>. SRC_LIST<span class="o">)</span> 
+FOREACH<span class="o">(</span>F <span class="si">${</span><span class="nv">SRC_LIST</span><span class="si">}</span><span class="o">)</span>
+        MESSAGE<span class="o">(</span><span class="si">${</span><span class="nv">F</span><span class="si">}</span><span class="o">)</span> 
+ENDFOREACH<span class="o">(</span>F<span class="o">)</span>
+<span class="c1"># 2.范围</span>
+FOREACH<span class="o">(</span>loop_var RANGE total<span class="o">)</span> 
+ENDFOREACH<span class="o">(</span>loop_var<span class="o">)</span> 
+<span class="c1"># 举例子:从 0 到 total 以１为步进</span>
+FOREACH<span class="o">(</span>VAR RANGE <span class="m">10</span><span class="o">)</span> 
+        MESSAGE<span class="o">(</span><span class="si">${</span><span class="nv">VAR</span><span class="si">}</span><span class="o">)</span> 
+ENDFOREACH<span class="o">(</span>VAR<span class="o">)</span>
+<span class="c1"># 3.范围和步进</span>
+FOREACH<span class="o">(</span>loop_var RANGE start stop <span class="o">[</span>step<span class="o">])</span> 
+ENDFOREACH<span class="o">(</span>loop_var<span class="o">)</span> 
+<span class="c1"># 从 start 开始到 stop 结束，以 step 为步进， 举例如下 </span>
+FOREACH<span class="o">(</span>A RANGE <span class="m">5</span> <span class="m">15</span> <span class="m">3</span><span class="o">)</span> 
+        MESSAGE<span class="o">(</span><span class="si">${</span><span class="nv">A</span><span class="si">}</span><span class="o">)</span>
+ENDFOREACH<span class="o">(</span>A<span class="o">)</span> <span class="c1"># 5 8 11 14</span>
+<span class="c1"># 这个指令需要注意的是，直到遇到 ENDFOREACH 指令，整个语句块才会得到真正的执行。</span>
+</code></pre></div>
+<p><strong>Find_PACKAGE</strong></p>
+<div class="highlight"><pre><span></span><code>FIND_PACKAGE<span class="o">(</span>&lt;name&gt; <span class="o">[</span>major.minor<span class="o">]</span> 
+            <span class="o">[</span>QUIET<span class="o">]</span>  <span class="c1"># QUIET 参数，对应与我们编写的 FindHELLO 中的 HELLO_FIND_QUIETLY，如果不指定 这个参数，就会执行： MESSAGE(STATUS &quot;Found Hello: ${HELLO_LIBRARY}&quot;)</span>
+            <span class="o">[</span>NO_MODULE<span class="o">]</span> 
+            <span class="o">[[</span>REQUIRED<span class="p">|</span>COMPONENTS<span class="o">]</span> <span class="o">[</span>componets...<span class="o">]])</span> <span class="c1"># REQUIRED 参数，其含义是指这个共享库是否是工程必须的，如果使用了这个参数，说明这 个链接库是必备库，如果找不到这个链接库，则工程不能编译。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>-src
+ <span class="p">|</span>-main.c <span class="c1"># 里面包含了一个include &lt;curl/curl.h&gt;</span>
+ <span class="p">|</span>-CMakeLists.txt
+-CMakeLists.txt
+
+<span class="c1"># 建立主工程文件 CMakeLists.txt</span>
+PROJECT<span class="o">(</span>CURLTEST<span class="o">)</span>
+ADD_SUBDIRECTORY<span class="o">(</span>src<span class="o">)</span>
+<span class="c1"># 建立 src/CMakeLists.txt </span>
+ADD_EXECUTABLE<span class="o">(</span>curltest main.c<span class="o">)</span>
+<span class="c1"># 现在自然是没办法编译的，我们需要添加 curl 的头文件路径和库文件。</span>
+
+<span class="c1"># 方法1：直接通过 INCLUDE_DIRECTORIES 和 TARGET_LINK_LIBRARIES 指令添加： 我们可以直接在 src/CMakeLists.txt 中添加：</span>
+INCLUDE_DIRECTORIES<span class="o">(</span>/usr/include<span class="o">)</span> 
+TARGET_LINK_LIBRARIES<span class="o">(</span>curltest curl<span class="o">)</span>
+<span class="c1"># 然后建立 build 目录进行外部构建即可。</span>
+
+<span class="c1"># 方法2:使用 FindCURL 模块。向 src/CMakeLists.txt 中添加：</span>
+FIND_PACKAGE<span class="o">(</span>CURL<span class="o">)</span> 
+IF<span class="o">(</span>CURL_FOUND<span class="o">)</span>
+    INCLUDE_DIRECTORIES<span class="o">(</span><span class="si">${</span><span class="nv">CURL_INCLUDE_DIR</span><span class="si">}</span><span class="o">)</span>
+    TARGET_LINK_LIBRARIES<span class="o">(</span>curltest <span class="si">${</span><span class="nv">CURL_LIBRARY</span><span class="si">}</span><span class="o">)</span> <span class="c1"># 在使用opencv时，用${OpenCV_LIBRARIES}通过了</span>
+ELSE<span class="o">(</span>CURL_FOUND<span class="o">)</span>
+        MESSAGE<span class="o">(</span>FATAL_ERROR ”CURL library not found”<span class="o">)</span> 
+ENDIF<span class="o">(</span>CURL_FOUND<span class="o">)</span>
+<span class="c1"># 对于系统预定义的 Find&lt;name&gt;.cmake 模块，使用方法一般如上例所示： 每一个模块都会定义以下几个变量</span>
+&lt;name&gt;_FOUND <span class="c1"># 判断模块是否被找到，如果没有找到，按照工程的需要关闭 某些特性、给出提醒或者中止编译，上面的例子就是报出致命错误并终止构建。</span>
+&lt;name&gt;_INCLUDE_DIR or &lt;name&gt;_INCLUDES
+&lt;name&gt;_LIBRARY or &lt;name&gt;_LIBRARIES
+<span class="c1"># 如果&lt;name&gt;_FOUND 为真，则将&lt;name&gt;_INCLUDE_DIR 加入 INCLUDE_DIRECTORIES， 将&lt;name&gt;_LIBRARY 加入 TARGET_LINK_LIBRARIES 中。</span>
+
+<span class="c1"># 举例子，通过&lt;name&gt;_FOUND 来控制工程特性： </span>
+SET<span class="o">(</span>mySources viewer.c<span class="o">)</span> 
+SET<span class="o">(</span>optionalSources<span class="o">)</span>
+SET<span class="o">(</span>optionalLibs<span class="o">)</span> 
+FIND_PACKAGE<span class="o">(</span>JPEG<span class="o">)</span> 
+IF<span class="o">(</span>JPEG_FOUND<span class="o">)</span>
+    SET<span class="o">(</span>optionalSources <span class="si">${</span><span class="nv">optionalSources</span><span class="si">}</span> jpegview.c<span class="o">)</span>
+    INCLUDE_DIRECTORIES<span class="o">(</span> <span class="si">${</span><span class="nv">JPEG_INCLUDE_DIR</span><span class="si">}</span> <span class="o">)</span>
+    SET<span class="o">(</span>optionalLibs <span class="si">${</span><span class="nv">optionalLibs</span><span class="si">}</span> <span class="si">${</span><span class="nv">JPEG_LIBRARIES</span><span class="si">}</span> <span class="o">)</span>
+    ADD_DEFINITIONS<span class="o">(</span>-DENABLE_JPEG_SUPPORT<span class="o">)</span> ENDIF<span class="o">(</span>JPEG_FOUND<span class="o">)</span>
+IF<span class="o">(</span>PNG_FOUND<span class="o">)</span> 
+    SET<span class="o">(</span>optionalSources <span class="si">${</span><span class="nv">optionalSources</span><span class="si">}</span> pngview.c<span class="o">)</span> 
+    INCLUDE_DIRECTORIES<span class="o">(</span> <span class="si">${</span><span class="nv">PNG_INCLUDE_DIR</span><span class="si">}</span> <span class="o">)</span> 
+    SET<span class="o">(</span>optionalLibs <span class="si">${</span><span class="nv">optionalLibs</span><span class="si">}</span> <span class="si">${</span><span class="nv">PNG_LIBRARIES</span><span class="si">}</span> <span class="o">)</span> 
+    ADD_DEFINITIONS<span class="o">(</span>-DENABLE_PNG_SUPPORT<span class="o">)</span> 
+ENDIF<span class="o">(</span>PNG_FOUND<span class="o">)</span>
+
+ADD_EXECUTABLE<span class="o">(</span>viewer <span class="si">${</span><span class="nv">mySources</span><span class="si">}</span> <span class="si">${</span><span class="nv">optionalSources</span><span class="si">}</span> <span class="o">)</span> 
+TARGET_LINK_LIBRARIES<span class="o">(</span>viewer <span class="si">${</span><span class="nv">optionalLibs</span><span class="si">}</span> 
+<span class="c1"># 通过判断系统是否提供了 JPEG 库来决定程序是否支持 JPEG 功能。</span>
+</code></pre></div>
+<p><strong>自定义 FindHELLO 模块并使用这个模块构建工程</strong></p>
+<div class="highlight"><pre><span></span><code>-cmake <span class="c1"># 建立 cmake 目录用于存放我们自己 定义的 FindHELLO.cmake 模块</span>
+ <span class="p">|</span>-FindHELLO.cmake
+-src# 用于建立src目录，用于存放我们的源文件
+ <span class="p">|</span>-main.c 
+ <span class="p">|</span>-CMakeLists.txt
+-CMakeLists.txt
+
+
+<span class="c1"># 定义 cmake/FindHELLO.cmake 模块 </span>
+FIND_PATH<span class="o">(</span>HELLO_INCLUDE_DIR hello.h /usr/include/hello /usr/local/include/hello<span class="o">)</span> FIND_LIBRARY<span class="o">(</span>HELLO_LIBRARY NAMES hello PATH /usr/lib /usr/local/lib<span class="o">)</span> 
+IF <span class="o">(</span>HELLO_INCLUDE_DIR AND HELLO_LIBRARY<span class="o">)</span>
+        SET<span class="o">(</span>HELLO_FOUND TRUE<span class="o">)</span> 
+ENDIF <span class="o">(</span>HELLO_INCLUDE_DIR AND HELLO_LIBRARY<span class="o">)</span> 
+IF <span class="o">(</span>HELLO_FOUND<span class="o">)</span>
+    IF <span class="o">(</span>NOT HELLO_FIND_QUIETLY<span class="o">)</span>
+            MESSAGE<span class="o">(</span>STATUS <span class="s2">&quot;Found Hello: </span><span class="si">${</span><span class="nv">HELLO_LIBRARY</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">)</span>
+    ENDIF <span class="o">(</span>NOT HELLO_FIND_QUIETLY<span class="o">)</span> 
+ELSE <span class="o">(</span>HELLO_FOUND<span class="o">)</span> 
+    IF <span class="o">(</span>HELLO_FIND_REQUIRED<span class="o">)</span> <span class="c1"># HELLO_FIND_REQUIRED对应于FIND_PACKAGE的REQUIRED参数</span>
+            MESSAGE<span class="o">(</span>FATAL_ERROR <span class="s2">&quot;Could not find hello library&quot;</span><span class="o">)</span> 
+    ENDIF <span class="o">(</span>HELLO_FIND_REQUIRED<span class="o">)</span> 
+ENDIF <span class="o">(</span>HELLO_FOUND<span class="o">)</span>
+<span class="c1"># HELLO_FOUND, HELLO_INCLUDE_DIR,HELLO_LIBRARY 变量供开发者在 FIND_PACKAGE 指令中使用</span>
+
+
+<span class="c1"># src/man.c</span>
+<span class="c1">#include &lt;hello.h&gt; </span>
+int main<span class="o">()</span> 
+<span class="o">{</span>
+        HelloFunc<span class="o">()</span><span class="p">;</span>
+    <span class="k">return</span> <span class="m">0</span><span class="p">;</span> 
+<span class="o">}</span>
+
+
+<span class="c1"># 建立 src/CMakeLists.txt 文件</span>
+FIND_PACKAGE<span class="o">(</span>HELLO<span class="o">)</span> 
+IF<span class="o">(</span>HELLO_FOUND<span class="o">)</span>
+    ADD_EXECUTABLE<span class="o">(</span>hello main.c<span class="o">)</span>
+    INCLUDE_DIRECTORIES<span class="o">(</span><span class="si">${</span><span class="nv">HELLO_INCLUDE_DIR</span><span class="si">}</span><span class="o">)</span>
+    TARGET_LINK_LIBRARIES<span class="o">(</span>hello <span class="si">${</span><span class="nv">HELLO_LIBRARY</span><span class="si">}</span><span class="o">)</span> 
+ENDIF<span class="o">(</span>HELLO_FOUND<span class="o">)</span>
+
+
+<span class="c1"># 为了能够让工程找到 FindHELLO.cmake 模块(存放在工程中的 cmake 目录) 我们在主工程文件 CMakeLists.txt 中加入：</span>
+SET<span class="o">(</span>CMAKE_MODULE_PATH <span class="si">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="si">}</span>/cmake<span class="o">)</span>
+
+
+<span class="c1"># 使用自定义的 FindHELLO 模块构建工程</span>
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+cmake .. <span class="c1"># 输出:Found Hello: /usr/lib/libhello.so</span>
+<span class="c1"># 如果我们把上面的 FIND_PACKAGE(HELLO)修改为 FIND_PACKAGE(HELLO QUIET),则 不会看到上面的输出。</span>
+make
+./src/hello <span class="c1"># 输出Hello World</span>
+
+
+<span class="c1"># 如果没有找到 hello library 呢</span>
+<span class="c1"># 我们可以尝试将/usr/lib/libhello.x 移动到/tmp 目录，这样，按照 FindHELLO 模块 的定义，就找不到 hello library 了，我们再来看一下构建结果： </span>
+cmake ..# 仍然可以成功进行构建，但是这时候是没有办法编译的。 
+<span class="c1"># 修改 FIND_PACKAGE(HELLO)为 FIND_PACKAGE(HELLO REQUIRED)，将 hello library 定义为工程必须的共享库。 这时候再次运行 </span>
+cmake .. <span class="c1"># 我们得到如下输出： CMake Error: Could not find hello library.因为找不到 libhello.x，所以，整个 Makefile 生成过程被出错中止。</span>
+</code></pre></div>
+<p><strong>动态库和静态库的区别</strong></p>
+<p>库是写好的现有的，成熟的，可以复用的代码。<strong>现实中每个程序都要依赖很多基础的底层库，不可能每个人的代码都从零开始，因此库的存在意义非同寻常</strong>。本质上来说库是一种可执行代码的二进制形式，可以被操作系统载入内存执行。库有两种：静态库（.a、.lib）和动态库（.so、.dll）。</p>
+<p><img alt="image-20200215201032969" src="../assets/image-20200215201032969.png" /></p>
+<ul>
+<li>
+<p><strong>静态库</strong>：在链接阶段，会将汇编生成的目标文件.o与引用到的库一起链接打包到可执行文件中。因此对应的链接方式称为静态链接。其实一个静态库可以简单看成是**一组目标文件（.o/.obj文件）的集合**，即很多目标文件经过压缩打包后形成的一个文件。静态库特点总结：</p>
+<ul>
+<li>
+<p>静态库对函数库的链接是放在**编译时期**完成的。</p>
+</li>
+<li>
+<p>程序在运行时与函数库再无瓜葛，移植方便。</p>
+</li>
+<li>
+<p>浪费空间和资源，因为所有相关的目标文件与牵涉到的函数库被链接合成一个可执行文件。</p>
+</li>
+<li>
+<p>静态库缺点：</p>
+<ul>
+<li>
+<p>空间浪费是静态库的一个问题</p>
+<p><img alt="image-20200215201638916" src="../assets/image-20200215201638916.png" /></p>
+</li>
+<li>
+<p>另一个问题是静态库对程序的更新、部署和发布页会带来麻烦。如果静态库liba.lib更新了，所以使用它的应用程序都需要重新编译、发布给用户（对于玩家来说，可能是一个很小的改动，却导致整个程序重新下载，<strong>全量更新</strong>）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>动态库</strong>：动态库在程序编译时并不会被连接到目标代码中，而是在程序运行时才被载入。<strong>不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例</strong>，规避了空间浪费问题。动态库在程序运行是才被载入，也解决了静态库对程序的更新、部署和发布页会带来麻烦。用户只需要更新动态库即可，<strong>增量更新</strong>。</p>
+<p><img alt="image-20200215201656291" src="../assets/image-20200215201656291.png" /></p>
+<ul>
+<li>动态库把对一些库函数的链接载入推迟到程序运行的时期。</li>
+<li>可以实现进程之间的资源共享。（因此动态库也称为共享库）</li>
+<li>将一些程序升级变得简单。甚至可以真正做到链接载入完全由程序员在程序代码中控制（<strong>显示调用</strong>）。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 如果想查看一个可执行程序的共享库，使用ldd命令</span>
+ldd libhello.so
+</code></pre></div>
+<h3 id="docker">docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<p><strong>镜像，容器，仓库</strong></p>
+<p><strong>Docker镜像(只读)</strong>:对于 Linux 而言，内核启动后，会挂载 <code>root</code> 文件系统为其提供用户空间支持。而 Docker 镜像（Image），就相当于是一个 <code>root</code> 文件系统。</p>
+<ul>
+<li>镜像是分层（Layer）的：即一个镜像可以多个中间层组成，多个镜像可以共享同一中间层，我们也可以通过在镜像添加多一层来生成一个新的镜像。</li>
+<li>镜像是只读的（read-only）：镜像在构建完成之后，便不可以再修改，而上面我们所说的添加一层构建新的镜像，这中间实际是通过创建一个临时的容器，在容器上增加或删除文件，从而形成新的镜像，因为容器是可以动态改变的。</li>
+</ul>
+<p><strong>容器(可读可写)</strong>:容器是通过镜像来创建的，容器是在镜像上面添一层读写层(<strong>容器存储层</strong>)（writer/read layer）来实现，所以必须先有镜像才能创建容器，而生成的容器是一个独立于宿主机的隔离**进程**，并且有属于容器自己的网络和命名空间。</p>
+<ul>
+<li>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</li>
+<li>按照 Docker 最佳实践的要求，容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化。所有的文件写入操作，都应该使用**数据卷**、或者绑定宿主目录，在这些位置的读写会跳过容器存储层，直接对宿主（或网络存储）发生读写，其性能和稳定性更高。<strong>数据卷的生存周期独立于容器，容器消亡，数据卷不会消亡</strong>。因此，使用数据卷后，容器删除或者重新运行之后，数据却不会丢失。</li>
+</ul>
+<p><strong>仓库</strong>:每个仓库可以包含多个 <strong>标签</strong>（<code>Tag</code>）；每个标签对应一个镜像。通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。我们可以通过 <code>&lt;仓库名&gt;:&lt;标签&gt;</code> 的格式来指定具体是这个软件哪个版本的镜像。如果不给出标签，将以 <code>latest</code> 作为默认标签。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../c%2B%2B%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              c++简明教程
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../python%E5%88%B7%E9%A2%98/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              python刷题
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+    
+  </body>
+</html>
